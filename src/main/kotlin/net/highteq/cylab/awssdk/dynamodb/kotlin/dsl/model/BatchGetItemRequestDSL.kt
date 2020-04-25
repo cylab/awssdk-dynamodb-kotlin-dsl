@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.BatchGetItemRequest
@@ -19,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
   */
 @DynamodbDSL
 class BatchGetItemRequestDSL {
-  private val builder = BatchGetItemRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BatchGetItemRequest.builder()
   internal fun build(): BatchGetItemRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -91,7 +93,6 @@ class BatchGetItemRequestDSL {
     *  AttributesToGet - This is a legacy parameter. Use ProjectionExpression instead. For
     *  more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var requestItems: Map<String, KeysAndAttributes>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -103,7 +104,6 @@ class BatchGetItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndexAction
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
   */
 @DynamodbDSL
 class UpdateGlobalSecondaryIndexActionDSL {
-  private val builder = UpdateGlobalSecondaryIndexAction.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = UpdateGlobalSecondaryIndexAction.builder()
   internal fun build(): UpdateGlobalSecondaryIndexAction = builder.build()
     
   /**
     * The name of the global secondary index to be updated.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -38,7 +40,6 @@ class UpdateGlobalSecondaryIndexActionDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughput
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -14,10 +14,27 @@ Use buildXXXXX { } everytime you would use XXXXX.builder() e.g.
 builder functions are exposed as properties inside the DSL block like:
 
     val client = buildDynamoDbClient {
-       region = Region.EU_CENTRAL_1
-       credentialsProvider = buildDefaultCredentialsProvider()
+      region = Region.EU_CENTRAL_1
     }
 
-## Known Issues
+if for some reason, a buildXXXX DSL function isn't (yet) available, you can
+just use the plain old java style builder instead:
+  
+    val client = buildDynamoDbClient {
+      region = Region.EU_CENTRAL_1
+      credentialsProvider = DefaultCredentialsProvider.builder().build()
+    }
 
-Methods derived from parent types are not converted to DSLs.  
+or if something is missing, access the internal builder instance as a workaround:
+
+    val client = buildDynamoDbClient {
+      region = Region.EU_CENTRAL_1
+      @Suppress("DEPRECATION")
+      builder.enableEndpointDiscovery()
+    }
+
+note the `@Suppress("DEPRECATION")` annotation! Using the internal builder is
+not recommended and should only be a last resort.
+
+In any case, please report a bug at the generator project:
+https://github.com/cylab/aws-kotlin-dsl-builder

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
@@ -20,13 +22,13 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableDetails
   */
 @DynamodbDSL
 class SourceTableDetailsDSL {
-  private val builder = SourceTableDetails.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = SourceTableDetails.builder()
   internal fun build(): SourceTableDetails = builder.build()
     
   /**
     * The name of the table for which the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -38,7 +40,6 @@ class SourceTableDetailsDSL {
   /**
     * Schema of the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -50,7 +51,6 @@ class SourceTableDetailsDSL {
   /**
     * Read IOPs and Write IOPS on the table when the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughput
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,7 +62,6 @@ class SourceTableDetailsDSL {
   /**
     * Size of the table in bytes. Note that this is an approximate value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -74,7 +73,6 @@ class SourceTableDetailsDSL {
   /**
     * Number of items in the table. Note that this is an approximate value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCount: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -86,7 +84,6 @@ class SourceTableDetailsDSL {
   /**
     * ARN of the table for which backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -98,7 +95,6 @@ class SourceTableDetailsDSL {
   /**
     * Unique identifier for the table for which the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -117,7 +113,6 @@ class SourceTableDetailsDSL {
     *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
     *  recommend using PAY_PER_REQUEST for unpredictable workloads.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var billingMode: BillingMode
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -129,7 +124,6 @@ class SourceTableDetailsDSL {
   /**
     * Time when the source table was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableCreationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

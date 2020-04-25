@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.GetRecordsResponse
 import software.amazon.awssdk.services.dynamodb.model.Record
 
@@ -17,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.Record
   */
 @DynamodbDSL
 class GetRecordsResponseDSL {
-  private val builder = GetRecordsResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GetRecordsResponse.builder()
   internal fun build(): GetRecordsResponse = builder.build()
     
   /**
     * The stream records from the shard, which were retrieved using the shard iterator.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var records: Collection<Record>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,12 +40,33 @@ class GetRecordsResponseDSL {
     * The next position in the shard from which to start sequentially reading stream records. If set to
     *  null, the shard has been closed and the requested iterator will not return any more data.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var nextShardIterator: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.nextShardIterator(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

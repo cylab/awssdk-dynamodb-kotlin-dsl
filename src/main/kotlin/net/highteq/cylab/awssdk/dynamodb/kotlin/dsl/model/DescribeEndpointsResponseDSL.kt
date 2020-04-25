@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeEndpointsResponse
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
@@ -17,18 +21,40 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
   */
 @DynamodbDSL
 class DescribeEndpointsResponseDSL {
-  private val builder = DescribeEndpointsResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeEndpointsResponse.builder()
   internal fun build(): DescribeEndpointsResponse = builder.build()
     
   /**
     * List of endpoints.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var endpoints: Collection<Endpoint>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.endpoints(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

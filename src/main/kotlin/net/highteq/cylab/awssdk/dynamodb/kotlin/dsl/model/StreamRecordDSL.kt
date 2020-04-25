@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -19,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
   */
 @DynamodbDSL
 class StreamRecordDSL {
-  private val builder = StreamRecord.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = StreamRecord.builder()
   internal fun build(): StreamRecord = builder.build()
     
   /**
     * The sequence number of the stream record.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sequenceNumber: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,21 +37,19 @@ class StreamRecordDSL {
 
 
   /**
-    * The item in the DynamoDB table as it appeared after it was modified.
+    * The primary key attribute(s) for the DynamoDB item that was modified.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var newImage: Map<String, AttributeValue>
+  var keys: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.newImage(value)
+      builder.keys(value)
     }
 
 
   /**
     * The approximate date and time when the stream record was created, in UNIX epoch time format.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var approximateCreationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -61,7 +61,6 @@ class StreamRecordDSL {
   /**
     * The item in the DynamoDB table as it appeared before it was modified.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var oldImage: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -73,12 +72,22 @@ class StreamRecordDSL {
   /**
     * The size of the stream record, in bytes.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sizeBytes(value)
+    }
+
+
+  /**
+    * The item in the DynamoDB table as it appeared after it was modified.
+    */
+  var newImage: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.newImage(value)
     }
 
 
@@ -93,24 +102,11 @@ class StreamRecordDSL {
     * 
     *  NEW_AND_OLD_IMAGES - both the new and the old item images of the item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamViewType: StreamViewType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.streamViewType(value)
-    }
-
-
-  /**
-    * The primary key attribute(s) for the DynamoDB item that was modified.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var keys: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keys(value)
     }
 
     

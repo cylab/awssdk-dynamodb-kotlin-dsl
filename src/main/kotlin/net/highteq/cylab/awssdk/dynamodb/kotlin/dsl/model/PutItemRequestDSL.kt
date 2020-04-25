@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -23,9 +25,21 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValue
   */
 @DynamodbDSL
 class PutItemRequestDSL {
-  private val builder = PutItemRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = PutItemRequest.builder()
   internal fun build(): PutItemRequest = builder.build()
     
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    */
+  var expected: Map<String, ExpectedAttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.expected(value)
+    }
+
+
   /**
     * A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required;
     *  you can optionally provide other attribute name-value pairs for the item.
@@ -41,7 +55,6 @@ class PutItemRequestDSL {
     * 
     *  Each element in the Item map is an AttributeValue object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var item: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -66,7 +79,6 @@ class PutItemRequestDSL {
     * 
     *  For more information on condition expressions, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -78,7 +90,6 @@ class PutItemRequestDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -90,7 +101,6 @@ class PutItemRequestDSL {
   /**
     * The name of the table to contain the item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -130,7 +140,6 @@ class PutItemRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -157,7 +166,6 @@ class PutItemRequestDSL {
     * 
     *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -169,7 +177,6 @@ class PutItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -183,7 +190,6 @@ class PutItemRequestDSL {
     *  statistics about item collections, if any, that were modified during the operation are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnItemCollectionMetrics: ReturnItemCollectionMetrics
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -195,7 +201,6 @@ class PutItemRequestDSL {
   /**
     * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionalOperator: ConditionalOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -217,24 +222,11 @@ class PutItemRequestDSL {
     *  The ReturnValues parameter is used by several DynamoDB operations; however, PutItem
     *  does not recognize any values other than NONE or ALL_OLD.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnValues: ReturnValue
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValues(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var expected: Map<String, ExpectedAttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.expected(value)
     }
 
     

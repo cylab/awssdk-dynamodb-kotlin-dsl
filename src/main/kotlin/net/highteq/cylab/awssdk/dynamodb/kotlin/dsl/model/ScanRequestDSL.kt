@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -22,7 +24,8 @@ import software.amazon.awssdk.services.dynamodb.model.Select
   */
 @DynamodbDSL
 class ScanRequestDSL {
-  private val builder = ScanRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ScanRequest.builder()
   internal fun build(): ScanRequest = builder.build()
     
   /**
@@ -62,12 +65,29 @@ class ScanRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var select: Select
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.select(value)
+    }
+
+
+  /**
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Working with
+    *  Queries in the Amazon DynamoDB Developer Guide.
+    */
+  var limit: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
 
@@ -87,7 +107,6 @@ class ScanRequestDSL {
     * 
     *  If you provide Segment, you must also provide TotalSegments.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var segment: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -99,7 +118,6 @@ class ScanRequestDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -112,7 +130,6 @@ class ScanRequestDSL {
     * The name of the table containing the requested items; or, if you provide IndexName, the name of
     *  the table to which that index belongs.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -125,12 +142,43 @@ class ScanRequestDSL {
     * The name of a secondary index to scan. This index can be any local secondary index or global secondary index.
     *  Note that if you use the IndexName parameter, you must also provide TableName.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.indexName(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
+    */
+  var scanFilter: Map<String, Condition>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.scanFilter(value)
+    }
+
+
+  /**
+    * For a parallel Scan request, TotalSegments represents the total number of segments
+    *  into which the Scan operation will be divided. The value of TotalSegments
+    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
+    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
+    *  of 4.
+    * 
+    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
+    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
+    *  sequential rather than parallel.
+    * 
+    *  If you specify TotalSegments, you must also specify Segment.
+    */
+  var totalSegments: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.totalSegments(value)
     }
 
 
@@ -165,7 +213,6 @@ class ScanRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -193,7 +240,6 @@ class ScanRequestDSL {
     * 
     *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -205,7 +251,6 @@ class ScanRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -217,7 +262,6 @@ class ScanRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionalOperator: ConditionalOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -237,7 +281,6 @@ class ScanRequestDSL {
     *  same segment whose previous Scan returned the corresponding value of
     *  LastEvaluatedKey.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exclusiveStartKey: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -256,7 +299,6 @@ class ScanRequestDSL {
     * 
     *  For more information, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -275,7 +317,6 @@ class ScanRequestDSL {
     * 
     *  For more information, see Filter Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var filterExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -287,7 +328,6 @@ class ScanRequestDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributesToGet: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -312,65 +352,11 @@ class ScanRequestDSL {
     *  secondary index with ConsistentRead set to true, you will receive a
     *  ValidationException.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consistentRead: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var scanFilter: Map<String, Condition>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scanFilter(value)
-    }
-
-
-  /**
-    * For a parallel Scan request, TotalSegments represents the total number of segments
-    *  into which the Scan operation will be divided. The value of TotalSegments
-    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
-    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
-    *  of 4.
-    * 
-    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
-    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
-    *  sequential rather than parallel.
-    * 
-    *  If you specify TotalSegments, you must also specify Segment.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var totalSegments: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.totalSegments(value)
-    }
-
-
-  /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Working with
-    *  Queries in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
     

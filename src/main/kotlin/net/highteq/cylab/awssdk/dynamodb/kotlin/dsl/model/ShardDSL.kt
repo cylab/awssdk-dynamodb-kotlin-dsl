@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
 import software.amazon.awssdk.services.dynamodb.model.Shard
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.Shard
   */
 @DynamodbDSL
 class ShardDSL {
-  private val builder = Shard.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Shard.builder()
   internal fun build(): Shard = builder.build()
     
   /**
     * The system-generated identifier for this shard.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var shardId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class ShardDSL {
   /**
     * The shard ID of the current shard's parent.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var parentShardId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,7 +48,6 @@ class ShardDSL {
   /**
     * The range of possible sequence numbers for the shard.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sequenceNumberRange: SequenceNumberRange
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

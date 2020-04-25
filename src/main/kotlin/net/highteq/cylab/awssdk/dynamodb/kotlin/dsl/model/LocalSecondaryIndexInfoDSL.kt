@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexInfo
@@ -18,14 +20,14 @@ import software.amazon.awssdk.services.dynamodb.model.Projection
   */
 @DynamodbDSL
 class LocalSecondaryIndexInfoDSL {
-  private val builder = LocalSecondaryIndexInfo.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = LocalSecondaryIndexInfo.builder()
   internal fun build(): LocalSecondaryIndexInfo = builder.build()
     
   /**
     * Represents attributes that are copied (projected) from the table into the global secondary index. These are
     *  in addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projection: Projection
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -37,7 +39,6 @@ class LocalSecondaryIndexInfoDSL {
   /**
     * Represents the name of the local secondary index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,7 +63,6 @@ class LocalSecondaryIndexInfoDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSettingsResponse
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
 
@@ -17,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
   */
 @DynamodbDSL
 class DescribeGlobalTableSettingsResponseDSL {
-  private val builder = DescribeGlobalTableSettingsResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeGlobalTableSettingsResponse.builder()
   internal fun build(): DescribeGlobalTableSettingsResponse = builder.build()
     
   /**
     * The name of the global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,12 +39,33 @@ class DescribeGlobalTableSettingsResponseDSL {
   /**
     * The Region-specific settings for the global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaSettings: Collection<ReplicaSettingsDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaSettings(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

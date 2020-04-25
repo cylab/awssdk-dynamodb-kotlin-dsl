@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.DeleteTableRequest
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.DeleteTableRequest
   */
 @DynamodbDSL
 class DeleteTableRequestDSL {
-  private val builder = DeleteTableRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DeleteTableRequest.builder()
   internal fun build(): DeleteTableRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class DeleteTableRequestDSL {
   /**
     * The name of the table to delete.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

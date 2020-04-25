@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.PutRequest
@@ -17,6 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.PutRequest
   */
 @DynamodbDSL
 class PutRequestDSL {
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   internal val builder = PutRequest.builder()
   internal fun build(): PutRequest = builder.build()
     
@@ -26,7 +29,6 @@ class PutRequestDSL {
     *  match those of the table's key schema. If any attributes are present in the item that are part of an index
     *  key schema for the table, their types must match the index key schema.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var item: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
@@ -21,9 +23,21 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   */
 @DynamodbDSL
 class KeysAndAttributesDSL {
-  private val builder = KeysAndAttributes.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = KeysAndAttributes.builder()
   internal fun build(): KeysAndAttributes = builder.build()
     
+  /**
+    * The primary key attribute values that define the items and the attributes associated with the items.
+    */
+  var keys: Collection<Map<String, AttributeValue>>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.keys(value)
+    }
+
+
   /**
     * One or more substitution tokens for attribute names in an expression. The following are some use cases for
     *  using ExpressionAttributeNames:
@@ -55,7 +69,6 @@ class KeysAndAttributesDSL {
     * 
     *  For more information on expression attribute names, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -74,7 +87,6 @@ class KeysAndAttributesDSL {
     * 
     *  For more information, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -86,7 +98,6 @@ class KeysAndAttributesDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see Legacy Conditional Parameters in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributesToGet: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -99,24 +110,11 @@ class KeysAndAttributesDSL {
     * The consistency of a read operation. If set to true, then a strongly consistent read is used;
     *  otherwise, an eventually consistent read is used.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consistentRead: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * The primary key attribute values that define the items and the attributes associated with the items.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var keys: Collection<Map<String, AttributeValue>>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keys(value)
     }
 
   

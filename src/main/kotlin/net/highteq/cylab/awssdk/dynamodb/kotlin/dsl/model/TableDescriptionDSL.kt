@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
@@ -27,13 +29,13 @@ import software.amazon.awssdk.services.dynamodb.model.TableStatus
   */
 @DynamodbDSL
 class TableDescriptionDSL {
-  private val builder = TableDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TableDescription.builder()
   internal fun build(): TableDescription = builder.build()
     
   /**
     * The name of the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -63,7 +65,6 @@ class TableDescriptionDSL {
     * 
     *  For more information about primary keys, see Primary Key in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -76,7 +77,6 @@ class TableDescriptionDSL {
     * The provisioned throughput settings for the table, consisting of read and write capacity units, along with
     *  data about increases and decreases.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughputDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -104,7 +104,6 @@ class TableDescriptionDSL {
     * 
     *  ARCHIVED - The table has been archived. See the ArchivalReason for more information.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableStatus: TableStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -123,7 +122,6 @@ class TableDescriptionDSL {
     * 
     *  AttributeType - The data type for the attribute.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeDefinitions: Collection<AttributeDefinition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -136,7 +134,6 @@ class TableDescriptionDSL {
     * The date and time when the table was created, in UNIX epoch time
     *  format.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var creationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -149,7 +146,6 @@ class TableDescriptionDSL {
     * The total size of the specified table, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -162,7 +158,6 @@ class TableDescriptionDSL {
     * The number of items in the specified table. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCount: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -174,7 +169,6 @@ class TableDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -186,7 +180,6 @@ class TableDescriptionDSL {
   /**
     * Unique identifier for the table for which the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -198,7 +191,6 @@ class TableDescriptionDSL {
   /**
     * Contains the details for the read/write capacity mode.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var billingModeSummary: BillingModeSummary
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -244,7 +236,6 @@ class TableDescriptionDSL {
     * 
     *  If the table is in the DELETING state, no information about indexes will be returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var localSecondaryIndexes: Collection<LocalSecondaryIndexDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -312,7 +303,6 @@ class TableDescriptionDSL {
     * 
     *  If the table is in the DELETING state, no information about indexes will be returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalSecondaryIndexes: Collection<GlobalSecondaryIndexDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -324,7 +314,6 @@ class TableDescriptionDSL {
   /**
     * The current DynamoDB Streams configuration for the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamSpecification: StreamSpecification
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -346,7 +335,6 @@ class TableDescriptionDSL {
     * 
     *  StreamLabel
     */
-  @get:JvmSynthetic // Hide from Java callers
   var latestStreamLabel: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -358,7 +346,6 @@ class TableDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the latest stream for this table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var latestStreamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -370,7 +357,6 @@ class TableDescriptionDSL {
   /**
     * Contains details for the restore.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var restoreSummary: RestoreSummary
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -382,7 +368,6 @@ class TableDescriptionDSL {
   /**
     * The description of the server-side encryption status on the specified table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sseDescription: SSEDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.CreateReplicaAction
 import software.amazon.awssdk.services.dynamodb.model.DeleteReplicaAction
@@ -24,13 +26,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
   */
 @DynamodbDSL
 class ReplicaUpdateDSL {
-  private val builder = ReplicaUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ReplicaUpdate.builder()
   internal fun build(): ReplicaUpdate = builder.build()
     
   /**
     * The name of the existing replica to be removed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var delete: DeleteReplicaAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -42,7 +44,6 @@ class ReplicaUpdateDSL {
   /**
     * The parameters required for creating a replica on an existing global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var create: CreateReplicaAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.RestoreTableToPointInTimeResponse
 import software.amazon.awssdk.services.dynamodb.model.TableDescription
 
@@ -17,18 +21,40 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   */
 @DynamodbDSL
 class RestoreTableToPointInTimeResponseDSL {
-  private val builder = RestoreTableToPointInTimeResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = RestoreTableToPointInTimeResponse.builder()
   internal fun build(): RestoreTableToPointInTimeResponse = builder.build()
     
   /**
     * Represents the properties of a table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableDescription: TableDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableDescription(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

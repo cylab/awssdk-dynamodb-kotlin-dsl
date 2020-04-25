@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -19,13 +21,29 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
   */
 @DynamodbDSL
 class GetItemRequestDSL {
-  private val builder = GetItemRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GetItemRequest.builder()
   internal fun build(): GetItemRequest = builder.build()
     
   /**
+    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
+    *  retrieve.
+    * 
+    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
+    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
+    *  the partition key and the sort key.
+    */
+  var key: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -37,7 +55,6 @@ class GetItemRequestDSL {
   /**
     * The name of the table containing the requested item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -77,7 +94,6 @@ class GetItemRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -89,7 +105,6 @@ class GetItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -107,7 +122,6 @@ class GetItemRequestDSL {
     * 
     *  For more information, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -119,7 +133,6 @@ class GetItemRequestDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributesToGet: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -132,29 +145,11 @@ class GetItemRequestDSL {
     * Determines the read consistency model: If set to true, then the operation uses strongly
     *  consistent reads; otherwise, the operation uses eventually consistent reads.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consistentRead: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  retrieve.
-    * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
     }
 
     

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeAction
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -26,7 +28,8 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
   */
 @DynamodbDSL
 class AttributeValueUpdateDSL {
-  private val builder = AttributeValueUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = AttributeValueUpdate.builder()
   internal fun build(): AttributeValueUpdate = builder.build()
     
   /**
@@ -37,7 +40,6 @@ class AttributeValueUpdateDSL {
     * 
     *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var value: AttributeValue
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -105,7 +107,6 @@ class AttributeValueUpdateDSL {
     *  the attribute value. The only data types allowed are number and number set; no other data types can be
     *  specified.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var action: AttributeAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

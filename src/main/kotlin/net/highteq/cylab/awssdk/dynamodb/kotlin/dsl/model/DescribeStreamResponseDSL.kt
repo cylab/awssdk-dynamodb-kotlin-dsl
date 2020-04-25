@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeStreamResponse
 import software.amazon.awssdk.services.dynamodb.model.StreamDescription
 
@@ -17,7 +21,8 @@ import software.amazon.awssdk.services.dynamodb.model.StreamDescription
   */
 @DynamodbDSL
 class DescribeStreamResponseDSL {
-  private val builder = DescribeStreamResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeStreamResponse.builder()
   internal fun build(): DescribeStreamResponse = builder.build()
     
   /**
@@ -25,12 +30,33 @@ class DescribeStreamResponseDSL {
     *  with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream
     *  records within the shards.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamDescription: StreamDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.streamDescription(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

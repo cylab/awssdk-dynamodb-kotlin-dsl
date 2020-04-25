@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.ListTablesRequest
@@ -17,13 +19,24 @@ import software.amazon.awssdk.services.dynamodb.model.ListTablesRequest
   */
 @DynamodbDSL
 class ListTablesRequestDSL {
-  private val builder = ListTablesRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ListTablesRequest.builder()
   internal fun build(): ListTablesRequest = builder.build()
     
   /**
+    * A maximum number of table names to return. If this parameter is not specified, the limit is 100.
+    */
+  var limit: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
+    }
+
+
+  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,24 +49,11 @@ class ListTablesRequestDSL {
     * The first table name that this operation will evaluate. Use the value that was returned for
     *  LastEvaluatedTableName in a previous operation, so that you can obtain the next page of results.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exclusiveStartTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exclusiveStartTableName(value)
-    }
-
-
-  /**
-    * A maximum number of table names to return. If this parameter is not specified, the limit is 100.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
   

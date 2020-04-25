@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ComparisonOperator
@@ -34,7 +36,8 @@ import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
   */
 @DynamodbDSL
 class ExpectedAttributeValueDSL {
-  private val builder = ExpectedAttributeValue.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ExpectedAttributeValue.builder()
   internal fun build(): ExpectedAttributeValue = builder.build()
     
   /**
@@ -61,12 +64,27 @@ class ExpectedAttributeValueDSL {
     *  Exists is false but you also provide a Value. (You cannot expect an
     *  attribute to have a value, while also expecting it not to exist.)
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exists: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exists(value)
+    }
+
+
+  /**
+    * Represents the data for the expected attribute.
+    * 
+    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
+    *  itself.
+    * 
+    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+    */
+  var value: AttributeValue
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.value(value)
     }
 
 
@@ -188,7 +206,6 @@ class ExpectedAttributeValueDSL {
     *  not match. For example, {"S":"6"} does not compare to {"N":"6"}. Also,
     *  {"N":"6"} does not compare to {"NS":["6", "2", "1"]}
     */
-  @get:JvmSynthetic // Hide from Java callers
   var comparisonOperator: ComparisonOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -213,29 +230,11 @@ class ExpectedAttributeValueDSL {
     *  For information on specifying data types in JSON, see JSON Data Format
     *  in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeValueList: Collection<AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributeValueList(value)
-    }
-
-
-  /**
-    * Represents the data for the expected attribute.
-    * 
-    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
-    *  itself.
-    * 
-    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var value: AttributeValue
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.value(value)
     }
 
     

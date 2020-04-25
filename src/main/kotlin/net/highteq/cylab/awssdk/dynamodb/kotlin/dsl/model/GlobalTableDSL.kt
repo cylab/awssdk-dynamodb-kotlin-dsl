@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalTable
 import software.amazon.awssdk.services.dynamodb.model.Replica
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
   */
 @DynamodbDSL
 class GlobalTableDSL {
-  private val builder = GlobalTable.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GlobalTable.builder()
   internal fun build(): GlobalTable = builder.build()
     
   /**
     * The global table name.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class GlobalTableDSL {
   /**
     * The Regions where the global table has replicas.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicationGroup: Collection<Replica>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

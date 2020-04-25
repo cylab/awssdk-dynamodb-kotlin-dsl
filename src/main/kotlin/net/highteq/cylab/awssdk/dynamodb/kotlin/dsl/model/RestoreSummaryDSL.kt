@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.RestoreSummary
@@ -17,13 +19,24 @@ import software.amazon.awssdk.services.dynamodb.model.RestoreSummary
   */
 @DynamodbDSL
 class RestoreSummaryDSL {
-  private val builder = RestoreSummary.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = RestoreSummary.builder()
   internal fun build(): RestoreSummary = builder.build()
     
   /**
+    * The Amazon Resource Name (ARN) of the backup from which the table was restored.
+    */
+  var sourceBackupArn: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sourceBackupArn(value)
+    }
+
+
+  /**
     * The ARN of the source table of the backup that is being restored.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sourceTableArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +48,6 @@ class RestoreSummaryDSL {
   /**
     * Indicates if a restore is in progress or not.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var restoreInProgress: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -45,21 +57,8 @@ class RestoreSummaryDSL {
 
 
   /**
-    * The Amazon Resource Name (ARN) of the backup from which the table was restored.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var sourceBackupArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sourceBackupArn(value)
-    }
-
-
-  /**
     * Point in time or source backup time.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var restoreDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

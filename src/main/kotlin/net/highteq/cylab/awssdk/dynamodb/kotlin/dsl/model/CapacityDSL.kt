@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Capacity
 
@@ -16,25 +18,13 @@ import software.amazon.awssdk.services.dynamodb.model.Capacity
   */
 @DynamodbDSL
 class CapacityDSL {
-  private val builder = Capacity.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Capacity.builder()
   internal fun build(): Capacity = builder.build()
     
   /**
-    * The total number of read capacity units consumed on a table or an index.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var readCapacityUnits: Double
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
-  /**
     * The total number of write capacity units consumed on a table or an index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var writeCapacityUnits: Double
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -46,12 +36,22 @@ class CapacityDSL {
   /**
     * The total number of capacity units consumed on a table or an index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var capacityUnits: Double
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.capacityUnits(value)
+    }
+
+
+  /**
+    * The total number of read capacity units consumed on a table or an index.
+    */
+  var readCapacityUnits: Double
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
     }
 
   

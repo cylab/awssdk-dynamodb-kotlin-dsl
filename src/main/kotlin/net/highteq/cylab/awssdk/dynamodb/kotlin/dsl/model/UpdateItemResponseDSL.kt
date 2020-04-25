@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
@@ -19,7 +23,8 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateItemResponse
   */
 @DynamodbDSL
 class UpdateItemResponseDSL {
-  private val builder = UpdateItemResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = UpdateItemResponse.builder()
   internal fun build(): UpdateItemResponse = builder.build()
     
   /**
@@ -29,12 +34,25 @@ class UpdateItemResponseDSL {
     *  The Attributes map is only present if ReturnValues was specified as something other
     *  than NONE in the request. Each element represents one attribute.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributes: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributes(value)
+    }
+
+
+  /**
+    * The capacity units consumed by the UpdateItem operation. The data returned includes the total
+    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
+    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
+    */
+  var consumedCapacity: ConsumedCapacity
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consumedCapacity(value)
     }
 
 
@@ -58,7 +76,6 @@ class UpdateItemResponseDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCollectionMetrics: ItemCollectionMetrics
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -68,21 +85,39 @@ class UpdateItemResponseDSL {
 
 
   /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
+    }
+
+  
+    
+  /**
     * The capacity units consumed by the UpdateItem operation. The data returned includes the total
     *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
     *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var consumedCapacity: ConsumedCapacity
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consumedCapacity(value)
-    }
+  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+  }
 
-  
-    
+
   /**
     * Information about item collections, if any, that were affected by the UpdateItem operation.
     *  ItemCollectionMetrics is only returned if the ReturnItemCollectionMetrics parameter
@@ -105,17 +140,6 @@ class UpdateItemResponseDSL {
     */
   fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) {
     builder.itemCollectionMetrics(buildItemCollectionMetrics(dslBlock))
-  }
-
-
-  /**
-    * The capacity units consumed by the UpdateItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
-    */
-  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
 
 }

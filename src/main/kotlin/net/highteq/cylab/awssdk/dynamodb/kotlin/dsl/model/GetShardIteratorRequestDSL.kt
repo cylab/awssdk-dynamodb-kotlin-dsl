@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.GetShardIteratorRequest
@@ -18,18 +20,29 @@ import software.amazon.awssdk.services.dynamodb.model.ShardIteratorType
   */
 @DynamodbDSL
 class GetShardIteratorRequestDSL {
-  private val builder = GetShardIteratorRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GetShardIteratorRequest.builder()
   internal fun build(): GetShardIteratorRequest = builder.build()
     
   /**
     * The sequence number of a stream record in the shard from which to start reading.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sequenceNumber: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sequenceNumber(value)
+    }
+
+
+  /**
+    * The identifier of the shard. The iterator will be returned for this shard ID.
+    */
+  var shardId: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.shardId(value)
     }
 
 
@@ -49,7 +62,6 @@ class GetShardIteratorRequestDSL {
     *  LATEST - Start reading just after the most recent stream record in the shard, so that you always
     *  read the most recent data in the shard.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var shardIteratorType: ShardIteratorType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -59,21 +71,8 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The identifier of the shard. The iterator will be returned for this shard ID.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var shardId: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.shardId(value)
-    }
-
-
-  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -85,7 +84,6 @@ class GetShardIteratorRequestDSL {
   /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,12 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
+import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
@@ -137,61 +140,13 @@ import software.amazon.awssdk.services.dynamodb.model.TransactionCanceledExcepti
   */
 @DynamodbDSL
 class TransactionCanceledExceptionDSL {
-  private val builder = TransactionCanceledException.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TransactionCanceledException.builder()
   internal fun build(): TransactionCanceledException = builder.build()
     
   /**
-    * A list of cancellation reasons.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var cancellationReasons: Collection<CancellationReason>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cancellationReasons(value)
-    }
-
-
-  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var awsErrorDetails: AwsErrorDetails
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.awsErrorDetails(value)
-    }
-
-
-  /**
-    * 
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var requestId: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.requestId(value)
-    }
-
-
-  /**
-    * 
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var statusCode: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.statusCode(value)
-    }
-
-
-  /**
-    * 
-    */
-  @get:JvmSynthetic // Hide from Java callers
   var cause: Throwable
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -203,7 +158,6 @@ class TransactionCanceledExceptionDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var message: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -211,7 +165,93 @@ class TransactionCanceledExceptionDSL {
       builder.message(value)
     }
 
-  
+
+  /**
+    * 
+    */
+  var awsErrorDetails: AwsErrorDetails
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.awsErrorDetails(value)
+    }
+
+
+  /**
+    * 
+    */
+  var requestId: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.requestId(value)
+    }
+
+
+  /**
+    * 
+    */
+  var statusCode: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.statusCode(value)
+    }
+
+
+  /**
+    * A list of cancellation reasons.
+    */
+  var cancellationReasons: Collection<CancellationReason>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cancellationReasons(value)
+    }
+
+
+  /**
+    * 
+    */
+  var clockSkew: Duration
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.clockSkew(value)
+    }
+
+    
+  /**
+    * 
+    */
+  fun cause(value: Throwable) {
+    builder.cause(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun message(value: String) {
+    builder.message(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun requestId(value: String) {
+    builder.requestId(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun statusCode(value: Int) {
+    builder.statusCode(value)
+  }
+
     
   /**
     * A list of cancellation reasons.

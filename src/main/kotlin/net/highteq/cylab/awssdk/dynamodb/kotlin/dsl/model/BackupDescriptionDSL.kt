@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BackupDescription
 import software.amazon.awssdk.services.dynamodb.model.BackupDetails
@@ -19,25 +21,25 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableFeatureDetails
   */
 @DynamodbDSL
 class BackupDescriptionDSL {
-  private val builder = BackupDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BackupDescription.builder()
   internal fun build(): BackupDescription = builder.build()
     
   /**
-    * Contains the details of the backup created for the table.
+    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
+    *  GSIs, streams, TTL.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var backupDetails: BackupDetails
+  var sourceTableFeatureDetails: SourceTableFeatureDetails
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.backupDetails(value)
+      builder.sourceTableFeatureDetails(value)
     }
 
 
   /**
     * Contains the details of the table when the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sourceTableDetails: SourceTableDetails
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,24 +49,23 @@ class BackupDescriptionDSL {
 
 
   /**
-    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
-    *  GSIs, streams, TTL.
+    * Contains the details of the backup created for the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var sourceTableFeatureDetails: SourceTableFeatureDetails
+  var backupDetails: BackupDetails
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.sourceTableFeatureDetails(value)
+      builder.backupDetails(value)
     }
 
   
     
   /**
-    * Contains the details of the backup created for the table.
+    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
+    *  GSIs, streams, TTL.
     */
-  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
-    builder.backupDetails(buildBackupDetails(dslBlock))
+  fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) {
+    builder.sourceTableFeatureDetails(buildSourceTableFeatureDetails(dslBlock))
   }
 
 
@@ -77,11 +78,10 @@ class BackupDescriptionDSL {
 
 
   /**
-    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
-    *  GSIs, streams, TTL.
+    * Contains the details of the backup created for the table.
     */
-  fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) {
-    builder.sourceTableFeatureDetails(buildSourceTableFeatureDetails(dslBlock))
+  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
+    builder.backupDetails(buildBackupDetails(dslBlock))
   }
 
 }

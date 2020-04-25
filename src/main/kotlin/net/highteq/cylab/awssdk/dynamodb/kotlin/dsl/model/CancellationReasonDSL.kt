@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
@@ -19,13 +21,24 @@ import software.amazon.awssdk.services.dynamodb.model.CancellationReason
   */
 @DynamodbDSL
 class CancellationReasonDSL {
-  private val builder = CancellationReason.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = CancellationReason.builder()
   internal fun build(): CancellationReason = builder.build()
     
   /**
+    * Cancellation reason message description.
+    */
+  var message: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.message(value)
+    }
+
+
+  /**
     * Item in the request which caused the transaction to get cancelled.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var item: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -37,24 +50,11 @@ class CancellationReasonDSL {
   /**
     * Status code for the result of the cancelled transaction.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var code: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.code(value)
-    }
-
-
-  /**
-    * Cancellation reason message description.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var message: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.message(value)
     }
 
   

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Stream
 
@@ -16,9 +18,21 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   */
 @DynamodbDSL
 class StreamDSL {
-  private val builder = Stream.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Stream.builder()
   internal fun build(): Stream = builder.build()
     
+  /**
+    * The DynamoDB table with which the stream is associated.
+    */
+  var tableName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
   /**
     * A timestamp, in ISO 8601 format, for this stream.
     * 
@@ -32,7 +46,6 @@ class StreamDSL {
     * 
     *  the StreamLabel
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamLabel: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -42,21 +55,8 @@ class StreamDSL {
 
 
   /**
-    * The DynamoDB table with which the stream is associated.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var tableName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

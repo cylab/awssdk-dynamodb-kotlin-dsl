@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
 
@@ -16,13 +18,13 @@ import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
   */
 @DynamodbDSL
 class SequenceNumberRangeDSL {
-  private val builder = SequenceNumberRange.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = SequenceNumberRange.builder()
   internal fun build(): SequenceNumberRange = builder.build()
     
   /**
     * The first sequence number.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var startingSequenceNumber: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -34,7 +36,6 @@ class SequenceNumberRangeDSL {
   /**
     * The last sequence number.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var endingSequenceNumber: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

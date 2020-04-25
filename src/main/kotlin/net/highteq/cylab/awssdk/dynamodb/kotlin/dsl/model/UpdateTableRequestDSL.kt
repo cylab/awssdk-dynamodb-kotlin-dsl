@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
@@ -23,21 +25,10 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTableRequest
   */
 @DynamodbDSL
 class UpdateTableRequestDSL {
-  private val builder = UpdateTableRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = UpdateTableRequest.builder()
   internal fun build(): UpdateTableRequest = builder.build()
     
-  /**
-    * The new server-side encryption settings for the specified table.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var sseSpecification: SSESpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sseSpecification(value)
-    }
-
-
   /**
     * An array of one or more global secondary indexes for the table. For each index in the array, you can request
     *  one action:
@@ -53,7 +44,6 @@ class UpdateTableRequestDSL {
     *  For more information, see Managing Global
     *  Secondary Indexes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalSecondaryIndexUpdates: Collection<GlobalSecondaryIndexUpdate>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -65,7 +55,6 @@ class UpdateTableRequestDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -77,7 +66,6 @@ class UpdateTableRequestDSL {
   /**
     * The name of the table to be updated.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -89,7 +77,6 @@ class UpdateTableRequestDSL {
   /**
     * The new provisioned throughput settings for the specified table or index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughput
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -99,11 +86,21 @@ class UpdateTableRequestDSL {
 
 
   /**
+    * The new server-side encryption settings for the specified table.
+    */
+  var sseSpecification: SSESpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sseSpecification(value)
+    }
+
+
+  /**
     * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
     *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
     *  index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeDefinitions: Collection<AttributeDefinition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -118,7 +115,6 @@ class UpdateTableRequestDSL {
     *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
     *  stream, or if you try to disable a stream on a table that doesn't have a stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamSpecification: StreamSpecification
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -139,7 +135,6 @@ class UpdateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var billingMode: BillingMode
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -166,18 +161,18 @@ class UpdateTableRequestDSL {
 
     
   /**
-    * The new server-side encryption settings for the specified table.
-    */
-  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
-    builder.sseSpecification(buildSSESpecification(dslBlock))
-  }
-
-
-  /**
     * The new provisioned throughput settings for the specified table or index.
     */
   fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+  }
+
+
+  /**
+    * The new server-side encryption settings for the specified table.
+    */
+  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
+    builder.sseSpecification(buildSSESpecification(dslBlock))
   }
 
 

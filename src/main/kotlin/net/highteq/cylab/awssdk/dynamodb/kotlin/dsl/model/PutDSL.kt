@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Put
@@ -18,7 +20,8 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   */
 @DynamodbDSL
 class PutDSL {
-  private val builder = Put.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Put.builder()
   internal fun build(): Put = builder.build()
     
   /**
@@ -27,7 +30,6 @@ class PutDSL {
     *  match those of the table's key schema. If any attributes are present in the item that are part of an index
     *  key schema for the table, their types must match the index key schema.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var item: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -39,7 +41,6 @@ class PutDSL {
   /**
     * A condition that must be satisfied in order for a conditional update to succeed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -51,7 +52,6 @@ class PutDSL {
   /**
     * Name of the table in which to write the item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -63,7 +63,6 @@ class PutDSL {
   /**
     * One or more substitution tokens for attribute names in an expression.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -75,7 +74,6 @@ class PutDSL {
   /**
     * One or more values that can be substituted in an expression.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -89,7 +87,6 @@ class PutDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

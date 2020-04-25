@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Capacity
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
@@ -20,13 +22,24 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
   */
 @DynamodbDSL
 class ConsumedCapacityDSL {
-  private val builder = ConsumedCapacity.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ConsumedCapacity.builder()
   internal fun build(): ConsumedCapacity = builder.build()
     
   /**
+    * The amount of throughput consumed on the table affected by the operation.
+    */
+  var table: Capacity
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.table(value)
+    }
+
+
+  /**
     * The name of the table that was affected by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -38,7 +51,6 @@ class ConsumedCapacityDSL {
   /**
     * The amount of throughput consumed on each local index affected by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var localSecondaryIndexes: Map<String, Capacity>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -50,7 +62,6 @@ class ConsumedCapacityDSL {
   /**
     * The amount of throughput consumed on each global index affected by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalSecondaryIndexes: Map<String, Capacity>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -60,21 +71,8 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The total number of read capacity units consumed by the operation.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var readCapacityUnits: Double
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
-  /**
     * The total number of write capacity units consumed by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var writeCapacityUnits: Double
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -86,7 +84,6 @@ class ConsumedCapacityDSL {
   /**
     * The total number of capacity units consumed by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var capacityUnits: Double
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -96,14 +93,13 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The amount of throughput consumed on the table affected by the operation.
+    * The total number of read capacity units consumed by the operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var table: Capacity
+  var readCapacityUnits: Double
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.table(value)
+      builder.readCapacityUnits(value)
     }
 
   

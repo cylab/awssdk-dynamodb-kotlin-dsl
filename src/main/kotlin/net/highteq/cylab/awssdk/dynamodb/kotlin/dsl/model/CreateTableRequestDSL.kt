@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
@@ -26,14 +28,14 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
   */
 @DynamodbDSL
 class CreateTableRequestDSL {
-  private val builder = CreateTableRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = CreateTableRequest.builder()
   internal fun build(): CreateTableRequest = builder.build()
     
   /**
     * A list of key-value pairs to label the table. For more information, see Tagging for
     *  DynamoDB.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tags: Collection<Tag>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -43,21 +45,8 @@ class CreateTableRequestDSL {
 
 
   /**
-    * Represents the settings used to enable server-side encryption.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var sseSpecification: SSESpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sseSpecification(value)
-    }
-
-
-  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -69,7 +58,6 @@ class CreateTableRequestDSL {
   /**
     * The name of the table to create.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -111,7 +99,6 @@ class CreateTableRequestDSL {
     * 
     *  For more information, see Working with Tables in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -130,7 +117,6 @@ class CreateTableRequestDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughput
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -140,9 +126,19 @@ class CreateTableRequestDSL {
 
 
   /**
+    * Represents the settings used to enable server-side encryption.
+    */
+  var sseSpecification: SSESpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sseSpecification(value)
+    }
+
+
+  /**
     * An array of attributes that describe the key schema for the table and indexes.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeDefinitions: Collection<AttributeDefinition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -181,7 +177,6 @@ class CreateTableRequestDSL {
     *  of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes,
     *  this counts as two distinct attributes when determining the total.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var localSecondaryIndexes: Collection<LocalSecondaryIndex>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -219,7 +214,6 @@ class CreateTableRequestDSL {
     *  ProvisionedThroughput - The provisioned throughput settings for the global secondary index,
     *  consisting of read and write capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalSecondaryIndexes: Collection<GlobalSecondaryIndex>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -244,7 +238,6 @@ class CreateTableRequestDSL {
     * 
     *  NEW_AND_OLD_IMAGES - Both the new and the old item images of the item are written to the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamSpecification: StreamSpecification
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -263,7 +256,6 @@ class CreateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var billingMode: BillingMode
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -288,14 +280,6 @@ class CreateTableRequestDSL {
 
     
   /**
-    * Represents the settings used to enable server-side encryption.
-    */
-  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
-    builder.sseSpecification(buildSSESpecification(dslBlock))
-  }
-
-
-  /**
     * Represents the provisioned throughput settings for a specified table or index. The settings can be modified
     *  using the UpdateTable operation.
     * 
@@ -307,6 +291,14 @@ class CreateTableRequestDSL {
     */
   fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+  }
+
+
+  /**
+    * Represents the settings used to enable server-side encryption.
+    */
+  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
+    builder.sseSpecification(buildSSESpecification(dslBlock))
   }
 
 

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Projection
 import software.amazon.awssdk.services.dynamodb.model.ProjectionType
@@ -18,7 +20,8 @@ import software.amazon.awssdk.services.dynamodb.model.ProjectionType
   */
 @DynamodbDSL
 class ProjectionDSL {
-  private val builder = Projection.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Projection.builder()
   internal fun build(): Projection = builder.build()
     
   /**
@@ -31,7 +34,6 @@ class ProjectionDSL {
     * 
     *  ALL - All of the table attributes are projected into the index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionType: ProjectionType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,7 +49,6 @@ class ProjectionDSL {
     *  secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
     *  counts as two distinct attributes when determining the total.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var nonKeyAttributes: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

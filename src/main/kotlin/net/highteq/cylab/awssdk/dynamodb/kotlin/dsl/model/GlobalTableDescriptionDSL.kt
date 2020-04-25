@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableDescription
@@ -19,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   */
 @DynamodbDSL
 class GlobalTableDescriptionDSL {
-  private val builder = GlobalTableDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GlobalTableDescription.builder()
   internal fun build(): GlobalTableDescription = builder.build()
     
   /**
     * The global table name.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,21 +37,19 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The creation time of the global table.
+    * The Regions where the global table has replicas.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var creationDateTime: Instant
+  var replicationGroup: Collection<ReplicaDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.creationDateTime(value)
+      builder.replicationGroup(value)
     }
 
 
   /**
     * The unique identifier of the global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -69,7 +69,6 @@ class GlobalTableDescriptionDSL {
     * 
     *  ACTIVE - The global table is ready for use.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableStatus: GlobalTableStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -79,14 +78,13 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The Regions where the global table has replicas.
+    * The creation time of the global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var replicationGroup: Collection<ReplicaDescription>
+  var creationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.replicationGroup(value)
+      builder.creationDateTime(value)
     }
 
     

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.ListTagsOfResourceRequest
@@ -17,13 +19,25 @@ import software.amazon.awssdk.services.dynamodb.model.ListTagsOfResourceRequest
   */
 @DynamodbDSL
 class ListTagsOfResourceRequestDSL {
-  private val builder = ListTagsOfResourceRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ListTagsOfResourceRequest.builder()
   internal fun build(): ListTagsOfResourceRequest = builder.build()
     
   /**
+    * An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource.
+    *  When provided in this manner, this API fetches the next page of results.
+    */
+  var nextToken: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.nextToken(value)
+    }
+
+
+  /**
     * The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).
     */
-  @get:JvmSynthetic // Hide from Java callers
   var resourceArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,25 +49,11 @@ class ListTagsOfResourceRequestDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource.
-    *  When provided in this manner, this API fetches the next page of results.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var nextToken: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.nextToken(value)
     }
 
   

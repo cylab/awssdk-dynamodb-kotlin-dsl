@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.GetItemResponse
@@ -18,14 +22,14 @@ import software.amazon.awssdk.services.dynamodb.model.GetItemResponse
   */
 @DynamodbDSL
 class GetItemResponseDSL {
-  private val builder = GetItemResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GetItemResponse.builder()
   internal fun build(): GetItemResponse = builder.build()
     
   /**
     * A map of attribute names to AttributeValue objects, as specified by
     *  ProjectionExpression.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var item: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -40,12 +44,33 @@ class GetItemResponseDSL {
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
     *  parameter was specified. For more information, see Read/Write Capacity Mode in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consumedCapacity: ConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consumedCapacity(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

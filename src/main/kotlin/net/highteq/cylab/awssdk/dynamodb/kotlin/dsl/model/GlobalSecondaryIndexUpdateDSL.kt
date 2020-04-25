@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.CreateGlobalSecondaryIndexAction
 import software.amazon.awssdk.services.dynamodb.model.DeleteGlobalSecondaryIndexAction
@@ -25,14 +27,14 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
   */
 @DynamodbDSL
 class GlobalSecondaryIndexUpdateDSL {
-  private val builder = GlobalSecondaryIndexUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GlobalSecondaryIndexUpdate.builder()
   internal fun build(): GlobalSecondaryIndexUpdate = builder.build()
     
   /**
     * The name of an existing global secondary index, along with new provisioned throughput settings to be applied
     *  to that index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var update: UpdateGlobalSecondaryIndexAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -44,7 +46,6 @@ class GlobalSecondaryIndexUpdateDSL {
   /**
     * The name of an existing global secondary index to be removed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var delete: DeleteGlobalSecondaryIndexAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -66,7 +67,6 @@ class GlobalSecondaryIndexUpdateDSL {
     * 
     *  ProvisionedThroughput
     */
-  @get:JvmSynthetic // Hide from Java callers
   var create: CreateGlobalSecondaryIndexAction
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

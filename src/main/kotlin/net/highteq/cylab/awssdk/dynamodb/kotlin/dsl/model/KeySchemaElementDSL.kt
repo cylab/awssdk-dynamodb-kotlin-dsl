@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.KeyType
@@ -26,13 +28,13 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
   */
 @DynamodbDSL
 class KeySchemaElementDSL {
-  private val builder = KeySchemaElement.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = KeySchemaElement.builder()
   internal fun build(): KeySchemaElement = builder.build()
     
   /**
     * The name of a key attribute.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -56,7 +58,6 @@ class KeySchemaElementDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keyType: KeyType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

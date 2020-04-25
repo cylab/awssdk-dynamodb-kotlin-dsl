@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest
@@ -17,13 +19,24 @@ import software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest
   */
 @DynamodbDSL
 class ListStreamsRequestDSL {
-  private val builder = ListStreamsRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ListStreamsRequest.builder()
   internal fun build(): ListStreamsRequest = builder.build()
     
   /**
+    * The maximum number of streams to return. The upper limit is 100.
+    */
+  var limit: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
+    }
+
+
+  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +48,6 @@ class ListStreamsRequestDSL {
   /**
     * If this parameter is provided, then only the streams associated with this table name are returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,24 +60,11 @@ class ListStreamsRequestDSL {
     * The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was
     *  returned for LastEvaluatedStreamArn in the previous operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exclusiveStartStreamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exclusiveStartStreamArn(value)
-    }
-
-
-  /**
-    * The maximum number of streams to return. The upper limit is 100.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
   

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.DescribeContinuousBackupsRequest
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeContinuousBackupsR
   */
 @DynamodbDSL
 class DescribeContinuousBackupsRequestDSL {
-  private val builder = DescribeContinuousBackupsRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeContinuousBackupsRequest.builder()
   internal fun build(): DescribeContinuousBackupsRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +38,6 @@ class DescribeContinuousBackupsRequestDSL {
     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
     *  settings.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

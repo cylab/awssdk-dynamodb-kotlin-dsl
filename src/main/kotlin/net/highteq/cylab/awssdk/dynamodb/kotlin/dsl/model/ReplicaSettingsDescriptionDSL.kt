@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
 import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
@@ -20,14 +22,25 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaStatus
   */
 @DynamodbDSL
 class ReplicaSettingsDescriptionDSL {
-  private val builder = ReplicaSettingsDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ReplicaSettingsDescription.builder()
   internal fun build(): ReplicaSettingsDescription = builder.build()
     
+  /**
+    * The Region name of the replica.
+    */
+  var regionName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.regionName(value)
+    }
+
+
   /**
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaProvisionedReadCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,7 +60,6 @@ class ReplicaSettingsDescriptionDSL {
     * 
     *  ACTIVE - The Region is ready for use.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaStatus: ReplicaStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -59,7 +71,6 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * The read/write capacity mode of the replica.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaBillingModeSummary: BillingModeSummary
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -71,7 +82,6 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Auto scaling settings for a global table replica's read capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -84,7 +94,6 @@ class ReplicaSettingsDescriptionDSL {
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     *  For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaProvisionedWriteCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -96,7 +105,6 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Auto scaling settings for a global table replica's write capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -108,24 +116,11 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Replica global secondary index settings for the global table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicaGlobalSecondaryIndexSettings: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaGlobalSecondaryIndexSettings(value)
-    }
-
-
-  /**
-    * The Region name of the replica.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var regionName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.regionName(value)
     }
 
     

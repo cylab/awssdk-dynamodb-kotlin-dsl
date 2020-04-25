@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Get
@@ -17,13 +19,25 @@ import software.amazon.awssdk.services.dynamodb.model.Get
   */
 @DynamodbDSL
 class GetDSL {
-  private val builder = Get.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Get.builder()
   internal fun build(): Get = builder.build()
     
   /**
+    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
+    *  retrieve.
+    */
+  var key: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
     * The name of the table from which to retrieve the specified item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +49,6 @@ class GetDSL {
   /**
     * One or more substitution tokens for attribute names in the ProjectionExpression parameter.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -50,25 +63,11 @@ class GetDSL {
     *  attributes of the specified item are returned. If any of the requested attributes are not found, they do not
     *  appear in the result.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projectionExpression(value)
-    }
-
-
-  /**
-    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
-    *  retrieve.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
     }
 
   

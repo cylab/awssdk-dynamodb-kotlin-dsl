@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSettingsRequest
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSetting
   */
 @DynamodbDSL
 class DescribeGlobalTableSettingsRequestDSL {
-  private val builder = DescribeGlobalTableSettingsRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeGlobalTableSettingsRequest.builder()
   internal fun build(): DescribeGlobalTableSettingsRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class DescribeGlobalTableSettingsRequestDSL {
   /**
     * The name of the global table to describe.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

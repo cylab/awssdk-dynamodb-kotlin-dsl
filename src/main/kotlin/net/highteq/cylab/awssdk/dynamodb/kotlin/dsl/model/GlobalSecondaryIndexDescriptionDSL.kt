@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexDescription
 import software.amazon.awssdk.services.dynamodb.model.IndexStatus
@@ -20,14 +22,14 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescr
   */
 @DynamodbDSL
 class GlobalSecondaryIndexDescriptionDSL {
-  private val builder = GlobalSecondaryIndexDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GlobalSecondaryIndexDescription.builder()
   internal fun build(): GlobalSecondaryIndexDescription = builder.build()
     
   /**
     * Represents attributes that are copied (projected) from the table into the global secondary index. These are
     *  in addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projection: Projection
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -39,7 +41,6 @@ class GlobalSecondaryIndexDescriptionDSL {
   /**
     * The name of the global secondary index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -64,7 +65,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -79,7 +79,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughputDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -92,7 +91,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCount: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -112,7 +110,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     * 
     *  ACTIVE - The index is ready for use.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexStatus: IndexStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -135,7 +132,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  For indexes that were created during a CreateTable operation, the Backfilling
     *  attribute does not appear in the DescribeTable output.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backfilling: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -148,7 +144,6 @@ class GlobalSecondaryIndexDescriptionDSL {
     * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -160,7 +155,6 @@ class GlobalSecondaryIndexDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

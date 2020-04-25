@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ConditionCheck
 import software.amazon.awssdk.services.dynamodb.model.Delete
@@ -21,25 +23,13 @@ import software.amazon.awssdk.services.dynamodb.model.Update
   */
 @DynamodbDSL
 class TransactWriteItemDSL {
-  private val builder = TransactWriteItem.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TransactWriteItem.builder()
   internal fun build(): TransactWriteItem = builder.build()
     
   /**
-    * A request to perform a check item operation.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var conditionCheck: ConditionCheck
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.conditionCheck(value)
-    }
-
-
-  /**
     * A request to perform a PutItem operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var put: Put
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -51,7 +41,6 @@ class TransactWriteItemDSL {
   /**
     * A request to perform an UpdateItem operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var update: Update
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -63,7 +52,6 @@ class TransactWriteItemDSL {
   /**
     * A request to perform a DeleteItem operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var delete: Delete
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -71,16 +59,19 @@ class TransactWriteItemDSL {
       builder.delete(value)
     }
 
-  
-    
+
   /**
     * A request to perform a check item operation.
     */
-  fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
-    builder.conditionCheck(buildConditionCheck(dslBlock))
-  }
+  var conditionCheck: ConditionCheck
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.conditionCheck(value)
+    }
 
-
+  
+    
   /**
     * A request to perform a PutItem operation.
     */
@@ -102,6 +93,14 @@ class TransactWriteItemDSL {
     */
   fun delete(dslBlock: DeleteDSL.() -> Unit) {
     builder.delete(buildDelete(dslBlock))
+  }
+
+
+  /**
+    * A request to perform a check item operation.
+    */
+  fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
+    builder.conditionCheck(buildConditionCheck(dslBlock))
   }
 
 }

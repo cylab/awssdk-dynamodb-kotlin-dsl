@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
@@ -20,13 +22,13 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItemsRequest
   */
 @DynamodbDSL
 class TransactWriteItemsRequestDSL {
-  private val builder = TransactWriteItemsRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TransactWriteItemsRequest.builder()
   internal fun build(): TransactWriteItemsRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -38,7 +40,6 @@ class TransactWriteItemsRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -52,7 +53,6 @@ class TransactWriteItemsRequestDSL {
     *  statistics about item collections (if any), that were modified during the operation and are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnItemCollectionMetrics: ReturnItemCollectionMetrics
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -67,7 +67,6 @@ class TransactWriteItemsRequestDSL {
     *  operate on items in different tables, but the tables must reside in the same AWS account and Region, and no
     *  two of them can operate on the same item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var transactItems: Collection<TransactWriteItem>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -94,7 +93,6 @@ class TransactWriteItemsRequestDSL {
     *  If you submit a request with the same client token but a change in other parameters within the 10-minute
     *  idempotency window, DynamoDB returns an IdempotentParameterMismatch exception.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var clientRequestToken: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

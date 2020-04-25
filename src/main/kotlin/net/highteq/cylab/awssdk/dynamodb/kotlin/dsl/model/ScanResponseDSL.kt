@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.ScanResponse
@@ -18,19 +22,50 @@ import software.amazon.awssdk.services.dynamodb.model.ScanResponse
   */
 @DynamodbDSL
 class ScanResponseDSL {
-  private val builder = ScanResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ScanResponse.builder()
   internal fun build(): ScanResponse = builder.build()
     
+  /**
+    * The number of items in the response.
+    * 
+    *  If you set ScanFilter in the request, then Count is the number of items returned
+    *  after the filter was applied, and ScannedCount is the number of matching items before the filter
+    *  was applied.
+    * 
+    *  If you did not use a filter in the request, then Count is the same as ScannedCount.
+    */
+  var count: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.count(value)
+    }
+
+
   /**
     * An array of item attributes that match the scan criteria. Each element in this array consists of an attribute
     *  name and the value for that attribute.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var items: Collection<Map<String, AttributeValue>>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.items(value)
+    }
+
+
+  /**
+    * The capacity units consumed by the Scan operation. The data returned includes the total
+    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
+    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
+    */
+  var consumedCapacity: ConsumedCapacity
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consumedCapacity(value)
     }
 
 
@@ -42,7 +77,6 @@ class ScanResponseDSL {
     * 
     *  If you did not use a filter in the request, then ScannedCount is the same as Count.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var scannedCount: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,7 +96,6 @@ class ScanResponseDSL {
     *  result set. The only way to know when you have reached the end of the result set is when
     *  LastEvaluatedKey is empty.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var lastEvaluatedKey: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -72,35 +105,24 @@ class ScanResponseDSL {
 
 
   /**
-    * The capacity units consumed by the Scan operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var consumedCapacity: ConsumedCapacity
+  var responseMetadata: AwsResponseMetadata
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.consumedCapacity(value)
+      builder.responseMetadata(value)
     }
 
 
   /**
-    * The number of items in the response.
     * 
-    *  If you set ScanFilter in the request, then Count is the number of items returned
-    *  after the filter was applied, and ScannedCount is the number of matching items before the filter
-    *  was applied.
-    * 
-    *  If you did not use a filter in the request, then Count is the same as ScannedCount.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var count: Int
+  var sdkHttpResponse: SdkHttpResponse
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.count(value)
+      builder.sdkHttpResponse(value)
     }
 
   

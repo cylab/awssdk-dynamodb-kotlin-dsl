@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondaryIndexSettingsUpdate
@@ -17,25 +19,24 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondary
   */
 @DynamodbDSL
 class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
-  private val builder = GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()
   internal fun build(): GlobalTableGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
-    * Auto scaling settings for managing a global secondary index's write capacity units.
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
+  var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
+      builder.indexName(value)
     }
 
 
   /**
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedWriteCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -45,14 +46,13 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
 
 
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    * Auto scaling settings for managing a global secondary index's write capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var indexName: String
+  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.indexName(value)
+      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
     }
 
   

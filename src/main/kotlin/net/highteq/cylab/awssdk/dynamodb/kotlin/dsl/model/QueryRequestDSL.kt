@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -22,7 +24,8 @@ import software.amazon.awssdk.services.dynamodb.model.Select
   */
 @DynamodbDSL
 class QueryRequestDSL {
-  private val builder = QueryRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = QueryRequest.builder()
   internal fun build(): QueryRequest = builder.build()
     
   /**
@@ -62,7 +65,6 @@ class QueryRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var select: Select
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -72,9 +74,26 @@ class QueryRequestDSL {
 
 
   /**
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Query and Scan
+    *  in the Amazon DynamoDB Developer Guide.
+    */
+  var limit: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
+    }
+
+
+  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -86,7 +105,6 @@ class QueryRequestDSL {
   /**
     * The name of the table containing the requested items.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -100,7 +118,6 @@ class QueryRequestDSL {
     *  table. Note that if you use the IndexName parameter, you must also provide
     *  TableName.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -140,7 +157,6 @@ class QueryRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -167,7 +183,6 @@ class QueryRequestDSL {
     * 
     *  For more information on expression attribute values, see Specifying Conditions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -179,7 +194,6 @@ class QueryRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -191,7 +205,6 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use KeyConditionExpression instead. For more information, see KeyConditions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keyConditions: Map<String, Condition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -203,7 +216,6 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see QueryFilter in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var queryFilter: Map<String, Condition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -215,7 +227,6 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionalOperator: ConditionalOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -237,7 +248,6 @@ class QueryRequestDSL {
     *  false, DynamoDB reads the results in reverse order by sort key value, and then returns the
     *  results to the client.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var scanIndexForward: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -253,7 +263,6 @@ class QueryRequestDSL {
     *  The data type for ExclusiveStartKey must be String, Number, or Binary. No set data types are
     *  allowed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exclusiveStartKey: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -271,7 +280,6 @@ class QueryRequestDSL {
     * 
     *  For more information, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projectionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -293,7 +301,6 @@ class QueryRequestDSL {
     * 
     *  For more information, see Filter Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var filterExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -368,7 +375,6 @@ class QueryRequestDSL {
     *  Using
     *  Placeholders for Attribute Names and Values in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keyConditionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -380,7 +386,6 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributesToGet: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -397,31 +402,11 @@ class QueryRequestDSL {
     *  index with ConsistentRead set to true, you will receive a
     *  ValidationException.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consistentRead: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Query and Scan
-    *  in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
     

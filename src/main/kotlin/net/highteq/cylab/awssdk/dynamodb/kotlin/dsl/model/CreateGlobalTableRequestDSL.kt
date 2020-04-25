@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.CreateGlobalTableRequest
@@ -18,13 +20,13 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
   */
 @DynamodbDSL
 class CreateGlobalTableRequestDSL {
-  private val builder = CreateGlobalTableRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = CreateGlobalTableRequest.builder()
   internal fun build(): CreateGlobalTableRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +38,6 @@ class CreateGlobalTableRequestDSL {
   /**
     * The global table name.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var globalTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,7 +49,6 @@ class CreateGlobalTableRequestDSL {
   /**
     * The Regions where the global table needs to be created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var replicationGroup: Collection<Replica>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

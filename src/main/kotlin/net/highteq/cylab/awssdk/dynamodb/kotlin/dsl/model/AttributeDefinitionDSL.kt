@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
@@ -17,9 +19,21 @@ import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
   */
 @DynamodbDSL
 class AttributeDefinitionDSL {
-  private val builder = AttributeDefinition.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = AttributeDefinition.builder()
   internal fun build(): AttributeDefinition = builder.build()
     
+  /**
+    * A name for the attribute.
+    */
+  var attributeName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributeName(value)
+    }
+
+
   /**
     * The data type for the attribute, where:
     * 
@@ -29,24 +43,11 @@ class AttributeDefinitionDSL {
     * 
     *  B - the attribute is of type Binary
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeType: ScalarAttributeType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributeType(value)
-    }
-
-
-  /**
-    * A name for the attribute.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var attributeName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeName(value)
     }
 
     

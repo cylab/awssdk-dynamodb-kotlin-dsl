@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.DeleteRequest
 import software.amazon.awssdk.services.dynamodb.model.PutRequest
@@ -20,25 +22,13 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   */
 @DynamodbDSL
 class WriteRequestDSL {
-  private val builder = WriteRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = WriteRequest.builder()
   internal fun build(): WriteRequest = builder.build()
     
   /**
-    * A request to perform a DeleteItem operation.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var deleteRequest: DeleteRequest
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.deleteRequest(value)
-    }
-
-
-  /**
     * A request to perform a PutItem operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var putRequest: PutRequest
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -46,21 +36,32 @@ class WriteRequestDSL {
       builder.putRequest(value)
     }
 
-  
-    
+
   /**
     * A request to perform a DeleteItem operation.
     */
-  fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
-    builder.deleteRequest(buildDeleteRequest(dslBlock))
-  }
+  var deleteRequest: DeleteRequest
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.deleteRequest(value)
+    }
 
-
+  
+    
   /**
     * A request to perform a PutItem operation.
     */
   fun putRequest(dslBlock: PutRequestDSL.() -> Unit) {
     builder.putRequest(buildPutRequest(dslBlock))
+  }
+
+
+  /**
+    * A request to perform a DeleteItem operation.
+    */
+  fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
+    builder.deleteRequest(buildDeleteRequest(dslBlock))
   }
 
 }

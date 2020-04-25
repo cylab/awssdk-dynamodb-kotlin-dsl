@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BackupDetails
@@ -19,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.BackupType
   */
 @DynamodbDSL
 class BackupDetailsDSL {
-  private val builder = BackupDetails.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BackupDetails.builder()
   internal fun build(): BackupDetails = builder.build()
     
   /**
     * ARN associated with the backup.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -37,7 +39,6 @@ class BackupDetailsDSL {
   /**
     * Name of the requested backup.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -49,7 +50,6 @@ class BackupDetailsDSL {
   /**
     * Time at which the backup was created. This is the request time of the backup.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupCreationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,7 +62,6 @@ class BackupDetailsDSL {
     * Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM
     *  on-demand backup expires automatically 35 days after its creation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupExpiryDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -74,7 +73,6 @@ class BackupDetailsDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupStatus: BackupStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -94,7 +92,6 @@ class BackupDetailsDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupType: BackupType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -106,7 +103,6 @@ class BackupDetailsDSL {
   /**
     * Size of the backup in bytes.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

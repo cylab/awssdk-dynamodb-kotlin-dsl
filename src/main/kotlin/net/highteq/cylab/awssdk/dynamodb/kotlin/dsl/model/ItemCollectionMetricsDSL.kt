@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
@@ -19,14 +21,14 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
   */
 @DynamodbDSL
 class ItemCollectionMetricsDSL {
-  private val builder = ItemCollectionMetrics.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ItemCollectionMetrics.builder()
   internal fun build(): ItemCollectionMetrics = builder.build()
     
   /**
     * The partition key value of the item collection. This value is the same as the partition key value of the
     *  item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCollectionKey: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -44,7 +46,6 @@ class ItemCollectionMetricsDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sizeEstimateRangeGB: Collection<Double>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

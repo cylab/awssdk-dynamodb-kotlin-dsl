@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
@@ -18,13 +20,13 @@ import software.amazon.awssdk.services.dynamodb.model.RestoreTableToPointInTimeR
   */
 @DynamodbDSL
 class RestoreTableToPointInTimeRequestDSL {
-  private val builder = RestoreTableToPointInTimeRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = RestoreTableToPointInTimeRequest.builder()
   internal fun build(): RestoreTableToPointInTimeRequest = builder.build()
     
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +38,6 @@ class RestoreTableToPointInTimeRequestDSL {
   /**
     * Name of the source table that is being restored.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sourceTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,7 +49,6 @@ class RestoreTableToPointInTimeRequestDSL {
   /**
     * The name of the new table to which it must be restored to.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var targetTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -61,7 +61,6 @@ class RestoreTableToPointInTimeRequestDSL {
     * Restore the table to the latest possible time. LatestRestorableDateTime is typically 5 minutes
     *  before the current time.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var useLatestRestorableTime: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -73,7 +72,6 @@ class RestoreTableToPointInTimeRequestDSL {
   /**
     * Time in the past to restore the table to.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var restoreDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

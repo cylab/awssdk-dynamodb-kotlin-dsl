@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyUpdate
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
   */
 @DynamodbDSL
 class AutoScalingPolicyUpdateDSL {
-  private val builder = AutoScalingPolicyUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = AutoScalingPolicyUpdate.builder()
   internal fun build(): AutoScalingPolicyUpdate = builder.build()
     
   /**
     * The name of the scaling policy.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var policyName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class AutoScalingPolicyUpdateDSL {
   /**
     * Represents a target tracking scaling policy configuration.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

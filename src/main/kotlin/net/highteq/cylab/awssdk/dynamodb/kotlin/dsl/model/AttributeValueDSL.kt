@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.core.SdkBytes
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -21,15 +23,39 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   */
 @DynamodbDSL
 class AttributeValueDSL {
-  private val builder = AttributeValue.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = AttributeValue.builder()
   internal fun build(): AttributeValue = builder.build()
     
+  /**
+    * 
+    */
+  var bs: Collection<SdkBytes>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.bs(value)
+    }
+
+
+  /**
+    * An attribute of type Boolean. For example:
+    * 
+    *  "BOOL": true
+    */
+  var bool: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.bool(value)
+    }
+
+
   /**
     * An attribute of type String Set. For example:
     * 
     *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
     */
-  @get:JvmSynthetic // Hide from Java callers
   var ss: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -46,52 +72,11 @@ class AttributeValueDSL {
     *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
     *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var ns: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.ns(value)
-    }
-
-
-  /**
-    * 
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var bs: Collection<SdkBytes>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.bs(value)
-    }
-
-
-  /**
-    * An attribute of type Boolean. For example:
-    * 
-    *  "BOOL": true
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var bool: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.bool(value)
-    }
-
-
-  /**
-    * An attribute of type Null. For example:
-    * 
-    *  "NULL": true
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var nul: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.nul(value)
     }
 
 
@@ -103,7 +88,6 @@ class AttributeValueDSL {
     *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
     *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var n: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -117,7 +101,6 @@ class AttributeValueDSL {
     * 
     *  "S": "Hello"
     */
-  @get:JvmSynthetic // Hide from Java callers
   var s: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -131,7 +114,6 @@ class AttributeValueDSL {
     * 
     *  "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
     */
-  @get:JvmSynthetic // Hide from Java callers
   var l: Collection<AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -143,7 +125,6 @@ class AttributeValueDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var b: SdkBytes
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -157,12 +138,24 @@ class AttributeValueDSL {
     * 
     *  "M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}
     */
-  @get:JvmSynthetic // Hide from Java callers
   var m: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.m(value)
+    }
+
+
+  /**
+    * An attribute of type Null. For example:
+    * 
+    *  "NULL": true
+    */
+  var nul: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.nul(value)
     }
 
   

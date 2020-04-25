@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ListStreamsResponse
 import software.amazon.awssdk.services.dynamodb.model.Stream
 
@@ -17,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   */
 @DynamodbDSL
 class ListStreamsResponseDSL {
-  private val builder = ListStreamsResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ListStreamsResponse.builder()
   internal fun build(): ListStreamsResponse = builder.build()
     
   /**
     * A list of stream descriptors associated with the current account and endpoint.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streams: Collection<Stream>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -43,12 +47,33 @@ class ListStreamsResponseDSL {
     *  the result set. The only way to know when you have reached the end of the result set is when
     *  LastEvaluatedStreamArn is empty.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var lastEvaluatedStreamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.lastEvaluatedStreamArn(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

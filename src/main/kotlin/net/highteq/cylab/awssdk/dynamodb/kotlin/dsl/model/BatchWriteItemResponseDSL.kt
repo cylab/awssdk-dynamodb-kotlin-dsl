@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.BatchWriteItemResponse
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
@@ -19,9 +23,27 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   */
 @DynamodbDSL
 class BatchWriteItemResponseDSL {
-  private val builder = BatchWriteItemResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BatchWriteItemResponse.builder()
   internal fun build(): BatchWriteItemResponse = builder.build()
     
+  /**
+    * The capacity units consumed by the entire BatchWriteItem operation.
+    * 
+    *  Each element consists of:
+    * 
+    *  TableName - The table that consumed the provisioned throughput.
+    * 
+    *  CapacityUnits - The total number of capacity units consumed.
+    */
+  var consumedCapacity: Collection<ConsumedCapacity>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consumedCapacity(value)
+    }
+
+
   /**
     * A list of tables that were processed by BatchWriteItem and, for each table, information about
     *  any item collections that were affected by individual DeleteItem or PutItem
@@ -41,7 +63,6 @@ class BatchWriteItemResponseDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -79,7 +100,6 @@ class BatchWriteItemResponseDSL {
     *  If there are no unprocessed items remaining, the response contains an empty UnprocessedItems
     *  map.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var unprocessedItems: Map<String, Collection<WriteRequest>>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -89,20 +109,24 @@ class BatchWriteItemResponseDSL {
 
 
   /**
-    * The capacity units consumed by the entire BatchWriteItem operation.
     * 
-    *  Each element consists of:
-    * 
-    *  TableName - The table that consumed the provisioned throughput.
-    * 
-    *  CapacityUnits - The total number of capacity units consumed.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var consumedCapacity: Collection<ConsumedCapacity>
+  var responseMetadata: AwsResponseMetadata
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.consumedCapacity(value)
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

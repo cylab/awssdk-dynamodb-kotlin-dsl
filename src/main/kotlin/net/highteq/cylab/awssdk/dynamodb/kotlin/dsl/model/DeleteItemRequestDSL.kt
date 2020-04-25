@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -23,9 +25,37 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValue
   */
 @DynamodbDSL
 class DeleteItemRequestDSL {
-  private val builder = DeleteItemRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DeleteItemRequest.builder()
   internal fun build(): DeleteItemRequest = builder.build()
     
+  /**
+    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
+    *  delete.
+    * 
+    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
+    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
+    *  the partition key and the sort key.
+    */
+  var key: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    */
+  var expected: Map<String, ExpectedAttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.expected(value)
+    }
+
+
   /**
     * A condition that must be satisfied in order for a conditional DeleteItem to succeed.
     * 
@@ -42,7 +72,6 @@ class DeleteItemRequestDSL {
     * 
     *  For more information about condition expressions, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -54,7 +83,6 @@ class DeleteItemRequestDSL {
   /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -66,7 +94,6 @@ class DeleteItemRequestDSL {
   /**
     * The name of the table from which to delete the item.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -106,7 +133,6 @@ class DeleteItemRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -133,7 +159,6 @@ class DeleteItemRequestDSL {
     * 
     *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -145,7 +170,6 @@ class DeleteItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnConsumedCapacity: ReturnConsumedCapacity
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -159,7 +183,6 @@ class DeleteItemRequestDSL {
     *  statistics about item collections, if any, that were modified during the operation are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnItemCollectionMetrics: ReturnItemCollectionMetrics
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -171,7 +194,6 @@ class DeleteItemRequestDSL {
   /**
     * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionalOperator: ConditionalOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -192,41 +214,11 @@ class DeleteItemRequestDSL {
     *  The ReturnValues parameter is used by several DynamoDB operations; however,
     *  DeleteItem does not recognize any values other than NONE or ALL_OLD.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnValues: ReturnValue
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValues(value)
-    }
-
-
-  /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  delete.
-    * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var expected: Map<String, ExpectedAttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.expected(value)
     }
 
     

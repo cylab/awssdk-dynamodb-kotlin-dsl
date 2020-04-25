@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.BatchGetItemResponse
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
@@ -19,22 +23,10 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   */
 @DynamodbDSL
 class BatchGetItemResponseDSL {
-  private val builder = BatchGetItemResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BatchGetItemResponse.builder()
   internal fun build(): BatchGetItemResponse = builder.build()
     
-  /**
-    * A map of table name to a list of items. Each object in Responses consists of a table name, along
-    *  with a map of attribute data consisting of the data type and attribute value.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var responses: Map<String, Collection<Map<String, AttributeValue>>>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.responses(value)
-    }
-
-
   /**
     * A map of tables and their respective keys that were not processed with the current response. The
     *  UnprocessedKeys value is in the same form as RequestItems, so the value can be
@@ -54,7 +46,6 @@ class BatchGetItemResponseDSL {
     * 
     *  If there are no unprocessed keys remaining, the response contains an empty UnprocessedKeys map.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var unprocessedKeys: Map<String, KeysAndAttributes>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -72,12 +63,45 @@ class BatchGetItemResponseDSL {
     * 
     *  CapacityUnits - The total number of capacity units consumed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var consumedCapacity: Collection<ConsumedCapacity>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consumedCapacity(value)
+    }
+
+
+  /**
+    * A map of table name to a list of items. Each object in Responses consists of a table name, along
+    *  with a map of attribute data consisting of the data type and attribute value.
+    */
+  var responses: Map<String, Collection<Map<String, AttributeValue>>>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responses(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

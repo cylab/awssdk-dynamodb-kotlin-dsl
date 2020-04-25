@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyDescription
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescrip
   */
 @DynamodbDSL
 class AutoScalingSettingsDescriptionDSL {
-  private val builder = AutoScalingSettingsDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = AutoScalingSettingsDescription.builder()
   internal fun build(): AutoScalingSettingsDescription = builder.build()
     
   /**
     * Information about the scaling policies.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var scalingPolicies: Collection<AutoScalingPolicyDescription>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * The minimum capacity units that a global table or global secondary index should be scaled down to.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var minimumUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,7 +48,6 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * The maximum capacity units that a global table or global secondary index should be scaled up to.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var maximumUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -59,7 +59,6 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * Disabled auto scaling for this global table or global secondary index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var autoScalingDisabled: Boolean
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -71,7 +70,6 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * Role ARN used for configuring the auto scaling policy.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var autoScalingRoleArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
 
@@ -16,13 +18,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   */
 @DynamodbDSL
 class ReplicaDescriptionDSL {
-  private val builder = ReplicaDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ReplicaDescription.builder()
   internal fun build(): ReplicaDescription = builder.build()
     
   /**
     * The name of the Region.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var regionName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
 import software.amazon.awssdk.services.dynamodb.model.IndexStatus
@@ -18,13 +20,36 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   */
 @DynamodbDSL
 class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
-  private val builder = ReplicaGlobalSecondaryIndexSettingsDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ReplicaGlobalSecondaryIndexSettingsDescription.builder()
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsDescription = builder.build()
     
   /**
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    */
+  var indexName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException.
+    */
+  var provisionedReadCapacityUnits: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedReadCapacityUnits(value)
+    }
+
+
+  /**
     * Auto scaling settings for a global secondary index replica's read capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +61,6 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
   /**
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedWriteCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,24 +72,11 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
   /**
     * Auto scaling settings for a global secondary index replica's write capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedWriteCapacityAutoScalingSettings(value)
-    }
-
-
-  /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
 
@@ -80,25 +91,11 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
     * 
     *  ACTIVE - The global secondary index is ready for use.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexStatus: IndexStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.indexStatus(value)
-    }
-
-
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var provisionedReadCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedReadCapacityUnits(value)
     }
 
     

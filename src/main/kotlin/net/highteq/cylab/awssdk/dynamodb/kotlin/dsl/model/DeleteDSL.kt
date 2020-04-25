@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Delete
@@ -18,13 +20,25 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   */
 @DynamodbDSL
 class DeleteDSL {
-  private val builder = Delete.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Delete.builder()
   internal fun build(): Delete = builder.build()
     
   /**
+    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
+    *  attribute.
+    */
+  var key: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
     * A condition that must be satisfied in order for a conditional delete to succeed.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var conditionExpression: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +50,6 @@ class DeleteDSL {
   /**
     * Name of the table in which the item to be deleted resides.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,7 +61,6 @@ class DeleteDSL {
   /**
     * One or more substitution tokens for attribute names in an expression.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeNames: Map<String, String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -60,7 +72,6 @@ class DeleteDSL {
   /**
     * One or more values that can be substituted in an expression.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var expressionAttributeValues: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -74,25 +85,11 @@ class DeleteDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
-    }
-
-
-  /**
-    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
-    *  attribute.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
     }
 
     

@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.CreateGlobalSecondaryIndexAction
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
@@ -19,14 +21,14 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   */
 @DynamodbDSL
 class CreateGlobalSecondaryIndexActionDSL {
-  private val builder = CreateGlobalSecondaryIndexAction.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = CreateGlobalSecondaryIndexAction.builder()
   internal fun build(): CreateGlobalSecondaryIndexAction = builder.build()
     
   /**
     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
     *  primary key attributes and index key attributes, which are automatically projected.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projection: Projection
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -38,7 +40,6 @@ class CreateGlobalSecondaryIndexActionDSL {
   /**
     * The name of the global secondary index to be created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -50,7 +51,6 @@ class CreateGlobalSecondaryIndexActionDSL {
   /**
     * The key schema for the global secondary index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -65,7 +65,6 @@ class CreateGlobalSecondaryIndexActionDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedThroughput: ProvisionedThroughput
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

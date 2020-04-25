@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
@@ -16,30 +18,29 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
   */
 @DynamodbDSL
 class EndpointDSL {
-  private val builder = Endpoint.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Endpoint.builder()
   internal fun build(): Endpoint = builder.build()
     
   /**
-    * Endpoint cache time to live (TTL) value.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var cachePeriodInMinutes: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cachePeriodInMinutes(value)
-    }
-
-
-  /**
     * IP address of the endpoint.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var address: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.address(value)
+    }
+
+
+  /**
+    * Endpoint cache time to live (TTL) value.
+    */
+  var cachePeriodInMinutes: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cachePeriodInMinutes(value)
     }
 
   

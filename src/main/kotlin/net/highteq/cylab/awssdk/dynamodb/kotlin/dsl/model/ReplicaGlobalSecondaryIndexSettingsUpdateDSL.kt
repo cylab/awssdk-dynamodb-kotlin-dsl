@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsUpdate
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   */
 @DynamodbDSL
 class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
-  private val builder = ReplicaGlobalSecondaryIndexSettingsUpdate.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ReplicaGlobalSecondaryIndexSettingsUpdate.builder()
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
     * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
   /**
     * Auto scaling settings for managing a global secondary index replica's read capacity units.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,7 +49,6 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var provisionedReadCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

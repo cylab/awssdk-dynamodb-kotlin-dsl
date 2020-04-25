@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 
@@ -20,36 +22,35 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   */
 @DynamodbDSL
 class ProvisionedThroughputDSL {
-  private val builder = ProvisionedThroughput.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ProvisionedThroughput.builder()
   internal fun build(): ProvisionedThroughput = builder.build()
     
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
-    * 
-    *  If read/write capacity mode is PAY_PER_REQUEST the value is set to 0.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var readCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
   /**
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     *  For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     * 
     *  If read/write capacity mode is PAY_PER_REQUEST the value is set to 0.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var writeCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.writeCapacityUnits(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
+    * 
+    *  If read/write capacity mode is PAY_PER_REQUEST the value is set to 0.
+    */
+  var readCapacityUnits: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
     }
 
   

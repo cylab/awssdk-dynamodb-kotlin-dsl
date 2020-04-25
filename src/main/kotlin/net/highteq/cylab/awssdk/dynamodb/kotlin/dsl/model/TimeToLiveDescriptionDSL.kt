@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveStatus
@@ -17,13 +19,13 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveStatus
   */
 @DynamodbDSL
 class TimeToLiveDescriptionDSL {
-  private val builder = TimeToLiveDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TimeToLiveDescription.builder()
   internal fun build(): TimeToLiveDescription = builder.build()
     
   /**
     * The name of the TTL attribute for items in the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +37,6 @@ class TimeToLiveDescriptionDSL {
   /**
     * The TTL status for the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var timeToLiveStatus: TimeToLiveStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

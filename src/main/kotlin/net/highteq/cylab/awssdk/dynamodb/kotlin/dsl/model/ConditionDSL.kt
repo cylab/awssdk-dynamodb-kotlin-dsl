@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ComparisonOperator
@@ -30,7 +32,8 @@ import software.amazon.awssdk.services.dynamodb.model.Condition
   */
 @DynamodbDSL
 class ConditionDSL {
-  private val builder = Condition.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = Condition.builder()
   internal fun build(): Condition = builder.build()
     
   /**
@@ -152,7 +155,6 @@ class ConditionDSL {
     * 
     *  For usage examples of AttributeValueList and ComparisonOperator, see Legacy Conditional Parameters in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var comparisonOperator: ComparisonOperator
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -174,7 +176,6 @@ class ConditionDSL {
     * 
     *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributeValueList: Collection<AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

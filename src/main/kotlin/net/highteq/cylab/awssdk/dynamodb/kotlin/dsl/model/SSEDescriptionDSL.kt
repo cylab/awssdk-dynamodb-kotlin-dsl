@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.SSEDescription
 import software.amazon.awssdk.services.dynamodb.model.SSEStatus
@@ -18,16 +20,31 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
   */
 @DynamodbDSL
 class SSEDescriptionDSL {
-  private val builder = SSEDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = SSEDescription.builder()
   internal fun build(): SSEDescription = builder.build()
     
+  /**
+    * Represents the current state of server-side encryption. The only supported values are:
+    * 
+    *  ENABLED - Server-side encryption is enabled.
+    * 
+    *  UPDATING - Server-side encryption is being updated.
+    */
+  var status: SSEStatus
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.status(value)
+    }
+
+
   /**
     * Server-side encryption type. The only supported value is:
     * 
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
     *  account and is managed by AWS KMS (AWS KMS charges apply).
     */
-  @get:JvmSynthetic // Hide from Java callers
   var sseType: SSEType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -39,7 +56,6 @@ class SSEDescriptionDSL {
   /**
     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var kmsMasterKeyArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -47,34 +63,7 @@ class SSEDescriptionDSL {
       builder.kmsMasterKeyArn(value)
     }
 
-
-  /**
-    * Represents the current state of server-side encryption. The only supported values are:
-    * 
-    *  ENABLED - Server-side encryption is enabled.
-    * 
-    *  UPDATING - Server-side encryption is being updated.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var status: SSEStatus
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.status(value)
-    }
-
     
-  /**
-    * Server-side encryption type. The only supported value is:
-    * 
-    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
-    *  account and is managed by AWS KMS (AWS KMS charges apply).
-    */
-  fun sseType(value: String) {
-    builder.sseType(value)
-  }
-
-
   /**
     * Represents the current state of server-side encryption. The only supported values are:
     * 
@@ -84,6 +73,17 @@ class SSEDescriptionDSL {
     */
   fun status(value: String) {
     builder.status(value)
+  }
+
+
+  /**
+    * Server-side encryption type. The only supported value is:
+    * 
+    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+    *  account and is managed by AWS KMS (AWS KMS charges apply).
+    */
+  fun sseType(value: String) {
+    builder.sseType(value)
   }
 
   

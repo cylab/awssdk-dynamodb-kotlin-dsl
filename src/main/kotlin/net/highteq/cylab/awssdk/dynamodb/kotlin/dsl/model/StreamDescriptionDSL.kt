@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
@@ -21,72 +23,29 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
   */
 @DynamodbDSL
 class StreamDescriptionDSL {
-  private val builder = StreamDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = StreamDescription.builder()
   internal fun build(): StreamDescription = builder.build()
     
   /**
-    * A timestamp, in ISO 8601 format, for this stream.
-    * 
-    *  Note that LatestStreamLabel is not a unique identifier for the stream, because it is possible
-    *  that a stream from another table might have the same timestamp. However, the combination of the following
-    *  three elements is guaranteed to be unique:
-    * 
-    *  the AWS customer ID.
-    * 
-    *  the table name
-    * 
-    *  the StreamLabel
+    * The DynamoDB table with which the stream is associated.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var streamLabel: String
+  var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.streamLabel(value)
+      builder.tableName(value)
     }
 
 
   /**
-    * Indicates the current status of the stream:
-    * 
-    *  ENABLING - Streams is currently being enabled on the DynamoDB table.
-    * 
-    *  ENABLED - the stream is enabled.
-    * 
-    *  DISABLING - Streams is currently being disabled on the DynamoDB table.
-    * 
-    *  DISABLED - the stream is disabled.
+    * The key attribute(s) of the stream's DynamoDB table.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var streamStatus: StreamStatus
+  var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.streamStatus(value)
-    }
-
-
-  /**
-    * The date and time when the request to create this stream was issued.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var creationRequestDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.creationRequestDateTime(value)
-    }
-
-
-  /**
-    * The shards that comprise the stream.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var shards: Collection<Shard>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.shards(value)
+      builder.keySchema(value)
     }
 
 
@@ -101,7 +60,6 @@ class StreamDescriptionDSL {
     *  the result set. The only way to know when you have reached the end of the result set is when
     *  LastEvaluatedShardId is empty.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var lastEvaluatedShardId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -111,26 +69,64 @@ class StreamDescriptionDSL {
 
 
   /**
-    * The DynamoDB table with which the stream is associated.
+    * Indicates the current status of the stream:
+    * 
+    *  ENABLING - Streams is currently being enabled on the DynamoDB table.
+    * 
+    *  ENABLED - the stream is enabled.
+    * 
+    *  DISABLING - Streams is currently being disabled on the DynamoDB table.
+    * 
+    *  DISABLED - the stream is disabled.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var tableName: String
+  var streamStatus: StreamStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
+      builder.streamStatus(value)
     }
 
 
   /**
-    * The key attribute(s) of the stream's DynamoDB table.
+    * The shards that comprise the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var keySchema: Collection<KeySchemaElement>
+  var shards: Collection<Shard>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.keySchema(value)
+      builder.shards(value)
+    }
+
+
+  /**
+    * A timestamp, in ISO 8601 format, for this stream.
+    * 
+    *  Note that LatestStreamLabel is not a unique identifier for the stream, because it is possible
+    *  that a stream from another table might have the same timestamp. However, the combination of the following
+    *  three elements is guaranteed to be unique:
+    * 
+    *  the AWS customer ID.
+    * 
+    *  the table name
+    * 
+    *  the StreamLabel
+    */
+  var streamLabel: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamLabel(value)
+    }
+
+
+  /**
+    * The date and time when the request to create this stream was issued.
+    */
+  var creationRequestDateTime: Instant
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.creationRequestDateTime(value)
     }
 
 
@@ -145,7 +141,6 @@ class StreamDescriptionDSL {
     * 
     *  NEW_AND_OLD_IMAGES - both the new and the old images of the items from the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamViewType: StreamViewType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -157,7 +152,6 @@ class StreamDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -199,18 +193,18 @@ class StreamDescriptionDSL {
 
     
   /**
-    * The shards that comprise the stream.
-    */
-  fun shards(dslBlock: ShardCollectionDSL.() -> Unit) {
-    builder.shards(buildShardCollection(dslBlock))
-  }
-
-
-  /**
     * The key attribute(s) of the stream's DynamoDB table.
     */
   fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+  }
+
+
+  /**
+    * The shards that comprise the stream.
+    */
+  fun shards(dslBlock: ShardCollectionDSL.() -> Unit) {
+    builder.shards(buildShardCollection(dslBlock))
   }
 
 }

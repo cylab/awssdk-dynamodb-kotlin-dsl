@@ -4,10 +4,17 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
+import java.net.URI
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
+import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
+import software.amazon.awssdk.http.SdkHttpClient
+import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 
 /**
@@ -32,9 +39,64 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient
   */
 @DynamodbDSL
 class DynamoDbClientDSL {
-  private val builder = DynamoDbClient.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DynamoDbClient.builder()
   internal fun build(): DynamoDbClient = builder.build()
-  
+    
+  /**
+    * 
+    */
+  var overrideConfiguration: ClientOverrideConfiguration
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * 
+    */
+  var httpClient: SdkHttpClient
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.httpClient(value)
+    }
+
+
+  /**
+    * 
+    */
+  var region: Region
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.region(value)
+    }
+
+
+  /**
+    * 
+    */
+  var credentialsProvider: AwsCredentialsProvider
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.credentialsProvider(value)
+    }
+
+
+  /**
+    * 
+    */
+  var endpointOverride: URI
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.endpointOverride(value)
+    }
+
   
   
 }

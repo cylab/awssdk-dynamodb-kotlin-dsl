@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexDescription
@@ -18,14 +20,14 @@ import software.amazon.awssdk.services.dynamodb.model.Projection
   */
 @DynamodbDSL
 class LocalSecondaryIndexDescriptionDSL {
-  private val builder = LocalSecondaryIndexDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = LocalSecondaryIndexDescription.builder()
   internal fun build(): LocalSecondaryIndexDescription = builder.build()
     
   /**
     * Represents attributes that are copied (projected) from the table into the global secondary index. These are
     *  in addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var projection: Projection
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -37,7 +39,6 @@ class LocalSecondaryIndexDescriptionDSL {
   /**
     * Represents the name of the local secondary index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,7 +63,6 @@ class LocalSecondaryIndexDescriptionDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var keySchema: Collection<KeySchemaElement>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -75,7 +75,6 @@ class LocalSecondaryIndexDescriptionDSL {
     * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCount: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -88,7 +87,6 @@ class LocalSecondaryIndexDescriptionDSL {
     * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -100,7 +98,6 @@ class LocalSecondaryIndexDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the index.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var indexArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
 
 /**
@@ -16,7 +20,8 @@ import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
   */
 @DynamodbDSL
 class ListTablesResponseDSL {
-  private val builder = ListTablesResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = ListTablesResponse.builder()
   internal fun build(): ListTablesResponse = builder.build()
     
   /**
@@ -27,7 +32,6 @@ class ListTablesResponseDSL {
     *  ExclusiveStartTableName parameter in a subsequent ListTables request and obtain the
     *  next page of results.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableNames: Collection<String>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -44,12 +48,33 @@ class ListTablesResponseDSL {
     *  If you do not receive a LastEvaluatedTableName value in the response, this means that there are
     *  no more table names to be retrieved.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var lastEvaluatedTableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.lastEvaluatedTableName(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

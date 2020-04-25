@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
 
 /**
@@ -16,14 +20,14 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
   */
 @DynamodbDSL
 class DescribeLimitsResponseDSL {
-  private val builder = DescribeLimitsResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeLimitsResponse.builder()
   internal fun build(): DescribeLimitsResponse = builder.build()
     
   /**
     * The maximum total read capacity units that your account allows you to provision across all of your tables in
     *  this Region.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var accountMaxReadCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -36,7 +40,6 @@ class DescribeLimitsResponseDSL {
     * The maximum total write capacity units that your account allows you to provision across all of your tables in
     *  this Region.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var accountMaxWriteCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -50,7 +53,6 @@ class DescribeLimitsResponseDSL {
     *  creating in this Region, including the read capacity units provisioned for its global secondary indexes
     *  (GSIs).
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableMaxReadCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -64,12 +66,33 @@ class DescribeLimitsResponseDSL {
     *  creating in this Region, including the write capacity units provisioned for its global secondary indexes
     *  (GSIs).
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableMaxWriteCapacityUnits: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableMaxWriteCapacityUnits(value)
+    }
+
+
+  /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
     }
 
   

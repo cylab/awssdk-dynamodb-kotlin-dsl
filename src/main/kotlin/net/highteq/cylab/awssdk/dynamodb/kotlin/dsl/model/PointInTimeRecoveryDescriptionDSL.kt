@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescription
@@ -18,7 +20,8 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryStatus
   */
 @DynamodbDSL
 class PointInTimeRecoveryDescriptionDSL {
-  private val builder = PointInTimeRecoveryDescription.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = PointInTimeRecoveryDescription.builder()
   internal fun build(): PointInTimeRecoveryDescription = builder.build()
     
   /**
@@ -30,7 +33,6 @@ class PointInTimeRecoveryDescriptionDSL {
     * 
     *  DISABLED - Point in time recovery is disabled.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var pointInTimeRecoveryStatus: PointInTimeRecoveryStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -43,7 +45,6 @@ class PointInTimeRecoveryDescriptionDSL {
     * Specifies the earliest point in time you can restore your table to. You can restore your table to any point
     *  in time during the last 35 days.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var earliestRestorableDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -55,7 +56,6 @@ class PointInTimeRecoveryDescriptionDSL {
   /**
     * LatestRestorableDateTime is typically 5 minutes before the current time.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var latestRestorableDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

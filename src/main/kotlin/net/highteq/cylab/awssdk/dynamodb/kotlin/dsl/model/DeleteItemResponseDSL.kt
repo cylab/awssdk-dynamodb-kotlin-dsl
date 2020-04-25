@@ -4,10 +4,14 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import software.amazon.awssdk.awscore.AwsResponseMetadata
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.DeleteItemResponse
@@ -19,7 +23,8 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
   */
 @DynamodbDSL
 class DeleteItemResponseDSL {
-  private val builder = DeleteItemResponse.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DeleteItemResponse.builder()
   internal fun build(): DeleteItemResponse = builder.build()
     
   /**
@@ -27,12 +32,25 @@ class DeleteItemResponseDSL {
     *  the DeleteItem operation. This map appears in the response only if ReturnValues was
     *  specified as ALL_OLD in the request.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var attributes: Map<String, AttributeValue>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributes(value)
+    }
+
+
+  /**
+    * The capacity units consumed by the DeleteItem operation. The data returned includes the total
+    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
+    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
+    *  parameter was specified. For more information, see Provisioned Mode in the Amazon DynamoDB Developer Guide.
+    */
+  var consumedCapacity: ConsumedCapacity
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consumedCapacity(value)
     }
 
 
@@ -56,7 +74,6 @@ class DeleteItemResponseDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var itemCollectionMetrics: ItemCollectionMetrics
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -66,21 +83,39 @@ class DeleteItemResponseDSL {
 
 
   /**
+    * 
+    */
+  var responseMetadata: AwsResponseMetadata
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responseMetadata(value)
+    }
+
+
+  /**
+    * 
+    */
+  var sdkHttpResponse: SdkHttpResponse
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sdkHttpResponse(value)
+    }
+
+  
+    
+  /**
     * The capacity units consumed by the DeleteItem operation. The data returned includes the total
     *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
     *  parameter was specified. For more information, see Provisioned Mode in the Amazon DynamoDB Developer Guide.
     */
-  @get:JvmSynthetic // Hide from Java callers
-  var consumedCapacity: ConsumedCapacity
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consumedCapacity(value)
-    }
+  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+  }
 
-  
-    
+
   /**
     * Information about item collections, if any, that were affected by the DeleteItem operation.
     *  ItemCollectionMetrics is only returned if the ReturnItemCollectionMetrics parameter
@@ -103,17 +138,6 @@ class DeleteItemResponseDSL {
     */
   fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) {
     builder.itemCollectionMetrics(buildItemCollectionMetrics(dslBlock))
-  }
-
-
-  /**
-    * The capacity units consumed by the DeleteItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Provisioned Mode in the Amazon DynamoDB Developer Guide.
-    */
-  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
 
 }

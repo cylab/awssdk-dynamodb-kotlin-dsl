@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Get
 import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
@@ -17,14 +19,14 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
   */
 @DynamodbDSL
 class TransactGetItemDSL {
-  private val builder = TransactGetItem.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = TransactGetItem.builder()
   internal fun build(): TransactGetItem = builder.build()
     
   /**
     * Contains the primary key that identifies the item to get, together with the name of the table that contains
     *  the item, and optionally the specific attributes of the item to retrieve.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var get: Get
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()

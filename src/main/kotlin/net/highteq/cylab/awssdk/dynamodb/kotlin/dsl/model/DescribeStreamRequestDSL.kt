@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest
@@ -17,13 +19,24 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest
   */
 @DynamodbDSL
 class DescribeStreamRequestDSL {
-  private val builder = DescribeStreamRequest.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = DescribeStreamRequest.builder()
   internal fun build(): DescribeStreamRequest = builder.build()
     
   /**
+    * The maximum number of shard objects to return. The upper limit is 100.
+    */
+  var limit: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
+    }
+
+
+  /**
     * 
     */
-  @get:JvmSynthetic // Hide from Java callers
   var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,7 +48,6 @@ class DescribeStreamRequestDSL {
   /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var streamArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -48,24 +60,11 @@ class DescribeStreamRequestDSL {
     * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
     *  LastEvaluatedShardId in the previous operation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var exclusiveStartShardId: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exclusiveStartShardId(value)
-    }
-
-
-  /**
-    * The maximum number of shard objects to return. The upper limit is 100.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
   

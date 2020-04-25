@@ -4,9 +4,11 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
+import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BackupStatus
@@ -19,13 +21,13 @@ import software.amazon.awssdk.services.dynamodb.model.BackupType
   */
 @DynamodbDSL
 class BackupSummaryDSL {
-  private val builder = BackupSummary.builder()
+  @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
+  internal val builder = BackupSummary.builder()
   internal fun build(): BackupSummary = builder.build()
     
   /**
     * Name of the table.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var tableName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -35,33 +37,8 @@ class BackupSummaryDSL {
 
 
   /**
-    * ARN associated with the table.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var tableArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableArn(value)
-    }
-
-
-  /**
-    * Unique identifier for the table.
-    */
-  @get:JvmSynthetic // Hide from Java callers
-  var tableId: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableId(value)
-    }
-
-
-  /**
     * ARN associated with the backup.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -73,7 +50,6 @@ class BackupSummaryDSL {
   /**
     * Name of the specified backup.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -85,7 +61,6 @@ class BackupSummaryDSL {
   /**
     * Time at which the backup was created.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupCreationDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -98,7 +73,6 @@ class BackupSummaryDSL {
     * Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM
     *  on-demand backup expires automatically 35 days after its creation.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupExpiryDateTime: Instant
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -110,7 +84,6 @@ class BackupSummaryDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupStatus: BackupStatus
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -130,7 +103,6 @@ class BackupSummaryDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupType: BackupType
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -142,12 +114,33 @@ class BackupSummaryDSL {
   /**
     * Size of the backup in bytes.
     */
-  @get:JvmSynthetic // Hide from Java callers
   var backupSizeBytes: Long
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupSizeBytes(value)
+    }
+
+
+  /**
+    * ARN associated with the table.
+    */
+  var tableArn: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableArn(value)
+    }
+
+
+  /**
+    * Unique identifier for the table.
+    */
+  var tableId: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableId(value)
     }
 
     
