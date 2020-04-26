@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsUnavailab
 @DynamodbDSL
 class ContinuousBackupsUnavailableExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ContinuousBackupsUnavailableException.builder()
+  val builder = ContinuousBackupsUnavailableException.builder()
   internal fun build(): ContinuousBackupsUnavailableException = builder.build()
     
   /**

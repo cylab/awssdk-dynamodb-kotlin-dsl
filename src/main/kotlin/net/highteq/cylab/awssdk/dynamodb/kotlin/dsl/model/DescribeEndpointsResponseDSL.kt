@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
 @DynamodbDSL
 class DescribeEndpointsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeEndpointsResponse.builder()
+  val builder = DescribeEndpointsResponse.builder()
   internal fun build(): DescribeEndpointsResponse = builder.build()
     
   /**

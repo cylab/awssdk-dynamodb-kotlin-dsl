@@ -27,7 +27,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
 @DynamodbDSL
 class ReplicaUpdateDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ReplicaUpdate.builder()
+  val builder = ReplicaUpdate.builder()
   internal fun build(): ReplicaUpdate = builder.build()
     
   /**

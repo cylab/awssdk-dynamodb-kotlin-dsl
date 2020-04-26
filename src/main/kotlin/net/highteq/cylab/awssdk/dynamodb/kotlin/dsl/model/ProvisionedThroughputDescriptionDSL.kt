@@ -21,34 +21,9 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescr
 @DynamodbDSL
 class ProvisionedThroughputDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ProvisionedThroughputDescription.builder()
+  val builder = ProvisionedThroughputDescription.builder()
   internal fun build(): ProvisionedThroughputDescription = builder.build()
     
-  /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
-    */
-  var writeCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.writeCapacityUnits(value)
-    }
-
-
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. Eventually consistent reads require less effort than strongly consistent
-    *  reads, so a setting of 50 ReadCapacityUnits per second provides 100 eventually consistent
-    *  ReadCapacityUnits per second.
-    */
-  var readCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
   /**
     * The date and time of the last provisioned throughput increase for this table.
     */
@@ -81,6 +56,31 @@ class ProvisionedThroughputDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.numberOfDecreasesToday(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException. Eventually consistent reads require less effort than strongly consistent
+    *  reads, so a setting of 50 ReadCapacityUnits per second provides 100 eventually consistent
+    *  ReadCapacityUnits per second.
+    */
+  var readCapacityUnits: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
+    }
+
+
+  /**
+    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    */
+  var writeCapacityUnits: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.writeCapacityUnits(value)
     }
 
   

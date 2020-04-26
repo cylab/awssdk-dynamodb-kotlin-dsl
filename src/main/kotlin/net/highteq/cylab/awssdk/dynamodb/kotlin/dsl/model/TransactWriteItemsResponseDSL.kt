@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItemsResponse
 @DynamodbDSL
 class TransactWriteItemsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactWriteItemsResponse.builder()
+  val builder = TransactWriteItemsResponse.builder()
   internal fun build(): TransactWriteItemsResponse = builder.build()
     
   /**

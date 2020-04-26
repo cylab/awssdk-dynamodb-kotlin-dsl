@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 @DynamodbDSL
 class ConsumedCapacityDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ConsumedCapacity.builder()
+  val builder = ConsumedCapacity.builder()
   internal fun build(): ConsumedCapacity = builder.build()
     
   /**
@@ -71,6 +71,17 @@ class ConsumedCapacityDSL {
 
 
   /**
+    * The total number of read capacity units consumed by the operation.
+    */
+  var readCapacityUnits: Double
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
+    }
+
+
+  /**
     * The total number of write capacity units consumed by the operation.
     */
   var writeCapacityUnits: Double
@@ -89,17 +100,6 @@ class ConsumedCapacityDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.capacityUnits(value)
-    }
-
-
-  /**
-    * The total number of read capacity units consumed by the operation.
-    */
-  var readCapacityUnits: Double
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
     }
 
   

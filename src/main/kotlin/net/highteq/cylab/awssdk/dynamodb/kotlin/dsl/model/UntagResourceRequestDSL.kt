@@ -20,9 +20,21 @@ import software.amazon.awssdk.services.dynamodb.model.UntagResourceRequest
 @DynamodbDSL
 class UntagResourceRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UntagResourceRequest.builder()
+  val builder = UntagResourceRequest.builder()
   internal fun build(): UntagResourceRequest = builder.build()
     
+  /**
+    * A list of tag keys. Existing tags of the resource whose keys are members of this list will be removed from
+    *  the DynamoDB resource.
+    */
+  var tagKeys: Collection<String>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tagKeys(value)
+    }
+
+
   /**
     * The DynamoDB resource that the tags will be removed from. This value is an Amazon Resource Name (ARN).
     */
@@ -42,18 +54,6 @@ class UntagResourceRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * A list of tag keys. Existing tags of the resource whose keys are members of this list will be removed from
-    *  the DynamoDB resource.
-    */
-  var tagKeys: Collection<String>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tagKeys(value)
     }
 
   

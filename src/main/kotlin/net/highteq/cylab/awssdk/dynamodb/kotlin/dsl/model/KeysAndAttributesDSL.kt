@@ -24,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 @DynamodbDSL
 class KeysAndAttributesDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = KeysAndAttributes.builder()
+  val builder = KeysAndAttributes.builder()
   internal fun build(): KeysAndAttributes = builder.build()
     
   /**
@@ -78,6 +78,18 @@ class KeysAndAttributesDSL {
 
 
   /**
+    * The consistency of a read operation. If set to true, then a strongly consistent read is used;
+    *  otherwise, an eventually consistent read is used.
+    */
+  var consistentRead: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
+    }
+
+
+  /**
     * A string that identifies one or more attributes to retrieve from the table. These attributes can include
     *  scalars, sets, or elements of a JSON document. The attributes in the ProjectionExpression must
     *  be separated by commas.
@@ -103,18 +115,6 @@ class KeysAndAttributesDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
-    }
-
-
-  /**
-    * The consistency of a read operation. If set to true, then a strongly consistent read is used;
-    *  otherwise, an eventually consistent read is used.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
     }
 
   

@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
 @DynamodbDSL
 class GlobalTableDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GlobalTable.builder()
+  val builder = GlobalTable.builder()
   internal fun build(): GlobalTable = builder.build()
     
   /**

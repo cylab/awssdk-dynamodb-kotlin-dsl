@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.Projection
 @DynamodbDSL
 class LocalSecondaryIndexDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = LocalSecondaryIndexDescription.builder()
+  val builder = LocalSecondaryIndexDescription.builder()
   internal fun build(): LocalSecondaryIndexDescription = builder.build()
     
   /**
@@ -33,17 +33,6 @@ class LocalSecondaryIndexDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projection(value)
-    }
-
-
-  /**
-    * Represents the name of the local secondary index.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
 
@@ -68,6 +57,17 @@ class LocalSecondaryIndexDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.keySchema(value)
+    }
+
+
+  /**
+    * Represents the name of the local secondary index.
+    */
+  var indexName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
 

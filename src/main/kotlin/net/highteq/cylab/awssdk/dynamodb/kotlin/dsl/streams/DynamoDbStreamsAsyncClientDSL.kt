@@ -32,7 +32,7 @@ import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClie
 @DynamodbDSL
 class DynamoDbStreamsAsyncClientDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DynamoDbStreamsAsyncClient.builder()
+  val builder = DynamoDbStreamsAsyncClient.builder()
   internal fun build(): DynamoDbStreamsAsyncClient = builder.build()
     
   /**

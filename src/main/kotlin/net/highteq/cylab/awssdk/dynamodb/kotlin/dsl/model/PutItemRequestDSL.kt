@@ -26,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValue
 @DynamodbDSL
 class PutItemRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = PutItemRequest.builder()
+  val builder = PutItemRequest.builder()
   internal fun build(): PutItemRequest = builder.build()
     
   /**

@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.PutRequest
 @DynamodbDSL
 class PutRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = PutRequest.builder()
+  val builder = PutRequest.builder()
   internal fun build(): PutRequest = builder.build()
     
   /**

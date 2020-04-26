@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
 @DynamodbDSL
 class DeleteDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = Delete.builder()
+  val builder = Delete.builder()
   internal fun build(): Delete = builder.build()
     
   /**

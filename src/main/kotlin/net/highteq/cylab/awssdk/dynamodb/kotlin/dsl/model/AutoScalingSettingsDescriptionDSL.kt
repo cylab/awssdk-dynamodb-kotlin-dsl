@@ -20,20 +20,9 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescrip
 @DynamodbDSL
 class AutoScalingSettingsDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = AutoScalingSettingsDescription.builder()
+  val builder = AutoScalingSettingsDescription.builder()
   internal fun build(): AutoScalingSettingsDescription = builder.build()
     
-  /**
-    * Information about the scaling policies.
-    */
-  var scalingPolicies: Collection<AutoScalingPolicyDescription>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scalingPolicies(value)
-    }
-
-
   /**
     * The minimum capacity units that a global table or global secondary index should be scaled down to.
     */
@@ -75,6 +64,17 @@ class AutoScalingSettingsDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.autoScalingRoleArn(value)
+    }
+
+
+  /**
+    * Information about the scaling policies.
+    */
+  var scalingPolicies: Collection<AutoScalingPolicyDescription>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.scalingPolicies(value)
     }
 
   

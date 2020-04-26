@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveSpecification
 @DynamodbDSL
 class TimeToLiveSpecificationDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TimeToLiveSpecification.builder()
+  val builder = TimeToLiveSpecification.builder()
   internal fun build(): TimeToLiveSpecification = builder.build()
     
   /**

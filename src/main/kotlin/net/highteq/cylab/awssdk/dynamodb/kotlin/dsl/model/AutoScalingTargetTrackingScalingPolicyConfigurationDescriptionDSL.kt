@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
 @DynamodbDSL
 class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = AutoScalingTargetTrackingScalingPolicyConfigurationDescription.builder()
+  val builder = AutoScalingTargetTrackingScalingPolicyConfigurationDescription.builder()
   internal fun build(): AutoScalingTargetTrackingScalingPolicyConfigurationDescription = builder.build()
     
   /**
@@ -31,6 +31,20 @@ class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.targetValue(value)
+    }
+
+
+  /**
+    * Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is
+    *  disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in
+    *  is enabled and the target tracking policy can remove capacity from the scalable resource. The default value
+    *  is false.
+    */
+  var disableScaleIn: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.disableScaleIn(value)
     }
 
 
@@ -60,20 +74,6 @@ class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.scaleOutCooldown(value)
-    }
-
-
-  /**
-    * Indicates whether scale in by the target tracking policy is disabled. If the value is true, scale in is
-    *  disabled and the target tracking policy won't remove capacity from the scalable resource. Otherwise, scale in
-    *  is enabled and the target tracking policy can remove capacity from the scalable resource. The default value
-    *  is false.
-    */
-  var disableScaleIn: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.disableScaleIn(value)
     }
 
   

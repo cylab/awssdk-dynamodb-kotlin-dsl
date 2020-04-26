@@ -29,7 +29,7 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
 @DynamodbDSL
 class CreateTableRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = CreateTableRequest.builder()
+  val builder = CreateTableRequest.builder()
   internal fun build(): CreateTableRequest = builder.build()
     
   /**
@@ -122,17 +122,6 @@ class CreateTableRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
-    }
-
-
-  /**
-    * Represents the settings used to enable server-side encryption.
-    */
-  var sseSpecification: SSESpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sseSpecification(value)
     }
 
 
@@ -263,6 +252,17 @@ class CreateTableRequestDSL {
       builder.billingMode(value)
     }
 
+
+  /**
+    * Represents the settings used to enable server-side encryption.
+    */
+  var sseSpecification: SSESpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sseSpecification(value)
+    }
+
     
   /**
     * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
@@ -295,14 +295,6 @@ class CreateTableRequestDSL {
 
 
   /**
-    * Represents the settings used to enable server-side encryption.
-    */
-  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
-    builder.sseSpecification(buildSSESpecification(dslBlock))
-  }
-
-
-  /**
     * The settings for DynamoDB Streams on the table. These settings consist of:
     * 
     *  StreamEnabled - Indicates whether DynamoDB Streams is to be enabled (true) or disabled (false).
@@ -320,6 +312,14 @@ class CreateTableRequestDSL {
     */
   fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
     builder.streamSpecification(buildStreamSpecification(dslBlock))
+  }
+
+
+  /**
+    * Represents the settings used to enable server-side encryption.
+    */
+  fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
+    builder.sseSpecification(buildSSESpecification(dslBlock))
   }
 
 

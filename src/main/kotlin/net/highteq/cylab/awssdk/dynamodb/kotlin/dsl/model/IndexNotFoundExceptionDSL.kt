@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.IndexNotFoundException
 @DynamodbDSL
 class IndexNotFoundExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = IndexNotFoundException.builder()
+  val builder = IndexNotFoundException.builder()
   internal fun build(): IndexNotFoundException = builder.build()
     
   /**

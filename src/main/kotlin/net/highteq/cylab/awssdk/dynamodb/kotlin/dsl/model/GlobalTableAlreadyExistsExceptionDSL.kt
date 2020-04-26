@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableAlreadyExistsEx
 @DynamodbDSL
 class GlobalTableAlreadyExistsExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GlobalTableAlreadyExistsException.builder()
+  val builder = GlobalTableAlreadyExistsException.builder()
   internal fun build(): GlobalTableAlreadyExistsException = builder.build()
     
   /**

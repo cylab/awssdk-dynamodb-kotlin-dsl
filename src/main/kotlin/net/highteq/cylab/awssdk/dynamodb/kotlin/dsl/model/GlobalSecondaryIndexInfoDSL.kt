@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 @DynamodbDSL
 class GlobalSecondaryIndexInfoDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GlobalSecondaryIndexInfo.builder()
+  val builder = GlobalSecondaryIndexInfo.builder()
   internal fun build(): GlobalSecondaryIndexInfo = builder.build()
     
   /**
@@ -34,17 +34,6 @@ class GlobalSecondaryIndexInfoDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projection(value)
-    }
-
-
-  /**
-    * The name of the global secondary index.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
 
@@ -80,6 +69,17 @@ class GlobalSecondaryIndexInfoDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
+    }
+
+
+  /**
+    * The name of the global secondary index.
+    */
+  var indexName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
   

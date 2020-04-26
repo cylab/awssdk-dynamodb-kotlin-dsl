@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.QueryResponse
 @DynamodbDSL
 class QueryResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = QueryResponse.builder()
+  val builder = QueryResponse.builder()
   internal fun build(): QueryResponse = builder.build()
     
   /**

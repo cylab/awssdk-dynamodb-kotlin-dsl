@@ -20,9 +20,21 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
 @DynamodbDSL
 class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ReplicaGlobalSecondaryIndexSettingsUpdate.builder()
+  val builder = ReplicaGlobalSecondaryIndexSettingsUpdate.builder()
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsUpdate = builder.build()
     
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException.
+    */
+  var provisionedReadCapacityUnits: Long
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedReadCapacityUnits(value)
+    }
+
+
   /**
     * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
@@ -42,18 +54,6 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedReadCapacityAutoScalingSettingsUpdate(value)
-    }
-
-
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException.
-    */
-  var provisionedReadCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedReadCapacityUnits(value)
     }
 
   

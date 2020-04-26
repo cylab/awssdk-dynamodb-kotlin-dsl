@@ -29,7 +29,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
 @DynamodbDSL
 class AttributeValueUpdateDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = AttributeValueUpdate.builder()
+  val builder = AttributeValueUpdate.builder()
   internal fun build(): AttributeValueUpdate = builder.build()
     
   /**

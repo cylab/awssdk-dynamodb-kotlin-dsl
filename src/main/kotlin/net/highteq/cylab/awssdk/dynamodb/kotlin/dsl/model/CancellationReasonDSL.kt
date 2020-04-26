@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.CancellationReason
 @DynamodbDSL
 class CancellationReasonDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = CancellationReason.builder()
+  val builder = CancellationReason.builder()
   internal fun build(): CancellationReason = builder.build()
     
   /**

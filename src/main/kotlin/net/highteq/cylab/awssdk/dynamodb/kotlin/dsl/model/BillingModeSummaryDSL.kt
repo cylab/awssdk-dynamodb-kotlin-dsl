@@ -21,9 +21,20 @@ import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
 @DynamodbDSL
 class BillingModeSummaryDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BillingModeSummary.builder()
+  val builder = BillingModeSummary.builder()
   internal fun build(): BillingModeSummary = builder.build()
     
+  /**
+    * Represents the time when PAY_PER_REQUEST was last set as the read/write capacity mode.
+    */
+  var lastUpdateToPayPerRequestDateTime: Instant
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.lastUpdateToPayPerRequestDateTime(value)
+    }
+
+
   /**
     * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
     *  changed later.
@@ -39,17 +50,6 @@ class BillingModeSummaryDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.billingMode(value)
-    }
-
-
-  /**
-    * Represents the time when PAY_PER_REQUEST was last set as the read/write capacity mode.
-    */
-  var lastUpdateToPayPerRequestDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.lastUpdateToPayPerRequestDateTime(value)
     }
 
     

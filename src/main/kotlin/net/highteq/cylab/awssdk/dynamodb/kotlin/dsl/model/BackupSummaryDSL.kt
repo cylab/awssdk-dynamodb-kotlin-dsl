@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupType
 @DynamodbDSL
 class BackupSummaryDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BackupSummary.builder()
+  val builder = BackupSummary.builder()
   internal fun build(): BackupSummary = builder.build()
     
   /**
@@ -33,6 +33,28 @@ class BackupSummaryDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableName(value)
+    }
+
+
+  /**
+    * ARN associated with the table.
+    */
+  var tableArn: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableArn(value)
+    }
+
+
+  /**
+    * Unique identifier for the table.
+    */
+  var tableId: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableId(value)
     }
 
 
@@ -119,28 +141,6 @@ class BackupSummaryDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupSizeBytes(value)
-    }
-
-
-  /**
-    * ARN associated with the table.
-    */
-  var tableArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableArn(value)
-    }
-
-
-  /**
-    * Unique identifier for the table.
-    */
-  var tableId: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableId(value)
     }
 
     

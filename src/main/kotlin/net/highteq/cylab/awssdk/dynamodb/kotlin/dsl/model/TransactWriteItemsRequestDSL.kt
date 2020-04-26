@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItemsRequest
 @DynamodbDSL
 class TransactWriteItemsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactWriteItemsRequest.builder()
+  val builder = TransactWriteItemsRequest.builder()
   internal fun build(): TransactWriteItemsRequest = builder.build()
     
   /**

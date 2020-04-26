@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
 @DynamodbDSL
 class StreamRecordDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = StreamRecord.builder()
+  val builder = StreamRecord.builder()
   internal fun build(): StreamRecord = builder.build()
     
   /**
@@ -44,6 +44,17 @@ class StreamRecordDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.keys(value)
+    }
+
+
+  /**
+    * The item in the DynamoDB table as it appeared after it was modified.
+    */
+  var newImage: Map<String, AttributeValue>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.newImage(value)
     }
 
 
@@ -77,17 +88,6 @@ class StreamRecordDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sizeBytes(value)
-    }
-
-
-  /**
-    * The item in the DynamoDB table as it appeared after it was modified.
-    */
-  var newImage: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.newImage(value)
     }
 
 

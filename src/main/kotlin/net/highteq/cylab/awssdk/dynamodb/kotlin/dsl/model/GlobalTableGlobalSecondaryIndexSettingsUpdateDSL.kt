@@ -20,17 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondary
 @DynamodbDSL
 class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()
+  val builder = GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()
   internal fun build(): GlobalTableGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    * Auto scaling settings for managing a global secondary index's write capacity units.
     */
-  var indexName: String
+  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.indexName(value)
+      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
     }
 
 
@@ -46,13 +46,13 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
 
 
   /**
-    * Auto scaling settings for managing a global secondary index's write capacity units.
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
-  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
+  var indexName: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
+      builder.indexName(value)
     }
 
   

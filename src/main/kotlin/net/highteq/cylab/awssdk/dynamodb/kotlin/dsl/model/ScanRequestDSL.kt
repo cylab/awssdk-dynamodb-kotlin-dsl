@@ -25,7 +25,7 @@ import software.amazon.awssdk.services.dynamodb.model.Select
 @DynamodbDSL
 class ScanRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ScanRequest.builder()
+  val builder = ScanRequest.builder()
   internal fun build(): ScanRequest = builder.build()
     
   /**
@@ -151,38 +151,6 @@ class ScanRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
-    */
-  var scanFilter: Map<String, Condition>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scanFilter(value)
-    }
-
-
-  /**
-    * For a parallel Scan request, TotalSegments represents the total number of segments
-    *  into which the Scan operation will be divided. The value of TotalSegments
-    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
-    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
-    *  of 4.
-    * 
-    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
-    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
-    *  sequential rather than parallel.
-    * 
-    *  If you specify TotalSegments, you must also specify Segment.
-    */
-  var totalSegments: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.totalSegments(value)
-    }
-
-
-  /**
     * One or more substitution tokens for attribute names in an expression. The following are some use cases for
     *  using ExpressionAttributeNames:
     * 
@@ -256,6 +224,30 @@ class ScanRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
+    * A Boolean value that determines the read consistency model during the scan:
+    * 
+    *  If ConsistentRead is false, then the data returned from Scan might not
+    *  contain the results from other recently completed write operations (PutItem,
+    *  UpdateItem, or DeleteItem).
+    * 
+    *  If ConsistentRead is true, then all of the write operations that completed before
+    *  the Scan began are guaranteed to be contained in the Scan response.
+    * 
+    *  The default setting for ConsistentRead is false.
+    * 
+    *  The ConsistentRead parameter is not supported on global secondary indexes. If you scan a global
+    *  secondary index with ConsistentRead set to true, you will receive a
+    *  ValidationException.
+    */
+  var consistentRead: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
     }
 
 
@@ -337,26 +329,34 @@ class ScanRequestDSL {
 
 
   /**
-    * A Boolean value that determines the read consistency model during the scan:
-    * 
-    *  If ConsistentRead is false, then the data returned from Scan might not
-    *  contain the results from other recently completed write operations (PutItem,
-    *  UpdateItem, or DeleteItem).
-    * 
-    *  If ConsistentRead is true, then all of the write operations that completed before
-    *  the Scan began are guaranteed to be contained in the Scan response.
-    * 
-    *  The default setting for ConsistentRead is false.
-    * 
-    *  The ConsistentRead parameter is not supported on global secondary indexes. If you scan a global
-    *  secondary index with ConsistentRead set to true, you will receive a
-    *  ValidationException.
+    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
     */
-  var consistentRead: Boolean
+  var scanFilter: Map<String, Condition>
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.consistentRead(value)
+      builder.scanFilter(value)
+    }
+
+
+  /**
+    * For a parallel Scan request, TotalSegments represents the total number of segments
+    *  into which the Scan operation will be divided. The value of TotalSegments
+    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
+    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
+    *  of 4.
+    * 
+    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
+    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
+    *  sequential rather than parallel.
+    * 
+    *  If you specify TotalSegments, you must also specify Segment.
+    */
+  var totalSegments: Int
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.totalSegments(value)
     }
 
     

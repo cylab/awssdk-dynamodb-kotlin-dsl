@@ -24,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.model.Update
 @DynamodbDSL
 class TransactWriteItemDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactWriteItem.builder()
+  val builder = TransactWriteItem.builder()
   internal fun build(): TransactWriteItem = builder.build()
     
   /**

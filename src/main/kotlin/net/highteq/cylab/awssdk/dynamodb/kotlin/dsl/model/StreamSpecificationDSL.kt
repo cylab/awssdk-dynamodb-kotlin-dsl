@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
 @DynamodbDSL
 class StreamSpecificationDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = StreamSpecification.builder()
+  val builder = StreamSpecification.builder()
   internal fun build(): StreamSpecification = builder.build()
     
   /**

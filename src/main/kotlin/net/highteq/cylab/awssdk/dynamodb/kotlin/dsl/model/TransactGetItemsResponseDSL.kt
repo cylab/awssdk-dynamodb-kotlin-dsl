@@ -23,23 +23,9 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItemsResponse
 @DynamodbDSL
 class TransactGetItemsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactGetItemsResponse.builder()
+  val builder = TransactGetItemsResponse.builder()
   internal fun build(): TransactGetItemsResponse = builder.build()
     
-  /**
-    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
-    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
-    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
-    *  units consumed by the TransactGetItems call in that table.
-    */
-  var consumedCapacity: Collection<ConsumedCapacity>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consumedCapacity(value)
-    }
-
-
   /**
     * An ordered array of up to 25 ItemResponse objects, each of which corresponds to the
     *  TransactGetItem object in the same position in the TransactItems array. Each
@@ -55,6 +41,20 @@ class TransactGetItemsResponseDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.responses(value)
+    }
+
+
+  /**
+    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
+    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
+    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
+    *  units consumed by the TransactGetItems call in that table.
+    */
+  var consumedCapacity: Collection<ConsumedCapacity>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consumedCapacity(value)
     }
 
 
@@ -82,17 +82,6 @@ class TransactGetItemsResponseDSL {
   
     
   /**
-    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
-    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
-    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
-    *  units consumed by the TransactGetItems call in that table.
-    */
-  fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
-  }
-
-
-  /**
     * An ordered array of up to 25 ItemResponse objects, each of which corresponds to the
     *  TransactGetItem object in the same position in the TransactItems array. Each
     *  ItemResponse object contains a Map of the name-value pairs that are the projected attributes of
@@ -104,6 +93,17 @@ class TransactGetItemsResponseDSL {
     */
   fun responses(dslBlock: ItemResponseCollectionDSL.() -> Unit) {
     builder.responses(buildItemResponseCollection(dslBlock))
+  }
+
+
+  /**
+    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
+    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
+    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
+    *  units consumed by the TransactGetItems call in that table.
+    */
+  fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
+    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
   }
 
 }

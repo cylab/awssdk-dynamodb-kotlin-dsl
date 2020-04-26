@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
 @DynamodbDSL
 class ListTablesResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListTablesResponse.builder()
+  val builder = ListTablesResponse.builder()
   internal fun build(): ListTablesResponse = builder.build()
     
   /**

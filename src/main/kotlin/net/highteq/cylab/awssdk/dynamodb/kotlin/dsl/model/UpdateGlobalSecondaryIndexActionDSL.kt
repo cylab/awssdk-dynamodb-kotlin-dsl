@@ -20,20 +20,9 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
 @DynamodbDSL
 class UpdateGlobalSecondaryIndexActionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UpdateGlobalSecondaryIndexAction.builder()
+  val builder = UpdateGlobalSecondaryIndexAction.builder()
   internal fun build(): UpdateGlobalSecondaryIndexAction = builder.build()
     
-  /**
-    * The name of the global secondary index to be updated.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
-    }
-
-
   /**
     * Represents the provisioned throughput settings for the specified global secondary index.
     * 
@@ -45,6 +34,17 @@ class UpdateGlobalSecondaryIndexActionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
+    }
+
+
+  /**
+    * The name of the global secondary index to be updated.
+    */
+  var indexName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
   

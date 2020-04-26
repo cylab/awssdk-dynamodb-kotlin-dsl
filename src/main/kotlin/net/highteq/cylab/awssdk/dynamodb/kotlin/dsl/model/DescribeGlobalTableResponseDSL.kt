@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableDescription
 @DynamodbDSL
 class DescribeGlobalTableResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeGlobalTableResponse.builder()
+  val builder = DescribeGlobalTableResponse.builder()
   internal fun build(): DescribeGlobalTableResponse = builder.build()
     
   /**

@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoverySpecifi
 @DynamodbDSL
 class PointInTimeRecoverySpecificationDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = PointInTimeRecoverySpecification.builder()
+  val builder = PointInTimeRecoverySpecification.builder()
   internal fun build(): PointInTimeRecoverySpecification = builder.build()
     
   /**

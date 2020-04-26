@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.GetRecordsRequest
 @DynamodbDSL
 class GetRecordsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GetRecordsRequest.builder()
+  val builder = GetRecordsRequest.builder()
   internal fun build(): GetRecordsRequest = builder.build()
     
   /**

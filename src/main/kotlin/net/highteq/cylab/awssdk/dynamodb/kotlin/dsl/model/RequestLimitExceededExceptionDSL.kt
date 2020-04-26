@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.RequestLimitExceededExcept
 @DynamodbDSL
 class RequestLimitExceededExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = RequestLimitExceededException.builder()
+  val builder = RequestLimitExceededException.builder()
   internal fun build(): RequestLimitExceededException = builder.build()
     
   /**

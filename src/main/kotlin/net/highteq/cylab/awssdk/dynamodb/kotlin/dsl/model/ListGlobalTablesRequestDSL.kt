@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListGlobalTablesRequest
 @DynamodbDSL
 class ListGlobalTablesRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListGlobalTablesRequest.builder()
+  val builder = ListGlobalTablesRequest.builder()
   internal fun build(): ListGlobalTablesRequest = builder.build()
     
   /**
@@ -35,6 +35,17 @@ class ListGlobalTablesRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.limit(value)
+    }
+
+
+  /**
+    * The first global table name that this operation will evaluate.
+    */
+  var exclusiveStartGlobalTableName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.exclusiveStartGlobalTableName(value)
     }
 
 
@@ -57,17 +68,6 @@ class ListGlobalTablesRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.regionName(value)
-    }
-
-
-  /**
-    * The first global table name that this operation will evaluate.
-    */
-  var exclusiveStartGlobalTableName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.exclusiveStartGlobalTableName(value)
     }
 
   

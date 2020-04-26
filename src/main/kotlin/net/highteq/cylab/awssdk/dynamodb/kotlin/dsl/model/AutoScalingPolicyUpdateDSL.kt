@@ -20,20 +20,9 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
 @DynamodbDSL
 class AutoScalingPolicyUpdateDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = AutoScalingPolicyUpdate.builder()
+  val builder = AutoScalingPolicyUpdate.builder()
   internal fun build(): AutoScalingPolicyUpdate = builder.build()
     
-  /**
-    * The name of the scaling policy.
-    */
-  var policyName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.policyName(value)
-    }
-
-
   /**
     * Represents a target tracking scaling policy configuration.
     */
@@ -42,6 +31,17 @@ class AutoScalingPolicyUpdateDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.targetTrackingScalingPolicyConfiguration(value)
+    }
+
+
+  /**
+    * The name of the scaling policy.
+    */
+  var policyName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.policyName(value)
     }
 
   

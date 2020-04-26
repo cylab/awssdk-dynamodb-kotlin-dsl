@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryUnavail
 @DynamodbDSL
 class PointInTimeRecoveryUnavailableExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = PointInTimeRecoveryUnavailableException.builder()
+  val builder = PointInTimeRecoveryUnavailableException.builder()
   internal fun build(): PointInTimeRecoveryUnavailableException = builder.build()
     
   /**

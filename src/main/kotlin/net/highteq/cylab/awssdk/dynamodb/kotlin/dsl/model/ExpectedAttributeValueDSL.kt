@@ -37,9 +37,25 @@ import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
 @DynamodbDSL
 class ExpectedAttributeValueDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ExpectedAttributeValue.builder()
+  val builder = ExpectedAttributeValue.builder()
   internal fun build(): ExpectedAttributeValue = builder.build()
     
+  /**
+    * Represents the data for the expected attribute.
+    * 
+    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
+    *  itself.
+    * 
+    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+    */
+  var value: AttributeValue
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.value(value)
+    }
+
+
   /**
     * Causes DynamoDB to evaluate the value before attempting a conditional operation:
     * 
@@ -69,22 +85,6 @@ class ExpectedAttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exists(value)
-    }
-
-
-  /**
-    * Represents the data for the expected attribute.
-    * 
-    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
-    *  itself.
-    * 
-    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
-    */
-  var value: AttributeValue
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.value(value)
     }
 
 

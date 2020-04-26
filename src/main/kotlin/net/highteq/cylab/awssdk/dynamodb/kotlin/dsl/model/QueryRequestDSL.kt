@@ -25,7 +25,7 @@ import software.amazon.awssdk.services.dynamodb.model.Select
 @DynamodbDSL
 class QueryRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = QueryRequest.builder()
+  val builder = QueryRequest.builder()
   internal fun build(): QueryRequest = builder.build()
     
   /**
@@ -199,6 +199,22 @@ class QueryRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
+    * Determines the read consistency model: If set to true, then the operation uses strongly
+    *  consistent reads; otherwise, the operation uses eventually consistent reads.
+    * 
+    *  Strongly consistent reads are not supported on global secondary indexes. If you query a global secondary
+    *  index with ConsistentRead set to true, you will receive a
+    *  ValidationException.
+    */
+  var consistentRead: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
     }
 
 
@@ -391,22 +407,6 @@ class QueryRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
-    }
-
-
-  /**
-    * Determines the read consistency model: If set to true, then the operation uses strongly
-    *  consistent reads; otherwise, the operation uses eventually consistent reads.
-    * 
-    *  Strongly consistent reads are not supported on global secondary indexes. If you query a global secondary
-    *  index with ConsistentRead set to true, you will receive a
-    *  ValidationException.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
     }
 
     

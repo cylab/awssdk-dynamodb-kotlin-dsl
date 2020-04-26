@@ -24,9 +24,21 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 @DynamodbDSL
 class BatchGetItemResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BatchGetItemResponse.builder()
+  val builder = BatchGetItemResponse.builder()
   internal fun build(): BatchGetItemResponse = builder.build()
     
+  /**
+    * A map of table name to a list of items. Each object in Responses consists of a table name, along
+    *  with a map of attribute data consisting of the data type and attribute value.
+    */
+  var responses: Map<String, Collection<Map<String, AttributeValue>>>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.responses(value)
+    }
+
+
   /**
     * A map of tables and their respective keys that were not processed with the current response. The
     *  UnprocessedKeys value is in the same form as RequestItems, so the value can be
@@ -68,18 +80,6 @@ class BatchGetItemResponseDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consumedCapacity(value)
-    }
-
-
-  /**
-    * A map of table name to a list of items. Each object in Responses consists of a table name, along
-    *  with a map of attribute data consisting of the data type and attribute value.
-    */
-  var responses: Map<String, Collection<Map<String, AttributeValue>>>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.responses(value)
     }
 
 

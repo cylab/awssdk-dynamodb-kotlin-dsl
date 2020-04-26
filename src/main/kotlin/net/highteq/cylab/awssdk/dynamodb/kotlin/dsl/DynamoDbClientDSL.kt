@@ -40,7 +40,7 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 @DynamodbDSL
 class DynamoDbClientDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DynamoDbClient.builder()
+  val builder = DynamoDbClient.builder()
   internal fun build(): DynamoDbClient = builder.build()
     
   /**

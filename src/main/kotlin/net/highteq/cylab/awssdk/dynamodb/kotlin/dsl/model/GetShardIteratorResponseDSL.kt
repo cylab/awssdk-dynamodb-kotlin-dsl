@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.GetShardIteratorResponse
 @DynamodbDSL
 class GetShardIteratorResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GetShardIteratorResponse.builder()
+  val builder = GetShardIteratorResponse.builder()
   internal fun build(): GetShardIteratorResponse = builder.build()
     
   /**

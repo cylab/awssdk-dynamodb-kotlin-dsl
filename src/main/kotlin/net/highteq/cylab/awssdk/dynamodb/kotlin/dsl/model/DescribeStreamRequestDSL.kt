@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest
 @DynamodbDSL
 class DescribeStreamRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeStreamRequest.builder()
+  val builder = DescribeStreamRequest.builder()
   internal fun build(): DescribeStreamRequest = builder.build()
     
   /**

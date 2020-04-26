@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
 @DynamodbDSL
 class SSEDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = SSEDescription.builder()
+  val builder = SSEDescription.builder()
   internal fun build(): SSEDescription = builder.build()
     
   /**
@@ -40,6 +40,17 @@ class SSEDescriptionDSL {
 
 
   /**
+    * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
+    */
+  var kmsMasterKeyArn: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.kmsMasterKeyArn(value)
+    }
+
+
+  /**
     * Server-side encryption type. The only supported value is:
     * 
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
@@ -50,17 +61,6 @@ class SSEDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sseType(value)
-    }
-
-
-  /**
-    * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
-    */
-  var kmsMasterKeyArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.kmsMasterKeyArn(value)
     }
 
     

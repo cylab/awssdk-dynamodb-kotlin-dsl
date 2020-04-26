@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListBackupsRequest
 @DynamodbDSL
 class ListBackupsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListBackupsRequest.builder()
+  val builder = ListBackupsRequest.builder()
   internal fun build(): ListBackupsRequest = builder.build()
     
   /**

@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
 @DynamodbDSL
 class DescribeTimeToLiveResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeTimeToLiveResponse.builder()
+  val builder = DescribeTimeToLiveResponse.builder()
   internal fun build(): DescribeTimeToLiveResponse = builder.build()
     
   /**

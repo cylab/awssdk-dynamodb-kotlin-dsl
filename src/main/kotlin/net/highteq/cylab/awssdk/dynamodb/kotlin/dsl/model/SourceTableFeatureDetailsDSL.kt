@@ -25,20 +25,9 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
 @DynamodbDSL
 class SourceTableFeatureDetailsDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = SourceTableFeatureDetails.builder()
+  val builder = SourceTableFeatureDetails.builder()
   internal fun build(): SourceTableFeatureDetails = builder.build()
     
-  /**
-    * Stream settings on the table when the backup was created.
-    */
-  var streamDescription: StreamSpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamDescription(value)
-    }
-
-
   /**
     * Time to Live settings on the table when the backup was created.
     */
@@ -84,16 +73,19 @@ class SourceTableFeatureDetailsDSL {
       builder.sseDescription(value)
     }
 
-  
-    
+
   /**
     * Stream settings on the table when the backup was created.
     */
-  fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamDescription(buildStreamSpecification(dslBlock))
-  }
+  var streamDescription: StreamSpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamDescription(value)
+    }
 
-
+  
+    
   /**
     * Time to Live settings on the table when the backup was created.
     */
@@ -107,6 +99,14 @@ class SourceTableFeatureDetailsDSL {
     */
   fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
     builder.sseDescription(buildSSEDescription(dslBlock))
+  }
+
+
+  /**
+    * Stream settings on the table when the backup was created.
+    */
+  fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
+    builder.streamDescription(buildStreamSpecification(dslBlock))
   }
 
 

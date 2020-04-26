@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateContinuousBackupsRes
 @DynamodbDSL
 class UpdateContinuousBackupsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UpdateContinuousBackupsResponse.builder()
+  val builder = UpdateContinuousBackupsResponse.builder()
   internal fun build(): UpdateContinuousBackupsResponse = builder.build()
     
   /**

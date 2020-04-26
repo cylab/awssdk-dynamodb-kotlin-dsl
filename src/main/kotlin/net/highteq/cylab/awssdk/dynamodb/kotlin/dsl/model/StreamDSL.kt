@@ -19,20 +19,9 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
 @DynamodbDSL
 class StreamDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = Stream.builder()
+  val builder = Stream.builder()
   internal fun build(): Stream = builder.build()
     
-  /**
-    * The DynamoDB table with which the stream is associated.
-    */
-  var tableName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
-    }
-
-
   /**
     * A timestamp, in ISO 8601 format, for this stream.
     * 
@@ -51,6 +40,17 @@ class StreamDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.streamLabel(value)
+    }
+
+
+  /**
+    * The DynamoDB table with which the stream is associated.
+    */
+  var tableName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
     }
 
 

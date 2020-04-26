@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamRecord
 @DynamodbDSL
 class RecordDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = Record.builder()
+  val builder = Record.builder()
   internal fun build(): Record = builder.build()
     
   /**
@@ -43,6 +43,17 @@ class RecordDSL {
 
 
   /**
+    * The region in which the GetRecords request was received.
+    */
+  var awsRegion: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.awsRegion(value)
+    }
+
+
+  /**
     * The version number of the stream record format. This number is updated whenever the structure of
     *  Record is modified.
     * 
@@ -55,6 +66,18 @@ class RecordDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.eventVersion(value)
+    }
+
+
+  /**
+    * The AWS service from which the stream record originated. For DynamoDB Streams, this is
+    *  aws:dynamodb.
+    */
+  var eventSource: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.eventSource(value)
     }
 
 
@@ -78,25 +101,13 @@ class RecordDSL {
 
 
   /**
-    * The region in which the GetRecords request was received.
+    * The main body of the stream record, containing all of the DynamoDB-specific fields.
     */
-  var awsRegion: String
+  var dynamodb: StreamRecord
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.awsRegion(value)
-    }
-
-
-  /**
-    * The AWS service from which the stream record originated. For DynamoDB Streams, this is
-    *  aws:dynamodb.
-    */
-  var eventSource: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.eventSource(value)
+      builder.dynamodb(value)
     }
 
 
@@ -108,17 +119,6 @@ class RecordDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.eventID(value)
-    }
-
-
-  /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
-    */
-  var dynamodb: StreamRecord
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.dynamodb(value)
     }
 
     

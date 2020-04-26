@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Shard
 @DynamodbDSL
 class ShardDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = Shard.builder()
+  val builder = Shard.builder()
   internal fun build(): Shard = builder.build()
     
   /**

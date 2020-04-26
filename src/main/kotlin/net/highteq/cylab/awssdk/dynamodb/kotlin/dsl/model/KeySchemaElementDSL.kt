@@ -29,7 +29,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
 @DynamodbDSL
 class KeySchemaElementDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = KeySchemaElement.builder()
+  val builder = KeySchemaElement.builder()
   internal fun build(): KeySchemaElement = builder.build()
     
   /**

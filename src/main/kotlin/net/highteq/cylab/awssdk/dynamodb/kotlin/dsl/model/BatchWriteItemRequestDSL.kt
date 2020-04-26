@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
 @DynamodbDSL
 class BatchWriteItemRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BatchWriteItemRequest.builder()
+  val builder = BatchWriteItemRequest.builder()
   internal fun build(): BatchWriteItemRequest = builder.build()
     
   /**

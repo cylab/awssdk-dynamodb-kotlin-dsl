@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
 @DynamodbDSL
 class RestoreTableFromBackupResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = RestoreTableFromBackupResponse.builder()
+  val builder = RestoreTableFromBackupResponse.builder()
   internal fun build(): RestoreTableFromBackupResponse = builder.build()
     
   /**

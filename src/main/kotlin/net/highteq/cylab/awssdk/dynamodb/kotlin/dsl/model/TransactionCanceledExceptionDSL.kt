@@ -141,7 +141,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactionCanceledExcepti
 @DynamodbDSL
 class TransactionCanceledExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactionCanceledException.builder()
+  val builder = TransactionCanceledException.builder()
   internal fun build(): TransactionCanceledException = builder.build()
     
   /**
@@ -163,6 +163,17 @@ class TransactionCanceledExceptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.message(value)
+    }
+
+
+  /**
+    * A list of cancellation reasons.
+    */
+  var cancellationReasons: Collection<CancellationReason>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cancellationReasons(value)
     }
 
 
@@ -196,17 +207,6 @@ class TransactionCanceledExceptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.statusCode(value)
-    }
-
-
-  /**
-    * A list of cancellation reasons.
-    */
-  var cancellationReasons: Collection<CancellationReason>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cancellationReasons(value)
     }
 
 

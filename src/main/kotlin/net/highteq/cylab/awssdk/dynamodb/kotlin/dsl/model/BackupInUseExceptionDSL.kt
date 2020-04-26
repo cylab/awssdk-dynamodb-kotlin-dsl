@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupInUseException
 @DynamodbDSL
 class BackupInUseExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BackupInUseException.builder()
+  val builder = BackupInUseException.builder()
   internal fun build(): BackupInUseException = builder.build()
     
   /**

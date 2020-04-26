@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
 @DynamodbDSL
 class GetItemRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GetItemRequest.builder()
+  val builder = GetItemRequest.builder()
   internal fun build(): GetItemRequest = builder.build()
     
   /**
@@ -114,6 +114,18 @@ class GetItemRequestDSL {
 
 
   /**
+    * Determines the read consistency model: If set to true, then the operation uses strongly
+    *  consistent reads; otherwise, the operation uses eventually consistent reads.
+    */
+  var consistentRead: Boolean
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
+    }
+
+
+  /**
     * A string that identifies one or more attributes to retrieve from the table. These attributes can include
     *  scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.
     * 
@@ -138,18 +150,6 @@ class GetItemRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
-    }
-
-
-  /**
-    * Determines the read consistency model: If set to true, then the operation uses strongly
-    *  consistent reads; otherwise, the operation uses eventually consistent reads.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
     }
 
     

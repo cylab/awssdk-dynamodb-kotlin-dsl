@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
 @DynamodbDSL
 class ItemCollectionMetricsDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ItemCollectionMetrics.builder()
+  val builder = ItemCollectionMetrics.builder()
   internal fun build(): ItemCollectionMetrics = builder.build()
     
   /**

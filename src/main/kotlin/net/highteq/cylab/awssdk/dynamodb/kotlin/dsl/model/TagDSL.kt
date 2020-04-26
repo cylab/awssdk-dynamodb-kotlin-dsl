@@ -26,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
 @DynamodbDSL
 class TagDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = Tag.builder()
+  val builder = Tag.builder()
   internal fun build(): Tag = builder.build()
     
   /**

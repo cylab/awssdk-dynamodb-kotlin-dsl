@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.TagResourceRequest
 @DynamodbDSL
 class TagResourceRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TagResourceRequest.builder()
+  val builder = TagResourceRequest.builder()
   internal fun build(): TagResourceRequest = builder.build()
     
   /**

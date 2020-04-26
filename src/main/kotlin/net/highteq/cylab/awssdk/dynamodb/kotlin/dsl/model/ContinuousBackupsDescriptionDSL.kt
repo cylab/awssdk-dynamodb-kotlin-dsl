@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescrip
 @DynamodbDSL
 class ContinuousBackupsDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ContinuousBackupsDescription.builder()
+  val builder = ContinuousBackupsDescription.builder()
   internal fun build(): ContinuousBackupsDescription = builder.build()
     
   /**

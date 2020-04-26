@@ -23,20 +23,9 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaStatus
 @DynamodbDSL
 class ReplicaSettingsDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ReplicaSettingsDescription.builder()
+  val builder = ReplicaSettingsDescription.builder()
   internal fun build(): ReplicaSettingsDescription = builder.build()
     
-  /**
-    * The Region name of the replica.
-    */
-  var regionName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.regionName(value)
-    }
-
-
   /**
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
@@ -121,6 +110,17 @@ class ReplicaSettingsDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaGlobalSecondaryIndexSettings(value)
+    }
+
+
+  /**
+    * The Region name of the replica.
+    */
+  var regionName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.regionName(value)
     }
 
     

@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
 @DynamodbDSL
 class GlobalTableDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = GlobalTableDescription.builder()
+  val builder = GlobalTableDescription.builder()
   internal fun build(): GlobalTableDescription = builder.build()
     
   /**
@@ -37,6 +37,17 @@ class GlobalTableDescriptionDSL {
 
 
   /**
+    * The creation time of the global table.
+    */
+  var creationDateTime: Instant
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.creationDateTime(value)
+    }
+
+
+  /**
     * The Regions where the global table has replicas.
     */
   var replicationGroup: Collection<ReplicaDescription>
@@ -44,17 +55,6 @@ class GlobalTableDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicationGroup(value)
-    }
-
-
-  /**
-    * The unique identifier of the global table.
-    */
-  var globalTableArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableArn(value)
     }
 
 
@@ -78,13 +78,13 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The creation time of the global table.
+    * The unique identifier of the global table.
     */
-  var creationDateTime: Instant
+  var globalTableArn: String
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.creationDateTime(value)
+      builder.globalTableArn(value)
     }
 
     

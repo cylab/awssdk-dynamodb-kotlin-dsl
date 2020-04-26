@@ -22,20 +22,9 @@ import software.amazon.awssdk.services.dynamodb.model.ListBackupsResponse
 @DynamodbDSL
 class ListBackupsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListBackupsResponse.builder()
+  val builder = ListBackupsResponse.builder()
   internal fun build(): ListBackupsResponse = builder.build()
     
-  /**
-    * List of BackupSummary objects.
-    */
-  var backupSummaries: Collection<BackupSummary>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupSummaries(value)
-    }
-
-
   /**
     * The ARN of the backup last evaluated when the current page of results was returned, inclusive of the current
     *  page of results. This value may be specified as the ExclusiveStartBackupArn of a new
@@ -53,6 +42,17 @@ class ListBackupsResponseDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.lastEvaluatedBackupArn(value)
+    }
+
+
+  /**
+    * List of BackupSummary objects.
+    */
+  var backupSummaries: Collection<BackupSummary>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupSummaries(value)
     }
 
 

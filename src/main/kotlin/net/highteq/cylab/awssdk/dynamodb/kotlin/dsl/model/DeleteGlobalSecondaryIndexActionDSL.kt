@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.DeleteGlobalSecondaryIndex
 @DynamodbDSL
 class DeleteGlobalSecondaryIndexActionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DeleteGlobalSecondaryIndexAction.builder()
+  val builder = DeleteGlobalSecondaryIndexAction.builder()
   internal fun build(): DeleteGlobalSecondaryIndexAction = builder.build()
     
   /**

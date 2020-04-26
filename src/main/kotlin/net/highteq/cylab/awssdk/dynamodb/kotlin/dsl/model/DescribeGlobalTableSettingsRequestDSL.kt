@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSetting
 @DynamodbDSL
 class DescribeGlobalTableSettingsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeGlobalTableSettingsRequest.builder()
+  val builder = DescribeGlobalTableSettingsRequest.builder()
   internal fun build(): DescribeGlobalTableSettingsRequest = builder.build()
     
   /**

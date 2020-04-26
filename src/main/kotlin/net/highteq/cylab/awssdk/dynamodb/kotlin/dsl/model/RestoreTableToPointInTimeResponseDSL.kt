@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
 @DynamodbDSL
 class RestoreTableToPointInTimeResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = RestoreTableToPointInTimeResponse.builder()
+  val builder = RestoreTableToPointInTimeResponse.builder()
   internal fun build(): RestoreTableToPointInTimeResponse = builder.build()
     
   /**

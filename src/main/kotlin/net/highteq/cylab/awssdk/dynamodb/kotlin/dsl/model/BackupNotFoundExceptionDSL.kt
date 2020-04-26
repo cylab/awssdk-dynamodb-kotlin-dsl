@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupNotFoundException
 @DynamodbDSL
 class BackupNotFoundExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BackupNotFoundException.builder()
+  val builder = BackupNotFoundException.builder()
   internal fun build(): BackupNotFoundException = builder.build()
     
   /**

@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
 @DynamodbDSL
 class DescribeLimitsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DescribeLimitsResponse.builder()
+  val builder = DescribeLimitsResponse.builder()
   internal fun build(): DescribeLimitsResponse = builder.build()
     
   /**

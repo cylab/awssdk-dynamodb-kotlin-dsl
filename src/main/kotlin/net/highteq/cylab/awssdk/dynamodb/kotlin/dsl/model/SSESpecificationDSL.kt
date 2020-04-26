@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
 @DynamodbDSL
 class SSESpecificationDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = SSESpecification.builder()
+  val builder = SSESpecification.builder()
   internal fun build(): SSESpecification = builder.build()
     
   /**
@@ -37,19 +37,6 @@ class SSESpecificationDSL {
 
 
   /**
-    * The AWS KMS customer master key (CMK) that should be used for the AWS KMS encryption. To specify a CMK, use
-    *  its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. Note that you should only provide this
-    *  parameter if the key is different from the default DynamoDB customer master key alias/aws/dynamodb.
-    */
-  var kmsMasterKeyId: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.kmsMasterKeyId(value)
-    }
-
-
-  /**
     * Server-side encryption type. The only supported value is:
     * 
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
@@ -60,6 +47,19 @@ class SSESpecificationDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sseType(value)
+    }
+
+
+  /**
+    * The AWS KMS customer master key (CMK) that should be used for the AWS KMS encryption. To specify a CMK, use
+    *  its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. Note that you should only provide this
+    *  parameter if the key is different from the default DynamoDB customer master key alias/aws/dynamodb.
+    */
+  var kmsMasterKeyId: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.kmsMasterKeyId(value)
     }
 
     

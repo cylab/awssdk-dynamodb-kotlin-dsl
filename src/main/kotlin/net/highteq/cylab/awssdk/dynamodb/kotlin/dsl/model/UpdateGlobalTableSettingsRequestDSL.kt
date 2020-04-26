@@ -24,28 +24,24 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableSettingsR
 @DynamodbDSL
 class UpdateGlobalTableSettingsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UpdateGlobalTableSettingsRequest.builder()
+  val builder = UpdateGlobalTableSettingsRequest.builder()
   internal fun build(): UpdateGlobalTableSettingsRequest = builder.build()
     
   /**
+    * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
+    *  table defaults to PROVISIONED capacity billing mode.
     * 
+    *  PROVISIONED - We recommend using PROVISIONED for predictable workloads.
+    *  PROVISIONED sets the billing mode to Provisioned Mode.
+    * 
+    *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
+    *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var globalTableBillingMode: BillingMode
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * The name of the global table
-    */
-  var globalTableName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableName(value)
+      builder.globalTableBillingMode(value)
     }
 
 
@@ -94,20 +90,24 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
-    *  table defaults to PROVISIONED capacity billing mode.
     * 
-    *  PROVISIONED - We recommend using PROVISIONED for predictable workloads.
-    *  PROVISIONED sets the billing mode to Provisioned Mode.
-    * 
-    *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
-    *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var globalTableBillingMode: BillingMode
+  var overrideConfiguration: AwsRequestOverrideConfiguration
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.globalTableBillingMode(value)
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the global table
+    */
+  var globalTableName: String
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalTableName(value)
     }
 
     

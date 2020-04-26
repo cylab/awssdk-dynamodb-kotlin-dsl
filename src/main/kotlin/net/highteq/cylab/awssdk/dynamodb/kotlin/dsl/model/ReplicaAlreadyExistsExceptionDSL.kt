@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaAlreadyExistsExcept
 @DynamodbDSL
 class ReplicaAlreadyExistsExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ReplicaAlreadyExistsException.builder()
+  val builder = ReplicaAlreadyExistsException.builder()
   internal fun build(): ReplicaAlreadyExistsException = builder.build()
     
   /**

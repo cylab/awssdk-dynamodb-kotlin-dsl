@@ -26,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValue
 @DynamodbDSL
 class DeleteItemRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = DeleteItemRequest.builder()
+  val builder = DeleteItemRequest.builder()
   internal fun build(): DeleteItemRequest = builder.build()
     
   /**

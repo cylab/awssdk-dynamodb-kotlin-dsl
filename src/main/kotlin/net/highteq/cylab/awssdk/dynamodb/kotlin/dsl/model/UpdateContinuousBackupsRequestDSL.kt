@@ -21,9 +21,20 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateContinuousBackupsReq
 @DynamodbDSL
 class UpdateContinuousBackupsRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UpdateContinuousBackupsRequest.builder()
+  val builder = UpdateContinuousBackupsRequest.builder()
   internal fun build(): UpdateContinuousBackupsRequest = builder.build()
     
+  /**
+    * Represents the settings used to enable point in time recovery.
+    */
+  var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.pointInTimeRecoverySpecification(value)
+    }
+
+
   /**
     * 
     */
@@ -43,17 +54,6 @@ class UpdateContinuousBackupsRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableName(value)
-    }
-
-
-  /**
-    * Represents the settings used to enable point in time recovery.
-    */
-  var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.pointInTimeRecoverySpecification(value)
     }
 
   

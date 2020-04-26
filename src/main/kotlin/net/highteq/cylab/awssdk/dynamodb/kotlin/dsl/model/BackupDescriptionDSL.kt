@@ -22,9 +22,20 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableFeatureDetails
 @DynamodbDSL
 class BackupDescriptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = BackupDescription.builder()
+  val builder = BackupDescription.builder()
   internal fun build(): BackupDescription = builder.build()
     
+  /**
+    * Contains the details of the backup created for the table.
+    */
+  var backupDetails: BackupDetails
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupDetails(value)
+    }
+
+
   /**
     * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
     *  GSIs, streams, TTL.
@@ -47,19 +58,16 @@ class BackupDescriptionDSL {
       builder.sourceTableDetails(value)
     }
 
-
+  
+    
   /**
     * Contains the details of the backup created for the table.
     */
-  var backupDetails: BackupDetails
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupDetails(value)
-    }
+  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
+    builder.backupDetails(buildBackupDetails(dslBlock))
+  }
 
-  
-    
+
   /**
     * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
     *  GSIs, streams, TTL.
@@ -74,14 +82,6 @@ class BackupDescriptionDSL {
     */
   fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) {
     builder.sourceTableDetails(buildSourceTableDetails(dslBlock))
-  }
-
-
-  /**
-    * Contains the details of the backup created for the table.
-    */
-  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
-    builder.backupDetails(buildBackupDetails(dslBlock))
   }
 
 }

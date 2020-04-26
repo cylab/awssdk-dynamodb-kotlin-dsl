@@ -22,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
 @DynamodbDSL
 class ListStreamsResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListStreamsResponse.builder()
+  val builder = ListStreamsResponse.builder()
   internal fun build(): ListStreamsResponse = builder.build()
     
   /**

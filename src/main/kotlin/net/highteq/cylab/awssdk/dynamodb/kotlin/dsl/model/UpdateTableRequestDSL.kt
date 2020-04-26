@@ -26,32 +26,9 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTableRequest
 @DynamodbDSL
 class UpdateTableRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = UpdateTableRequest.builder()
+  val builder = UpdateTableRequest.builder()
   internal fun build(): UpdateTableRequest = builder.build()
     
-  /**
-    * An array of one or more global secondary indexes for the table. For each index in the array, you can request
-    *  one action:
-    * 
-    *  Create - add a new global secondary index to the table.
-    * 
-    *  Update - modify the provisioned throughput settings of an existing global secondary index.
-    * 
-    *  Delete - remove a global secondary index from the table.
-    * 
-    *  You can create or delete only one global secondary index per UpdateTable operation.
-    * 
-    *  For more information, see Managing Global
-    *  Secondary Indexes in the Amazon DynamoDB Developer Guide.
-    */
-  var globalSecondaryIndexUpdates: Collection<GlobalSecondaryIndexUpdate>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalSecondaryIndexUpdates(value)
-    }
-
-
   /**
     * 
     */
@@ -82,17 +59,6 @@ class UpdateTableRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
-    }
-
-
-  /**
-    * The new server-side encryption settings for the specified table.
-    */
-  var sseSpecification: SSESpecification
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sseSpecification(value)
     }
 
 
@@ -142,6 +108,40 @@ class UpdateTableRequestDSL {
       builder.billingMode(value)
     }
 
+
+  /**
+    * The new server-side encryption settings for the specified table.
+    */
+  var sseSpecification: SSESpecification
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sseSpecification(value)
+    }
+
+
+  /**
+    * An array of one or more global secondary indexes for the table. For each index in the array, you can request
+    *  one action:
+    * 
+    *  Create - add a new global secondary index to the table.
+    * 
+    *  Update - modify the provisioned throughput settings of an existing global secondary index.
+    * 
+    *  Delete - remove a global secondary index from the table.
+    * 
+    *  You can create or delete only one global secondary index per UpdateTable operation.
+    * 
+    *  For more information, see Managing Global
+    *  Secondary Indexes in the Amazon DynamoDB Developer Guide.
+    */
+  var globalSecondaryIndexUpdates: Collection<GlobalSecondaryIndexUpdate>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalSecondaryIndexUpdates(value)
+    }
+
     
   /**
     * Controls how you are charged for read and write throughput and how you manage capacity. When switching from
@@ -169,6 +169,17 @@ class UpdateTableRequestDSL {
 
 
   /**
+    * Represents the DynamoDB Streams configuration for the table.
+    * 
+    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
+    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
+    */
+  fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
+    builder.streamSpecification(buildStreamSpecification(dslBlock))
+  }
+
+
+  /**
     * The new server-side encryption settings for the specified table.
     */
   fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
@@ -177,13 +188,12 @@ class UpdateTableRequestDSL {
 
 
   /**
-    * Represents the DynamoDB Streams configuration for the table.
-    * 
-    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
-    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
+    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
+    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
+    *  index.
     */
-  fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamSpecification(buildStreamSpecification(dslBlock))
+  fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
+    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
 
 
@@ -204,16 +214,6 @@ class UpdateTableRequestDSL {
     */
   fun globalSecondaryIndexUpdates(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) {
     builder.globalSecondaryIndexUpdates(buildGlobalSecondaryIndexUpdateCollection(dslBlock))
-  }
-
-
-  /**
-    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
-    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
-    *  index.
-    */
-  fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
-    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
 
 }

@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.CreateBackupRequest
 @DynamodbDSL
 class CreateBackupRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = CreateBackupRequest.builder()
+  val builder = CreateBackupRequest.builder()
   internal fun build(): CreateBackupRequest = builder.build()
     
   /**

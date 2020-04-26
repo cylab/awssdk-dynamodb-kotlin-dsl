@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListTagsOfResourceRequest
 @DynamodbDSL
 class ListTagsOfResourceRequestDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ListTagsOfResourceRequest.builder()
+  val builder = ListTagsOfResourceRequest.builder()
   internal fun build(): ListTagsOfResourceRequest = builder.build()
     
   /**

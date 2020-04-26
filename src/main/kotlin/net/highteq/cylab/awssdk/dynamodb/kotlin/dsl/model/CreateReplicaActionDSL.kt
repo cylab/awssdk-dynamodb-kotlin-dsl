@@ -19,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.CreateReplicaAction
 @DynamodbDSL
 class CreateReplicaActionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = CreateReplicaAction.builder()
+  val builder = CreateReplicaAction.builder()
   internal fun build(): CreateReplicaAction = builder.build()
     
   /**

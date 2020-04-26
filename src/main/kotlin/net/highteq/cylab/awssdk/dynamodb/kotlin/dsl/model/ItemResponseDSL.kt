@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ItemResponse
 @DynamodbDSL
 class ItemResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ItemResponse.builder()
+  val builder = ItemResponse.builder()
   internal fun build(): ItemResponse = builder.build()
     
   /**

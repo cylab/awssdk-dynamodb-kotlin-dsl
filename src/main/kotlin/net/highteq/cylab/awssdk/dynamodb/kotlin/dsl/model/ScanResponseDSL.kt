@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.ScanResponse
 @DynamodbDSL
 class ScanResponseDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = ScanResponse.builder()
+  val builder = ScanResponse.builder()
   internal fun build(): ScanResponse = builder.build()
     
   /**

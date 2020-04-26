@@ -23,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableDetails
 @DynamodbDSL
 class SourceTableDetailsDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = SourceTableDetails.builder()
+  val builder = SourceTableDetails.builder()
   internal fun build(): SourceTableDetails = builder.build()
     
   /**
@@ -104,6 +104,17 @@ class SourceTableDetailsDSL {
 
 
   /**
+    * Time when the source table was created.
+    */
+  var tableCreationDateTime: Instant
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableCreationDateTime(value)
+    }
+
+
+  /**
     * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
     *  changed later.
     * 
@@ -118,17 +129,6 @@ class SourceTableDetailsDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.billingMode(value)
-    }
-
-
-  /**
-    * Time when the source table was created.
-    */
-  var tableCreationDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableCreationDateTime(value)
     }
 
     

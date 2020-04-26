@@ -21,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactionConflictExcepti
 @DynamodbDSL
 class TransactionConflictExceptionDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = TransactionConflictException.builder()
+  val builder = TransactionConflictException.builder()
   internal fun build(): TransactionConflictException = builder.build()
     
   /**

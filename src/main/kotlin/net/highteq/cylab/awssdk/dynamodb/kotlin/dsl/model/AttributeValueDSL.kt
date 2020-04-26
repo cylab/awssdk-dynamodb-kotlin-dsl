@@ -24,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 @DynamodbDSL
 class AttributeValueDSL {
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  internal val builder = AttributeValue.builder()
+  val builder = AttributeValue.builder()
   internal fun build(): AttributeValue = builder.build()
     
   /**
@@ -48,35 +48,6 @@ class AttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.bool(value)
-    }
-
-
-  /**
-    * An attribute of type String Set. For example:
-    * 
-    *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
-    */
-  var ss: Collection<String>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.ss(value)
-    }
-
-
-  /**
-    * An attribute of type Number Set. For example:
-    * 
-    *  "NS": ["42.2", "-19", "7.5", "3.14"]
-    * 
-    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
-    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
-    */
-  var ns: Collection<String>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.ns(value)
     }
 
 
@@ -143,6 +114,35 @@ class AttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.m(value)
+    }
+
+
+  /**
+    * An attribute of type String Set. For example:
+    * 
+    *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
+    */
+  var ss: Collection<String>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.ss(value)
+    }
+
+
+  /**
+    * An attribute of type Number Set. For example:
+    * 
+    *  "NS": ["42.2", "-19", "7.5", "3.14"]
+    * 
+    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
+    */
+  var ns: Collection<String>
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.ns(value)
     }
 
 
