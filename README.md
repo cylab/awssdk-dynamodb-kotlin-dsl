@@ -2,6 +2,12 @@
 
 This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder
 
+Current version is `2.5.54_ALPHA1`. The release is available as 
+
+    net.highteq.cylab:awssdk-dynamodb-kotlin-dsl:2.5.54_ALPHA1
+
+at maven central.
+
 **CAUTION:** This is very much work in progress and might not work as expected or at all.
 Feel free to try it out and give feedback at the generator project (see above)
 
