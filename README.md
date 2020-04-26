@@ -1,5 +1,7 @@
 # AWS-SDK DynamoDB Kotlin DSL 
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl)
+
 This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder
 
 Current version is `2.5.54_ALPHA1`. The release is available as 
