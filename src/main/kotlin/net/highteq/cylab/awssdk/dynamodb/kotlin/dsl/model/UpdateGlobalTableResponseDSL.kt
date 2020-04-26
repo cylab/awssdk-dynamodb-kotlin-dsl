@@ -28,7 +28,7 @@ class UpdateGlobalTableResponseDSL {
   /**
     * Contains the details of the global table.
     */
-  var globalTableDescription: GlobalTableDescription
+  var globalTableDescription: GlobalTableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class UpdateGlobalTableResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class UpdateGlobalTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

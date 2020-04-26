@@ -26,17 +26,6 @@ class BatchGetItemRequestDSL {
   internal fun build(): BatchGetItemRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from
     *  that table. Each table name can be used only once per BatchGetItem request.
     * 
@@ -93,7 +82,7 @@ class BatchGetItemRequestDSL {
     *  AttributesToGet - This is a legacy parameter. Use ProjectionExpression instead. For
     *  more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  var requestItems: Map<String, KeysAndAttributes>
+  var requestItems: Map<String, KeysAndAttributes>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -104,18 +93,29 @@ class BatchGetItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
     }
 
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
     
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  fun returnConsumedCapacity(value: String) {
+  fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 

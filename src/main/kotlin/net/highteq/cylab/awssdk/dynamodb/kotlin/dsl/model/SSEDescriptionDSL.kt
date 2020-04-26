@@ -25,24 +25,9 @@ class SSEDescriptionDSL {
   internal fun build(): SSEDescription = builder.build()
     
   /**
-    * Represents the current state of server-side encryption. The only supported values are:
-    * 
-    *  ENABLED - Server-side encryption is enabled.
-    * 
-    *  UPDATING - Server-side encryption is being updated.
-    */
-  var status: SSEStatus
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.status(value)
-    }
-
-
-  /**
     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
     */
-  var kmsMasterKeyArn: String
+  var kmsMasterKeyArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -56,14 +41,14 @@ class SSEDescriptionDSL {
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
     *  account and is managed by AWS KMS (AWS KMS charges apply).
     */
-  var sseType: SSEType
+  var sseType: SSEType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sseType(value)
     }
 
-    
+
   /**
     * Represents the current state of server-side encryption. The only supported values are:
     * 
@@ -71,19 +56,34 @@ class SSEDescriptionDSL {
     * 
     *  UPDATING - Server-side encryption is being updated.
     */
-  fun status(value: String) {
-    builder.status(value)
-  }
+  var status: SSEStatus?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.status(value)
+    }
 
-
+    
   /**
     * Server-side encryption type. The only supported value is:
     * 
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
     *  account and is managed by AWS KMS (AWS KMS charges apply).
     */
-  fun sseType(value: String) {
+  fun sseType(value: String?) {
     builder.sseType(value)
+  }
+
+
+  /**
+    * Represents the current state of server-side encryption. The only supported values are:
+    * 
+    *  ENABLED - Server-side encryption is enabled.
+    * 
+    *  UPDATING - Server-side encryption is being updated.
+    */
+  fun status(value: String?) {
+    builder.status(value)
   }
 
   

@@ -25,20 +25,9 @@ class CreateGlobalTableRequestDSL {
   internal fun build(): CreateGlobalTableRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The global table name.
     */
-  var globalTableName: String
+  var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,11 +38,22 @@ class CreateGlobalTableRequestDSL {
   /**
     * The Regions where the global table needs to be created.
     */
-  var replicationGroup: Collection<Replica>
+  var replicationGroup: Collection<Replica>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicationGroup(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
   

@@ -24,20 +24,9 @@ class RestoreTableFromBackupRequestDSL {
   internal fun build(): RestoreTableFromBackupRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the new table to which the backup must be restored.
     */
-  var targetTableName: String
+  var targetTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,11 +37,22 @@ class RestoreTableFromBackupRequestDSL {
   /**
     * The Amazon Resource Name (ARN) associated with the backup.
     */
-  var backupArn: String
+  var backupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupArn(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
   

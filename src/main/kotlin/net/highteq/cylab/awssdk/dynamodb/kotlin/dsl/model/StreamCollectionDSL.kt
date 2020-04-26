@@ -18,8 +18,8 @@ class StreamCollectionDSL {
   private val list = ArrayList<Stream>()
   internal fun build() : List<Stream> = list
 
-  fun item(init: StreamDSL.() -> Unit) {
-    list.add(StreamDSL().apply(init).build())
+  fun item(dslBlock: StreamDSL.() -> Unit) {
+    list.add(StreamDSL().apply(dslBlock).build())
   }
 
   operator fun Stream.unaryPlus() {

@@ -25,7 +25,7 @@ class DeleteGlobalSecondaryIndexActionDSL {
   /**
     * The name of the global secondary index to be deleted.
     */
-  var indexName: String
+  var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

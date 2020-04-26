@@ -18,8 +18,8 @@ class TransactGetItemCollectionDSL {
   private val list = ArrayList<TransactGetItem>()
   internal fun build() : List<TransactGetItem> = list
 
-  fun item(init: TransactGetItemDSL.() -> Unit) {
-    list.add(TransactGetItemDSL().apply(init).build())
+  fun item(dslBlock: TransactGetItemDSL.() -> Unit) {
+    list.add(TransactGetItemDSL().apply(dslBlock).build())
   }
 
   operator fun TransactGetItem.unaryPlus() {

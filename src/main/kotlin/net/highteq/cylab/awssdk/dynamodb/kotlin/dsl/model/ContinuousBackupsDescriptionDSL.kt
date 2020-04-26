@@ -27,7 +27,7 @@ class ContinuousBackupsDescriptionDSL {
   /**
     * ContinuousBackupsStatus can be one of the following states: ENABLED, DISABLED
     */
-  var continuousBackupsStatus: ContinuousBackupsStatus
+  var continuousBackupsStatus: ContinuousBackupsStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +38,7 @@ class ContinuousBackupsDescriptionDSL {
   /**
     * The description of the point in time recovery settings applied to the table.
     */
-  var pointInTimeRecoveryDescription: PointInTimeRecoveryDescription
+  var pointInTimeRecoveryDescription: PointInTimeRecoveryDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +49,7 @@ class ContinuousBackupsDescriptionDSL {
   /**
     * ContinuousBackupsStatus can be one of the following states: ENABLED, DISABLED
     */
-  fun continuousBackupsStatus(value: String) {
+  fun continuousBackupsStatus(value: String?) {
     builder.continuousBackupsStatus(value)
   }
 

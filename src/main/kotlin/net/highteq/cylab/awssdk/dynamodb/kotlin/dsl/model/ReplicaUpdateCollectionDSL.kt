@@ -24,8 +24,8 @@ class ReplicaUpdateCollectionDSL {
   private val list = ArrayList<ReplicaUpdate>()
   internal fun build() : List<ReplicaUpdate> = list
 
-  fun item(init: ReplicaUpdateDSL.() -> Unit) {
-    list.add(ReplicaUpdateDSL().apply(init).build())
+  fun item(dslBlock: ReplicaUpdateDSL.() -> Unit) {
+    list.add(ReplicaUpdateDSL().apply(dslBlock).build())
   }
 
   operator fun ReplicaUpdate.unaryPlus() {

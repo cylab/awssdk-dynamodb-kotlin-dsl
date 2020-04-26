@@ -27,7 +27,7 @@ class UpdateContinuousBackupsRequestDSL {
   /**
     * Represents the settings used to enable point in time recovery.
     */
-  var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification
+  var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,24 +36,24 @@ class UpdateContinuousBackupsRequestDSL {
 
 
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableName(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
   

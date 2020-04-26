@@ -34,50 +34,11 @@ class RecordDSL {
     * 
     *  REMOVE - the item was deleted from the table
     */
-  var eventName: OperationType
+  var eventName: OperationType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.eventName(value)
-    }
-
-
-  /**
-    * The region in which the GetRecords request was received.
-    */
-  var awsRegion: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.awsRegion(value)
-    }
-
-
-  /**
-    * The version number of the stream record format. This number is updated whenever the structure of
-    *  Record is modified.
-    * 
-    *  Client applications must not assume that eventVersion will remain at a particular value, as this
-    *  number is subject to change at any time. In general, eventVersion will only increase as the
-    *  low-level DynamoDB Streams API evolves.
-    */
-  var eventVersion: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.eventVersion(value)
-    }
-
-
-  /**
-    * The AWS service from which the stream record originated. For DynamoDB Streams, this is
-    *  aws:dynamodb.
-    */
-  var eventSource: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.eventSource(value)
     }
 
 
@@ -92,7 +53,7 @@ class RecordDSL {
     * 
     *  "dynamodb.amazonaws.com"
     */
-  var userIdentity: Identity
+  var userIdentity: Identity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -101,24 +62,63 @@ class RecordDSL {
 
 
   /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
-    */
-  var dynamodb: StreamRecord
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.dynamodb(value)
-    }
-
-
-  /**
     * A globally unique identifier for the event that was recorded in this stream record.
     */
-  var eventID: String
+  var eventID: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.eventID(value)
+    }
+
+
+  /**
+    * The version number of the stream record format. This number is updated whenever the structure of
+    *  Record is modified.
+    * 
+    *  Client applications must not assume that eventVersion will remain at a particular value, as this
+    *  number is subject to change at any time. In general, eventVersion will only increase as the
+    *  low-level DynamoDB Streams API evolves.
+    */
+  var eventVersion: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.eventVersion(value)
+    }
+
+
+  /**
+    * The AWS service from which the stream record originated. For DynamoDB Streams, this is
+    *  aws:dynamodb.
+    */
+  var eventSource: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.eventSource(value)
+    }
+
+
+  /**
+    * The region in which the GetRecords request was received.
+    */
+  var awsRegion: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.awsRegion(value)
+    }
+
+
+  /**
+    * The main body of the stream record, containing all of the DynamoDB-specific fields.
+    */
+  var dynamodb: StreamRecord?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.dynamodb(value)
     }
 
     
@@ -131,7 +131,7 @@ class RecordDSL {
     * 
     *  REMOVE - the item was deleted from the table
     */
-  fun eventName(value: String) {
+  fun eventName(value: String?) {
     builder.eventName(value)
   }
 

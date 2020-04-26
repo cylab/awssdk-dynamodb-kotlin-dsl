@@ -27,7 +27,7 @@ class UntagResourceResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +38,7 @@ class UntagResourceResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

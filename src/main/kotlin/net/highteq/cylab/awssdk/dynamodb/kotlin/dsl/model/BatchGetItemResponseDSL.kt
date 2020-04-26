@@ -28,14 +28,19 @@ class BatchGetItemResponseDSL {
   internal fun build(): BatchGetItemResponse = builder.build()
     
   /**
-    * A map of table name to a list of items. Each object in Responses consists of a table name, along
-    *  with a map of attribute data consisting of the data type and attribute value.
+    * The read capacity units consumed by the entire BatchGetItem operation.
+    * 
+    *  Each element consists of:
+    * 
+    *  TableName - The table that consumed the provisioned throughput.
+    * 
+    *  CapacityUnits - The total number of capacity units consumed.
     */
-  var responses: Map<String, Collection<Map<String, AttributeValue>>>
+  var consumedCapacity: Collection<ConsumedCapacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.responses(value)
+      builder.consumedCapacity(value)
     }
 
 
@@ -58,7 +63,7 @@ class BatchGetItemResponseDSL {
     * 
     *  If there are no unprocessed keys remaining, the response contains an empty UnprocessedKeys map.
     */
-  var unprocessedKeys: Map<String, KeysAndAttributes>
+  var unprocessedKeys: Map<String, KeysAndAttributes>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,26 +72,21 @@ class BatchGetItemResponseDSL {
 
 
   /**
-    * The read capacity units consumed by the entire BatchGetItem operation.
-    * 
-    *  Each element consists of:
-    * 
-    *  TableName - The table that consumed the provisioned throughput.
-    * 
-    *  CapacityUnits - The total number of capacity units consumed.
+    * A map of table name to a list of items. Each object in Responses consists of a table name, along
+    *  with a map of attribute data consisting of the data type and attribute value.
     */
-  var consumedCapacity: Collection<ConsumedCapacity>
+  var responses: Map<String, Collection<Map<String, AttributeValue>>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.consumedCapacity(value)
+      builder.responses(value)
     }
 
 
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -97,7 +97,7 @@ class BatchGetItemResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

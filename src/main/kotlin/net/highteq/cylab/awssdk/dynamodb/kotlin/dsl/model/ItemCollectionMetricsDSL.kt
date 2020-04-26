@@ -29,7 +29,7 @@ class ItemCollectionMetricsDSL {
     * The partition key value of the item collection. This value is the same as the partition key value of the
     *  item.
     */
-  var itemCollectionKey: Map<String, AttributeValue>
+  var itemCollectionKey: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,7 +46,7 @@ class ItemCollectionMetricsDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  var sizeEstimateRangeGB: Collection<Double>
+  var sizeEstimateRangeGB: Collection<Double>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

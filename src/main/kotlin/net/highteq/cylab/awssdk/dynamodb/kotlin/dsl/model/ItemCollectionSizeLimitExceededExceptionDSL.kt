@@ -28,29 +28,7 @@ class ItemCollectionSizeLimitExceededExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cause(value)
-    }
-
-
-  /**
-    * 
-    */
-  var message: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.message(value)
-    }
-
-
-  /**
-    * 
-    */
-  var awsErrorDetails: AwsErrorDetails
+  var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +39,7 @@ class ItemCollectionSizeLimitExceededExceptionDSL {
   /**
     * 
     */
-  var requestId: String
+  var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,7 +61,29 @@ class ItemCollectionSizeLimitExceededExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration
+  var cause: Throwable?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cause(value)
+    }
+
+
+  /**
+    * 
+    */
+  var message: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.message(value)
+    }
+
+
+  /**
+    * 
+    */
+  var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,23 +94,7 @@ class ItemCollectionSizeLimitExceededExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable) {
-    builder.cause(value)
-  }
-
-
-  /**
-    * 
-    */
-  fun message(value: String) {
-    builder.message(value)
-  }
-
-
-  /**
-    * 
-    */
-  fun requestId(value: String) {
+  fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -120,6 +104,22 @@ class ItemCollectionSizeLimitExceededExceptionDSL {
     */
   fun statusCode(value: Int) {
     builder.statusCode(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun cause(value: Throwable?) {
+    builder.cause(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun message(value: String?) {
+    builder.message(value)
   }
 
   

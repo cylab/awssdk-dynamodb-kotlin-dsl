@@ -36,7 +36,7 @@ class TableDescriptionDSL {
   /**
     * The name of the table.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,7 +65,7 @@ class TableDescriptionDSL {
     * 
     *  For more information about primary keys, see Primary Key in the Amazon DynamoDB Developer Guide.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,7 +77,7 @@ class TableDescriptionDSL {
     * The provisioned throughput settings for the table, consisting of read and write capacity units, along with
     *  data about increases and decreases.
     */
-  var provisionedThroughput: ProvisionedThroughputDescription
+  var provisionedThroughput: ProvisionedThroughputDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -104,7 +104,7 @@ class TableDescriptionDSL {
     * 
     *  ARCHIVED - The table has been archived. See the ArchivalReason for more information.
     */
-  var tableStatus: TableStatus
+  var tableStatus: TableStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -122,7 +122,7 @@ class TableDescriptionDSL {
     * 
     *  AttributeType - The data type for the attribute.
     */
-  var attributeDefinitions: Collection<AttributeDefinition>
+  var attributeDefinitions: Collection<AttributeDefinition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -134,7 +134,7 @@ class TableDescriptionDSL {
     * The date and time when the table was created, in UNIX epoch time
     *  format.
     */
-  var creationDateTime: Instant
+  var creationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -146,7 +146,7 @@ class TableDescriptionDSL {
     * The total size of the specified table, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  var tableSizeBytes: Long
+  var tableSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -158,7 +158,7 @@ class TableDescriptionDSL {
     * The number of items in the specified table. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  var itemCount: Long
+  var itemCount: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -169,7 +169,7 @@ class TableDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the table.
     */
-  var tableArn: String
+  var tableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -180,7 +180,7 @@ class TableDescriptionDSL {
   /**
     * Unique identifier for the table for which the backup was created.
     */
-  var tableId: String
+  var tableId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -191,7 +191,7 @@ class TableDescriptionDSL {
   /**
     * Contains the details for the read/write capacity mode.
     */
-  var billingModeSummary: BillingModeSummary
+  var billingModeSummary: BillingModeSummary?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -236,7 +236,7 @@ class TableDescriptionDSL {
     * 
     *  If the table is in the DELETING state, no information about indexes will be returned.
     */
-  var localSecondaryIndexes: Collection<LocalSecondaryIndexDescription>
+  var localSecondaryIndexes: Collection<LocalSecondaryIndexDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -303,7 +303,7 @@ class TableDescriptionDSL {
     * 
     *  If the table is in the DELETING state, no information about indexes will be returned.
     */
-  var globalSecondaryIndexes: Collection<GlobalSecondaryIndexDescription>
+  var globalSecondaryIndexes: Collection<GlobalSecondaryIndexDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -314,7 +314,7 @@ class TableDescriptionDSL {
   /**
     * The current DynamoDB Streams configuration for the table.
     */
-  var streamSpecification: StreamSpecification
+  var streamSpecification: StreamSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -335,7 +335,7 @@ class TableDescriptionDSL {
     * 
     *  StreamLabel
     */
-  var latestStreamLabel: String
+  var latestStreamLabel: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -346,7 +346,7 @@ class TableDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the latest stream for this table.
     */
-  var latestStreamArn: String
+  var latestStreamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -357,7 +357,7 @@ class TableDescriptionDSL {
   /**
     * Contains details for the restore.
     */
-  var restoreSummary: RestoreSummary
+  var restoreSummary: RestoreSummary?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -368,7 +368,7 @@ class TableDescriptionDSL {
   /**
     * The description of the server-side encryption status on the specified table.
     */
-  var sseDescription: SSEDescription
+  var sseDescription: SSEDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -395,7 +395,7 @@ class TableDescriptionDSL {
     * 
     *  ARCHIVED - The table has been archived. See the ArchivalReason for more information.
     */
-  fun tableStatus(value: String) {
+  fun tableStatus(value: String?) {
     builder.tableStatus(value)
   }
 

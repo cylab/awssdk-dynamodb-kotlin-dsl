@@ -28,7 +28,7 @@ class UpdateTableResponseDSL {
   /**
     * Represents the properties of the table.
     */
-  var tableDescription: TableDescription
+  var tableDescription: TableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class UpdateTableResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class UpdateTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

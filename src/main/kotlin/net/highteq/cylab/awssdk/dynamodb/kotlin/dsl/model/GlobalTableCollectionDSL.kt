@@ -18,8 +18,8 @@ class GlobalTableCollectionDSL {
   private val list = ArrayList<GlobalTable>()
   internal fun build() : List<GlobalTable> = list
 
-  fun item(init: GlobalTableDSL.() -> Unit) {
-    list.add(GlobalTableDSL().apply(init).build())
+  fun item(dslBlock: GlobalTableDSL.() -> Unit) {
+    list.add(GlobalTableDSL().apply(dslBlock).build())
   }
 
   operator fun GlobalTable.unaryPlus() {

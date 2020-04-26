@@ -4,9 +4,9 @@
 
 This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder
 
-Current version is `2.5.54_ALPHA1`. The release is available as 
+Current version is `2.5.54_ALPHA2`. The release is available as 
 
-    net.highteq.cylab:awssdk-dynamodb-kotlin-dsl:2.5.54_ALPHA1
+    net.highteq.cylab:awssdk-dynamodb-kotlin-dsl:2.5.54_ALPHA2
 
 at maven central.
 
@@ -14,7 +14,7 @@ at maven central.
 Feel free to try it out and give feedback at the generator project (see above)
 
 All Builders of the SDK are wrapped in Kotlin style DSLs.
-Use buildXXXXX { } everytime you would use XXXXX.builder() e.g.
+Use buildXXX { } everytime you would use XXX.builder() e.g.
 
     buildDynamoDbClient {
     }
@@ -46,3 +46,46 @@ not recommended and should only be a last resort.
 
 In any case, please report a bug at the generator project:
 https://github.com/cylab/aws-kotlin-dsl-builder
+
+## More Examples
+
+For types that are used in collections, you can create a collection using `buildXXXCollection`:
+
+    buildAttributeDefinitionCollection {
+    }
+
+The elements in this DSL can be added by the `item {}` sub DSL or by using the `+` operator on existing instances:
+
+    buildAttributeDefinitionCollection {
+      item {
+        attributeName = Constants.ID
+        attributeType = ScalarAttributeType.S
+      }
+      item {
+        attributeName = Constants.NAME
+        attributeType = ScalarAttributeType.S
+      }
+      
+      +existingAttribute
+      
+      +existingCollectionOfAttributes
+    }
+
+The same mechanism works, if the collection is part of a sub DSL:
+
+    val createTableRequest = buildCreateTableRequest {
+      attributeDefinitions {
+        item {
+          attributeName = Constants.ID
+          attributeType = ScalarAttributeType.S
+        }
+        item {
+          attributeName = Constants.NAME
+          attributeType = ScalarAttributeType.S
+        }
+      
+        +existingAttribute
+          
+        +existingCollectionOfAttributes
+      }
+    }

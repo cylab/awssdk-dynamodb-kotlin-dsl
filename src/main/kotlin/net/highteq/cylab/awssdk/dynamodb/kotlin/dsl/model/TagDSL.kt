@@ -32,7 +32,7 @@ class TagDSL {
   /**
     * The value of the tag. Tag values are case-sensitive and can be null.
     */
-  var value: String
+  var value: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -45,7 +45,7 @@ class TagDSL {
     *  same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new
     *  value.
     */
-  var key: String
+  var key: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

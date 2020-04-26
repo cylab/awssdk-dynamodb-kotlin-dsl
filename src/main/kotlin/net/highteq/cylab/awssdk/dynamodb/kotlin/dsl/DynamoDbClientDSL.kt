@@ -46,7 +46,7 @@ class DynamoDbClientDSL {
   /**
     * 
     */
-  var overrideConfiguration: ClientOverrideConfiguration
+  var overrideConfiguration: ClientOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,7 +57,7 @@ class DynamoDbClientDSL {
   /**
     * 
     */
-  var httpClient: SdkHttpClient
+  var httpClient: SdkHttpClient?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -68,7 +68,7 @@ class DynamoDbClientDSL {
   /**
     * 
     */
-  var region: Region
+  var region: Region?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -79,7 +79,7 @@ class DynamoDbClientDSL {
   /**
     * 
     */
-  var credentialsProvider: AwsCredentialsProvider
+  var credentialsProvider: AwsCredentialsProvider?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -90,7 +90,7 @@ class DynamoDbClientDSL {
   /**
     * 
     */
-  var endpointOverride: URI
+  var endpointOverride: URI?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

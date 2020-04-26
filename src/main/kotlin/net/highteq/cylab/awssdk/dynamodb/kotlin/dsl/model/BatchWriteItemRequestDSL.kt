@@ -27,17 +27,6 @@ class BatchWriteItemRequestDSL {
   internal fun build(): BatchWriteItemRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * A map of one or more table names and, for each table, a list of operations to be performed (
     *  DeleteRequest or PutRequest). Each element in the map consists of the following:
     * 
@@ -61,7 +50,7 @@ class BatchWriteItemRequestDSL {
     *  If you specify any attributes that are part of an index key, then the data types for those attributes must
     *  match those of the schema in the table's attribute definition.
     */
-  var requestItems: Map<String, Collection<WriteRequest>>
+  var requestItems: Map<String, Collection<WriteRequest>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,9 +59,22 @@ class BatchWriteItemRequestDSL {
 
 
   /**
+    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
+    *  statistics about item collections, if any, that were modified during the operation are returned in the
+    *  response. If set to NONE (the default), no statistics are returned.
+    */
+  var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.returnItemCollectionMetrics(value)
+    }
+
+
+  /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,33 +83,31 @@ class BatchWriteItemRequestDSL {
 
 
   /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections, if any, that were modified during the operation are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
+    * 
     */
-  var returnItemCollectionMetrics: ReturnItemCollectionMetrics
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.returnItemCollectionMetrics(value)
+      builder.overrideConfiguration(value)
     }
 
     
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
-    */
-  fun returnConsumedCapacity(value: String) {
-    builder.returnConsumedCapacity(value)
-  }
-
-
-  /**
     * Determines whether item collection metrics are returned. If set to SIZE, the response includes
     *  statistics about item collections, if any, that were modified during the operation are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  fun returnItemCollectionMetrics(value: String) {
+  fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
+  }
+
+
+  /**
+    * Sets the value of the ReturnConsumedCapacity property for this object.
+    */
+  fun returnConsumedCapacity(value: String?) {
+    builder.returnConsumedCapacity(value)
   }
 
   

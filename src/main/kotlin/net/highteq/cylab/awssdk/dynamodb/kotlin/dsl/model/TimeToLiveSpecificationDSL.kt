@@ -25,7 +25,7 @@ class TimeToLiveSpecificationDSL {
   /**
     * The name of the TTL attribute used to store the expiration time for items in the table.
     */
-  var attributeName: String
+  var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,7 +36,7 @@ class TimeToLiveSpecificationDSL {
   /**
     * Indicates whether TTL is to be enabled (true) or disabled (false) on the table.
     */
-  var enabled: Boolean
+  var enabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

@@ -28,7 +28,7 @@ class BackupDescriptionDSL {
   /**
     * Contains the details of the backup created for the table.
     */
-  var backupDetails: BackupDetails
+  var backupDetails: BackupDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +40,7 @@ class BackupDescriptionDSL {
     * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
     *  GSIs, streams, TTL.
     */
-  var sourceTableFeatureDetails: SourceTableFeatureDetails
+  var sourceTableFeatureDetails: SourceTableFeatureDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +51,7 @@ class BackupDescriptionDSL {
   /**
     * Contains the details of the table when the backup was created.
     */
-  var sourceTableDetails: SourceTableDetails
+  var sourceTableDetails: SourceTableDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

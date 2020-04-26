@@ -29,7 +29,7 @@ class SourceTableDetailsDSL {
   /**
     * The name of the table for which the backup was created.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +40,7 @@ class SourceTableDetailsDSL {
   /**
     * Schema of the table.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +51,7 @@ class SourceTableDetailsDSL {
   /**
     * Read IOPs and Write IOPS on the table when the backup was created.
     */
-  var provisionedThroughput: ProvisionedThroughput
+  var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +62,7 @@ class SourceTableDetailsDSL {
   /**
     * Size of the table in bytes. Note that this is an approximate value.
     */
-  var tableSizeBytes: Long
+  var tableSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,7 +73,7 @@ class SourceTableDetailsDSL {
   /**
     * Number of items in the table. Note that this is an approximate value.
     */
-  var itemCount: Long
+  var itemCount: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -84,7 +84,7 @@ class SourceTableDetailsDSL {
   /**
     * ARN of the table for which backup was created.
     */
-  var tableArn: String
+  var tableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -95,22 +95,11 @@ class SourceTableDetailsDSL {
   /**
     * Unique identifier for the table for which the backup was created.
     */
-  var tableId: String
+  var tableId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableId(value)
-    }
-
-
-  /**
-    * Time when the source table was created.
-    */
-  var tableCreationDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableCreationDateTime(value)
     }
 
 
@@ -124,11 +113,22 @@ class SourceTableDetailsDSL {
     *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
     *  recommend using PAY_PER_REQUEST for unpredictable workloads.
     */
-  var billingMode: BillingMode
+  var billingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.billingMode(value)
+    }
+
+
+  /**
+    * Time when the source table was created.
+    */
+  var tableCreationDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableCreationDateTime(value)
     }
 
     
@@ -142,7 +142,7 @@ class SourceTableDetailsDSL {
     *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
     *  recommend using PAY_PER_REQUEST for unpredictable workloads.
     */
-  fun billingMode(value: String) {
+  fun billingMode(value: String?) {
     builder.billingMode(value)
   }
 

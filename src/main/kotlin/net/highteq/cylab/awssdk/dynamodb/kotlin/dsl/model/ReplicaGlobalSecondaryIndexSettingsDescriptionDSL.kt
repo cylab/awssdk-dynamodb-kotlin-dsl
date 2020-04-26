@@ -25,54 +25,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsDescription = builder.build()
     
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException.
-    */
-  var provisionedReadCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedReadCapacityUnits(value)
-    }
-
-
-  /**
-    * Auto scaling settings for a global secondary index replica's read capacity units.
-    */
-  var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedReadCapacityAutoScalingSettings(value)
-    }
-
-
-  /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
-    */
-  var provisionedWriteCapacityUnits: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedWriteCapacityUnits(value)
-    }
-
-
-  /**
-    * Auto scaling settings for a global secondary index replica's write capacity units.
-    */
-  var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedWriteCapacityAutoScalingSettings(value)
-    }
-
-
-  /**
     * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
-  var indexName: String
+  var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -91,11 +46,56 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
     * 
     *  ACTIVE - The global secondary index is ready for use.
     */
-  var indexStatus: IndexStatus
+  var indexStatus: IndexStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.indexStatus(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException.
+    */
+  var provisionedReadCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedReadCapacityUnits(value)
+    }
+
+
+  /**
+    * Auto scaling settings for a global secondary index replica's read capacity units.
+    */
+  var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedReadCapacityAutoScalingSettings(value)
+    }
+
+
+  /**
+    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    */
+  var provisionedWriteCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedWriteCapacityUnits(value)
+    }
+
+
+  /**
+    * Auto scaling settings for a global secondary index replica's write capacity units.
+    */
+  var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedWriteCapacityAutoScalingSettings(value)
     }
 
     
@@ -110,7 +110,7 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
     * 
     *  ACTIVE - The global secondary index is ready for use.
     */
-  fun indexStatus(value: String) {
+  fun indexStatus(value: String?) {
     builder.indexStatus(value)
   }
 

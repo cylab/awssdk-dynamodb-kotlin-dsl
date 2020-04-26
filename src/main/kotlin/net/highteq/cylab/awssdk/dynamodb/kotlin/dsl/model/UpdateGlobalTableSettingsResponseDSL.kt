@@ -28,7 +28,7 @@ class UpdateGlobalTableSettingsResponseDSL {
   /**
     * The name of the global table.
     */
-  var globalTableName: String
+  var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class UpdateGlobalTableSettingsResponseDSL {
   /**
     * The Region-specific settings for the global table.
     */
-  var replicaSettings: Collection<ReplicaSettingsDescription>
+  var replicaSettings: Collection<ReplicaSettingsDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class UpdateGlobalTableSettingsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +61,7 @@ class UpdateGlobalTableSettingsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

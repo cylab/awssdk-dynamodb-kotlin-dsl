@@ -18,8 +18,8 @@ class ShardCollectionDSL {
   private val list = ArrayList<Shard>()
   internal fun build() : List<Shard> = list
 
-  fun item(init: ShardDSL.() -> Unit) {
-    list.add(ShardDSL().apply(init).build())
+  fun item(dslBlock: ShardDSL.() -> Unit) {
+    list.add(ShardDSL().apply(dslBlock).build())
   }
 
   operator fun Shard.unaryPlus() {

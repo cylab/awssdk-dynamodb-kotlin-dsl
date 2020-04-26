@@ -28,7 +28,7 @@ class DeleteRequestDSL {
     *  table's primary key attributes must be specified, and their data types must match those of the table's key
     *  schema.
     */
-  var key: Map<String, AttributeValue>
+  var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

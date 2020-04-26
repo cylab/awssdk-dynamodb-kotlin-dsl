@@ -24,9 +24,20 @@ class AutoScalingSettingsDescriptionDSL {
   internal fun build(): AutoScalingSettingsDescription = builder.build()
     
   /**
+    * Information about the scaling policies.
+    */
+  var scalingPolicies: Collection<AutoScalingPolicyDescription>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.scalingPolicies(value)
+    }
+
+
+  /**
     * The minimum capacity units that a global table or global secondary index should be scaled down to.
     */
-  var minimumUnits: Long
+  var minimumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +48,7 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * The maximum capacity units that a global table or global secondary index should be scaled up to.
     */
-  var maximumUnits: Long
+  var maximumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +59,7 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * Disabled auto scaling for this global table or global secondary index.
     */
-  var autoScalingDisabled: Boolean
+  var autoScalingDisabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,22 +70,11 @@ class AutoScalingSettingsDescriptionDSL {
   /**
     * Role ARN used for configuring the auto scaling policy.
     */
-  var autoScalingRoleArn: String
+  var autoScalingRoleArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.autoScalingRoleArn(value)
-    }
-
-
-  /**
-    * Information about the scaling policies.
-    */
-  var scalingPolicies: Collection<AutoScalingPolicyDescription>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scalingPolicies(value)
     }
 
   

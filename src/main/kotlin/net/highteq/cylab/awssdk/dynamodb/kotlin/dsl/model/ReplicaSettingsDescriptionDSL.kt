@@ -30,11 +30,22 @@ class ReplicaSettingsDescriptionDSL {
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     */
-  var replicaProvisionedReadCapacityUnits: Long
+  var replicaProvisionedReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaProvisionedReadCapacityUnits(value)
+    }
+
+
+  /**
+    * The Region name of the replica.
+    */
+  var regionName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.regionName(value)
     }
 
 
@@ -49,7 +60,7 @@ class ReplicaSettingsDescriptionDSL {
     * 
     *  ACTIVE - The Region is ready for use.
     */
-  var replicaStatus: ReplicaStatus
+  var replicaStatus: ReplicaStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,7 +71,7 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * The read/write capacity mode of the replica.
     */
-  var replicaBillingModeSummary: BillingModeSummary
+  var replicaBillingModeSummary: BillingModeSummary?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,7 +82,7 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Auto scaling settings for a global table replica's read capacity units.
     */
-  var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription
+  var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,7 +94,7 @@ class ReplicaSettingsDescriptionDSL {
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     *  For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     */
-  var replicaProvisionedWriteCapacityUnits: Long
+  var replicaProvisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,7 +105,7 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Auto scaling settings for a global table replica's write capacity units.
     */
-  var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription
+  var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,22 +116,11 @@ class ReplicaSettingsDescriptionDSL {
   /**
     * Replica global secondary index settings for the global table.
     */
-  var replicaGlobalSecondaryIndexSettings: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>
+  var replicaGlobalSecondaryIndexSettings: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaGlobalSecondaryIndexSettings(value)
-    }
-
-
-  /**
-    * The Region name of the replica.
-    */
-  var regionName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.regionName(value)
     }
 
     
@@ -135,7 +135,7 @@ class ReplicaSettingsDescriptionDSL {
     * 
     *  ACTIVE - The Region is ready for use.
     */
-  fun replicaStatus(value: String) {
+  fun replicaStatus(value: String?) {
     builder.replicaStatus(value)
   }
 

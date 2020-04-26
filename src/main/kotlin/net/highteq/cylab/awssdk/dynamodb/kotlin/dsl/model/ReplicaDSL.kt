@@ -25,7 +25,7 @@ class ReplicaDSL {
   /**
     * The Region where the replica needs to be created.
     */
-  var regionName: String
+  var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

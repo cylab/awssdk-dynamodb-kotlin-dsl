@@ -33,7 +33,7 @@ class ReplicaUpdateDSL {
   /**
     * The name of the existing replica to be removed.
     */
-  var delete: DeleteReplicaAction
+  var delete: DeleteReplicaAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -44,7 +44,7 @@ class ReplicaUpdateDSL {
   /**
     * The parameters required for creating a replica on an existing global table.
     */
-  var create: CreateReplicaAction
+  var create: CreateReplicaAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

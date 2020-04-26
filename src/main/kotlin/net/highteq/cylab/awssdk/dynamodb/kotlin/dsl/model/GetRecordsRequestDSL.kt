@@ -24,20 +24,21 @@ class GetRecordsRequestDSL {
   internal fun build(): GetRecordsRequest = builder.build()
     
   /**
-    * The maximum number of records to return from the shard. The upper limit is 1000.
+    * A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to
+    *  access the stream records in this shard.
     */
-  var limit: Int
+  var shardIterator: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.limit(value)
+      builder.shardIterator(value)
     }
 
 
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,14 +47,13 @@ class GetRecordsRequestDSL {
 
 
   /**
-    * A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to
-    *  access the stream records in this shard.
+    * The maximum number of records to return from the shard. The upper limit is 1000.
     */
-  var shardIterator: String
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.shardIterator(value)
+      builder.limit(value)
     }
 
   

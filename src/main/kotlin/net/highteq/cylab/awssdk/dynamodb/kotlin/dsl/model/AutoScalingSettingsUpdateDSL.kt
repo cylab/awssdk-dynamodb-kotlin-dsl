@@ -26,7 +26,7 @@ class AutoScalingSettingsUpdateDSL {
   /**
     * The minimum capacity units that a global table or global secondary index should be scaled down to.
     */
-  var minimumUnits: Long
+  var minimumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +37,7 @@ class AutoScalingSettingsUpdateDSL {
   /**
     * The maximum capacity units that a global table or global secondary index should be scaled up to.
     */
-  var maximumUnits: Long
+  var maximumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class AutoScalingSettingsUpdateDSL {
   /**
     * Disabled auto scaling for this global table or global secondary index.
     */
-  var autoScalingDisabled: Boolean
+  var autoScalingDisabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +59,7 @@ class AutoScalingSettingsUpdateDSL {
   /**
     * Role ARN used for configuring auto scaling policy.
     */
-  var autoScalingRoleArn: String
+  var autoScalingRoleArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +70,7 @@ class AutoScalingSettingsUpdateDSL {
   /**
     * The scaling policy to apply for scaling target global table or global secondary index capacity units.
     */
-  var scalingPolicyUpdate: AutoScalingPolicyUpdate
+  var scalingPolicyUpdate: AutoScalingPolicyUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

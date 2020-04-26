@@ -18,8 +18,8 @@ class LocalSecondaryIndexInfoCollectionDSL {
   private val list = ArrayList<LocalSecondaryIndexInfo>()
   internal fun build() : List<LocalSecondaryIndexInfo> = list
 
-  fun item(init: LocalSecondaryIndexInfoDSL.() -> Unit) {
-    list.add(LocalSecondaryIndexInfoDSL().apply(init).build())
+  fun item(dslBlock: LocalSecondaryIndexInfoDSL.() -> Unit) {
+    list.add(LocalSecondaryIndexInfoDSL().apply(dslBlock).build())
   }
 
   operator fun LocalSecondaryIndexInfo.unaryPlus() {

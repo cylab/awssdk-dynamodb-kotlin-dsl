@@ -26,36 +26,9 @@ class GetItemRequestDSL {
   internal fun build(): GetItemRequest = builder.build()
     
   /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  retrieve.
-    * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
-    */
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table containing the requested item.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,7 +67,7 @@ class GetItemRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,23 +78,11 @@ class GetItemRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
-    }
-
-
-  /**
-    * Determines the read consistency model: If set to true, then the operation uses strongly
-    *  consistent reads; otherwise, the operation uses eventually consistent reads.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
     }
 
 
@@ -134,7 +95,7 @@ class GetItemRequestDSL {
     * 
     *  For more information, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var projectionExpression: String
+  var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -145,18 +106,57 @@ class GetItemRequestDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  var attributesToGet: Collection<String>
+  var attributesToGet: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
     }
 
+
+  /**
+    * Determines the read consistency model: If set to true, then the operation uses strongly
+    *  consistent reads; otherwise, the operation uses eventually consistent reads.
+    */
+  var consistentRead: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
+    *  retrieve.
+    * 
+    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
+    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
+    *  the partition key and the sort key.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
     
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  fun returnConsumedCapacity(value: String) {
+  fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 

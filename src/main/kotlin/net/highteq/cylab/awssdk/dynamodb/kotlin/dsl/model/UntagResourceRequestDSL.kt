@@ -27,7 +27,7 @@ class UntagResourceRequestDSL {
     * A list of tag keys. Existing tags of the resource whose keys are members of this list will be removed from
     *  the DynamoDB resource.
     */
-  var tagKeys: Collection<String>
+  var tagKeys: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +38,7 @@ class UntagResourceRequestDSL {
   /**
     * The DynamoDB resource that the tags will be removed from. This value is an Amazon Resource Name (ARN).
     */
-  var resourceArn: String
+  var resourceArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +49,7 @@ class UntagResourceRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

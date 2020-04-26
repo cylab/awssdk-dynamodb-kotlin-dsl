@@ -25,17 +25,6 @@ class BillingModeSummaryDSL {
   internal fun build(): BillingModeSummary = builder.build()
     
   /**
-    * Represents the time when PAY_PER_REQUEST was last set as the read/write capacity mode.
-    */
-  var lastUpdateToPayPerRequestDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.lastUpdateToPayPerRequestDateTime(value)
-    }
-
-
-  /**
     * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
     *  changed later.
     * 
@@ -45,11 +34,22 @@ class BillingModeSummaryDSL {
     *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
     *  recommend using PAY_PER_REQUEST for unpredictable workloads.
     */
-  var billingMode: BillingMode
+  var billingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.billingMode(value)
+    }
+
+
+  /**
+    * Represents the time when PAY_PER_REQUEST was last set as the read/write capacity mode.
+    */
+  var lastUpdateToPayPerRequestDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.lastUpdateToPayPerRequestDateTime(value)
     }
 
     
@@ -63,7 +63,7 @@ class BillingModeSummaryDSL {
     *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
     *  recommend using PAY_PER_REQUEST for unpredictable workloads.
     */
-  fun billingMode(value: String) {
+  fun billingMode(value: String?) {
     builder.billingMode(value)
   }
 

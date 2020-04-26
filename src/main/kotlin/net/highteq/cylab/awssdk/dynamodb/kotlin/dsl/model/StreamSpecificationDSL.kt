@@ -26,7 +26,7 @@ class StreamSpecificationDSL {
   /**
     * Indicates whether DynamoDB Streams is enabled (true) or disabled (false) on the table.
     */
-  var streamEnabled: Boolean
+  var streamEnabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,7 +46,7 @@ class StreamSpecificationDSL {
     * 
     *  NEW_AND_OLD_IMAGES - Both the new and the old item images of the item are written to the stream.
     */
-  var streamViewType: StreamViewType
+  var streamViewType: StreamViewType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,7 +66,7 @@ class StreamSpecificationDSL {
     * 
     *  NEW_AND_OLD_IMAGES - Both the new and the old item images of the item are written to the stream.
     */
-  fun streamViewType(value: String) {
+  fun streamViewType(value: String?) {
     builder.streamViewType(value)
   }
 

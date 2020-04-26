@@ -25,7 +25,7 @@ class ReplicaDescriptionDSL {
   /**
     * The name of the Region.
     */
-  var regionName: String
+  var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

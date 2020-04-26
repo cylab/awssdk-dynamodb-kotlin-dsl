@@ -31,7 +31,7 @@ class SourceTableFeatureDetailsDSL {
   /**
     * Time to Live settings on the table when the backup was created.
     */
-  var timeToLiveDescription: TimeToLiveDescription
+  var timeToLiveDescription: TimeToLiveDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -43,7 +43,7 @@ class SourceTableFeatureDetailsDSL {
     * Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema
     *  and Projection for the LSIs on the table at the time of backup.
     */
-  var localSecondaryIndexes: Collection<LocalSecondaryIndexInfo>
+  var localSecondaryIndexes: Collection<LocalSecondaryIndexInfo>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -55,7 +55,7 @@ class SourceTableFeatureDetailsDSL {
     * Represents the GSI properties for the table when the backup was created. It includes the IndexName,
     *  KeySchema, Projection, and ProvisionedThroughput for the GSIs on the table at the time of backup.
     */
-  var globalSecondaryIndexes: Collection<GlobalSecondaryIndexInfo>
+  var globalSecondaryIndexes: Collection<GlobalSecondaryIndexInfo>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,7 +66,7 @@ class SourceTableFeatureDetailsDSL {
   /**
     * The description of the server-side encryption status on the table when the backup was created.
     */
-  var sseDescription: SSEDescription
+  var sseDescription: SSEDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,7 +77,7 @@ class SourceTableFeatureDetailsDSL {
   /**
     * Stream settings on the table when the backup was created.
     */
-  var streamDescription: StreamSpecification
+  var streamDescription: StreamSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

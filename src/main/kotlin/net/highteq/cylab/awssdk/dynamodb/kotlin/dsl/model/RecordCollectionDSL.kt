@@ -18,8 +18,8 @@ class RecordCollectionDSL {
   private val list = ArrayList<Record>()
   internal fun build() : List<Record> = list
 
-  fun item(init: RecordDSL.() -> Unit) {
-    list.add(RecordDSL().apply(init).build())
+  fun item(dslBlock: RecordDSL.() -> Unit) {
+    list.add(RecordDSL().apply(dslBlock).build())
   }
 
   operator fun Record.unaryPlus() {

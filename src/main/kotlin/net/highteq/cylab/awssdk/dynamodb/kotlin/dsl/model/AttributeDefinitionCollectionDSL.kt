@@ -18,8 +18,8 @@ class AttributeDefinitionCollectionDSL {
   private val list = ArrayList<AttributeDefinition>()
   internal fun build() : List<AttributeDefinition> = list
 
-  fun item(init: AttributeDefinitionDSL.() -> Unit) {
-    list.add(AttributeDefinitionDSL().apply(init).build())
+  fun item(dslBlock: AttributeDefinitionDSL.() -> Unit) {
+    list.add(AttributeDefinitionDSL().apply(dslBlock).build())
   }
 
   operator fun AttributeDefinition.unaryPlus() {

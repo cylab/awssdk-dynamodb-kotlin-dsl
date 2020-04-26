@@ -37,7 +37,7 @@ class ListBackupsResponseDSL {
     *  be returned. All results are guaranteed to have been returned if and only if no value for
     *  LastEvaluatedBackupArn is returned.
     */
-  var lastEvaluatedBackupArn: String
+  var lastEvaluatedBackupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class ListBackupsResponseDSL {
   /**
     * List of BackupSummary objects.
     */
-  var backupSummaries: Collection<BackupSummary>
+  var backupSummaries: Collection<BackupSummary>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +59,7 @@ class ListBackupsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +70,7 @@ class ListBackupsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

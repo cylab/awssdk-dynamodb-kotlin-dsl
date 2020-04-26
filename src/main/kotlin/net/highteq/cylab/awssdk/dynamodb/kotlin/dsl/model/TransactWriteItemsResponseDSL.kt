@@ -30,7 +30,7 @@ class TransactWriteItemsResponseDSL {
     * The capacity units consumed by the entire TransactWriteItems operation. The values of the list
     *  are ordered according to the ordering of the TransactItems request parameter.
     */
-  var consumedCapacity: Collection<ConsumedCapacity>
+  var consumedCapacity: Collection<ConsumedCapacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -43,7 +43,7 @@ class TransactWriteItemsResponseDSL {
     *  about any item collections that were affected by individual UpdateItem, PutItem, or
     *  DeleteItem operations.
     */
-  var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>
+  var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,7 +54,7 @@ class TransactWriteItemsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,7 +65,7 @@ class TransactWriteItemsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

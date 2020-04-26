@@ -24,31 +24,21 @@ class DescribeStreamRequestDSL {
   internal fun build(): DescribeStreamRequest = builder.build()
     
   /**
-    * The maximum number of shard objects to return. The upper limit is 100.
+    * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
+    *  LastEvaluatedShardId in the previous operation.
     */
-  var limit: Int
+  var exclusiveStartShardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.limit(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
+      builder.exclusiveStartShardId(value)
     }
 
 
   /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  var streamArn: String
+  var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,14 +47,24 @@ class DescribeStreamRequestDSL {
 
 
   /**
-    * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
-    *  LastEvaluatedShardId in the previous operation.
+    * 
     */
-  var exclusiveStartShardId: String
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.exclusiveStartShardId(value)
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The maximum number of shard objects to return. The upper limit is 100.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
   

@@ -34,7 +34,7 @@ class UpdateItemResponseDSL {
     *  The Attributes map is only present if ReturnValues was specified as something other
     *  than NONE in the request. Each element represents one attribute.
     */
-  var attributes: Map<String, AttributeValue>
+  var attributes: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class UpdateItemResponseDSL {
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
     *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
     */
-  var consumedCapacity: ConsumedCapacity
+  var consumedCapacity: ConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,7 +76,7 @@ class UpdateItemResponseDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  var itemCollectionMetrics: ItemCollectionMetrics
+  var itemCollectionMetrics: ItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -87,7 +87,7 @@ class UpdateItemResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -98,7 +98,7 @@ class UpdateItemResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

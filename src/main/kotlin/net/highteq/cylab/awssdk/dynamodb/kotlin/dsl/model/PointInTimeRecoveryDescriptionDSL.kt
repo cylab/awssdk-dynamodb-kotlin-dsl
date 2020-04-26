@@ -25,6 +25,17 @@ class PointInTimeRecoveryDescriptionDSL {
   internal fun build(): PointInTimeRecoveryDescription = builder.build()
     
   /**
+    * LatestRestorableDateTime is typically 5 minutes before the current time.
+    */
+  var latestRestorableDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.latestRestorableDateTime(value)
+    }
+
+
+  /**
     * The current state of point in time recovery:
     * 
     *  ENABLING - Point in time recovery is being enabled.
@@ -33,7 +44,7 @@ class PointInTimeRecoveryDescriptionDSL {
     * 
     *  DISABLED - Point in time recovery is disabled.
     */
-  var pointInTimeRecoveryStatus: PointInTimeRecoveryStatus
+  var pointInTimeRecoveryStatus: PointInTimeRecoveryStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -45,22 +56,11 @@ class PointInTimeRecoveryDescriptionDSL {
     * Specifies the earliest point in time you can restore your table to. You can restore your table to any point
     *  in time during the last 35 days.
     */
-  var earliestRestorableDateTime: Instant
+  var earliestRestorableDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.earliestRestorableDateTime(value)
-    }
-
-
-  /**
-    * LatestRestorableDateTime is typically 5 minutes before the current time.
-    */
-  var latestRestorableDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.latestRestorableDateTime(value)
     }
 
     
@@ -73,7 +73,7 @@ class PointInTimeRecoveryDescriptionDSL {
     * 
     *  DISABLED - Point in time recovery is disabled.
     */
-  fun pointInTimeRecoveryStatus(value: String) {
+  fun pointInTimeRecoveryStatus(value: String?) {
     builder.pointInTimeRecoveryStatus(value)
   }
 

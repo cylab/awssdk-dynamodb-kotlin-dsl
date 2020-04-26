@@ -25,7 +25,7 @@ class PointInTimeRecoverySpecificationDSL {
   /**
     * Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
     */
-  var pointInTimeRecoveryEnabled: Boolean
+  var pointInTimeRecoveryEnabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

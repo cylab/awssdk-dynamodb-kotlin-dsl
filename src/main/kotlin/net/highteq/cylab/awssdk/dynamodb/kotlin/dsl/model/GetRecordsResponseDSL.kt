@@ -28,7 +28,7 @@ class GetRecordsResponseDSL {
   /**
     * The stream records from the shard, which were retrieved using the shard iterator.
     */
-  var records: Collection<Record>
+  var records: Collection<Record>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +40,7 @@ class GetRecordsResponseDSL {
     * The next position in the shard from which to start sequentially reading stream records. If set to
     *  null, the shard has been closed and the requested iterator will not return any more data.
     */
-  var nextShardIterator: String
+  var nextShardIterator: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +51,7 @@ class GetRecordsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +62,7 @@ class GetRecordsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

@@ -24,27 +24,27 @@ class UpdateGlobalSecondaryIndexActionDSL {
   internal fun build(): UpdateGlobalSecondaryIndexAction = builder.build()
     
   /**
+    * The name of the global secondary index to be updated.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
+    }
+
+
+  /**
     * Represents the provisioned throughput settings for the specified global secondary index.
     * 
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  var provisionedThroughput: ProvisionedThroughput
+  var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
-    }
-
-
-  /**
-    * The name of the global secondary index to be updated.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
   

@@ -26,7 +26,7 @@ class AutoScalingPolicyDescriptionDSL {
   /**
     * Represents a target tracking scaling policy configuration.
     */
-  var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationDescription
+  var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +37,7 @@ class AutoScalingPolicyDescriptionDSL {
   /**
     * The name of the scaling policy.
     */
-  var policyName: String
+  var policyName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

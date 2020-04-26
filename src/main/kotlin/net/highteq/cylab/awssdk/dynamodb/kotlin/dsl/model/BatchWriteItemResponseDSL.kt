@@ -36,7 +36,7 @@ class BatchWriteItemResponseDSL {
     * 
     *  CapacityUnits - The total number of capacity units consumed.
     */
-  var consumedCapacity: Collection<ConsumedCapacity>
+  var consumedCapacity: Collection<ConsumedCapacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,7 +63,7 @@ class BatchWriteItemResponseDSL {
     *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
     *  estimate.
     */
-  var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>
+  var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -100,7 +100,7 @@ class BatchWriteItemResponseDSL {
     *  If there are no unprocessed items remaining, the response contains an empty UnprocessedItems
     *  map.
     */
-  var unprocessedItems: Map<String, Collection<WriteRequest>>
+  var unprocessedItems: Map<String, Collection<WriteRequest>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -111,7 +111,7 @@ class BatchWriteItemResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -122,7 +122,7 @@ class BatchWriteItemResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

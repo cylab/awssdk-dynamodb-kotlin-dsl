@@ -23,20 +23,9 @@ class CapacityDSL {
   internal fun build(): Capacity = builder.build()
     
   /**
-    * The total number of read capacity units consumed on a table or an index.
-    */
-  var readCapacityUnits: Double
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
-  /**
     * The total number of write capacity units consumed on a table or an index.
     */
-  var writeCapacityUnits: Double
+  var writeCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,11 +36,22 @@ class CapacityDSL {
   /**
     * The total number of capacity units consumed on a table or an index.
     */
-  var capacityUnits: Double
+  var capacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.capacityUnits(value)
+    }
+
+
+  /**
+    * The total number of read capacity units consumed on a table or an index.
+    */
+  var readCapacityUnits: Double?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
     }
 
   

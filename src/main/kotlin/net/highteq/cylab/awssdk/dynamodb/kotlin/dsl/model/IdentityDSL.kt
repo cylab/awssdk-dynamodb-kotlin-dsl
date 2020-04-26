@@ -23,25 +23,25 @@ class IdentityDSL {
   internal fun build(): Identity = builder.build()
     
   /**
-    * The type of the identity. For Time To Live, the type is "Service".
-    */
-  var type: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.type(value)
-    }
-
-
-  /**
     * A unique identifier for the entity that made the call. For Time To Live, the principalId is
     *  "dynamodb.amazonaws.com".
     */
-  var principalId: String
+  var principalId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.principalId(value)
+    }
+
+
+  /**
+    * The type of the identity. For Time To Live, the type is "Service".
+    */
+  var type: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.type(value)
     }
 
   

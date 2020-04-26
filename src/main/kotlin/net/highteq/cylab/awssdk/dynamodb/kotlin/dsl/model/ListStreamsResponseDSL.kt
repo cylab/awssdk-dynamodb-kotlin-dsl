@@ -28,7 +28,7 @@ class ListStreamsResponseDSL {
   /**
     * A list of stream descriptors associated with the current account and endpoint.
     */
-  var streams: Collection<Stream>
+  var streams: Collection<Stream>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,7 +47,7 @@ class ListStreamsResponseDSL {
     *  the result set. The only way to know when you have reached the end of the result set is when
     *  LastEvaluatedStreamArn is empty.
     */
-  var lastEvaluatedStreamArn: String
+  var lastEvaluatedStreamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,7 +58,7 @@ class ListStreamsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -69,7 +69,7 @@ class ListStreamsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

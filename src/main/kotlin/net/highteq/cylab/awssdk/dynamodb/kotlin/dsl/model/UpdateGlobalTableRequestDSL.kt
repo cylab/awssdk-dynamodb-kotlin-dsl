@@ -25,20 +25,9 @@ class UpdateGlobalTableRequestDSL {
   internal fun build(): UpdateGlobalTableRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The global table name.
     */
-  var globalTableName: String
+  var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,11 +38,22 @@ class UpdateGlobalTableRequestDSL {
   /**
     * A list of Regions that should be added or removed from the global table.
     */
-  var replicaUpdates: Collection<ReplicaUpdate>
+  var replicaUpdates: Collection<ReplicaUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaUpdates(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
   

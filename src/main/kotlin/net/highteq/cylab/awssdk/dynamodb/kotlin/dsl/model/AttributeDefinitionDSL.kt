@@ -24,17 +24,6 @@ class AttributeDefinitionDSL {
   internal fun build(): AttributeDefinition = builder.build()
     
   /**
-    * A name for the attribute.
-    */
-  var attributeName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeName(value)
-    }
-
-
-  /**
     * The data type for the attribute, where:
     * 
     *  S - the attribute is of type String
@@ -43,11 +32,22 @@ class AttributeDefinitionDSL {
     * 
     *  B - the attribute is of type Binary
     */
-  var attributeType: ScalarAttributeType
+  var attributeType: ScalarAttributeType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributeType(value)
+    }
+
+
+  /**
+    * A name for the attribute.
+    */
+  var attributeName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributeName(value)
     }
 
     
@@ -60,7 +60,7 @@ class AttributeDefinitionDSL {
     * 
     *  B - the attribute is of type Binary
     */
-  fun attributeType(value: String) {
+  fun attributeType(value: String?) {
     builder.attributeType(value)
   }
 

@@ -25,21 +25,9 @@ class DeleteDSL {
   internal fun build(): Delete = builder.build()
     
   /**
-    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
-    *  attribute.
-    */
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
-    }
-
-
-  /**
     * A condition that must be satisfied in order for a conditional delete to succeed.
     */
-  var conditionExpression: String
+  var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +38,7 @@ class DeleteDSL {
   /**
     * Name of the table in which the item to be deleted resides.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +49,7 @@ class DeleteDSL {
   /**
     * One or more substitution tokens for attribute names in an expression.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,7 +60,7 @@ class DeleteDSL {
   /**
     * One or more values that can be substituted in an expression.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -85,11 +73,23 @@ class DeleteDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure
+  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
+    }
+
+
+  /**
+    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
+    *  attribute.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
     }
 
     
@@ -98,7 +98,7 @@ class DeleteDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  fun returnValuesOnConditionCheckFailure(value: String) {
+  fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 

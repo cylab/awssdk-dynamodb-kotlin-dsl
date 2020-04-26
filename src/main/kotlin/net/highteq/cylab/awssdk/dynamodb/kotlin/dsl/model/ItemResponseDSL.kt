@@ -26,7 +26,7 @@ class ItemResponseDSL {
   /**
     * Map of attribute data consisting of the data type and attribute value.
     */
-  var item: Map<String, AttributeValue>
+  var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

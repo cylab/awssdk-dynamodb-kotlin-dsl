@@ -27,8 +27,8 @@ class KeySchemaElementCollectionDSL {
   private val list = ArrayList<KeySchemaElement>()
   internal fun build() : List<KeySchemaElement> = list
 
-  fun item(init: KeySchemaElementDSL.() -> Unit) {
-    list.add(KeySchemaElementDSL().apply(init).build())
+  fun item(dslBlock: KeySchemaElementDSL.() -> Unit) {
+    list.add(KeySchemaElementDSL().apply(dslBlock).build())
   }
 
   operator fun KeySchemaElement.unaryPlus() {

@@ -28,7 +28,7 @@ class GlobalTableDescriptionDSL {
   /**
     * The global table name.
     */
-  var globalTableName: String
+  var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class GlobalTableDescriptionDSL {
   /**
     * The creation time of the global table.
     */
-  var creationDateTime: Instant
+  var creationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,11 +50,22 @@ class GlobalTableDescriptionDSL {
   /**
     * The Regions where the global table has replicas.
     */
-  var replicationGroup: Collection<ReplicaDescription>
+  var replicationGroup: Collection<ReplicaDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicationGroup(value)
+    }
+
+
+  /**
+    * The unique identifier of the global table.
+    */
+  var globalTableArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalTableArn(value)
     }
 
 
@@ -69,22 +80,11 @@ class GlobalTableDescriptionDSL {
     * 
     *  ACTIVE - The global table is ready for use.
     */
-  var globalTableStatus: GlobalTableStatus
+  var globalTableStatus: GlobalTableStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.globalTableStatus(value)
-    }
-
-
-  /**
-    * The unique identifier of the global table.
-    */
-  var globalTableArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableArn(value)
     }
 
     
@@ -99,7 +99,7 @@ class GlobalTableDescriptionDSL {
     * 
     *  ACTIVE - The global table is ready for use.
     */
-  fun globalTableStatus(value: String) {
+  fun globalTableStatus(value: String?) {
     builder.globalTableStatus(value)
   }
 

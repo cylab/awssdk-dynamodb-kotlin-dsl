@@ -65,29 +65,11 @@ class ScanRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  var select: Select
+  var select: Select?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.select(value)
-    }
-
-
-  /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Working with
-    *  Queries in the Amazon DynamoDB Developer Guide.
-    */
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
 
@@ -107,7 +89,7 @@ class ScanRequestDSL {
     * 
     *  If you provide Segment, you must also provide TotalSegments.
     */
-  var segment: Int
+  var segment: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -116,21 +98,10 @@ class ScanRequestDSL {
 
 
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table containing the requested items; or, if you provide IndexName, the name of
     *  the table to which that index belongs.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -142,7 +113,7 @@ class ScanRequestDSL {
     * The name of a secondary index to scan. This index can be any local secondary index or global secondary index.
     *  Note that if you use the IndexName parameter, you must also provide TableName.
     */
-  var indexName: String
+  var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -181,7 +152,7 @@ class ScanRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -208,7 +179,7 @@ class ScanRequestDSL {
     * 
     *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -219,11 +190,88 @@ class ScanRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    */
+  var conditionalOperator: ConditionalOperator?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.conditionalOperator(value)
+    }
+
+
+  /**
+    * The primary key of the first item that this operation will evaluate. Use the value that was returned for
+    *  LastEvaluatedKey in the previous operation.
+    * 
+    *  The data type for ExclusiveStartKey must be String, Number or Binary. No set data types are
+    *  allowed.
+    * 
+    *  In a parallel scan, a Scan request that includes ExclusiveStartKey must specify the
+    *  same segment whose previous Scan returned the corresponding value of
+    *  LastEvaluatedKey.
+    */
+  var exclusiveStartKey: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.exclusiveStartKey(value)
+    }
+
+
+  /**
+    * A string that identifies one or more attributes to retrieve from the specified table or index. These
+    *  attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
+    *  be separated by commas.
+    * 
+    *  If no attribute names are specified, then all attributes will be returned. If any of the requested attributes
+    *  are not found, they will not appear in the result.
+    * 
+    *  For more information, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
+    */
+  var projectionExpression: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.projectionExpression(value)
+    }
+
+
+  /**
+    * A string that contains conditions that DynamoDB applies after the Scan operation, but before the
+    *  data is returned to you. Items that do not satisfy the FilterExpression criteria are not
+    *  returned.
+    * 
+    *  A FilterExpression is applied after the items have already been read; the process of filtering
+    *  does not consume any additional read capacity units.
+    * 
+    *  For more information, see Filter Expressions in the Amazon DynamoDB Developer Guide.
+    */
+  var filterExpression: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.filterExpression(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
+    */
+  var attributesToGet: Collection<String>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributesToGet(value)
     }
 
 
@@ -243,7 +291,7 @@ class ScanRequestDSL {
     *  secondary index with ConsistentRead set to true, you will receive a
     *  ValidationException.
     */
-  var consistentRead: Boolean
+  var consistentRead: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -252,86 +300,9 @@ class ScanRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
-    */
-  var conditionalOperator: ConditionalOperator
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.conditionalOperator(value)
-    }
-
-
-  /**
-    * The primary key of the first item that this operation will evaluate. Use the value that was returned for
-    *  LastEvaluatedKey in the previous operation.
-    * 
-    *  The data type for ExclusiveStartKey must be String, Number or Binary. No set data types are
-    *  allowed.
-    * 
-    *  In a parallel scan, a Scan request that includes ExclusiveStartKey must specify the
-    *  same segment whose previous Scan returned the corresponding value of
-    *  LastEvaluatedKey.
-    */
-  var exclusiveStartKey: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.exclusiveStartKey(value)
-    }
-
-
-  /**
-    * A string that identifies one or more attributes to retrieve from the specified table or index. These
-    *  attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must
-    *  be separated by commas.
-    * 
-    *  If no attribute names are specified, then all attributes will be returned. If any of the requested attributes
-    *  are not found, they will not appear in the result.
-    * 
-    *  For more information, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
-    */
-  var projectionExpression: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.projectionExpression(value)
-    }
-
-
-  /**
-    * A string that contains conditions that DynamoDB applies after the Scan operation, but before the
-    *  data is returned to you. Items that do not satisfy the FilterExpression criteria are not
-    *  returned.
-    * 
-    *  A FilterExpression is applied after the items have already been read; the process of filtering
-    *  does not consume any additional read capacity units.
-    * 
-    *  For more information, see Filter Expressions in the Amazon DynamoDB Developer Guide.
-    */
-  var filterExpression: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.filterExpression(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
-    */
-  var attributesToGet: Collection<String>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributesToGet(value)
-    }
-
-
-  /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
     */
-  var scanFilter: Map<String, Condition>
+  var scanFilter: Map<String, Condition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -352,11 +323,40 @@ class ScanRequestDSL {
     * 
     *  If you specify TotalSegments, you must also specify Segment.
     */
-  var totalSegments: Int
+  var totalSegments: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.totalSegments(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Working with
+    *  Queries in the Amazon DynamoDB Developer Guide.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
     
@@ -397,7 +397,7 @@ class ScanRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  fun select(value: String) {
+  fun select(value: String?) {
     builder.select(value)
   }
 
@@ -405,7 +405,7 @@ class ScanRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  fun returnConsumedCapacity(value: String) {
+  fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 
@@ -413,7 +413,7 @@ class ScanRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  fun conditionalOperator(value: String) {
+  fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
 

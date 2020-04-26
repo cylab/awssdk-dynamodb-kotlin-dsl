@@ -26,20 +26,9 @@ class CancellationReasonDSL {
   internal fun build(): CancellationReason = builder.build()
     
   /**
-    * Cancellation reason message description.
-    */
-  var message: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.message(value)
-    }
-
-
-  /**
     * Item in the request which caused the transaction to get cancelled.
     */
-  var item: Map<String, AttributeValue>
+  var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,11 +39,22 @@ class CancellationReasonDSL {
   /**
     * Status code for the result of the cancelled transaction.
     */
-  var code: String
+  var code: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.code(value)
+    }
+
+
+  /**
+    * Cancellation reason message description.
+    */
+  var message: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.message(value)
     }
 
   

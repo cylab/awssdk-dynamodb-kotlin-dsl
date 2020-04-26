@@ -65,7 +65,7 @@ class QueryRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  var select: Select
+  var select: Select?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,38 +74,9 @@ class QueryRequestDSL {
 
 
   /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Query and Scan
-    *  in the Amazon DynamoDB Developer Guide.
-    */
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table containing the requested items.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -118,7 +89,7 @@ class QueryRequestDSL {
     *  table. Note that if you use the IndexName parameter, you must also provide
     *  TableName.
     */
-  var indexName: String
+  var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -157,7 +128,7 @@ class QueryRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -183,7 +154,7 @@ class QueryRequestDSL {
     * 
     *  For more information on expression attribute values, see Specifying Conditions in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -194,7 +165,7 @@ class QueryRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -203,25 +174,9 @@ class QueryRequestDSL {
 
 
   /**
-    * Determines the read consistency model: If set to true, then the operation uses strongly
-    *  consistent reads; otherwise, the operation uses eventually consistent reads.
-    * 
-    *  Strongly consistent reads are not supported on global secondary indexes. If you query a global secondary
-    *  index with ConsistentRead set to true, you will receive a
-    *  ValidationException.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
-    }
-
-
-  /**
     * This is a legacy parameter. Use KeyConditionExpression instead. For more information, see KeyConditions in the Amazon DynamoDB Developer Guide.
     */
-  var keyConditions: Map<String, Condition>
+  var keyConditions: Map<String, Condition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -232,7 +187,7 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see QueryFilter in the Amazon DynamoDB Developer Guide.
     */
-  var queryFilter: Map<String, Condition>
+  var queryFilter: Map<String, Condition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -243,7 +198,7 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  var conditionalOperator: ConditionalOperator
+  var conditionalOperator: ConditionalOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -264,7 +219,7 @@ class QueryRequestDSL {
     *  false, DynamoDB reads the results in reverse order by sort key value, and then returns the
     *  results to the client.
     */
-  var scanIndexForward: Boolean
+  var scanIndexForward: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -279,7 +234,7 @@ class QueryRequestDSL {
     *  The data type for ExclusiveStartKey must be String, Number, or Binary. No set data types are
     *  allowed.
     */
-  var exclusiveStartKey: Map<String, AttributeValue>
+  var exclusiveStartKey: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -296,7 +251,7 @@ class QueryRequestDSL {
     * 
     *  For more information, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var projectionExpression: String
+  var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -317,7 +272,7 @@ class QueryRequestDSL {
     * 
     *  For more information, see Filter Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var filterExpression: String
+  var filterExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -391,7 +346,7 @@ class QueryRequestDSL {
     *  Using
     *  Placeholders for Attribute Names and Values in the Amazon DynamoDB Developer Guide.
     */
-  var keyConditionExpression: String
+  var keyConditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -402,11 +357,56 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see AttributesToGet in the Amazon DynamoDB Developer Guide.
     */
-  var attributesToGet: Collection<String>
+  var attributesToGet: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
+    }
+
+
+  /**
+    * Determines the read consistency model: If set to true, then the operation uses strongly
+    *  consistent reads; otherwise, the operation uses eventually consistent reads.
+    * 
+    *  Strongly consistent reads are not supported on global secondary indexes. If you query a global secondary
+    *  index with ConsistentRead set to true, you will receive a
+    *  ValidationException.
+    */
+  var consistentRead: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Query and Scan
+    *  in the Amazon DynamoDB Developer Guide.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
     
@@ -447,7 +447,7 @@ class QueryRequestDSL {
     *  If you use the ProjectionExpression parameter, then the value for Select can only
     *  be SPECIFIC_ATTRIBUTES. Any other value for Select will return an error.
     */
-  fun select(value: String) {
+  fun select(value: String?) {
     builder.select(value)
   }
 
@@ -455,7 +455,7 @@ class QueryRequestDSL {
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  fun returnConsumedCapacity(value: String) {
+  fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 
@@ -463,7 +463,7 @@ class QueryRequestDSL {
   /**
     * This is a legacy parameter. Use FilterExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  fun conditionalOperator(value: String) {
+  fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
 

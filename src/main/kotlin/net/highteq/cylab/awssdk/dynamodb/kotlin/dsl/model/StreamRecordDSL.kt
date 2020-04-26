@@ -28,66 +28,11 @@ class StreamRecordDSL {
   /**
     * The sequence number of the stream record.
     */
-  var sequenceNumber: String
+  var sequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sequenceNumber(value)
-    }
-
-
-  /**
-    * The primary key attribute(s) for the DynamoDB item that was modified.
-    */
-  var keys: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keys(value)
-    }
-
-
-  /**
-    * The item in the DynamoDB table as it appeared after it was modified.
-    */
-  var newImage: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.newImage(value)
-    }
-
-
-  /**
-    * The approximate date and time when the stream record was created, in UNIX epoch time format.
-    */
-  var approximateCreationDateTime: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.approximateCreationDateTime(value)
-    }
-
-
-  /**
-    * The item in the DynamoDB table as it appeared before it was modified.
-    */
-  var oldImage: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.oldImage(value)
-    }
-
-
-  /**
-    * The size of the stream record, in bytes.
-    */
-  var sizeBytes: Long
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.sizeBytes(value)
     }
 
 
@@ -102,11 +47,66 @@ class StreamRecordDSL {
     * 
     *  NEW_AND_OLD_IMAGES - both the new and the old item images of the item.
     */
-  var streamViewType: StreamViewType
+  var streamViewType: StreamViewType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.streamViewType(value)
+    }
+
+
+  /**
+    * The item in the DynamoDB table as it appeared after it was modified.
+    */
+  var newImage: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.newImage(value)
+    }
+
+
+  /**
+    * The approximate date and time when the stream record was created, in UNIX epoch time format.
+    */
+  var approximateCreationDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.approximateCreationDateTime(value)
+    }
+
+
+  /**
+    * The item in the DynamoDB table as it appeared before it was modified.
+    */
+  var oldImage: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.oldImage(value)
+    }
+
+
+  /**
+    * The size of the stream record, in bytes.
+    */
+  var sizeBytes: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.sizeBytes(value)
+    }
+
+
+  /**
+    * The primary key attribute(s) for the DynamoDB item that was modified.
+    */
+  var keys: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.keys(value)
     }
 
     
@@ -121,7 +121,7 @@ class StreamRecordDSL {
     * 
     *  NEW_AND_OLD_IMAGES - both the new and the old item images of the item.
     */
-  fun streamViewType(value: String) {
+  fun streamViewType(value: String?) {
     builder.streamViewType(value)
   }
 

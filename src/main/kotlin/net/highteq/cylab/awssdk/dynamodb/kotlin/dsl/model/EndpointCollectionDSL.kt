@@ -18,8 +18,8 @@ class EndpointCollectionDSL {
   private val list = ArrayList<Endpoint>()
   internal fun build() : List<Endpoint> = list
 
-  fun item(init: EndpointDSL.() -> Unit) {
-    list.add(EndpointDSL().apply(init).build())
+  fun item(dslBlock: EndpointDSL.() -> Unit) {
+    list.add(EndpointDSL().apply(dslBlock).build())
   }
 
   operator fun Endpoint.unaryPlus() {

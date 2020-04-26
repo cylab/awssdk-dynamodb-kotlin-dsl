@@ -28,7 +28,7 @@ class DescribeLimitsResponseDSL {
     * The maximum total read capacity units that your account allows you to provision across all of your tables in
     *  this Region.
     */
-  var accountMaxReadCapacityUnits: Long
+  var accountMaxReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +40,7 @@ class DescribeLimitsResponseDSL {
     * The maximum total write capacity units that your account allows you to provision across all of your tables in
     *  this Region.
     */
-  var accountMaxWriteCapacityUnits: Long
+  var accountMaxWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,7 +53,7 @@ class DescribeLimitsResponseDSL {
     *  creating in this Region, including the read capacity units provisioned for its global secondary indexes
     *  (GSIs).
     */
-  var tableMaxReadCapacityUnits: Long
+  var tableMaxReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,7 +66,7 @@ class DescribeLimitsResponseDSL {
     *  creating in this Region, including the write capacity units provisioned for its global secondary indexes
     *  (GSIs).
     */
-  var tableMaxWriteCapacityUnits: Long
+  var tableMaxWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,7 +77,7 @@ class DescribeLimitsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -88,7 +88,7 @@ class DescribeLimitsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

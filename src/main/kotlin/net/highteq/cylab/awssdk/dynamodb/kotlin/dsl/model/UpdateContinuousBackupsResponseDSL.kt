@@ -28,7 +28,7 @@ class UpdateContinuousBackupsResponseDSL {
   /**
     * Represents the continuous backups and point in time recovery settings on the table.
     */
-  var continuousBackupsDescription: ContinuousBackupsDescription
+  var continuousBackupsDescription: ContinuousBackupsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class UpdateContinuousBackupsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class UpdateContinuousBackupsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

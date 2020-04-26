@@ -32,7 +32,7 @@ class ListTablesResponseDSL {
     *  ExclusiveStartTableName parameter in a subsequent ListTables request and obtain the
     *  next page of results.
     */
-  var tableNames: Collection<String>
+  var tableNames: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class ListTablesResponseDSL {
     *  If you do not receive a LastEvaluatedTableName value in the response, this means that there are
     *  no more table names to be retrieved.
     */
-  var lastEvaluatedTableName: String
+  var lastEvaluatedTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +59,7 @@ class ListTablesResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +70,7 @@ class ListTablesResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

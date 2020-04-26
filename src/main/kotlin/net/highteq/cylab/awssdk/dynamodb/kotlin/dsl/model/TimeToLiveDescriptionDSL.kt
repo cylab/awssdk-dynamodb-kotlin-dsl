@@ -26,7 +26,7 @@ class TimeToLiveDescriptionDSL {
   /**
     * The name of the TTL attribute for items in the table.
     */
-  var attributeName: String
+  var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +37,7 @@ class TimeToLiveDescriptionDSL {
   /**
     * The TTL status for the table.
     */
-  var timeToLiveStatus: TimeToLiveStatus
+  var timeToLiveStatus: TimeToLiveStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class TimeToLiveDescriptionDSL {
   /**
     * The TTL status for the table.
     */
-  fun timeToLiveStatus(value: String) {
+  fun timeToLiveStatus(value: String?) {
     builder.timeToLiveStatus(value)
   }
 

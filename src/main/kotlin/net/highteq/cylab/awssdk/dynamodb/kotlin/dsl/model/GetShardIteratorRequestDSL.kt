@@ -27,7 +27,7 @@ class GetShardIteratorRequestDSL {
   /**
     * The sequence number of a stream record in the shard from which to start reading.
     */
-  var sequenceNumber: String
+  var sequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,13 +36,13 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The identifier of the shard. The iterator will be returned for this shard ID.
+    * The Amazon Resource Name (ARN) for the stream.
     */
-  var shardId: String
+  var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.shardId(value)
+      builder.streamArn(value)
     }
 
 
@@ -62,7 +62,7 @@ class GetShardIteratorRequestDSL {
     *  LATEST - Start reading just after the most recent stream record in the shard, so that you always
     *  read the most recent data in the shard.
     */
-  var shardIteratorType: ShardIteratorType
+  var shardIteratorType: ShardIteratorType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,24 +71,24 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * 
+    * The identifier of the shard. The iterator will be returned for this shard ID.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var shardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
+      builder.shardId(value)
     }
 
 
   /**
-    * The Amazon Resource Name (ARN) for the stream.
+    * 
     */
-  var streamArn: String
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.streamArn(value)
+      builder.overrideConfiguration(value)
     }
 
     
@@ -108,7 +108,7 @@ class GetShardIteratorRequestDSL {
     *  LATEST - Start reading just after the most recent stream record in the shard, so that you always
     *  read the most recent data in the shard.
     */
-  fun shardIteratorType(value: String) {
+  fun shardIteratorType(value: String?) {
     builder.shardIteratorType(value)
   }
 

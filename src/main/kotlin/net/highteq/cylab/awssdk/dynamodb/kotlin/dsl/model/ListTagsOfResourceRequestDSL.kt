@@ -24,21 +24,9 @@ class ListTagsOfResourceRequestDSL {
   internal fun build(): ListTagsOfResourceRequest = builder.build()
     
   /**
-    * An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource.
-    *  When provided in this manner, this API fetches the next page of results.
-    */
-  var nextToken: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.nextToken(value)
-    }
-
-
-  /**
     * The Amazon DynamoDB resource with tags to be listed. This value is an Amazon Resource Name (ARN).
     */
-  var resourceArn: String
+  var resourceArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,11 +37,23 @@ class ListTagsOfResourceRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource.
+    *  When provided in this manner, this API fetches the next page of results.
+    */
+  var nextToken: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.nextToken(value)
     }
 
   

@@ -24,31 +24,9 @@ class ListStreamsRequestDSL {
   internal fun build(): ListStreamsRequest = builder.build()
     
   /**
-    * The maximum number of streams to return. The upper limit is 100.
-    */
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * If this parameter is provided, then only the streams associated with this table name are returned.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,11 +38,33 @@ class ListStreamsRequestDSL {
     * The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was
     *  returned for LastEvaluatedStreamArn in the previous operation.
     */
-  var exclusiveStartStreamArn: String
+  var exclusiveStartStreamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exclusiveStartStreamArn(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The maximum number of streams to return. The upper limit is 100.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
   

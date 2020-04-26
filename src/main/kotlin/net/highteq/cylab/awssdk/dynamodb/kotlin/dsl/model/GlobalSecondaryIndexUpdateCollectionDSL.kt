@@ -24,8 +24,8 @@ class GlobalSecondaryIndexUpdateCollectionDSL {
   private val list = ArrayList<GlobalSecondaryIndexUpdate>()
   internal fun build() : List<GlobalSecondaryIndexUpdate> = list
 
-  fun item(init: GlobalSecondaryIndexUpdateDSL.() -> Unit) {
-    list.add(GlobalSecondaryIndexUpdateDSL().apply(init).build())
+  fun item(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) {
+    list.add(GlobalSecondaryIndexUpdateDSL().apply(dslBlock).build())
   }
 
   operator fun GlobalSecondaryIndexUpdate.unaryPlus() {

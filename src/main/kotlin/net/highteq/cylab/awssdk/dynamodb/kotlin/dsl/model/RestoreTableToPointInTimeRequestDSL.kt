@@ -25,20 +25,9 @@ class RestoreTableToPointInTimeRequestDSL {
   internal fun build(): RestoreTableToPointInTimeRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * Name of the source table that is being restored.
     */
-  var sourceTableName: String
+  var sourceTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +38,7 @@ class RestoreTableToPointInTimeRequestDSL {
   /**
     * The name of the new table to which it must be restored to.
     */
-  var targetTableName: String
+  var targetTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +50,7 @@ class RestoreTableToPointInTimeRequestDSL {
     * Restore the table to the latest possible time. LatestRestorableDateTime is typically 5 minutes
     *  before the current time.
     */
-  var useLatestRestorableTime: Boolean
+  var useLatestRestorableTime: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,11 +61,22 @@ class RestoreTableToPointInTimeRequestDSL {
   /**
     * Time in the past to restore the table to.
     */
-  var restoreDateTime: Instant
+  var restoreDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.restoreDateTime(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
   

@@ -28,11 +28,22 @@ class LocalSecondaryIndexDescriptionDSL {
     * Represents attributes that are copied (projected) from the table into the global secondary index. These are
     *  in addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  var projection: Projection
+  var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projection(value)
+    }
+
+
+  /**
+    * Represents the name of the local secondary index.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
 
@@ -52,7 +63,7 @@ class LocalSecondaryIndexDescriptionDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,21 +72,10 @@ class LocalSecondaryIndexDescriptionDSL {
 
 
   /**
-    * Represents the name of the local secondary index.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
-    }
-
-
-  /**
     * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  var itemCount: Long
+  var itemCount: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -87,7 +87,7 @@ class LocalSecondaryIndexDescriptionDSL {
     * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  var indexSizeBytes: Long
+  var indexSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -98,7 +98,7 @@ class LocalSecondaryIndexDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the index.
     */
-  var indexArn: String
+  var indexArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

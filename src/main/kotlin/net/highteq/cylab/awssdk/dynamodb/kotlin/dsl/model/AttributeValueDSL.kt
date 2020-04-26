@@ -28,101 +28,11 @@ class AttributeValueDSL {
   internal fun build(): AttributeValue = builder.build()
     
   /**
-    * 
-    */
-  var bs: Collection<SdkBytes>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.bs(value)
-    }
-
-
-  /**
-    * An attribute of type Boolean. For example:
-    * 
-    *  "BOOL": true
-    */
-  var bool: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.bool(value)
-    }
-
-
-  /**
-    * An attribute of type Number. For example:
-    * 
-    *  "N": "123.45"
-    * 
-    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
-    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
-    */
-  var n: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.n(value)
-    }
-
-
-  /**
-    * An attribute of type String. For example:
-    * 
-    *  "S": "Hello"
-    */
-  var s: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.s(value)
-    }
-
-
-  /**
-    * An attribute of type List. For example:
-    * 
-    *  "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
-    */
-  var l: Collection<AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.l(value)
-    }
-
-
-  /**
-    * 
-    */
-  var b: SdkBytes
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.b(value)
-    }
-
-
-  /**
-    * An attribute of type Map. For example:
-    * 
-    *  "M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}
-    */
-  var m: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.m(value)
-    }
-
-
-  /**
     * An attribute of type String Set. For example:
     * 
     *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
     */
-  var ss: Collection<String>
+  var ss: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -138,7 +48,7 @@ class AttributeValueDSL {
     *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
     *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
     */
-  var ns: Collection<String>
+  var ns: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -147,15 +57,105 @@ class AttributeValueDSL {
 
 
   /**
+    * An attribute of type Boolean. For example:
+    * 
+    *  "BOOL": true
+    */
+  var bool: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.bool(value)
+    }
+
+
+  /**
+    * 
+    */
+  var bs: Collection<SdkBytes>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.bs(value)
+    }
+
+
+  /**
     * An attribute of type Null. For example:
     * 
     *  "NULL": true
     */
-  var nul: Boolean
+  var nul: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.nul(value)
+    }
+
+
+  /**
+    * An attribute of type Number. For example:
+    * 
+    *  "N": "123.45"
+    * 
+    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
+    */
+  var n: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.n(value)
+    }
+
+
+  /**
+    * An attribute of type String. For example:
+    * 
+    *  "S": "Hello"
+    */
+  var s: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.s(value)
+    }
+
+
+  /**
+    * An attribute of type List. For example:
+    * 
+    *  "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
+    */
+  var l: Collection<AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.l(value)
+    }
+
+
+  /**
+    * 
+    */
+  var b: SdkBytes?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.b(value)
+    }
+
+
+  /**
+    * An attribute of type Map. For example:
+    * 
+    *  "M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}
+    */
+  var m: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.m(value)
     }
 
   

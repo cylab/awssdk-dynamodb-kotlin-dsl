@@ -24,9 +24,20 @@ class RestoreSummaryDSL {
   internal fun build(): RestoreSummary = builder.build()
     
   /**
+    * Indicates if a restore is in progress or not.
+    */
+  var restoreInProgress: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.restoreInProgress(value)
+    }
+
+
+  /**
     * The Amazon Resource Name (ARN) of the backup from which the table was restored.
     */
-  var sourceBackupArn: String
+  var sourceBackupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +48,7 @@ class RestoreSummaryDSL {
   /**
     * The ARN of the source table of the backup that is being restored.
     */
-  var sourceTableArn: String
+  var sourceTableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,20 +57,9 @@ class RestoreSummaryDSL {
 
 
   /**
-    * Indicates if a restore is in progress or not.
-    */
-  var restoreInProgress: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.restoreInProgress(value)
-    }
-
-
-  /**
     * Point in time or source backup time.
     */
-  var restoreDateTime: Instant
+  var restoreDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

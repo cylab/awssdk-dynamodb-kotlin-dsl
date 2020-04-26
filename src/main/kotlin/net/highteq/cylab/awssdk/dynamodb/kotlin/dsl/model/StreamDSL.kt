@@ -35,7 +35,7 @@ class StreamDSL {
     * 
     *  the StreamLabel
     */
-  var streamLabel: String
+  var streamLabel: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,7 +46,7 @@ class StreamDSL {
   /**
     * The DynamoDB table with which the stream is associated.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,7 +57,7 @@ class StreamDSL {
   /**
     * The Amazon Resource Name (ARN) for the stream.
     */
-  var streamArn: String
+  var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

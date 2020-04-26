@@ -25,7 +25,7 @@ class CreateReplicaActionDSL {
   /**
     * The Region of the replica to be added.
     */
-  var regionName: String
+  var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

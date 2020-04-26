@@ -26,67 +26,9 @@ class ListBackupsRequestDSL {
   internal fun build(): ListBackupsRequest = builder.build()
     
   /**
-    * Maximum number of backups to return at once.
-    */
-  var limit: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
-    }
-
-
-  /**
-    * Only backups created after this time are listed. TimeRangeLowerBound is inclusive.
-    */
-  var timeRangeLowerBound: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.timeRangeLowerBound(value)
-    }
-
-
-  /**
-    * Only backups created before this time are listed. TimeRangeUpperBound is exclusive.
-    */
-  var timeRangeUpperBound: Instant
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.timeRangeUpperBound(value)
-    }
-
-
-  /**
-    * LastEvaluatedBackupArn is the Amazon Resource Name (ARN) of the backup last evaluated when the
-    *  current page of results was returned, inclusive of the current page of results. This value may be specified
-    *  as the ExclusiveStartBackupArn of a new ListBackups operation in order to fetch the
-    *  next page of results.
-    */
-  var exclusiveStartBackupArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.exclusiveStartBackupArn(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The backups from the table specified by TableName are listed.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,11 +47,69 @@ class ListBackupsRequestDSL {
     * 
     *  ALL - All types of on-demand backups (USER and SYSTEM).
     */
-  var backupType: BackupTypeFilter
+  var backupType: BackupTypeFilter?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupType(value)
+    }
+
+
+  /**
+    * Only backups created after this time are listed. TimeRangeLowerBound is inclusive.
+    */
+  var timeRangeLowerBound: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.timeRangeLowerBound(value)
+    }
+
+
+  /**
+    * Only backups created before this time are listed. TimeRangeUpperBound is exclusive.
+    */
+  var timeRangeUpperBound: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.timeRangeUpperBound(value)
+    }
+
+
+  /**
+    * LastEvaluatedBackupArn is the Amazon Resource Name (ARN) of the backup last evaluated when the
+    *  current page of results was returned, inclusive of the current page of results. This value may be specified
+    *  as the ExclusiveStartBackupArn of a new ListBackups operation in order to fetch the
+    *  next page of results.
+    */
+  var exclusiveStartBackupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.exclusiveStartBackupArn(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * Maximum number of backups to return at once.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
     }
 
     
@@ -124,7 +124,7 @@ class ListBackupsRequestDSL {
     * 
     *  ALL - All types of on-demand backups (USER and SYSTEM).
     */
-  fun backupType(value: String) {
+  fun backupType(value: String?) {
     builder.backupType(value)
   }
 

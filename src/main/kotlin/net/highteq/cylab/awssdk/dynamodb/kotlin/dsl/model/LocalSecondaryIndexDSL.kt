@@ -28,11 +28,22 @@ class LocalSecondaryIndexDSL {
     * Represents attributes that are copied (projected) from the table into the local secondary index. These are in
     *  addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  var projection: Projection
+  var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projection(value)
+    }
+
+
+  /**
+    * The name of the local secondary index. The name must be unique among all other indexes on this table.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
 
@@ -52,22 +63,11 @@ class LocalSecondaryIndexDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.keySchema(value)
-    }
-
-
-  /**
-    * The name of the local secondary index. The name must be unique among all other indexes on this table.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
   

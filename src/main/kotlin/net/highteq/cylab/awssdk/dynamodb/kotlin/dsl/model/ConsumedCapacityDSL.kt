@@ -27,20 +27,9 @@ class ConsumedCapacityDSL {
   internal fun build(): ConsumedCapacity = builder.build()
     
   /**
-    * The amount of throughput consumed on the table affected by the operation.
-    */
-  var table: Capacity
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.table(value)
-    }
-
-
-  /**
     * The name of the table that was affected by the operation.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +40,7 @@ class ConsumedCapacityDSL {
   /**
     * The amount of throughput consumed on each local index affected by the operation.
     */
-  var localSecondaryIndexes: Map<String, Capacity>
+  var localSecondaryIndexes: Map<String, Capacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +51,7 @@ class ConsumedCapacityDSL {
   /**
     * The amount of throughput consumed on each global index affected by the operation.
     */
-  var globalSecondaryIndexes: Map<String, Capacity>
+  var globalSecondaryIndexes: Map<String, Capacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,20 +60,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The total number of read capacity units consumed by the operation.
-    */
-  var readCapacityUnits: Double
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
-  /**
     * The total number of write capacity units consumed by the operation.
     */
-  var writeCapacityUnits: Double
+  var writeCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -95,11 +73,33 @@ class ConsumedCapacityDSL {
   /**
     * The total number of capacity units consumed by the operation.
     */
-  var capacityUnits: Double
+  var capacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.capacityUnits(value)
+    }
+
+
+  /**
+    * The total number of read capacity units consumed by the operation.
+    */
+  var readCapacityUnits: Double?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
+    }
+
+
+  /**
+    * The amount of throughput consumed on the table affected by the operation.
+    */
+  var table: Capacity?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.table(value)
     }
 
   

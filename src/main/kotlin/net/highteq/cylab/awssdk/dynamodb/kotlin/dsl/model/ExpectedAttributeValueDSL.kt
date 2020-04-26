@@ -41,22 +41,6 @@ class ExpectedAttributeValueDSL {
   internal fun build(): ExpectedAttributeValue = builder.build()
     
   /**
-    * Represents the data for the expected attribute.
-    * 
-    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
-    *  itself.
-    * 
-    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
-    */
-  var value: AttributeValue
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.value(value)
-    }
-
-
-  /**
     * Causes DynamoDB to evaluate the value before attempting a conditional operation:
     * 
     *  If Exists is true, DynamoDB will check to see if that attribute value already
@@ -80,11 +64,35 @@ class ExpectedAttributeValueDSL {
     *  Exists is false but you also provide a Value. (You cannot expect an
     *  attribute to have a value, while also expecting it not to exist.)
     */
-  var exists: Boolean
+  var exists: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exists(value)
+    }
+
+
+  /**
+    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
+    *  the ComparisonOperator being used.
+    * 
+    *  For type Number, value comparisons are numeric.
+    * 
+    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
+    *  example, a is greater than A, and a is greater than B.
+    *  For a list of code values, see http://
+    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
+    * 
+    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
+    * 
+    *  For information on specifying data types in JSON, see JSON Data Format
+    *  in the Amazon DynamoDB Developer Guide.
+    */
+  var attributeValueList: Collection<AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributeValueList(value)
     }
 
 
@@ -206,7 +214,7 @@ class ExpectedAttributeValueDSL {
     *  not match. For example, {"S":"6"} does not compare to {"N":"6"}. Also,
     *  {"N":"6"} does not compare to {"NS":["6", "2", "1"]}
     */
-  var comparisonOperator: ComparisonOperator
+  var comparisonOperator: ComparisonOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -215,26 +223,18 @@ class ExpectedAttributeValueDSL {
 
 
   /**
-    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
-    *  the ComparisonOperator being used.
+    * Represents the data for the expected attribute.
     * 
-    *  For type Number, value comparisons are numeric.
+    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
+    *  itself.
     * 
-    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
-    *  example, a is greater than A, and a is greater than B.
-    *  For a list of code values, see http://
-    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
-    * 
-    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
-    * 
-    *  For information on specifying data types in JSON, see JSON Data Format
-    *  in the Amazon DynamoDB Developer Guide.
+    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
     */
-  var attributeValueList: Collection<AttributeValue>
+  var value: AttributeValue?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.attributeValueList(value)
+      builder.value(value)
     }
 
     
@@ -356,7 +356,7 @@ class ExpectedAttributeValueDSL {
     *  not match. For example, {"S":"6"} does not compare to {"N":"6"}. Also,
     *  {"N":"6"} does not compare to {"NS":["6", "2", "1"]}
     */
-  fun comparisonOperator(value: String) {
+  fun comparisonOperator(value: String?) {
     builder.comparisonOperator(value)
   }
 

@@ -28,7 +28,7 @@ class BackupSummaryDSL {
   /**
     * Name of the table.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class BackupSummaryDSL {
   /**
     * ARN associated with the table.
     */
-  var tableArn: String
+  var tableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class BackupSummaryDSL {
   /**
     * Unique identifier for the table.
     */
-  var tableId: String
+  var tableId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,20 +59,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * ARN associated with the backup.
-    */
-  var backupArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
-    }
-
-
-  /**
     * Name of the specified backup.
     */
-  var backupName: String
+  var backupName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,7 +72,7 @@ class BackupSummaryDSL {
   /**
     * Time at which the backup was created.
     */
-  var backupCreationDateTime: Instant
+  var backupCreationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,10 +81,21 @@ class BackupSummaryDSL {
 
 
   /**
+    * ARN associated with the backup.
+    */
+  var backupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupArn(value)
+    }
+
+
+  /**
     * Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM
     *  on-demand backup expires automatically 35 days after its creation.
     */
-  var backupExpiryDateTime: Instant
+  var backupExpiryDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -106,7 +106,7 @@ class BackupSummaryDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  var backupStatus: BackupStatus
+  var backupStatus: BackupStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -125,7 +125,7 @@ class BackupSummaryDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  var backupType: BackupType
+  var backupType: BackupType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -136,7 +136,7 @@ class BackupSummaryDSL {
   /**
     * Size of the backup in bytes.
     */
-  var backupSizeBytes: Long
+  var backupSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -147,7 +147,7 @@ class BackupSummaryDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  fun backupStatus(value: String) {
+  fun backupStatus(value: String?) {
     builder.backupStatus(value)
   }
 
@@ -163,7 +163,7 @@ class BackupSummaryDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  fun backupType(value: String) {
+  fun backupType(value: String?) {
     builder.backupType(value)
   }
 

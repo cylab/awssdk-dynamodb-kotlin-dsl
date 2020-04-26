@@ -28,9 +28,20 @@ class TransactWriteItemDSL {
   internal fun build(): TransactWriteItem = builder.build()
     
   /**
+    * A request to perform a check item operation.
+    */
+  var conditionCheck: ConditionCheck?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.conditionCheck(value)
+    }
+
+
+  /**
     * A request to perform a PutItem operation.
     */
-  var put: Put
+  var put: Put?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,7 +52,7 @@ class TransactWriteItemDSL {
   /**
     * A request to perform an UpdateItem operation.
     */
-  var update: Update
+  var update: Update?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,26 +63,23 @@ class TransactWriteItemDSL {
   /**
     * A request to perform a DeleteItem operation.
     */
-  var delete: Delete
+  var delete: Delete?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.delete(value)
     }
 
-
+  
+    
   /**
     * A request to perform a check item operation.
     */
-  var conditionCheck: ConditionCheck
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.conditionCheck(value)
-    }
+  fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
+    builder.conditionCheck(buildConditionCheck(dslBlock))
+  }
 
-  
-    
+
   /**
     * A request to perform a PutItem operation.
     */
@@ -93,14 +101,6 @@ class TransactWriteItemDSL {
     */
   fun delete(dslBlock: DeleteDSL.() -> Unit) {
     builder.delete(buildDelete(dslBlock))
-  }
-
-
-  /**
-    * A request to perform a check item operation.
-    */
-  fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
-    builder.conditionCheck(buildConditionCheck(dslBlock))
   }
 
 }

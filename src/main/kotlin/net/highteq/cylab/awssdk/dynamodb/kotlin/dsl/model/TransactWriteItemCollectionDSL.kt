@@ -19,8 +19,8 @@ class TransactWriteItemCollectionDSL {
   private val list = ArrayList<TransactWriteItem>()
   internal fun build() : List<TransactWriteItem> = list
 
-  fun item(init: TransactWriteItemDSL.() -> Unit) {
-    list.add(TransactWriteItemDSL().apply(init).build())
+  fun item(dslBlock: TransactWriteItemDSL.() -> Unit) {
+    list.add(TransactWriteItemDSL().apply(dslBlock).build())
   }
 
   operator fun TransactWriteItem.unaryPlus() {

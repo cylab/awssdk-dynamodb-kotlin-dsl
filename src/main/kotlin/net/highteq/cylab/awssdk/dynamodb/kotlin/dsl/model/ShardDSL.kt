@@ -26,7 +26,7 @@ class ShardDSL {
   /**
     * The system-generated identifier for this shard.
     */
-  var shardId: String
+  var shardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +37,7 @@ class ShardDSL {
   /**
     * The shard ID of the current shard's parent.
     */
-  var parentShardId: String
+  var parentShardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +48,7 @@ class ShardDSL {
   /**
     * The range of possible sequence numbers for the shard.
     */
-  var sequenceNumberRange: SequenceNumberRange
+  var sequenceNumberRange: SequenceNumberRange?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

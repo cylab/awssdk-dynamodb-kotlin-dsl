@@ -29,7 +29,7 @@ class WriteRequestDSL {
   /**
     * A request to perform a PutItem operation.
     */
-  var putRequest: PutRequest
+  var putRequest: PutRequest?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +40,7 @@ class WriteRequestDSL {
   /**
     * A request to perform a DeleteItem operation.
     */
-  var deleteRequest: DeleteRequest
+  var deleteRequest: DeleteRequest?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

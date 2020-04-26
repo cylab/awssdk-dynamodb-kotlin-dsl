@@ -30,7 +30,7 @@ class DescribeStreamResponseDSL {
     *  with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream
     *  records within the shards.
     */
-  var streamDescription: StreamDescription
+  var streamDescription: StreamDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,7 +41,7 @@ class DescribeStreamResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,7 +52,7 @@ class DescribeStreamResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

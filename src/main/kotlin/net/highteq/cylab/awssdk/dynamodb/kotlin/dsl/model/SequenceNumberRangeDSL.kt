@@ -25,7 +25,7 @@ class SequenceNumberRangeDSL {
   /**
     * The first sequence number.
     */
-  var startingSequenceNumber: String
+  var startingSequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,7 +36,7 @@ class SequenceNumberRangeDSL {
   /**
     * The last sequence number.
     */
-  var endingSequenceNumber: String
+  var endingSequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

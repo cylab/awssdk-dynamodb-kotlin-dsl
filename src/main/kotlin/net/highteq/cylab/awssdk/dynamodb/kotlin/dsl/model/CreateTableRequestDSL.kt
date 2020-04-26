@@ -36,7 +36,7 @@ class CreateTableRequestDSL {
     * A list of key-value pairs to label the table. For more information, see Tagging for
     *  DynamoDB.
     */
-  var tags: Collection<Tag>
+  var tags: Collection<Tag>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -45,20 +45,9 @@ class CreateTableRequestDSL {
 
 
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table to create.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -99,7 +88,7 @@ class CreateTableRequestDSL {
     * 
     *  For more information, see Working with Tables in the Amazon DynamoDB Developer Guide.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -117,7 +106,7 @@ class CreateTableRequestDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  var provisionedThroughput: ProvisionedThroughput
+  var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -128,7 +117,7 @@ class CreateTableRequestDSL {
   /**
     * An array of attributes that describe the key schema for the table and indexes.
     */
-  var attributeDefinitions: Collection<AttributeDefinition>
+  var attributeDefinitions: Collection<AttributeDefinition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -166,7 +155,7 @@ class CreateTableRequestDSL {
     *  of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes,
     *  this counts as two distinct attributes when determining the total.
     */
-  var localSecondaryIndexes: Collection<LocalSecondaryIndex>
+  var localSecondaryIndexes: Collection<LocalSecondaryIndex>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -203,7 +192,7 @@ class CreateTableRequestDSL {
     *  ProvisionedThroughput - The provisioned throughput settings for the global secondary index,
     *  consisting of read and write capacity units.
     */
-  var globalSecondaryIndexes: Collection<GlobalSecondaryIndex>
+  var globalSecondaryIndexes: Collection<GlobalSecondaryIndex>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -227,7 +216,7 @@ class CreateTableRequestDSL {
     * 
     *  NEW_AND_OLD_IMAGES - Both the new and the old item images of the item are written to the stream.
     */
-  var streamSpecification: StreamSpecification
+  var streamSpecification: StreamSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -245,7 +234,7 @@ class CreateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var billingMode: BillingMode
+  var billingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -256,11 +245,22 @@ class CreateTableRequestDSL {
   /**
     * Represents the settings used to enable server-side encryption.
     */
-  var sseSpecification: SSESpecification
+  var sseSpecification: SSESpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sseSpecification(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
     
@@ -274,7 +274,7 @@ class CreateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  fun billingMode(value: String) {
+  fun billingMode(value: String?) {
     builder.billingMode(value)
   }
 

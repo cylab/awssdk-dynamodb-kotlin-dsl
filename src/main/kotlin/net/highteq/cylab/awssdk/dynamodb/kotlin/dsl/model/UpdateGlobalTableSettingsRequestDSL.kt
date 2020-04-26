@@ -28,6 +28,17 @@ class UpdateGlobalTableSettingsRequestDSL {
   internal fun build(): UpdateGlobalTableSettingsRequest = builder.build()
     
   /**
+    * The name of the global table
+    */
+  var globalTableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalTableName(value)
+    }
+
+
+  /**
     * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
     *  table defaults to PROVISIONED capacity billing mode.
     * 
@@ -37,7 +48,7 @@ class UpdateGlobalTableSettingsRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var globalTableBillingMode: BillingMode
+  var globalTableBillingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +59,7 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     */
-  var globalTableProvisionedWriteCapacityUnits: Long
+  var globalTableProvisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +70,7 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * Auto scaling settings for managing provisioned write capacity for the global table.
     */
-  var globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
+  var globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +81,7 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * Represents the settings of a global secondary index for a global table that will be modified.
     */
-  var globalTableGlobalSecondaryIndexSettingsUpdate: Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>
+  var globalTableGlobalSecondaryIndexSettingsUpdate: Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,7 +92,7 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * Represents the settings for a global table in a Region that will be modified.
     */
-  var replicaSettingsUpdate: Collection<ReplicaSettingsUpdate>
+  var replicaSettingsUpdate: Collection<ReplicaSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,22 +103,11 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * The name of the global table
-    */
-  var globalTableName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableName(value)
     }
 
     
@@ -121,7 +121,7 @@ class UpdateGlobalTableSettingsRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  fun globalTableBillingMode(value: String) {
+  fun globalTableBillingMode(value: String?) {
     builder.globalTableBillingMode(value)
   }
 

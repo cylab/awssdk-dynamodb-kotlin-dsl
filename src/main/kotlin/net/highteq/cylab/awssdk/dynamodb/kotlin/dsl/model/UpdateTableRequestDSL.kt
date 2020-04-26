@@ -30,20 +30,9 @@ class UpdateTableRequestDSL {
   internal fun build(): UpdateTableRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table to be updated.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,7 +43,7 @@ class UpdateTableRequestDSL {
   /**
     * The new provisioned throughput settings for the specified table or index.
     */
-  var provisionedThroughput: ProvisionedThroughput
+  var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,7 +56,7 @@ class UpdateTableRequestDSL {
     *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
     *  index.
     */
-  var attributeDefinitions: Collection<AttributeDefinition>
+  var attributeDefinitions: Collection<AttributeDefinition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,7 +70,7 @@ class UpdateTableRequestDSL {
     *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
     *  stream, or if you try to disable a stream on a table that doesn't have a stream.
     */
-  var streamSpecification: StreamSpecification
+  var streamSpecification: StreamSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -101,7 +90,7 @@ class UpdateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var billingMode: BillingMode
+  var billingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -112,7 +101,7 @@ class UpdateTableRequestDSL {
   /**
     * The new server-side encryption settings for the specified table.
     */
-  var sseSpecification: SSESpecification
+  var sseSpecification: SSESpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -135,11 +124,22 @@ class UpdateTableRequestDSL {
     *  For more information, see Managing Global
     *  Secondary Indexes in the Amazon DynamoDB Developer Guide.
     */
-  var globalSecondaryIndexUpdates: Collection<GlobalSecondaryIndexUpdate>
+  var globalSecondaryIndexUpdates: Collection<GlobalSecondaryIndexUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.globalSecondaryIndexUpdates(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
     
@@ -155,7 +155,7 @@ class UpdateTableRequestDSL {
     *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
     *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  fun billingMode(value: String) {
+  fun billingMode(value: String?) {
     builder.billingMode(value)
   }
 

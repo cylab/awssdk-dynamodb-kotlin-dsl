@@ -27,37 +27,26 @@ class TransactWriteItemsRequestDSL {
   internal fun build(): TransactWriteItemsRequest = builder.build()
     
   /**
-    * 
+    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
+    *  statistics about item collections (if any), that were modified during the operation and are returned in the
+    *  response. If set to NONE (the default), no statistics are returned.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
+      builder.returnItemCollectionMetrics(value)
     }
 
 
   /**
     * Sets the value of the ReturnConsumedCapacity property for this object.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
-    }
-
-
-  /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections (if any), that were modified during the operation and are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
-    */
-  var returnItemCollectionMetrics: ReturnItemCollectionMetrics
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.returnItemCollectionMetrics(value)
     }
 
 
@@ -67,7 +56,7 @@ class TransactWriteItemsRequestDSL {
     *  operate on items in different tables, but the tables must reside in the same AWS account and Region, and no
     *  two of them can operate on the same item.
     */
-  var transactItems: Collection<TransactWriteItem>
+  var transactItems: Collection<TransactWriteItem>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,29 +82,40 @@ class TransactWriteItemsRequestDSL {
     *  If you submit a request with the same client token but a change in other parameters within the 10-minute
     *  idempotency window, DynamoDB returns an IdempotentParameterMismatch exception.
     */
-  var clientRequestToken: String
+  var clientRequestToken: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.clientRequestToken(value)
     }
 
-    
+
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  fun returnConsumedCapacity(value: String) {
-    builder.returnConsumedCapacity(value)
-  }
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
 
-
+    
   /**
     * Determines whether item collection metrics are returned. If set to SIZE, the response includes
     *  statistics about item collections (if any), that were modified during the operation and are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  fun returnItemCollectionMetrics(value: String) {
+  fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
+  }
+
+
+  /**
+    * Sets the value of the ReturnConsumedCapacity property for this object.
+    */
+  fun returnConsumedCapacity(value: String?) {
+    builder.returnConsumedCapacity(value)
   }
 
     

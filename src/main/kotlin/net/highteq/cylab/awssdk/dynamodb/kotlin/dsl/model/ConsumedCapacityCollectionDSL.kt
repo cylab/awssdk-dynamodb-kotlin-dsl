@@ -21,8 +21,8 @@ class ConsumedCapacityCollectionDSL {
   private val list = ArrayList<ConsumedCapacity>()
   internal fun build() : List<ConsumedCapacity> = list
 
-  fun item(init: ConsumedCapacityDSL.() -> Unit) {
-    list.add(ConsumedCapacityDSL().apply(init).build())
+  fun item(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+    list.add(ConsumedCapacityDSL().apply(dslBlock).build())
   }
 
   operator fun ConsumedCapacity.unaryPlus() {

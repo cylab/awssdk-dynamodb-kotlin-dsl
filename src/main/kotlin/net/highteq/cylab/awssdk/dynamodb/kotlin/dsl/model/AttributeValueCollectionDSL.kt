@@ -22,8 +22,8 @@ class AttributeValueCollectionDSL {
   private val list = ArrayList<AttributeValue>()
   internal fun build() : List<AttributeValue> = list
 
-  fun item(init: AttributeValueDSL.() -> Unit) {
-    list.add(AttributeValueDSL().apply(init).build())
+  fun item(dslBlock: AttributeValueDSL.() -> Unit) {
+    list.add(AttributeValueDSL().apply(dslBlock).build())
   }
 
   operator fun AttributeValue.unaryPlus() {

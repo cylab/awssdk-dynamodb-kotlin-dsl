@@ -29,7 +29,7 @@ class PutRequestDSL {
     *  match those of the table's key schema. If any attributes are present in the item that are part of an index
     *  key schema for the table, their types must match the index key schema.
     */
-  var item: Map<String, AttributeValue>
+  var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

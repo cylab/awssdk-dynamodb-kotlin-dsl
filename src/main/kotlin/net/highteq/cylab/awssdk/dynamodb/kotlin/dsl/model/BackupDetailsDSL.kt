@@ -26,20 +26,9 @@ class BackupDetailsDSL {
   internal fun build(): BackupDetails = builder.build()
     
   /**
-    * ARN associated with the backup.
-    */
-  var backupArn: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
-    }
-
-
-  /**
     * Name of the requested backup.
     */
-  var backupName: String
+  var backupName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +39,7 @@ class BackupDetailsDSL {
   /**
     * Time at which the backup was created. This is the request time of the backup.
     */
-  var backupCreationDateTime: Instant
+  var backupCreationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,10 +48,21 @@ class BackupDetailsDSL {
 
 
   /**
+    * ARN associated with the backup.
+    */
+  var backupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupArn(value)
+    }
+
+
+  /**
     * Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM
     *  on-demand backup expires automatically 35 days after its creation.
     */
-  var backupExpiryDateTime: Instant
+  var backupExpiryDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,7 +73,7 @@ class BackupDetailsDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  var backupStatus: BackupStatus
+  var backupStatus: BackupStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,7 +92,7 @@ class BackupDetailsDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  var backupType: BackupType
+  var backupType: BackupType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -103,7 +103,7 @@ class BackupDetailsDSL {
   /**
     * Size of the backup in bytes.
     */
-  var backupSizeBytes: Long
+  var backupSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -114,7 +114,7 @@ class BackupDetailsDSL {
   /**
     * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
     */
-  fun backupStatus(value: String) {
+  fun backupStatus(value: String?) {
     builder.backupStatus(value)
   }
 
@@ -130,7 +130,7 @@ class BackupDetailsDSL {
     * 
     *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  fun backupType(value: String) {
+  fun backupType(value: String?) {
     builder.backupType(value)
   }
 

@@ -26,21 +26,9 @@ class ListTagsOfResourceResponseDSL {
   internal fun build(): ListTagsOfResourceResponse = builder.build()
     
   /**
-    * If this value is returned, there are additional results to be displayed. To retrieve them, call
-    *  ListTagsOfResource again, with NextToken set to this value.
-    */
-  var nextToken: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.nextToken(value)
-    }
-
-
-  /**
     * The tags currently associated with the Amazon DynamoDB resource.
     */
-  var tags: Collection<Tag>
+  var tags: Collection<Tag>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,9 +37,21 @@ class ListTagsOfResourceResponseDSL {
 
 
   /**
+    * If this value is returned, there are additional results to be displayed. To retrieve them, call
+    *  ListTagsOfResource again, with NextToken set to this value.
+    */
+  var nextToken: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.nextToken(value)
+    }
+
+
+  /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +62,7 @@ class ListTagsOfResourceResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

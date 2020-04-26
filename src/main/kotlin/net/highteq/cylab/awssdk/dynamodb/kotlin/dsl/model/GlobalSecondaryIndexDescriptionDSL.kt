@@ -30,11 +30,22 @@ class GlobalSecondaryIndexDescriptionDSL {
     * Represents attributes that are copied (projected) from the table into the global secondary index. These are
     *  in addition to the primary key attributes and index key attributes, which are automatically projected.
     */
-  var projection: Projection
+  var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projection(value)
+    }
+
+
+  /**
+    * The name of the global secondary index.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
 
@@ -54,7 +65,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -68,7 +79,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  var provisionedThroughput: ProvisionedThroughputDescription
+  var provisionedThroughput: ProvisionedThroughputDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,21 +88,10 @@ class GlobalSecondaryIndexDescriptionDSL {
 
 
   /**
-    * The name of the global secondary index.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
-    }
-
-
-  /**
     * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
     *  changes might not be reflected in this value.
     */
-  var itemCount: Long
+  var itemCount: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -110,7 +110,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     * 
     *  ACTIVE - The index is ready for use.
     */
-  var indexStatus: IndexStatus
+  var indexStatus: IndexStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -132,7 +132,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     *  For indexes that were created during a CreateTable operation, the Backfilling
     *  attribute does not appear in the DescribeTable output.
     */
-  var backfilling: Boolean
+  var backfilling: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -144,7 +144,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
-  var indexSizeBytes: Long
+  var indexSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -155,7 +155,7 @@ class GlobalSecondaryIndexDescriptionDSL {
   /**
     * The Amazon Resource Name (ARN) that uniquely identifies the index.
     */
-  var indexArn: String
+  var indexArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -174,7 +174,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     * 
     *  ACTIVE - The index is ready for use.
     */
-  fun indexStatus(value: String) {
+  fun indexStatus(value: String?) {
     builder.indexStatus(value)
   }
 

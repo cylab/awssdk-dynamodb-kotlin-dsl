@@ -28,17 +28,6 @@ class KeysAndAttributesDSL {
   internal fun build(): KeysAndAttributes = builder.build()
     
   /**
-    * The primary key attribute values that define the items and the attributes associated with the items.
-    */
-  var keys: Collection<Map<String, AttributeValue>>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keys(value)
-    }
-
-
-  /**
     * One or more substitution tokens for attribute names in an expression. The following are some use cases for
     *  using ExpressionAttributeNames:
     * 
@@ -69,23 +58,11 @@ class KeysAndAttributesDSL {
     * 
     *  For more information on expression attribute names, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.expressionAttributeNames(value)
-    }
-
-
-  /**
-    * The consistency of a read operation. If set to true, then a strongly consistent read is used;
-    *  otherwise, an eventually consistent read is used.
-    */
-  var consistentRead: Boolean
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.consistentRead(value)
     }
 
 
@@ -99,7 +76,7 @@ class KeysAndAttributesDSL {
     * 
     *  For more information, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var projectionExpression: String
+  var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -110,11 +87,34 @@ class KeysAndAttributesDSL {
   /**
     * This is a legacy parameter. Use ProjectionExpression instead. For more information, see Legacy Conditional Parameters in the Amazon DynamoDB Developer Guide.
     */
-  var attributesToGet: Collection<String>
+  var attributesToGet: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributesToGet(value)
+    }
+
+
+  /**
+    * The consistency of a read operation. If set to true, then a strongly consistent read is used;
+    *  otherwise, an eventually consistent read is used.
+    */
+  var consistentRead: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.consistentRead(value)
+    }
+
+
+  /**
+    * The primary key attribute values that define the items and the attributes associated with the items.
+    */
+  var keys: Collection<Map<String, AttributeValue>>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.keys(value)
     }
 
   

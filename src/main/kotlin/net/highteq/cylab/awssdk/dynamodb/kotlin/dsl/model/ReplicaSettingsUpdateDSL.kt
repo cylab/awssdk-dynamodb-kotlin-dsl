@@ -28,7 +28,7 @@ class ReplicaSettingsUpdateDSL {
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
     */
-  var replicaProvisionedReadCapacityUnits: Long
+  var replicaProvisionedReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class ReplicaSettingsUpdateDSL {
   /**
     * Auto scaling settings for managing a global table replica's read capacity units.
     */
-  var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
+  var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class ReplicaSettingsUpdateDSL {
   /**
     * Represents the settings of a global secondary index for a global table that will be modified.
     */
-  var replicaGlobalSecondaryIndexSettingsUpdate: Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>
+  var replicaGlobalSecondaryIndexSettingsUpdate: Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +61,7 @@ class ReplicaSettingsUpdateDSL {
   /**
     * The Region of the replica to be added.
     */
-  var regionName: String
+  var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

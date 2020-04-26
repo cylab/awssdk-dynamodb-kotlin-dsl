@@ -18,8 +18,8 @@ class ItemResponseCollectionDSL {
   private val list = ArrayList<ItemResponse>()
   internal fun build() : List<ItemResponse> = list
 
-  fun item(init: ItemResponseDSL.() -> Unit) {
-    list.add(ItemResponseDSL().apply(init).build())
+  fun item(dslBlock: ItemResponseDSL.() -> Unit) {
+    list.add(ItemResponseDSL().apply(dslBlock).build())
   }
 
   operator fun ItemResponse.unaryPlus() {

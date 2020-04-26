@@ -18,8 +18,8 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL {
   private val list = ArrayList<GlobalTableGlobalSecondaryIndexSettingsUpdate>()
   internal fun build() : List<GlobalTableGlobalSecondaryIndexSettingsUpdate> = list
 
-  fun item(init: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
-    list.add(GlobalTableGlobalSecondaryIndexSettingsUpdateDSL().apply(init).build())
+  fun item(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
+    list.add(GlobalTableGlobalSecondaryIndexSettingsUpdateDSL().apply(dslBlock).build())
   }
 
   operator fun GlobalTableGlobalSecondaryIndexSettingsUpdate.unaryPlus() {

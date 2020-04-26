@@ -18,8 +18,8 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL {
   private val list = ArrayList<ReplicaGlobalSecondaryIndexSettingsDescription>()
   internal fun build() : List<ReplicaGlobalSecondaryIndexSettingsDescription> = list
 
-  fun item(init: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
-    list.add(ReplicaGlobalSecondaryIndexSettingsDescriptionDSL().apply(init).build())
+  fun item(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
+    list.add(ReplicaGlobalSecondaryIndexSettingsDescriptionDSL().apply(dslBlock).build())
   }
 
   operator fun ReplicaGlobalSecondaryIndexSettingsDescription.unaryPlus() {

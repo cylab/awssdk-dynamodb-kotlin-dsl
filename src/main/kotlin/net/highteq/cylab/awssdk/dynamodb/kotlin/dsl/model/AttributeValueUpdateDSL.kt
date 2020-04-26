@@ -40,7 +40,7 @@ class AttributeValueUpdateDSL {
     * 
     *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
     */
-  var value: AttributeValue
+  var value: AttributeValue?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -107,7 +107,7 @@ class AttributeValueUpdateDSL {
     *  the attribute value. The only data types allowed are number and number set; no other data types can be
     *  specified.
     */
-  var action: AttributeAction
+  var action: AttributeAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -174,7 +174,7 @@ class AttributeValueUpdateDSL {
     *  the attribute value. The only data types allowed are number and number set; no other data types can be
     *  specified.
     */
-  fun action(value: String) {
+  fun action(value: String?) {
     builder.action(value)
   }
 

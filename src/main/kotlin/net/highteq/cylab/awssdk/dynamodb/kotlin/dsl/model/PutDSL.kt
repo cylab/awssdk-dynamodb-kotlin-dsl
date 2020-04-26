@@ -30,7 +30,7 @@ class PutDSL {
     *  match those of the table's key schema. If any attributes are present in the item that are part of an index
     *  key schema for the table, their types must match the index key schema.
     */
-  var item: Map<String, AttributeValue>
+  var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,7 +41,7 @@ class PutDSL {
   /**
     * A condition that must be satisfied in order for a conditional update to succeed.
     */
-  var conditionExpression: String
+  var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,7 +52,7 @@ class PutDSL {
   /**
     * Name of the table in which to write the item.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,7 +63,7 @@ class PutDSL {
   /**
     * One or more substitution tokens for attribute names in an expression.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,7 +74,7 @@ class PutDSL {
   /**
     * One or more values that can be substituted in an expression.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -87,7 +87,7 @@ class PutDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure
+  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -100,7 +100,7 @@ class PutDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
     *  ALL_OLD.
     */
-  fun returnValuesOnConditionCheckFailure(value: String) {
+  fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 

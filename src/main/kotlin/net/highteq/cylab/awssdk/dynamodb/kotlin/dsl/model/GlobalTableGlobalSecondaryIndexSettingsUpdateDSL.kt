@@ -24,20 +24,20 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
   internal fun build(): GlobalTableGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
-    * Auto scaling settings for managing a global secondary index's write capacity units.
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
     */
-  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate
+  var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
+      builder.indexName(value)
     }
 
 
   /**
     * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
     */
-  var provisionedWriteCapacityUnits: Long
+  var provisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,13 +46,13 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
 
 
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    * Auto scaling settings for managing a global secondary index's write capacity units.
     */
-  var indexName: String
+  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.indexName(value)
+      builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
     }
 
   

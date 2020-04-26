@@ -29,7 +29,7 @@ class CreateGlobalSecondaryIndexActionDSL {
     * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
     *  primary key attributes and index key attributes, which are automatically projected.
     */
-  var projection: Projection
+  var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,9 +38,20 @@ class CreateGlobalSecondaryIndexActionDSL {
 
 
   /**
+    * The name of the global secondary index to be created.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
+    }
+
+
+  /**
     * The key schema for the global secondary index.
     */
-  var keySchema: Collection<KeySchemaElement>
+  var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,22 +65,11 @@ class CreateGlobalSecondaryIndexActionDSL {
     *  For current minimum and maximum provisioned throughput values, see Limits in the
     *  Amazon DynamoDB Developer Guide.
     */
-  var provisionedThroughput: ProvisionedThroughput
+  var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
-    }
-
-
-  /**
-    * The name of the global secondary index to be created.
-    */
-  var indexName: String
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
     }
 
   

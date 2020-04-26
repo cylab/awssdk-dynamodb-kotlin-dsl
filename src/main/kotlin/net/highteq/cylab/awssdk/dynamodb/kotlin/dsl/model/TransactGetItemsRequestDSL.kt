@@ -26,21 +26,10 @@ class TransactGetItemsRequestDSL {
   internal fun build(): TransactGetItemsRequest = builder.build()
     
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * A value of TOTAL causes consumed capacity information to be returned, and a value of
     *  NONE prevents that information from being returned. No other value is valid.
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity
+  var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,11 +41,22 @@ class TransactGetItemsRequestDSL {
     * An ordered array of up to 25 TransactGetItem objects, each of which contains a Get
     *  structure.
     */
-  var transactItems: Collection<TransactGetItem>
+  var transactItems: Collection<TransactGetItem>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.transactItems(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
     }
 
     
@@ -64,7 +64,7 @@ class TransactGetItemsRequestDSL {
     * A value of TOTAL causes consumed capacity information to be returned, and a value of
     *  NONE prevents that information from being returned. No other value is valid.
     */
-  fun returnConsumedCapacity(value: String) {
+  fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 

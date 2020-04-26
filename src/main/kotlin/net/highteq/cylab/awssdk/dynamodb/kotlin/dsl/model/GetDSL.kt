@@ -24,21 +24,9 @@ class GetDSL {
   internal fun build(): Get = builder.build()
     
   /**
-    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
-    *  retrieve.
-    */
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
-    }
-
-
-  /**
     * The name of the table from which to retrieve the specified item.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +37,7 @@ class GetDSL {
   /**
     * One or more substitution tokens for attribute names in the ProjectionExpression parameter.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,11 +51,23 @@ class GetDSL {
     *  attributes of the specified item are returned. If any of the requested attributes are not found, they do not
     *  appear in the result.
     */
-  var projectionExpression: String
+  var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projectionExpression(value)
+    }
+
+
+  /**
+    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
+    *  retrieve.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
     }
 
   

@@ -18,8 +18,8 @@ class ReplicaDescriptionCollectionDSL {
   private val list = ArrayList<ReplicaDescription>()
   internal fun build() : List<ReplicaDescription> = list
 
-  fun item(init: ReplicaDescriptionDSL.() -> Unit) {
-    list.add(ReplicaDescriptionDSL().apply(init).build())
+  fun item(dslBlock: ReplicaDescriptionDSL.() -> Unit) {
+    list.add(ReplicaDescriptionDSL().apply(dslBlock).build())
   }
 
   operator fun ReplicaDescription.unaryPlus() {

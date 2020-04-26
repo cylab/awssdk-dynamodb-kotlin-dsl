@@ -28,7 +28,7 @@ class ListGlobalTablesResponseDSL {
   /**
     * List of global table names.
     */
-  var globalTables: Collection<GlobalTable>
+  var globalTables: Collection<GlobalTable>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class ListGlobalTablesResponseDSL {
   /**
     * Last evaluated global table name.
     */
-  var lastEvaluatedGlobalTableName: String
+  var lastEvaluatedGlobalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class ListGlobalTablesResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +61,7 @@ class ListGlobalTablesResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

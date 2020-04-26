@@ -18,8 +18,8 @@ class BackupSummaryCollectionDSL {
   private val list = ArrayList<BackupSummary>()
   internal fun build() : List<BackupSummary> = list
 
-  fun item(init: BackupSummaryDSL.() -> Unit) {
-    list.add(BackupSummaryDSL().apply(init).build())
+  fun item(dslBlock: BackupSummaryDSL.() -> Unit) {
+    list.add(BackupSummaryDSL().apply(dslBlock).build())
   }
 
   operator fun BackupSummary.unaryPlus() {

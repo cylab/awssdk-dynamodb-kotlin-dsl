@@ -25,21 +25,9 @@ class UpdateDSL {
   internal fun build(): Update = builder.build()
     
   /**
-    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
-    *  attribute.
-    */
-  var key: Map<String, AttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
-    }
-
-
-  /**
     * A condition that must be satisfied in order for a conditional update to succeed.
     */
-  var conditionExpression: String
+  var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +38,7 @@ class UpdateDSL {
   /**
     * Name of the table for the UpdateItem request.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +50,7 @@ class UpdateDSL {
     * An expression that defines one or more attributes to be updated, the action to be performed on them, and new
     *  value(s) for them.
     */
-  var updateExpression: String
+  var updateExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,7 +61,7 @@ class UpdateDSL {
   /**
     * One or more substitution tokens for attribute names in an expression.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -84,7 +72,7 @@ class UpdateDSL {
   /**
     * One or more values that can be substituted in an expression.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -97,11 +85,23 @@ class UpdateDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE, ALL_OLD,
     *  UPDATED_OLD, ALL_NEW, UPDATED_NEW.
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure
+  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
+    }
+
+
+  /**
+    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
+    *  attribute.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
     }
 
     
@@ -110,7 +110,7 @@ class UpdateDSL {
     *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE, ALL_OLD,
     *  UPDATED_OLD, ALL_NEW, UPDATED_NEW.
     */
-  fun returnValuesOnConditionCheckFailure(value: String) {
+  fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 

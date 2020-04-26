@@ -34,7 +34,7 @@ class ProjectionDSL {
     * 
     *  ALL - All of the table attributes are projected into the index.
     */
-  var projectionType: ProjectionType
+  var projectionType: ProjectionType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +49,7 @@ class ProjectionDSL {
     *  secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this
     *  counts as two distinct attributes when determining the total.
     */
-  var nonKeyAttributes: Collection<String>
+  var nonKeyAttributes: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,7 +67,7 @@ class ProjectionDSL {
     * 
     *  ALL - All of the table attributes are projected into the index.
     */
-  fun projectionType(value: String) {
+  fun projectionType(value: String?) {
     builder.projectionType(value)
   }
 

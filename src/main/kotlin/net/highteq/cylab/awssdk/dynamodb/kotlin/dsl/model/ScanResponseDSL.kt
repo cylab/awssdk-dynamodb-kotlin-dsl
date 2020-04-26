@@ -27,27 +27,10 @@ class ScanResponseDSL {
   internal fun build(): ScanResponse = builder.build()
     
   /**
-    * The number of items in the response.
-    * 
-    *  If you set ScanFilter in the request, then Count is the number of items returned
-    *  after the filter was applied, and ScannedCount is the number of matching items before the filter
-    *  was applied.
-    * 
-    *  If you did not use a filter in the request, then Count is the same as ScannedCount.
-    */
-  var count: Int
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.count(value)
-    }
-
-
-  /**
     * An array of item attributes that match the scan criteria. Each element in this array consists of an attribute
     *  name and the value for that attribute.
     */
-  var items: Collection<Map<String, AttributeValue>>
+  var items: Collection<Map<String, AttributeValue>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +44,7 @@ class ScanResponseDSL {
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
     *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
     */
-  var consumedCapacity: ConsumedCapacity
+  var consumedCapacity: ConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,7 +60,7 @@ class ScanResponseDSL {
     * 
     *  If you did not use a filter in the request, then ScannedCount is the same as Count.
     */
-  var scannedCount: Int
+  var scannedCount: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -96,7 +79,7 @@ class ScanResponseDSL {
     *  result set. The only way to know when you have reached the end of the result set is when
     *  LastEvaluatedKey is empty.
     */
-  var lastEvaluatedKey: Map<String, AttributeValue>
+  var lastEvaluatedKey: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,9 +88,26 @@ class ScanResponseDSL {
 
 
   /**
+    * The number of items in the response.
+    * 
+    *  If you set ScanFilter in the request, then Count is the number of items returned
+    *  after the filter was applied, and ScannedCount is the number of matching items before the filter
+    *  was applied.
+    * 
+    *  If you did not use a filter in the request, then Count is the same as ScannedCount.
+    */
+  var count: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.count(value)
+    }
+
+
+  /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata
+  var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -118,7 +118,7 @@ class ScanResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse
+  var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

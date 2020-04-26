@@ -20,8 +20,8 @@ class CancellationReasonCollectionDSL {
   private val list = ArrayList<CancellationReason>()
   internal fun build() : List<CancellationReason> = list
 
-  fun item(init: CancellationReasonDSL.() -> Unit) {
-    list.add(CancellationReasonDSL().apply(init).build())
+  fun item(dslBlock: CancellationReasonDSL.() -> Unit) {
+    list.add(CancellationReasonDSL().apply(dslBlock).build())
   }
 
   operator fun CancellationReason.unaryPlus() {

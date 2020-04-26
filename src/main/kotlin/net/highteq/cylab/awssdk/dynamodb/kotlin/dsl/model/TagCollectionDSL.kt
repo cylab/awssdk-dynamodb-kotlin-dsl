@@ -25,8 +25,8 @@ class TagCollectionDSL {
   private val list = ArrayList<Tag>()
   internal fun build() : List<Tag> = list
 
-  fun item(init: TagDSL.() -> Unit) {
-    list.add(TagDSL().apply(init).build())
+  fun item(dslBlock: TagDSL.() -> Unit) {
+    list.add(TagDSL().apply(dslBlock).build())
   }
 
   operator fun Tag.unaryPlus() {

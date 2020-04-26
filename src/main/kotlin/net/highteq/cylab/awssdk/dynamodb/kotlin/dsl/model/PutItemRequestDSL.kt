@@ -30,17 +30,6 @@ class PutItemRequestDSL {
   internal fun build(): PutItemRequest = builder.build()
     
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
-    */
-  var expected: Map<String, ExpectedAttributeValue>
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.expected(value)
-    }
-
-
-  /**
     * A map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required;
     *  you can optionally provide other attribute name-value pairs for the item.
     * 
@@ -55,7 +44,7 @@ class PutItemRequestDSL {
     * 
     *  Each element in the Item map is an AttributeValue object.
     */
-  var item: Map<String, AttributeValue>
+  var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -79,7 +68,7 @@ class PutItemRequestDSL {
     * 
     *  For more information on condition expressions, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var conditionExpression: String
+  var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -88,20 +77,9 @@ class PutItemRequestDSL {
 
 
   /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
     * The name of the table to contain the item.
     */
-  var tableName: String
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -140,7 +118,7 @@ class PutItemRequestDSL {
     * 
     *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>
+  var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -166,7 +144,7 @@ class PutItemRequestDSL {
     * 
     *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>
+  var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -175,22 +153,11 @@ class PutItemRequestDSL {
 
 
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
-    */
-  var returnConsumedCapacity: ReturnConsumedCapacity
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.returnConsumedCapacity(value)
-    }
-
-
-  /**
     * Determines whether item collection metrics are returned. If set to SIZE, the response includes
     *  statistics about item collections, if any, that were modified during the operation are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  var returnItemCollectionMetrics: ReturnItemCollectionMetrics
+  var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -199,9 +166,20 @@ class PutItemRequestDSL {
 
 
   /**
+    * Sets the value of the ReturnConsumedCapacity property for this object.
+    */
+  var returnConsumedCapacity: ReturnConsumedCapacity?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
     * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  var conditionalOperator: ConditionalOperator
+  var conditionalOperator: ConditionalOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -222,36 +200,58 @@ class PutItemRequestDSL {
     *  The ReturnValues parameter is used by several DynamoDB operations; however, PutItem
     *  does not recognize any values other than NONE or ALL_OLD.
     */
-  var returnValues: ReturnValue
+  var returnValues: ReturnValue?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValues(value)
     }
 
-    
+
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  fun returnConsumedCapacity(value: String) {
-    builder.returnConsumedCapacity(value)
-  }
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
 
 
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    */
+  var expected: Map<String, ExpectedAttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.expected(value)
+    }
+
+    
   /**
     * Determines whether item collection metrics are returned. If set to SIZE, the response includes
     *  statistics about item collections, if any, that were modified during the operation are returned in the
     *  response. If set to NONE (the default), no statistics are returned.
     */
-  fun returnItemCollectionMetrics(value: String) {
+  fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
+  }
+
+
+  /**
+    * Sets the value of the ReturnConsumedCapacity property for this object.
+    */
+  fun returnConsumedCapacity(value: String?) {
+    builder.returnConsumedCapacity(value)
   }
 
 
   /**
     * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  fun conditionalOperator(value: String) {
+  fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
 
@@ -269,7 +269,7 @@ class PutItemRequestDSL {
     *  The ReturnValues parameter is used by several DynamoDB operations; however, PutItem
     *  does not recognize any values other than NONE or ALL_OLD.
     */
-  fun returnValues(value: String) {
+  fun returnValues(value: String?) {
     builder.returnValues(value)
   }
 

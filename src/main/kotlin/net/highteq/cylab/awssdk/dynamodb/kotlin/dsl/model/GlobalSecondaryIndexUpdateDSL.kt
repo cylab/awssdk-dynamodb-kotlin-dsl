@@ -35,7 +35,7 @@ class GlobalSecondaryIndexUpdateDSL {
     * The name of an existing global secondary index, along with new provisioned throughput settings to be applied
     *  to that index.
     */
-  var update: UpdateGlobalSecondaryIndexAction
+  var update: UpdateGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,7 +46,7 @@ class GlobalSecondaryIndexUpdateDSL {
   /**
     * The name of an existing global secondary index to be removed.
     */
-  var delete: DeleteGlobalSecondaryIndexAction
+  var delete: DeleteGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,7 +67,7 @@ class GlobalSecondaryIndexUpdateDSL {
     * 
     *  ProvisionedThroughput
     */
-  var create: CreateGlobalSecondaryIndexAction
+  var create: CreateGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

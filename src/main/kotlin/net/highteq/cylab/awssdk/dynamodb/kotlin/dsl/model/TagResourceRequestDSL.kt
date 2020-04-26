@@ -27,7 +27,7 @@ class TagResourceRequestDSL {
   /**
     * The tags to be assigned to the Amazon DynamoDB resource.
     */
-  var tags: Collection<Tag>
+  var tags: Collection<Tag>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +39,7 @@ class TagResourceRequestDSL {
     * Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name
     *  (ARN).
     */
-  var resourceArn: String
+  var resourceArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +50,7 @@ class TagResourceRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {

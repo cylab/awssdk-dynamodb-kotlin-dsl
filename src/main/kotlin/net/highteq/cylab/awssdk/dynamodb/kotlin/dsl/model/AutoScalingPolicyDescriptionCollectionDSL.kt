@@ -18,8 +18,8 @@ class AutoScalingPolicyDescriptionCollectionDSL {
   private val list = ArrayList<AutoScalingPolicyDescription>()
   internal fun build() : List<AutoScalingPolicyDescription> = list
 
-  fun item(init: AutoScalingPolicyDescriptionDSL.() -> Unit) {
-    list.add(AutoScalingPolicyDescriptionDSL().apply(init).build())
+  fun item(dslBlock: AutoScalingPolicyDescriptionDSL.() -> Unit) {
+    list.add(AutoScalingPolicyDescriptionDSL().apply(dslBlock).build())
   }
 
   operator fun AutoScalingPolicyDescription.unaryPlus() {

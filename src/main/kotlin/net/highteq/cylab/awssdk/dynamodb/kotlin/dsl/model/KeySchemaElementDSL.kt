@@ -35,7 +35,7 @@ class KeySchemaElementDSL {
   /**
     * The name of a key attribute.
     */
-  var attributeName: String
+  var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,7 +58,7 @@ class KeySchemaElementDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  var keyType: KeyType
+  var keyType: KeyType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,7 +81,7 @@ class KeySchemaElementDSL {
     *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
     *  sort key value.
     */
-  fun keyType(value: String) {
+  fun keyType(value: String?) {
     builder.keyType(value)
   }
 
