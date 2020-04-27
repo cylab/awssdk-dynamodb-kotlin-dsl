@@ -21,18 +21,52 @@ class ConsumedCapacityCollectionDSL {
   private val list = ArrayList<ConsumedCapacity>()
   internal fun build() : List<ConsumedCapacity> = list
 
-  fun item(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a ConsumedCapacity instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     list.add(ConsumedCapacityDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a ConsumedCapacity to the collection built by this DSL
+    */
+  fun add(item: ConsumedCapacity) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given ConsumedCapacity instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<ConsumedCapacity>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given ConsumedCapacity instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<ConsumedCapacity>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a ConsumedCapacity to the collection built by this DSL
+    */
   operator fun ConsumedCapacity.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given ConsumedCapacity instances to the collection built by this DSL
+    */
   operator fun Collection<ConsumedCapacity>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given ConsumedCapacity instances to the collection built by this DSL
+    */
   operator fun Array<ConsumedCapacity>.unaryPlus() {
     list.addAll(this)
   }

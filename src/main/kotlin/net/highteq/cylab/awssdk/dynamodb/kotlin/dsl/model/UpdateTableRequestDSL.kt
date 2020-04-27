@@ -30,6 +30,17 @@ class UpdateTableRequestDSL {
   internal fun build(): UpdateTableRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * The name of the table to be updated.
     */
   var tableName: String?
@@ -48,33 +59,6 @@ class UpdateTableRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedThroughput(value)
-    }
-
-
-  /**
-    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
-    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
-    *  index.
-    */
-  var attributeDefinitions: Collection<AttributeDefinition>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeDefinitions(value)
-    }
-
-
-  /**
-    * Represents the DynamoDB Streams configuration for the table.
-    * 
-    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
-    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
-    */
-  var streamSpecification: StreamSpecification?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamSpecification(value)
     }
 
 
@@ -133,13 +117,29 @@ class UpdateTableRequestDSL {
 
 
   /**
-    * 
+    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
+    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
+    *  index.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  var attributeDefinitions: Collection<AttributeDefinition>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
+      builder.attributeDefinitions(value)
+    }
+
+
+  /**
+    * Represents the DynamoDB Streams configuration for the table.
+    * 
+    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
+    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
+    */
+  var streamSpecification: StreamSpecification?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamSpecification(value)
     }
 
     
@@ -169,17 +169,6 @@ class UpdateTableRequestDSL {
 
 
   /**
-    * Represents the DynamoDB Streams configuration for the table.
-    * 
-    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
-    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
-    */
-  fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamSpecification(buildStreamSpecification(dslBlock))
-  }
-
-
-  /**
     * The new server-side encryption settings for the specified table.
     */
   fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
@@ -188,12 +177,13 @@ class UpdateTableRequestDSL {
 
 
   /**
-    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
-    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
-    *  index.
+    * Represents the DynamoDB Streams configuration for the table.
+    * 
+    *  You receive a ResourceInUseException if you try to enable a stream on a table that already has a
+    *  stream, or if you try to disable a stream on a table that doesn't have a stream.
     */
-  fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
-    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
+  fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
+    builder.streamSpecification(buildStreamSpecification(dslBlock))
   }
 
 
@@ -214,6 +204,16 @@ class UpdateTableRequestDSL {
     */
   fun globalSecondaryIndexUpdates(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) {
     builder.globalSecondaryIndexUpdates(buildGlobalSecondaryIndexUpdateCollection(dslBlock))
+  }
+
+
+  /**
+    * An array of attributes that describe the key schema for the table and indexes. If you are adding a new global
+    *  secondary index to the table, AttributeDefinitions must include the key element(s) of the new
+    *  index.
+    */
+  fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
+    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
 
 }

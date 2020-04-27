@@ -18,18 +18,52 @@ class GlobalTableCollectionDSL {
   private val list = ArrayList<GlobalTable>()
   internal fun build() : List<GlobalTable> = list
 
-  fun item(dslBlock: GlobalTableDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a GlobalTable instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: GlobalTableDSL.() -> Unit) {
     list.add(GlobalTableDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a GlobalTable to the collection built by this DSL
+    */
+  fun add(item: GlobalTable) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given GlobalTable instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<GlobalTable>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given GlobalTable instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<GlobalTable>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a GlobalTable to the collection built by this DSL
+    */
   operator fun GlobalTable.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given GlobalTable instances to the collection built by this DSL
+    */
   operator fun Collection<GlobalTable>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given GlobalTable instances to the collection built by this DSL
+    */
   operator fun Array<GlobalTable>.unaryPlus() {
     list.addAll(this)
   }

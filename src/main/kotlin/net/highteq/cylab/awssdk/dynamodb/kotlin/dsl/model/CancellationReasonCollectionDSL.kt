@@ -20,18 +20,52 @@ class CancellationReasonCollectionDSL {
   private val list = ArrayList<CancellationReason>()
   internal fun build() : List<CancellationReason> = list
 
-  fun item(dslBlock: CancellationReasonDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a CancellationReason instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: CancellationReasonDSL.() -> Unit) {
     list.add(CancellationReasonDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a CancellationReason to the collection built by this DSL
+    */
+  fun add(item: CancellationReason) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given CancellationReason instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<CancellationReason>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given CancellationReason instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<CancellationReason>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a CancellationReason to the collection built by this DSL
+    */
   operator fun CancellationReason.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given CancellationReason instances to the collection built by this DSL
+    */
   operator fun Collection<CancellationReason>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given CancellationReason instances to the collection built by this DSL
+    */
   operator fun Array<CancellationReason>.unaryPlus() {
     list.addAll(this)
   }

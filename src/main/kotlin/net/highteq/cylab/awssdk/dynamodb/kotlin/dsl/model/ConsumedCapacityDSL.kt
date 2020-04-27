@@ -27,6 +27,17 @@ class ConsumedCapacityDSL {
   internal fun build(): ConsumedCapacity = builder.build()
     
   /**
+    * The amount of throughput consumed on the table affected by the operation.
+    */
+  var table: Capacity?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.table(value)
+    }
+
+
+  /**
     * The name of the table that was affected by the operation.
     */
   var tableName: String?
@@ -34,28 +45,6 @@ class ConsumedCapacityDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableName(value)
-    }
-
-
-  /**
-    * The amount of throughput consumed on each local index affected by the operation.
-    */
-  var localSecondaryIndexes: Map<String, Capacity>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.localSecondaryIndexes(value)
-    }
-
-
-  /**
-    * The amount of throughput consumed on each global index affected by the operation.
-    */
-  var globalSecondaryIndexes: Map<String, Capacity>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalSecondaryIndexes(value)
     }
 
 
@@ -93,13 +82,24 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The amount of throughput consumed on the table affected by the operation.
+    * The amount of throughput consumed on each local index affected by the operation.
     */
-  var table: Capacity?
+  var localSecondaryIndexes: Map<String, Capacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.table(value)
+      builder.localSecondaryIndexes(value)
+    }
+
+
+  /**
+    * The amount of throughput consumed on each global index affected by the operation.
+    */
+  var globalSecondaryIndexes: Map<String, Capacity>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalSecondaryIndexes(value)
     }
 
   

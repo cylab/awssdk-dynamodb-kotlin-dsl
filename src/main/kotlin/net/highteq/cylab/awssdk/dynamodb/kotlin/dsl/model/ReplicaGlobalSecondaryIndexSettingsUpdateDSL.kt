@@ -24,17 +24,6 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
-    */
-  var indexName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
-    }
-
-
-  /**
     * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
     *  ThrottlingException.
     */
@@ -54,6 +43,17 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedReadCapacityAutoScalingSettingsUpdate(value)
+    }
+
+
+  /**
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
   

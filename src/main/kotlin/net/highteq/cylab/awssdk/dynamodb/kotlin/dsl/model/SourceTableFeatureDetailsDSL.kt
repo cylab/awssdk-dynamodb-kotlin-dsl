@@ -40,6 +40,17 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
+    * Stream settings on the table when the backup was created.
+    */
+  var streamDescription: StreamSpecification?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamDescription(value)
+    }
+
+
+  /**
     * Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema
     *  and Projection for the LSIs on the table at the time of backup.
     */
@@ -73,17 +84,6 @@ class SourceTableFeatureDetailsDSL {
       builder.sseDescription(value)
     }
 
-
-  /**
-    * Stream settings on the table when the backup was created.
-    */
-  var streamDescription: StreamSpecification?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamDescription(value)
-    }
-
   
     
   /**
@@ -95,18 +95,18 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
-    * The description of the server-side encryption status on the table when the backup was created.
-    */
-  fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
-    builder.sseDescription(buildSSEDescription(dslBlock))
-  }
-
-
-  /**
     * Stream settings on the table when the backup was created.
     */
   fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
     builder.streamDescription(buildStreamSpecification(dslBlock))
+  }
+
+
+  /**
+    * The description of the server-side encryption status on the table when the backup was created.
+    */
+  fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
+    builder.sseDescription(buildSSEDescription(dslBlock))
   }
 
 

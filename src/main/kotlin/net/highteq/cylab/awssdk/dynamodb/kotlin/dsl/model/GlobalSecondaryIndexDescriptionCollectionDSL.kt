@@ -18,18 +18,52 @@ class GlobalSecondaryIndexDescriptionCollectionDSL {
   private val list = ArrayList<GlobalSecondaryIndexDescription>()
   internal fun build() : List<GlobalSecondaryIndexDescription> = list
 
-  fun item(dslBlock: GlobalSecondaryIndexDescriptionDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a GlobalSecondaryIndexDescription instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: GlobalSecondaryIndexDescriptionDSL.() -> Unit) {
     list.add(GlobalSecondaryIndexDescriptionDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a GlobalSecondaryIndexDescription to the collection built by this DSL
+    */
+  fun add(item: GlobalSecondaryIndexDescription) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<GlobalSecondaryIndexDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<GlobalSecondaryIndexDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a GlobalSecondaryIndexDescription to the collection built by this DSL
+    */
   operator fun GlobalSecondaryIndexDescription.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
+    */
   operator fun Collection<GlobalSecondaryIndexDescription>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
+    */
   operator fun Array<GlobalSecondaryIndexDescription>.unaryPlus() {
     list.addAll(this)
   }

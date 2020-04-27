@@ -37,27 +37,6 @@ class ConditionDSL {
   internal fun build(): Condition = builder.build()
     
   /**
-    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
-    *  the ComparisonOperator being used.
-    * 
-    *  For type Number, value comparisons are numeric.
-    * 
-    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
-    *  example, a is greater than A, and a is greater than B.
-    *  For a list of code values, see http://
-    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
-    * 
-    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
-    */
-  var attributeValueList: Collection<AttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeValueList(value)
-    }
-
-
-  /**
     * A comparator for evaluating attributes. For example, equals, greater than, less than, etc.
     * 
     *  The following comparison operators are available:
@@ -181,6 +160,27 @@ class ConditionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.comparisonOperator(value)
+    }
+
+
+  /**
+    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
+    *  the ComparisonOperator being used.
+    * 
+    *  For type Number, value comparisons are numeric.
+    * 
+    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
+    *  example, a is greater than A, and a is greater than B.
+    *  For a list of code values, see http://
+    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
+    * 
+    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
+    */
+  var attributeValueList: Collection<AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributeValueList(value)
     }
 
     

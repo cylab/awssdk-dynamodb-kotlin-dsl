@@ -24,17 +24,6 @@ class AutoScalingSettingsDescriptionDSL {
   internal fun build(): AutoScalingSettingsDescription = builder.build()
     
   /**
-    * Information about the scaling policies.
-    */
-  var scalingPolicies: Collection<AutoScalingPolicyDescription>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scalingPolicies(value)
-    }
-
-
-  /**
     * The minimum capacity units that a global table or global secondary index should be scaled down to.
     */
   var minimumUnits: Long?
@@ -75,6 +64,17 @@ class AutoScalingSettingsDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.autoScalingRoleArn(value)
+    }
+
+
+  /**
+    * Information about the scaling policies.
+    */
+  var scalingPolicies: Collection<AutoScalingPolicyDescription>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.scalingPolicies(value)
     }
 
   

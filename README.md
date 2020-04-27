@@ -57,11 +57,11 @@ For types that are used in collections, you can create a collection using `build
 The elements in this DSL can be added by the `item {}` sub DSL or by using the `+` operator on existing instances:
 
     buildAttributeDefinitionCollection {
-      item {
+      add {
         attributeName = Constants.ID
         attributeType = ScalarAttributeType.S
       }
-      item {
+      add {
         attributeName = Constants.NAME
         attributeType = ScalarAttributeType.S
       }
@@ -75,11 +75,11 @@ The same mechanism works, if the collection is part of a sub DSL:
 
     val createTableRequest = buildCreateTableRequest {
       attributeDefinitions {
-        item {
+        add {
           attributeName = Constants.ID
           attributeType = ScalarAttributeType.S
         }
-        item {
+        add {
           attributeName = Constants.NAME
           attributeType = ScalarAttributeType.S
         }

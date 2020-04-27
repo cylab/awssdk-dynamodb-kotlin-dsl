@@ -25,6 +25,18 @@ class DeleteDSL {
   internal fun build(): Delete = builder.build()
     
   /**
+    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
+    *  attribute.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
     * A condition that must be satisfied in order for a conditional delete to succeed.
     */
   var conditionExpression: String?
@@ -32,17 +44,6 @@ class DeleteDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.conditionExpression(value)
-    }
-
-
-  /**
-    * Name of the table in which the item to be deleted resides.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
     }
 
 
@@ -82,14 +83,13 @@ class DeleteDSL {
 
 
   /**
-    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * Name of the table in which the item to be deleted resides.
     */
-  var key: Map<String, AttributeValue>?
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.key(value)
+      builder.tableName(value)
     }
 
     

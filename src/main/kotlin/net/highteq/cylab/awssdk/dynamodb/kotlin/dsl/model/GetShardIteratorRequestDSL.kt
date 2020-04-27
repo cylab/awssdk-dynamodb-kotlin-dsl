@@ -36,13 +36,24 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The Amazon Resource Name (ARN) for the stream.
+    * 
     */
-  var streamArn: String?
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.streamArn(value)
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The identifier of the shard. The iterator will be returned for this shard ID.
+    */
+  var shardId: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.shardId(value)
     }
 
 
@@ -71,24 +82,13 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The identifier of the shard. The iterator will be returned for this shard ID.
+    * The Amazon Resource Name (ARN) for the stream.
     */
-  var shardId: String?
+  var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.shardId(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
+      builder.streamArn(value)
     }
 
     

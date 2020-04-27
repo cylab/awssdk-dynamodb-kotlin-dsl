@@ -60,6 +60,35 @@ class SourceTableDetailsDSL {
 
 
   /**
+    * Time when the source table was created.
+    */
+  var tableCreationDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableCreationDateTime(value)
+    }
+
+
+  /**
+    * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
+    *  changed later.
+    * 
+    *  PROVISIONED - Sets the read/write capacity mode to PROVISIONED. We recommend using
+    *  PROVISIONED for predictable workloads.
+    * 
+    *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
+    *  recommend using PAY_PER_REQUEST for unpredictable workloads.
+    */
+  var billingMode: BillingMode?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.billingMode(value)
+    }
+
+
+  /**
     * Size of the table in bytes. Note that this is an approximate value.
     */
   var tableSizeBytes: Long?
@@ -100,35 +129,6 @@ class SourceTableDetailsDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableId(value)
-    }
-
-
-  /**
-    * Controls how you are charged for read and write throughput and how you manage capacity. This setting can be
-    *  changed later.
-    * 
-    *  PROVISIONED - Sets the read/write capacity mode to PROVISIONED. We recommend using
-    *  PROVISIONED for predictable workloads.
-    * 
-    *  PAY_PER_REQUEST - Sets the read/write capacity mode to PAY_PER_REQUEST. We
-    *  recommend using PAY_PER_REQUEST for unpredictable workloads.
-    */
-  var billingMode: BillingMode?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.billingMode(value)
-    }
-
-
-  /**
-    * Time when the source table was created.
-    */
-  var tableCreationDateTime: Instant?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableCreationDateTime(value)
     }
 
     

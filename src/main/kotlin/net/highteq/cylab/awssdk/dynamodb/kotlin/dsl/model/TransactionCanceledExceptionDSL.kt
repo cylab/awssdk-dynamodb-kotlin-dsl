@@ -145,13 +145,24 @@ class TransactionCanceledExceptionDSL {
   internal fun build(): TransactionCanceledException = builder.build()
     
   /**
-    * A list of cancellation reasons.
+    * 
     */
-  var cancellationReasons: Collection<CancellationReason>?
+  var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.cancellationReasons(value)
+      builder.cause(value)
+    }
+
+
+  /**
+    * 
+    */
+  var message: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.message(value)
     }
 
 
@@ -189,24 +200,13 @@ class TransactionCanceledExceptionDSL {
 
 
   /**
-    * 
+    * A list of cancellation reasons.
     */
-  var cause: Throwable?
+  var cancellationReasons: Collection<CancellationReason>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.cause(value)
-    }
-
-
-  /**
-    * 
-    */
-  var message: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.message(value)
+      builder.cancellationReasons(value)
     }
 
 
@@ -224,22 +224,6 @@ class TransactionCanceledExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
-    builder.requestId(value)
-  }
-
-
-  /**
-    * 
-    */
-  fun statusCode(value: Int) {
-    builder.statusCode(value)
-  }
-
-
-  /**
-    * 
-    */
   fun cause(value: Throwable?) {
     builder.cause(value)
   }
@@ -250,6 +234,22 @@ class TransactionCanceledExceptionDSL {
     */
   fun message(value: String?) {
     builder.message(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun requestId(value: String?) {
+    builder.requestId(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun statusCode(value: Int) {
+    builder.statusCode(value)
   }
 
     

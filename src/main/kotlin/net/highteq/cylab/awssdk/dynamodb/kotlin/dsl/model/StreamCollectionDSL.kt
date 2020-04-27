@@ -18,18 +18,52 @@ class StreamCollectionDSL {
   private val list = ArrayList<Stream>()
   internal fun build() : List<Stream> = list
 
-  fun item(dslBlock: StreamDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a Stream instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: StreamDSL.() -> Unit) {
     list.add(StreamDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a Stream to the collection built by this DSL
+    */
+  fun add(item: Stream) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given Stream instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<Stream>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given Stream instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<Stream>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a Stream to the collection built by this DSL
+    */
   operator fun Stream.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given Stream instances to the collection built by this DSL
+    */
   operator fun Collection<Stream>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given Stream instances to the collection built by this DSL
+    */
   operator fun Array<Stream>.unaryPlus() {
     list.addAll(this)
   }

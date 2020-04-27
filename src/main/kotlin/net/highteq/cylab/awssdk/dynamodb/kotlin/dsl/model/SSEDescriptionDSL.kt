@@ -25,13 +25,17 @@ class SSEDescriptionDSL {
   internal fun build(): SSEDescription = builder.build()
     
   /**
-    * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
+    * Represents the current state of server-side encryption. The only supported values are:
+    * 
+    *  ENABLED - Server-side encryption is enabled.
+    * 
+    *  UPDATING - Server-side encryption is being updated.
     */
-  var kmsMasterKeyArn: String?
+  var status: SSEStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.kmsMasterKeyArn(value)
+      builder.status(value)
     }
 
 
@@ -50,31 +54,16 @@ class SSEDescriptionDSL {
 
 
   /**
-    * Represents the current state of server-side encryption. The only supported values are:
-    * 
-    *  ENABLED - Server-side encryption is enabled.
-    * 
-    *  UPDATING - Server-side encryption is being updated.
+    * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
     */
-  var status: SSEStatus?
+  var kmsMasterKeyArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.status(value)
+      builder.kmsMasterKeyArn(value)
     }
 
     
-  /**
-    * Server-side encryption type. The only supported value is:
-    * 
-    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
-    *  account and is managed by AWS KMS (AWS KMS charges apply).
-    */
-  fun sseType(value: String?) {
-    builder.sseType(value)
-  }
-
-
   /**
     * Represents the current state of server-side encryption. The only supported values are:
     * 
@@ -84,6 +73,17 @@ class SSEDescriptionDSL {
     */
   fun status(value: String?) {
     builder.status(value)
+  }
+
+
+  /**
+    * Server-side encryption type. The only supported value is:
+    * 
+    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+    *  account and is managed by AWS KMS (AWS KMS charges apply).
+    */
+  fun sseType(value: String?) {
+    builder.sseType(value)
   }
 
   

@@ -27,29 +27,6 @@ class ReplicaSettingsDescriptionDSL {
   internal fun build(): ReplicaSettingsDescription = builder.build()
     
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
-    */
-  var replicaProvisionedReadCapacityUnits: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.replicaProvisionedReadCapacityUnits(value)
-    }
-
-
-  /**
-    * The Region name of the replica.
-    */
-  var regionName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.regionName(value)
-    }
-
-
-  /**
     * The current state of the Region:
     * 
     *  CREATING - The Region is being created.
@@ -121,6 +98,29 @@ class ReplicaSettingsDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaGlobalSecondaryIndexSettings(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
+    */
+  var replicaProvisionedReadCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.replicaProvisionedReadCapacityUnits(value)
+    }
+
+
+  /**
+    * The Region name of the replica.
+    */
+  var regionName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.regionName(value)
     }
 
     

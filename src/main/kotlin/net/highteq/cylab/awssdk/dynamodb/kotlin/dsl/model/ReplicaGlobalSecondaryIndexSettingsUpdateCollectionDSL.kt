@@ -18,18 +18,52 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateCollectionDSL {
   private val list = ArrayList<ReplicaGlobalSecondaryIndexSettingsUpdate>()
   internal fun build() : List<ReplicaGlobalSecondaryIndexSettingsUpdate> = list
 
-  fun item(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a ReplicaGlobalSecondaryIndexSettingsUpdate instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
     list.add(ReplicaGlobalSecondaryIndexSettingsUpdateDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a ReplicaGlobalSecondaryIndexSettingsUpdate to the collection built by this DSL
+    */
+  fun add(item: ReplicaGlobalSecondaryIndexSettingsUpdate) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<ReplicaGlobalSecondaryIndexSettingsUpdate>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a ReplicaGlobalSecondaryIndexSettingsUpdate to the collection built by this DSL
+    */
   operator fun ReplicaGlobalSecondaryIndexSettingsUpdate.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
   operator fun Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
   operator fun Array<ReplicaGlobalSecondaryIndexSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }

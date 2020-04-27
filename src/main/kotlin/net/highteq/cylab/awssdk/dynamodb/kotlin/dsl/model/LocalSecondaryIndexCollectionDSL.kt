@@ -18,18 +18,52 @@ class LocalSecondaryIndexCollectionDSL {
   private val list = ArrayList<LocalSecondaryIndex>()
   internal fun build() : List<LocalSecondaryIndex> = list
 
-  fun item(dslBlock: LocalSecondaryIndexDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a LocalSecondaryIndex instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: LocalSecondaryIndexDSL.() -> Unit) {
     list.add(LocalSecondaryIndexDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a LocalSecondaryIndex to the collection built by this DSL
+    */
+  fun add(item: LocalSecondaryIndex) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<LocalSecondaryIndex>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<LocalSecondaryIndex>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a LocalSecondaryIndex to the collection built by this DSL
+    */
   operator fun LocalSecondaryIndex.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
+    */
   operator fun Collection<LocalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
+    */
   operator fun Array<LocalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }

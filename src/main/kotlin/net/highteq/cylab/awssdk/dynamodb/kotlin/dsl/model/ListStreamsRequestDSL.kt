@@ -24,6 +24,28 @@ class ListStreamsRequestDSL {
   internal fun build(): ListStreamsRequest = builder.build()
     
   /**
+    * The maximum number of streams to return. The upper limit is 100.
+    */
+  var limit: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.limit(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * If this parameter is provided, then only the streams associated with this table name are returned.
     */
   var tableName: String?
@@ -43,28 +65,6 @@ class ListStreamsRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exclusiveStartStreamArn(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * The maximum number of streams to return. The upper limit is 100.
-    */
-  var limit: Int?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
   

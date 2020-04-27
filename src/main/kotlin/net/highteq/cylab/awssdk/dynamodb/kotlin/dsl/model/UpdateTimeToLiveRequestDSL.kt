@@ -25,6 +25,17 @@ class UpdateTimeToLiveRequestDSL {
   internal fun build(): UpdateTimeToLiveRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * The name of the table to be configured.
     */
   var tableName: String?
@@ -43,17 +54,6 @@ class UpdateTimeToLiveRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.timeToLiveSpecification(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
     }
 
   

@@ -24,17 +24,6 @@ class DeleteBackupRequestDSL {
   internal fun build(): DeleteBackupRequest = builder.build()
     
   /**
-    * The ARN associated with the backup.
-    */
-  var backupArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
-    }
-
-
-  /**
     * 
     */
   var overrideConfiguration: AwsRequestOverrideConfiguration?
@@ -42,6 +31,17 @@ class DeleteBackupRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The ARN associated with the backup.
+    */
+  var backupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupArn(value)
     }
 
   

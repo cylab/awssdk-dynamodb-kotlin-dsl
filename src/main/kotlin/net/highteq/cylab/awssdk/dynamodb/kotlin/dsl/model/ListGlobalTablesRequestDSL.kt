@@ -24,13 +24,17 @@ class ListGlobalTablesRequestDSL {
   internal fun build(): ListGlobalTablesRequest = builder.build()
     
   /**
-    * Lists the global tables in a specific Region.
+    * The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.
+    * 
+    *  If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the
+    *  table names collected up to that point, with a table name in the LastEvaluatedGlobalTableName to
+    *  apply in a subsequent operation to the ExclusiveStartGlobalTableName parameter.
     */
-  var regionName: String?
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.regionName(value)
+      builder.limit(value)
     }
 
 
@@ -57,17 +61,13 @@ class ListGlobalTablesRequestDSL {
 
 
   /**
-    * The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.
-    * 
-    *  If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the
-    *  table names collected up to that point, with a table name in the LastEvaluatedGlobalTableName to
-    *  apply in a subsequent operation to the ExclusiveStartGlobalTableName parameter.
+    * Lists the global tables in a specific Region.
     */
-  var limit: Int?
+  var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.limit(value)
+      builder.regionName(value)
     }
 
   

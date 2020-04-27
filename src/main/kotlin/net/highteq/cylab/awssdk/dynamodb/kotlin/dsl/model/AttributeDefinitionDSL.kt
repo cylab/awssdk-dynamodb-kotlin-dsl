@@ -24,6 +24,17 @@ class AttributeDefinitionDSL {
   internal fun build(): AttributeDefinition = builder.build()
     
   /**
+    * A name for the attribute.
+    */
+  var attributeName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.attributeName(value)
+    }
+
+
+  /**
     * The data type for the attribute, where:
     * 
     *  S - the attribute is of type String
@@ -37,17 +48,6 @@ class AttributeDefinitionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.attributeType(value)
-    }
-
-
-  /**
-    * A name for the attribute.
-    */
-  var attributeName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeName(value)
     }
 
     

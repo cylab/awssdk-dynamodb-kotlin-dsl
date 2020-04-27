@@ -27,18 +27,52 @@ class KeySchemaElementCollectionDSL {
   private val list = ArrayList<KeySchemaElement>()
   internal fun build() : List<KeySchemaElement> = list
 
-  fun item(dslBlock: KeySchemaElementDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a KeySchemaElement instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: KeySchemaElementDSL.() -> Unit) {
     list.add(KeySchemaElementDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a KeySchemaElement to the collection built by this DSL
+    */
+  fun add(item: KeySchemaElement) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given KeySchemaElement instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<KeySchemaElement>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given KeySchemaElement instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<KeySchemaElement>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a KeySchemaElement to the collection built by this DSL
+    */
   operator fun KeySchemaElement.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given KeySchemaElement instances to the collection built by this DSL
+    */
   operator fun Collection<KeySchemaElement>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given KeySchemaElement instances to the collection built by this DSL
+    */
   operator fun Array<KeySchemaElement>.unaryPlus() {
     list.addAll(this)
   }

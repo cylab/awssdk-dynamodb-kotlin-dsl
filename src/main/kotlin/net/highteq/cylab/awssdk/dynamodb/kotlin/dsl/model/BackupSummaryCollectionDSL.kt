@@ -18,18 +18,52 @@ class BackupSummaryCollectionDSL {
   private val list = ArrayList<BackupSummary>()
   internal fun build() : List<BackupSummary> = list
 
-  fun item(dslBlock: BackupSummaryDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a BackupSummary instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: BackupSummaryDSL.() -> Unit) {
     list.add(BackupSummaryDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a BackupSummary to the collection built by this DSL
+    */
+  fun add(item: BackupSummary) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given BackupSummary instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<BackupSummary>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given BackupSummary instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<BackupSummary>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a BackupSummary to the collection built by this DSL
+    */
   operator fun BackupSummary.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given BackupSummary instances to the collection built by this DSL
+    */
   operator fun Collection<BackupSummary>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given BackupSummary instances to the collection built by this DSL
+    */
   operator fun Array<BackupSummary>.unaryPlus() {
     list.addAll(this)
   }

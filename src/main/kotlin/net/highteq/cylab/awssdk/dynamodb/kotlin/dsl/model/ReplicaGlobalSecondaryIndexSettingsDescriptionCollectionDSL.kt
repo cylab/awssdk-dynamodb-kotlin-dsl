@@ -18,18 +18,52 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL {
   private val list = ArrayList<ReplicaGlobalSecondaryIndexSettingsDescription>()
   internal fun build() : List<ReplicaGlobalSecondaryIndexSettingsDescription> = list
 
-  fun item(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a ReplicaGlobalSecondaryIndexSettingsDescription instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
     list.add(ReplicaGlobalSecondaryIndexSettingsDescriptionDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a ReplicaGlobalSecondaryIndexSettingsDescription to the collection built by this DSL
+    */
+  fun add(item: ReplicaGlobalSecondaryIndexSettingsDescription) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<ReplicaGlobalSecondaryIndexSettingsDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a ReplicaGlobalSecondaryIndexSettingsDescription to the collection built by this DSL
+    */
   operator fun ReplicaGlobalSecondaryIndexSettingsDescription.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
+    */
   operator fun Collection<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
+    */
   operator fun Array<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }

@@ -28,35 +28,6 @@ class AttributeValueDSL {
   internal fun build(): AttributeValue = builder.build()
     
   /**
-    * An attribute of type String Set. For example:
-    * 
-    *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
-    */
-  var ss: Collection<String>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.ss(value)
-    }
-
-
-  /**
-    * An attribute of type Number Set. For example:
-    * 
-    *  "NS": ["42.2", "-19", "7.5", "3.14"]
-    * 
-    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
-    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
-    */
-  var ns: Collection<String>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.ns(value)
-    }
-
-
-  /**
     * An attribute of type Boolean. For example:
     * 
     *  "BOOL": true
@@ -66,30 +37,6 @@ class AttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.bool(value)
-    }
-
-
-  /**
-    * 
-    */
-  var bs: Collection<SdkBytes>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.bs(value)
-    }
-
-
-  /**
-    * An attribute of type Null. For example:
-    * 
-    *  "NULL": true
-    */
-  var nul: Boolean?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.nul(value)
     }
 
 
@@ -156,6 +103,59 @@ class AttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.m(value)
+    }
+
+
+  /**
+    * An attribute of type String Set. For example:
+    * 
+    *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
+    */
+  var ss: Collection<String>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.ss(value)
+    }
+
+
+  /**
+    * An attribute of type Number Set. For example:
+    * 
+    *  "NS": ["42.2", "-19", "7.5", "3.14"]
+    * 
+    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
+    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
+    */
+  var ns: Collection<String>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.ns(value)
+    }
+
+
+  /**
+    * 
+    */
+  var bs: Collection<SdkBytes>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.bs(value)
+    }
+
+
+  /**
+    * An attribute of type Null. For example:
+    * 
+    *  "NULL": true
+    */
+  var nul: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.nul(value)
     }
 
   

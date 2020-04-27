@@ -49,58 +49,6 @@ class StreamDescriptionDSL {
 
 
   /**
-    * The DynamoDB table with which the stream is associated.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
-    * The key attribute(s) of the stream's DynamoDB table.
-    */
-  var keySchema: Collection<KeySchemaElement>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keySchema(value)
-    }
-
-
-  /**
-    * Indicates the format of the records within this stream:
-    * 
-    *  KEYS_ONLY - only the key attributes of items that were modified in the DynamoDB table.
-    * 
-    *  NEW_IMAGE - entire items from the table, as they appeared after they were modified.
-    * 
-    *  OLD_IMAGE - entire items from the table, as they appeared before they were modified.
-    * 
-    *  NEW_AND_OLD_IMAGES - both the new and the old images of the items from the table.
-    */
-  var streamViewType: StreamViewType?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamViewType(value)
-    }
-
-
-  /**
-    * The Amazon Resource Name (ARN) for the stream.
-    */
-  var streamArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamArn(value)
-    }
-
-
-  /**
     * Indicates the current status of the stream:
     * 
     *  ENABLING - Streams is currently being enabled on the DynamoDB table.
@@ -159,7 +107,29 @@ class StreamDescriptionDSL {
       builder.lastEvaluatedShardId(value)
     }
 
-    
+
+  /**
+    * The DynamoDB table with which the stream is associated.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
+  /**
+    * The key attribute(s) of the stream's DynamoDB table.
+    */
+  var keySchema: Collection<KeySchemaElement>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.keySchema(value)
+    }
+
+
   /**
     * Indicates the format of the records within this stream:
     * 
@@ -171,11 +141,25 @@ class StreamDescriptionDSL {
     * 
     *  NEW_AND_OLD_IMAGES - both the new and the old images of the items from the table.
     */
-  fun streamViewType(value: String?) {
-    builder.streamViewType(value)
-  }
+  var streamViewType: StreamViewType?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamViewType(value)
+    }
 
 
+  /**
+    * The Amazon Resource Name (ARN) for the stream.
+    */
+  var streamArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.streamArn(value)
+    }
+
+    
   /**
     * Indicates the current status of the stream:
     * 
@@ -191,20 +175,36 @@ class StreamDescriptionDSL {
     builder.streamStatus(value)
   }
 
-    
+
   /**
-    * The key attribute(s) of the stream's DynamoDB table.
+    * Indicates the format of the records within this stream:
+    * 
+    *  KEYS_ONLY - only the key attributes of items that were modified in the DynamoDB table.
+    * 
+    *  NEW_IMAGE - entire items from the table, as they appeared after they were modified.
+    * 
+    *  OLD_IMAGE - entire items from the table, as they appeared before they were modified.
+    * 
+    *  NEW_AND_OLD_IMAGES - both the new and the old images of the items from the table.
     */
-  fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+  fun streamViewType(value: String?) {
+    builder.streamViewType(value)
   }
 
-
+    
   /**
     * The shards that comprise the stream.
     */
   fun shards(dslBlock: ShardCollectionDSL.() -> Unit) {
     builder.shards(buildShardCollection(dslBlock))
+  }
+
+
+  /**
+    * The key attribute(s) of the stream's DynamoDB table.
+    */
+  fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
+    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
 }

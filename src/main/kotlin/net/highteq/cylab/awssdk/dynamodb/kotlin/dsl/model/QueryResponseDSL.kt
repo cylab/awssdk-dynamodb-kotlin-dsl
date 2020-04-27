@@ -39,6 +39,24 @@ class QueryResponseDSL {
 
 
   /**
+    * The number of items in the response.
+    * 
+    *  If you used a QueryFilter in the request, then Count is the number of items
+    *  returned after the filter was applied, and ScannedCount is the number of matching items before
+    *  the filter was applied.
+    * 
+    *  If you did not use a filter in the request, then Count and ScannedCount are the
+    *  same.
+    */
+  var count: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.count(value)
+    }
+
+
+  /**
     * The capacity units consumed by the Query operation. The data returned includes the total
     *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
     *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
@@ -84,24 +102,6 @@ class QueryResponseDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.lastEvaluatedKey(value)
-    }
-
-
-  /**
-    * The number of items in the response.
-    * 
-    *  If you used a QueryFilter in the request, then Count is the number of items
-    *  returned after the filter was applied, and ScannedCount is the number of matching items before
-    *  the filter was applied.
-    * 
-    *  If you did not use a filter in the request, then Count and ScannedCount are the
-    *  same.
-    */
-  var count: Int?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.count(value)
     }
 
 

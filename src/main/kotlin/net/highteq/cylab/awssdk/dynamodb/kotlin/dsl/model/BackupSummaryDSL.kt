@@ -37,24 +37,13 @@ class BackupSummaryDSL {
 
 
   /**
-    * ARN associated with the table.
+    * ARN associated with the backup.
     */
-  var tableArn: String?
+  var backupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableArn(value)
-    }
-
-
-  /**
-    * Unique identifier for the table.
-    */
-  var tableId: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableId(value)
+      builder.backupArn(value)
     }
 
 
@@ -77,17 +66,6 @@ class BackupSummaryDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupCreationDateTime(value)
-    }
-
-
-  /**
-    * ARN associated with the backup.
-    */
-  var backupArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
     }
 
 
@@ -141,6 +119,28 @@ class BackupSummaryDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupSizeBytes(value)
+    }
+
+
+  /**
+    * ARN associated with the table.
+    */
+  var tableArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableArn(value)
+    }
+
+
+  /**
+    * Unique identifier for the table.
+    */
+  var tableId: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableId(value)
     }
 
     

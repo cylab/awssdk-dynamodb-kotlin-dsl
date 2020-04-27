@@ -18,18 +18,52 @@ class RecordCollectionDSL {
   private val list = ArrayList<Record>()
   internal fun build() : List<Record> = list
 
-  fun item(dslBlock: RecordDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a Record instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: RecordDSL.() -> Unit) {
     list.add(RecordDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a Record to the collection built by this DSL
+    */
+  fun add(item: Record) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given Record instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<Record>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given Record instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<Record>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a Record to the collection built by this DSL
+    */
   operator fun Record.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given Record instances to the collection built by this DSL
+    */
   operator fun Collection<Record>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given Record instances to the collection built by this DSL
+    */
   operator fun Array<Record>.unaryPlus() {
     list.addAll(this)
   }

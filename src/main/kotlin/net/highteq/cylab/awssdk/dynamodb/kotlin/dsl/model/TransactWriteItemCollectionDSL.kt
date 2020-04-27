@@ -19,18 +19,52 @@ class TransactWriteItemCollectionDSL {
   private val list = ArrayList<TransactWriteItem>()
   internal fun build() : List<TransactWriteItem> = list
 
-  fun item(dslBlock: TransactWriteItemDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a TransactWriteItem instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: TransactWriteItemDSL.() -> Unit) {
     list.add(TransactWriteItemDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a TransactWriteItem to the collection built by this DSL
+    */
+  fun add(item: TransactWriteItem) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given TransactWriteItem instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<TransactWriteItem>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given TransactWriteItem instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<TransactWriteItem>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a TransactWriteItem to the collection built by this DSL
+    */
   operator fun TransactWriteItem.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given TransactWriteItem instances to the collection built by this DSL
+    */
   operator fun Collection<TransactWriteItem>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given TransactWriteItem instances to the collection built by this DSL
+    */
   operator fun Array<TransactWriteItem>.unaryPlus() {
     list.addAll(this)
   }

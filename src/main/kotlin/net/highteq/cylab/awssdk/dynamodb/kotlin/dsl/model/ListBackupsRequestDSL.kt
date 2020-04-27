@@ -26,32 +26,13 @@ class ListBackupsRequestDSL {
   internal fun build(): ListBackupsRequest = builder.build()
     
   /**
-    * The backups from the table specified by TableName are listed.
+    * Maximum number of backups to return at once.
     */
-  var tableName: String?
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
-    * The backups from the table specified by BackupType are listed.
-    * 
-    *  Where BackupType can be:
-    * 
-    *  USER - On-demand backup created by you.
-    * 
-    *  SYSTEM - On-demand backup automatically created by DynamoDB.
-    * 
-    *  ALL - All types of on-demand backups (USER and SYSTEM).
-    */
-  var backupType: BackupTypeFilter?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupType(value)
+      builder.limit(value)
     }
 
 
@@ -103,13 +84,32 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * Maximum number of backups to return at once.
+    * The backups from the table specified by TableName are listed.
     */
-  var limit: Int?
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.limit(value)
+      builder.tableName(value)
+    }
+
+
+  /**
+    * The backups from the table specified by BackupType are listed.
+    * 
+    *  Where BackupType can be:
+    * 
+    *  USER - On-demand backup created by you.
+    * 
+    *  SYSTEM - On-demand backup automatically created by DynamoDB.
+    * 
+    *  ALL - All types of on-demand backups (USER and SYSTEM).
+    */
+  var backupType: BackupTypeFilter?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupType(value)
     }
 
     

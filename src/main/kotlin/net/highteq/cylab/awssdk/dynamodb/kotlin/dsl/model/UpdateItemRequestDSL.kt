@@ -31,6 +31,33 @@ class UpdateItemRequestDSL {
   internal fun build(): UpdateItemRequest = builder.build()
     
   /**
+    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
+    *  attribute.
+    * 
+    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
+    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
+    *  the partition key and the sort key.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    */
+  var expected: Map<String, ExpectedAttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.expected(value)
+    }
+
+
+  /**
     * A condition that must be satisfied in order for a conditional update to succeed.
     * 
     *  An expression can contain any of the following:
@@ -51,17 +78,6 @@ class UpdateItemRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.conditionExpression(value)
-    }
-
-
-  /**
-    * The name of the table containing the item to update.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
     }
 
 
@@ -231,24 +247,24 @@ class UpdateItemRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var conditionalOperator: ConditionalOperator?
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.conditionalOperator(value)
+      builder.overrideConfiguration(value)
     }
 
 
   /**
-    * This is a legacy parameter. Use UpdateExpression instead. For more information, see AttributeUpdates in the Amazon DynamoDB Developer Guide.
+    * The name of the table containing the item to update.
     */
-  var attributeUpdates: Map<String, AttributeValueUpdate>?
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.attributeUpdates(value)
+      builder.tableName(value)
     }
 
 
@@ -285,40 +301,24 @@ class UpdateItemRequestDSL {
 
 
   /**
-    * 
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  var conditionalOperator: ConditionalOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
+      builder.conditionalOperator(value)
     }
 
 
   /**
-    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
-    *  attribute.
-    * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
+    * This is a legacy parameter. Use UpdateExpression instead. For more information, see AttributeUpdates in the Amazon DynamoDB Developer Guide.
     */
-  var key: Map<String, AttributeValue>?
+  var attributeUpdates: Map<String, AttributeValueUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.key(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
-    */
-  var expected: Map<String, ExpectedAttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.expected(value)
+      builder.attributeUpdates(value)
     }
 
     
@@ -337,14 +337,6 @@ class UpdateItemRequestDSL {
     */
   fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
-  }
-
-
-  /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
-    */
-  fun conditionalOperator(value: String?) {
-    builder.conditionalOperator(value)
   }
 
 
@@ -374,6 +366,14 @@ class UpdateItemRequestDSL {
     */
   fun returnValues(value: String?) {
     builder.returnValues(value)
+  }
+
+
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    */
+  fun conditionalOperator(value: String?) {
+    builder.conditionalOperator(value)
   }
 
   

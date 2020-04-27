@@ -25,18 +25,52 @@ class TagCollectionDSL {
   private val list = ArrayList<Tag>()
   internal fun build() : List<Tag> = list
 
-  fun item(dslBlock: TagDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a Tag instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: TagDSL.() -> Unit) {
     list.add(TagDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a Tag to the collection built by this DSL
+    */
+  fun add(item: Tag) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given Tag instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<Tag>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given Tag instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<Tag>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a Tag to the collection built by this DSL
+    */
   operator fun Tag.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given Tag instances to the collection built by this DSL
+    */
   operator fun Collection<Tag>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given Tag instances to the collection built by this DSL
+    */
   operator fun Array<Tag>.unaryPlus() {
     list.addAll(this)
   }

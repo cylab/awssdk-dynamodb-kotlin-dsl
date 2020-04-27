@@ -50,17 +50,6 @@ class PutDSL {
 
 
   /**
-    * Name of the table in which to write the item.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
     * One or more substitution tokens for attribute names in an expression.
     */
   var expressionAttributeNames: Map<String, String>?
@@ -92,6 +81,17 @@ class PutDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
+    }
+
+
+  /**
+    * Name of the table in which to write the item.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
     }
 
     

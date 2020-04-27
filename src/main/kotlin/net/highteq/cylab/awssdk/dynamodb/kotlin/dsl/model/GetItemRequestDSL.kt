@@ -26,13 +26,18 @@ class GetItemRequestDSL {
   internal fun build(): GetItemRequest = builder.build()
     
   /**
-    * The name of the table containing the requested item.
+    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
+    *  retrieve.
+    * 
+    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
+    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
+    *  the partition key and the sort key.
     */
-  var tableName: String?
+  var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
+      builder.key(value)
     }
 
 
@@ -87,6 +92,28 @@ class GetItemRequestDSL {
 
 
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the table containing the requested item.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
+  /**
     * A string that identifies one or more attributes to retrieve from the table. These attributes can include
     *  scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas.
     * 
@@ -123,33 +150,6 @@ class GetItemRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  retrieve.
-    * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
-    */
-  var key: Map<String, AttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
     }
 
     

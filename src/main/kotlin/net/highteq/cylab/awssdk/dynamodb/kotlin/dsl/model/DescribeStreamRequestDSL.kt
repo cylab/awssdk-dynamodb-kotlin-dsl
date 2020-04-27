@@ -24,25 +24,13 @@ class DescribeStreamRequestDSL {
   internal fun build(): DescribeStreamRequest = builder.build()
     
   /**
-    * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
-    *  LastEvaluatedShardId in the previous operation.
+    * The maximum number of shard objects to return. The upper limit is 100.
     */
-  var exclusiveStartShardId: String?
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.exclusiveStartShardId(value)
-    }
-
-
-  /**
-    * The Amazon Resource Name (ARN) for the stream.
-    */
-  var streamArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.streamArn(value)
+      builder.limit(value)
     }
 
 
@@ -58,13 +46,25 @@ class DescribeStreamRequestDSL {
 
 
   /**
-    * The maximum number of shard objects to return. The upper limit is 100.
+    * The Amazon Resource Name (ARN) for the stream.
     */
-  var limit: Int?
+  var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.limit(value)
+      builder.streamArn(value)
+    }
+
+
+  /**
+    * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
+    *  LastEvaluatedShardId in the previous operation.
+    */
+  var exclusiveStartShardId: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.exclusiveStartShardId(value)
     }
 
   

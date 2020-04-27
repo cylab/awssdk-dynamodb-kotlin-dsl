@@ -28,17 +28,6 @@ class UpdateGlobalTableSettingsRequestDSL {
   internal fun build(): UpdateGlobalTableSettingsRequest = builder.build()
     
   /**
-    * The name of the global table
-    */
-  var globalTableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableName(value)
-    }
-
-
-  /**
     * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
     *  table defaults to PROVISIONED capacity billing mode.
     * 
@@ -108,6 +97,17 @@ class UpdateGlobalTableSettingsRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the global table
+    */
+  var globalTableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalTableName(value)
     }
 
     

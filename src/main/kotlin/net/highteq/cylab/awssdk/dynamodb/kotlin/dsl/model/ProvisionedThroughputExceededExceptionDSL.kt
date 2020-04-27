@@ -29,6 +29,28 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
+  var cause: Throwable?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cause(value)
+    }
+
+
+  /**
+    * 
+    */
+  var message: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.message(value)
+    }
+
+
+  /**
+    * 
+    */
   var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -62,28 +84,6 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cause(value)
-    }
-
-
-  /**
-    * 
-    */
-  var message: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.message(value)
-    }
-
-
-  /**
-    * 
-    */
   var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
@@ -92,22 +92,6 @@ class ProvisionedThroughputExceededExceptionDSL {
     }
 
     
-  /**
-    * 
-    */
-  fun requestId(value: String?) {
-    builder.requestId(value)
-  }
-
-
-  /**
-    * 
-    */
-  fun statusCode(value: Int) {
-    builder.statusCode(value)
-  }
-
-
   /**
     * 
     */
@@ -121,6 +105,22 @@ class ProvisionedThroughputExceededExceptionDSL {
     */
   fun message(value: String?) {
     builder.message(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun requestId(value: String?) {
+    builder.requestId(value)
+  }
+
+
+  /**
+    * 
+    */
+  fun statusCode(value: Int) {
+    builder.statusCode(value)
   }
 
   

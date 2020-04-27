@@ -25,31 +25,6 @@ class ProvisionedThroughputDescriptionDSL {
   internal fun build(): ProvisionedThroughputDescription = builder.build()
     
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
-    */
-  var writeCapacityUnits: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.writeCapacityUnits(value)
-    }
-
-
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. Eventually consistent reads require less effort than strongly consistent
-    *  reads, so a setting of 50 ReadCapacityUnits per second provides 100 eventually consistent
-    *  ReadCapacityUnits per second.
-    */
-  var readCapacityUnits: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.readCapacityUnits(value)
-    }
-
-
-  /**
     * The date and time of the last provisioned throughput increase for this table.
     */
   var lastIncreaseDateTime: Instant?
@@ -81,6 +56,31 @@ class ProvisionedThroughputDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.numberOfDecreasesToday(value)
+    }
+
+
+  /**
+    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    */
+  var writeCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.writeCapacityUnits(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException. Eventually consistent reads require less effort than strongly consistent
+    *  reads, so a setting of 50 ReadCapacityUnits per second provides 100 eventually consistent
+    *  ReadCapacityUnits per second.
+    */
+  var readCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.readCapacityUnits(value)
     }
 
   

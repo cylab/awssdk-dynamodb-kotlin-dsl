@@ -24,6 +24,17 @@ class CreateBackupRequestDSL {
   internal fun build(): CreateBackupRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * The name of the table.
     */
   var tableName: String?
@@ -42,17 +53,6 @@ class CreateBackupRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupName(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
     }
 
   

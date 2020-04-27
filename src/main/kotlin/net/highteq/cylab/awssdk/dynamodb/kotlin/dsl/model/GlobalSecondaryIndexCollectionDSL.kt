@@ -18,18 +18,52 @@ class GlobalSecondaryIndexCollectionDSL {
   private val list = ArrayList<GlobalSecondaryIndex>()
   internal fun build() : List<GlobalSecondaryIndex> = list
 
-  fun item(dslBlock: GlobalSecondaryIndexDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a GlobalSecondaryIndex instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: GlobalSecondaryIndexDSL.() -> Unit) {
     list.add(GlobalSecondaryIndexDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a GlobalSecondaryIndex to the collection built by this DSL
+    */
+  fun add(item: GlobalSecondaryIndex) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given GlobalSecondaryIndex instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<GlobalSecondaryIndex>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given GlobalSecondaryIndex instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<GlobalSecondaryIndex>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a GlobalSecondaryIndex to the collection built by this DSL
+    */
   operator fun GlobalSecondaryIndex.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given GlobalSecondaryIndex instances to the collection built by this DSL
+    */
   operator fun Collection<GlobalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given GlobalSecondaryIndex instances to the collection built by this DSL
+    */
   operator fun Array<GlobalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }

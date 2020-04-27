@@ -26,17 +26,6 @@ class UpdateGlobalTableSettingsResponseDSL {
   internal fun build(): UpdateGlobalTableSettingsResponse = builder.build()
     
   /**
-    * The name of the global table.
-    */
-  var globalTableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.globalTableName(value)
-    }
-
-
-  /**
     * The Region-specific settings for the global table.
     */
   var replicaSettings: Collection<ReplicaSettingsDescription>?
@@ -44,6 +33,17 @@ class UpdateGlobalTableSettingsResponseDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaSettings(value)
+    }
+
+
+  /**
+    * The name of the global table.
+    */
+  var globalTableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.globalTableName(value)
     }
 
 

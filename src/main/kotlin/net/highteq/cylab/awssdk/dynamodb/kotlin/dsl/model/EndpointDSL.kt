@@ -23,17 +23,6 @@ class EndpointDSL {
   internal fun build(): Endpoint = builder.build()
     
   /**
-    * Endpoint cache time to live (TTL) value.
-    */
-  var cachePeriodInMinutes: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.cachePeriodInMinutes(value)
-    }
-
-
-  /**
     * IP address of the endpoint.
     */
   var address: String?
@@ -41,6 +30,17 @@ class EndpointDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.address(value)
+    }
+
+
+  /**
+    * Endpoint cache time to live (TTL) value.
+    */
+  var cachePeriodInMinutes: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.cachePeriodInMinutes(value)
     }
 
   

@@ -53,6 +53,17 @@ class PutItemRequestDSL {
 
 
   /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    */
+  var expected: Map<String, ExpectedAttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.expected(value)
+    }
+
+
+  /**
     * A condition that must be satisfied in order for a conditional PutItem operation to succeed.
     * 
     *  An expression can contain any of the following:
@@ -73,17 +84,6 @@ class PutItemRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.conditionExpression(value)
-    }
-
-
-  /**
-    * The name of the table to contain the item.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
     }
 
 
@@ -177,13 +177,24 @@ class PutItemRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var conditionalOperator: ConditionalOperator?
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.conditionalOperator(value)
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the table to contain the item.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
     }
 
 
@@ -209,24 +220,13 @@ class PutItemRequestDSL {
 
 
   /**
-    * 
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  var conditionalOperator: ConditionalOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
-    */
-  var expected: Map<String, ExpectedAttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.expected(value)
+      builder.conditionalOperator(value)
     }
 
     
@@ -249,14 +249,6 @@ class PutItemRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
-    */
-  fun conditionalOperator(value: String?) {
-    builder.conditionalOperator(value)
-  }
-
-
-  /**
     * Use ReturnValues if you want to get the item attributes as they appeared before they were
     *  updated with the PutItem request. For PutItem, the valid values are:
     * 
@@ -271,6 +263,14 @@ class PutItemRequestDSL {
     */
   fun returnValues(value: String?) {
     builder.returnValues(value)
+  }
+
+
+  /**
+    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    */
+  fun conditionalOperator(value: String?) {
+    builder.conditionalOperator(value)
   }
 
   

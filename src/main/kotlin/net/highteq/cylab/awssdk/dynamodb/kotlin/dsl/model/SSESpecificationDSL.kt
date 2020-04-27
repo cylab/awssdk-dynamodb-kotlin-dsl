@@ -24,6 +24,19 @@ class SSESpecificationDSL {
   internal fun build(): SSESpecification = builder.build()
     
   /**
+    * Indicates whether server-side encryption is done using an AWS managed CMK or an AWS owned CMK. If enabled
+    *  (true), server-side encryption type is set to KMS and an AWS managed CMK is used (AWS KMS
+    *  charges apply). If disabled (false) or not specified, server-side encryption is set to AWS owned CMK.
+    */
+  var enabled: Boolean?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.enabled(value)
+    }
+
+
+  /**
     * Server-side encryption type. The only supported value is:
     * 
     *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
@@ -47,19 +60,6 @@ class SSESpecificationDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.kmsMasterKeyId(value)
-    }
-
-
-  /**
-    * Indicates whether server-side encryption is done using an AWS managed CMK or an AWS owned CMK. If enabled
-    *  (true), server-side encryption type is set to KMS and an AWS managed CMK is used (AWS KMS
-    *  charges apply). If disabled (false) or not specified, server-side encryption is set to AWS owned CMK.
-    */
-  var enabled: Boolean?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.enabled(value)
     }
 
     

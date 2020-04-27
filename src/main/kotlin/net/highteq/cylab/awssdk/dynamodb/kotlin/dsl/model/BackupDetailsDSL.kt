@@ -26,6 +26,17 @@ class BackupDetailsDSL {
   internal fun build(): BackupDetails = builder.build()
     
   /**
+    * ARN associated with the backup.
+    */
+  var backupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupArn(value)
+    }
+
+
+  /**
     * Name of the requested backup.
     */
   var backupName: String?
@@ -44,17 +55,6 @@ class BackupDetailsDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.backupCreationDateTime(value)
-    }
-
-
-  /**
-    * ARN associated with the backup.
-    */
-  var backupArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
     }
 
 

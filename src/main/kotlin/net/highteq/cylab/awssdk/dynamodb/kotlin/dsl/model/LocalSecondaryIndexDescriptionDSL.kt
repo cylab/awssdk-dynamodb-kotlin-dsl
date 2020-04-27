@@ -72,18 +72,6 @@ class LocalSecondaryIndexDescriptionDSL {
 
 
   /**
-    * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
-    *  changes might not be reflected in this value.
-    */
-  var itemCount: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.itemCount(value)
-    }
-
-
-  /**
     * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
     *  Recent changes might not be reflected in this value.
     */
@@ -103,6 +91,18 @@ class LocalSecondaryIndexDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.indexArn(value)
+    }
+
+
+  /**
+    * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
+    *  changes might not be reflected in this value.
+    */
+  var itemCount: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.itemCount(value)
     }
 
   

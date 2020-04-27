@@ -24,17 +24,6 @@ class ShardDSL {
   internal fun build(): Shard = builder.build()
     
   /**
-    * The system-generated identifier for this shard.
-    */
-  var shardId: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.shardId(value)
-    }
-
-
-  /**
     * The shard ID of the current shard's parent.
     */
   var parentShardId: String?
@@ -53,6 +42,17 @@ class ShardDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.sequenceNumberRange(value)
+    }
+
+
+  /**
+    * The system-generated identifier for this shard.
+    */
+  var shardId: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.shardId(value)
     }
 
   

@@ -25,6 +25,17 @@ class UpdateGlobalTableRequestDSL {
   internal fun build(): UpdateGlobalTableRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * The global table name.
     */
   var globalTableName: String?
@@ -43,17 +54,6 @@ class UpdateGlobalTableRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.replicaUpdates(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
     }
 
   

@@ -18,18 +18,52 @@ class EndpointCollectionDSL {
   private val list = ArrayList<Endpoint>()
   internal fun build() : List<Endpoint> = list
 
-  fun item(dslBlock: EndpointDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a Endpoint instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: EndpointDSL.() -> Unit) {
     list.add(EndpointDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a Endpoint to the collection built by this DSL
+    */
+  fun add(item: Endpoint) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given Endpoint instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<Endpoint>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given Endpoint instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<Endpoint>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a Endpoint to the collection built by this DSL
+    */
   operator fun Endpoint.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given Endpoint instances to the collection built by this DSL
+    */
   operator fun Collection<Endpoint>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given Endpoint instances to the collection built by this DSL
+    */
   operator fun Array<Endpoint>.unaryPlus() {
     list.addAll(this)
   }

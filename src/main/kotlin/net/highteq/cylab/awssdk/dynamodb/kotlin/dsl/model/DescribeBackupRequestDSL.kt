@@ -24,17 +24,6 @@ class DescribeBackupRequestDSL {
   internal fun build(): DescribeBackupRequest = builder.build()
     
   /**
-    * The Amazon Resource Name (ARN) associated with the backup.
-    */
-  var backupArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.backupArn(value)
-    }
-
-
-  /**
     * 
     */
   var overrideConfiguration: AwsRequestOverrideConfiguration?
@@ -42,6 +31,17 @@ class DescribeBackupRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The Amazon Resource Name (ARN) associated with the backup.
+    */
+  var backupArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.backupArn(value)
     }
 
   

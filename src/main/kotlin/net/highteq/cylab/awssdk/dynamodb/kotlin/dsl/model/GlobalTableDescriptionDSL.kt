@@ -37,17 +37,6 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The creation time of the global table.
-    */
-  var creationDateTime: Instant?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.creationDateTime(value)
-    }
-
-
-  /**
     * The Regions where the global table has replicas.
     */
   var replicationGroup: Collection<ReplicaDescription>?
@@ -85,6 +74,17 @@ class GlobalTableDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.globalTableStatus(value)
+    }
+
+
+  /**
+    * The creation time of the global table.
+    */
+  var creationDateTime: Instant?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.creationDateTime(value)
     }
 
     

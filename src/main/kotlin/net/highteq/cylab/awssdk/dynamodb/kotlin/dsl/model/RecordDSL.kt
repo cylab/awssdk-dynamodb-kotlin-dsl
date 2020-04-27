@@ -43,6 +43,28 @@ class RecordDSL {
 
 
   /**
+    * The main body of the stream record, containing all of the DynamoDB-specific fields.
+    */
+  var dynamodb: StreamRecord?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.dynamodb(value)
+    }
+
+
+  /**
+    * The region in which the GetRecords request was received.
+    */
+  var awsRegion: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.awsRegion(value)
+    }
+
+
+  /**
     * Items that are deleted by the Time to Live process after expiration have the following fields:
     * 
     *  Records[].userIdentity.type
@@ -99,28 +121,6 @@ class RecordDSL {
       builder.eventSource(value)
     }
 
-
-  /**
-    * The region in which the GetRecords request was received.
-    */
-  var awsRegion: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.awsRegion(value)
-    }
-
-
-  /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
-    */
-  var dynamodb: StreamRecord?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.dynamodb(value)
-    }
-
     
   /**
     * The type of data modification that was performed on the DynamoDB table:
@@ -137,6 +137,14 @@ class RecordDSL {
 
     
   /**
+    * The main body of the stream record, containing all of the DynamoDB-specific fields.
+    */
+  fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
+    builder.dynamodb(buildStreamRecord(dslBlock))
+  }
+
+
+  /**
     * Items that are deleted by the Time to Live process after expiration have the following fields:
     * 
     *  Records[].userIdentity.type
@@ -149,14 +157,6 @@ class RecordDSL {
     */
   fun userIdentity(dslBlock: IdentityDSL.() -> Unit) {
     builder.userIdentity(buildIdentity(dslBlock))
-  }
-
-
-  /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
-    */
-  fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
-    builder.dynamodb(buildStreamRecord(dslBlock))
   }
 
 }

@@ -98,26 +98,20 @@ class ScanRequestDSL {
 
 
   /**
-    * The name of the table containing the requested items; or, if you provide IndexName, the name of
-    *  the table to which that index belongs.
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Working with
+    *  Queries in the Amazon DynamoDB Developer Guide.
     */
-  var tableName: String?
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
-    * The name of a secondary index to scan. This index can be any local secondary index or global secondary index.
-    *  Note that if you use the IndexName parameter, you must also provide TableName.
-    */
-  var indexName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
+      builder.limit(value)
     }
 
 
@@ -195,6 +189,73 @@ class ScanRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * For a parallel Scan request, TotalSegments represents the total number of segments
+    *  into which the Scan operation will be divided. The value of TotalSegments
+    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
+    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
+    *  of 4.
+    * 
+    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
+    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
+    *  sequential rather than parallel.
+    * 
+    *  If you specify TotalSegments, you must also specify Segment.
+    */
+  var totalSegments: Int?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.totalSegments(value)
+    }
+
+
+  /**
+    * The name of the table containing the requested items; or, if you provide IndexName, the name of
+    *  the table to which that index belongs.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
+  /**
+    * The name of a secondary index to scan. This index can be any local secondary index or global secondary index.
+    *  Note that if you use the IndexName parameter, you must also provide TableName.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
+    }
+
+
+  /**
+    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
+    */
+  var scanFilter: Map<String, Condition>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.scanFilter(value)
     }
 
 
@@ -296,67 +357,6 @@ class ScanRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * This is a legacy parameter. Use FilterExpression instead. For more information, see ScanFilter in the Amazon DynamoDB Developer Guide.
-    */
-  var scanFilter: Map<String, Condition>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.scanFilter(value)
-    }
-
-
-  /**
-    * For a parallel Scan request, TotalSegments represents the total number of segments
-    *  into which the Scan operation will be divided. The value of TotalSegments
-    *  corresponds to the number of application workers that will perform the parallel scan. For example, if you
-    *  want to use four application threads to scan a table or an index, specify a TotalSegments value
-    *  of 4.
-    * 
-    *  The value for TotalSegments must be greater than or equal to 1, and less than or equal to
-    *  1000000. If you specify a TotalSegments value of 1, the Scan operation will be
-    *  sequential rather than parallel.
-    * 
-    *  If you specify TotalSegments, you must also specify Segment.
-    */
-  var totalSegments: Int?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.totalSegments(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Working with
-    *  Queries in the Amazon DynamoDB Developer Guide.
-    */
-  var limit: Int?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
     

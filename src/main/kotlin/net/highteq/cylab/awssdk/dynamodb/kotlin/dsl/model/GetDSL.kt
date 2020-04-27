@@ -24,13 +24,14 @@ class GetDSL {
   internal fun build(): Get = builder.build()
     
   /**
-    * The name of the table from which to retrieve the specified item.
+    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
+    *  retrieve.
     */
-  var tableName: String?
+  var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
+      builder.key(value)
     }
 
 
@@ -46,6 +47,17 @@ class GetDSL {
 
 
   /**
+    * The name of the table from which to retrieve the specified item.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
+  /**
     * A string that identifies one or more attributes of the specified item to retrieve from the table. The
     *  attributes in the expression must be separated by commas. If no attribute names are specified, then all
     *  attributes of the specified item are returned. If any of the requested attributes are not found, they do not
@@ -56,18 +68,6 @@ class GetDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.projectionExpression(value)
-    }
-
-
-  /**
-    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
-    *  retrieve.
-    */
-  var key: Map<String, AttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.key(value)
     }
 
   

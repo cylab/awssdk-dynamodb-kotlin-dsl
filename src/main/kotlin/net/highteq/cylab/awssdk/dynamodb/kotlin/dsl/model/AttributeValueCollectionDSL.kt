@@ -22,18 +22,52 @@ class AttributeValueCollectionDSL {
   private val list = ArrayList<AttributeValue>()
   internal fun build() : List<AttributeValue> = list
 
-  fun item(dslBlock: AttributeValueDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a AttributeValue instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: AttributeValueDSL.() -> Unit) {
     list.add(AttributeValueDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a AttributeValue to the collection built by this DSL
+    */
+  fun add(item: AttributeValue) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given AttributeValue instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<AttributeValue>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given AttributeValue instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<AttributeValue>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a AttributeValue to the collection built by this DSL
+    */
   operator fun AttributeValue.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given AttributeValue instances to the collection built by this DSL
+    */
   operator fun Collection<AttributeValue>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given AttributeValue instances to the collection built by this DSL
+    */
   operator fun Array<AttributeValue>.unaryPlus() {
     list.addAll(this)
   }

@@ -88,14 +88,25 @@ class GlobalSecondaryIndexDescriptionDSL {
 
 
   /**
-    * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
-    *  changes might not be reflected in this value.
+    * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
+    *  Recent changes might not be reflected in this value.
     */
-  var itemCount: Long?
+  var indexSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.itemCount(value)
+      builder.indexSizeBytes(value)
+    }
+
+
+  /**
+    * The Amazon Resource Name (ARN) that uniquely identifies the index.
+    */
+  var indexArn: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexArn(value)
     }
 
 
@@ -141,25 +152,14 @@ class GlobalSecondaryIndexDescriptionDSL {
 
 
   /**
-    * The total size of the specified index, in bytes. DynamoDB updates this value approximately every six hours.
-    *  Recent changes might not be reflected in this value.
+    * The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent
+    *  changes might not be reflected in this value.
     */
-  var indexSizeBytes: Long?
+  var itemCount: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.indexSizeBytes(value)
-    }
-
-
-  /**
-    * The Amazon Resource Name (ARN) that uniquely identifies the index.
-    */
-  var indexArn: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexArn(value)
+      builder.itemCount(value)
     }
 
     

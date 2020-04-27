@@ -74,26 +74,20 @@ class QueryRequestDSL {
 
 
   /**
-    * The name of the table containing the requested items.
+    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
+    *  the number of items up to the limit while processing the results, it stops the operation and returns the
+    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
+    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
+    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
+    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
+    *  more information, see Query and Scan
+    *  in the Amazon DynamoDB Developer Guide.
     */
-  var tableName: String?
+  var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
-    * The name of an index to query. This index can be any local secondary index or global secondary index on the
-    *  table. Note that if you use the IndexName parameter, you must also provide
-    *  TableName.
-    */
-  var indexName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
+      builder.limit(value)
     }
 
 
@@ -170,6 +164,41 @@ class QueryRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.returnConsumedCapacity(value)
+    }
+
+
+  /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the table containing the requested items.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
+    }
+
+
+  /**
+    * The name of an index to query. This index can be any local secondary index or global secondary index on the
+    *  table. Note that if you use the IndexName parameter, you must also provide
+    *  TableName.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
     }
 
 
@@ -378,35 +407,6 @@ class QueryRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
-    }
-
-
-  /**
-    * The maximum number of items to evaluate (not necessarily the number of matching items). If DynamoDB processes
-    *  the number of items up to the limit while processing the results, it stops the operation and returns the
-    *  matching values up to that point, and a key in LastEvaluatedKey to apply in a subsequent
-    *  operation, so that you can pick up where you left off. Also, if the processed dataset size exceeds 1 MB
-    *  before DynamoDB reaches this limit, it stops the operation and returns the matching values up to the limit,
-    *  and a key in LastEvaluatedKey to apply in a subsequent operation to continue the operation. For
-    *  more information, see Query and Scan
-    *  in the Amazon DynamoDB Developer Guide.
-    */
-  var limit: Int?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.limit(value)
     }
 
     

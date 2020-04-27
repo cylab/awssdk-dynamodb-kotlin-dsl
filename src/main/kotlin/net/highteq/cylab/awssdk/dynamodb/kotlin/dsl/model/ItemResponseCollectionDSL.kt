@@ -18,18 +18,52 @@ class ItemResponseCollectionDSL {
   private val list = ArrayList<ItemResponse>()
   internal fun build() : List<ItemResponse> = list
 
-  fun item(dslBlock: ItemResponseDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a ItemResponse instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: ItemResponseDSL.() -> Unit) {
     list.add(ItemResponseDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a ItemResponse to the collection built by this DSL
+    */
+  fun add(item: ItemResponse) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given ItemResponse instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<ItemResponse>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given ItemResponse instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<ItemResponse>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a ItemResponse to the collection built by this DSL
+    */
   operator fun ItemResponse.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given ItemResponse instances to the collection built by this DSL
+    */
   operator fun Collection<ItemResponse>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given ItemResponse instances to the collection built by this DSL
+    */
   operator fun Array<ItemResponse>.unaryPlus() {
     list.addAll(this)
   }

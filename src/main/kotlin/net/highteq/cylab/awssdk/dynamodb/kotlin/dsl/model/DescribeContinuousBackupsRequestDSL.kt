@@ -24,6 +24,17 @@ class DescribeContinuousBackupsRequestDSL {
   internal fun build(): DescribeContinuousBackupsRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * Name of the table for which the customer wants to check the continuous backups and point in time recovery
     *  settings.
     */
@@ -32,17 +43,6 @@ class DescribeContinuousBackupsRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.tableName(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
     }
 
   

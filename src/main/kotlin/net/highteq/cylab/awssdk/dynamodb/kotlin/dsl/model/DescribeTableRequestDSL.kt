@@ -24,17 +24,6 @@ class DescribeTableRequestDSL {
   internal fun build(): DescribeTableRequest = builder.build()
     
   /**
-    * The name of the table to describe.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
-    }
-
-
-  /**
     * 
     */
   var overrideConfiguration: AwsRequestOverrideConfiguration?
@@ -42,6 +31,17 @@ class DescribeTableRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.overrideConfiguration(value)
+    }
+
+
+  /**
+    * The name of the table to describe.
+    */
+  var tableName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.tableName(value)
     }
 
   

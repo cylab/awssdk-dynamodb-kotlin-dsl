@@ -25,6 +25,17 @@ class RestoreTableToPointInTimeRequestDSL {
   internal fun build(): RestoreTableToPointInTimeRequest = builder.build()
     
   /**
+    * 
+    */
+  var overrideConfiguration: AwsRequestOverrideConfiguration?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.overrideConfiguration(value)
+    }
+
+
+  /**
     * Name of the source table that is being restored.
     */
   var sourceTableName: String?
@@ -66,17 +77,6 @@ class RestoreTableToPointInTimeRequestDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.restoreDateTime(value)
-    }
-
-
-  /**
-    * 
-    */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.overrideConfiguration(value)
     }
 
   

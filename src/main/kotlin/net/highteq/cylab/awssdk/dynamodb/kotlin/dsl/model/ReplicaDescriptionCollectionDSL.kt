@@ -18,18 +18,52 @@ class ReplicaDescriptionCollectionDSL {
   private val list = ArrayList<ReplicaDescription>()
   internal fun build() : List<ReplicaDescription> = list
 
-  fun item(dslBlock: ReplicaDescriptionDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a ReplicaDescription instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: ReplicaDescriptionDSL.() -> Unit) {
     list.add(ReplicaDescriptionDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a ReplicaDescription to the collection built by this DSL
+    */
+  fun add(item: ReplicaDescription) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given ReplicaDescription instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<ReplicaDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given ReplicaDescription instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<ReplicaDescription>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a ReplicaDescription to the collection built by this DSL
+    */
   operator fun ReplicaDescription.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given ReplicaDescription instances to the collection built by this DSL
+    */
   operator fun Collection<ReplicaDescription>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given ReplicaDescription instances to the collection built by this DSL
+    */
   operator fun Array<ReplicaDescription>.unaryPlus() {
     list.addAll(this)
   }

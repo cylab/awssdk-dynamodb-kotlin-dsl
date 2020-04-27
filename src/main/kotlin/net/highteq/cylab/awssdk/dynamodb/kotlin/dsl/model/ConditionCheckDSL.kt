@@ -26,6 +26,18 @@ class ConditionCheckDSL {
   internal fun build(): ConditionCheck = builder.build()
     
   /**
+    * The primary key of the item to be checked. Each element consists of an attribute name and a value for that
+    *  attribute.
+    */
+  var key: Map<String, AttributeValue>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.key(value)
+    }
+
+
+  /**
     * A condition that must be satisfied in order for a conditional update to succeed.
     */
   var conditionExpression: String?
@@ -33,17 +45,6 @@ class ConditionCheckDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.conditionExpression(value)
-    }
-
-
-  /**
-    * Name of the table for the check item request.
-    */
-  var tableName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.tableName(value)
     }
 
 
@@ -83,14 +84,13 @@ class ConditionCheckDSL {
 
 
   /**
-    * The primary key of the item to be checked. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * Name of the table for the check item request.
     */
-  var key: Map<String, AttributeValue>?
+  var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.key(value)
+      builder.tableName(value)
     }
 
     

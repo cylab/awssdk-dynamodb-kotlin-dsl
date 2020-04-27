@@ -28,6 +28,17 @@ class KeysAndAttributesDSL {
   internal fun build(): KeysAndAttributes = builder.build()
     
   /**
+    * The primary key attribute values that define the items and the attributes associated with the items.
+    */
+  var keys: Collection<Map<String, AttributeValue>>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.keys(value)
+    }
+
+
+  /**
     * One or more substitution tokens for attribute names in an expression. The following are some use cases for
     *  using ExpressionAttributeNames:
     * 
@@ -104,17 +115,6 @@ class KeysAndAttributesDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.consistentRead(value)
-    }
-
-
-  /**
-    * The primary key attribute values that define the items and the attributes associated with the items.
-    */
-  var keys: Collection<Map<String, AttributeValue>>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.keys(value)
     }
 
   

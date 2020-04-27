@@ -25,48 +25,6 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsDescription = builder.build()
     
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
-    */
-  var indexName: String?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexName(value)
-    }
-
-
-  /**
-    * The current status of the global secondary index:
-    * 
-    *  CREATING - The global secondary index is being created.
-    * 
-    *  UPDATING - The global secondary index is being updated.
-    * 
-    *  DELETING - The global secondary index is being deleted.
-    * 
-    *  ACTIVE - The global secondary index is ready for use.
-    */
-  var indexStatus: IndexStatus?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.indexStatus(value)
-    }
-
-
-  /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException.
-    */
-  var provisionedReadCapacityUnits: Long?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.provisionedReadCapacityUnits(value)
-    }
-
-
-  /**
     * Auto scaling settings for a global secondary index replica's read capacity units.
     */
   var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
@@ -96,6 +54,48 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.provisionedWriteCapacityAutoScalingSettings(value)
+    }
+
+
+  /**
+    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
+    *  ThrottlingException.
+    */
+  var provisionedReadCapacityUnits: Long?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.provisionedReadCapacityUnits(value)
+    }
+
+
+  /**
+    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    */
+  var indexName: String?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexName(value)
+    }
+
+
+  /**
+    * The current status of the global secondary index:
+    * 
+    *  CREATING - The global secondary index is being created.
+    * 
+    *  UPDATING - The global secondary index is being updated.
+    * 
+    *  DELETING - The global secondary index is being deleted.
+    * 
+    *  ACTIVE - The global secondary index is ready for use.
+    */
+  var indexStatus: IndexStatus?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.indexStatus(value)
     }
 
     

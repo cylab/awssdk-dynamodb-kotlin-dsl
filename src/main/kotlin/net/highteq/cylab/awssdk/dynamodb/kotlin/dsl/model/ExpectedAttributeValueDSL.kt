@@ -41,6 +41,22 @@ class ExpectedAttributeValueDSL {
   internal fun build(): ExpectedAttributeValue = builder.build()
     
   /**
+    * Represents the data for the expected attribute.
+    * 
+    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
+    *  itself.
+    * 
+    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+    */
+  var value: AttributeValue?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.value(value)
+    }
+
+
+  /**
     * Causes DynamoDB to evaluate the value before attempting a conditional operation:
     * 
     *  If Exists is true, DynamoDB will check to see if that attribute value already
@@ -69,30 +85,6 @@ class ExpectedAttributeValueDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.exists(value)
-    }
-
-
-  /**
-    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
-    *  the ComparisonOperator being used.
-    * 
-    *  For type Number, value comparisons are numeric.
-    * 
-    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
-    *  example, a is greater than A, and a is greater than B.
-    *  For a list of code values, see http://
-    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
-    * 
-    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
-    * 
-    *  For information on specifying data types in JSON, see JSON Data Format
-    *  in the Amazon DynamoDB Developer Guide.
-    */
-  var attributeValueList: Collection<AttributeValue>?
-    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
-    get() = throw UnsupportedOperationException()
-    set(value) {
-      builder.attributeValueList(value)
     }
 
 
@@ -223,18 +215,26 @@ class ExpectedAttributeValueDSL {
 
 
   /**
-    * Represents the data for the expected attribute.
+    * One or more values to evaluate against the supplied attribute. The number of values in the list depends on
+    *  the ComparisonOperator being used.
     * 
-    *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data
-    *  itself.
+    *  For type Number, value comparisons are numeric.
     * 
-    *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+    *  String value comparisons for greater than, equals, or less than are based on ASCII character code values. For
+    *  example, a is greater than A, and a is greater than B.
+    *  For a list of code values, see http://
+    *  en.wikipedia.org/wiki/ASCII#ASCII_printable_characters.
+    * 
+    *  For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.
+    * 
+    *  For information on specifying data types in JSON, see JSON Data Format
+    *  in the Amazon DynamoDB Developer Guide.
     */
-  var value: AttributeValue?
+  var attributeValueList: Collection<AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
-      builder.value(value)
+      builder.attributeValueList(value)
     }
 
     

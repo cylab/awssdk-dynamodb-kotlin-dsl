@@ -18,18 +18,52 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL {
   private val list = ArrayList<GlobalTableGlobalSecondaryIndexSettingsUpdate>()
   internal fun build() : List<GlobalTableGlobalSecondaryIndexSettingsUpdate> = list
 
-  fun item(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
+  /**
+    * Receives a sub DSL in 'dslBlock' to build a GlobalTableGlobalSecondaryIndexSettingsUpdate instance
+    * and adds it to the collection built by the enclosing DSL
+    */
+  fun add(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
     list.add(GlobalTableGlobalSecondaryIndexSettingsUpdateDSL().apply(dslBlock).build())
   }
 
+  /**
+    * Adds a GlobalTableGlobalSecondaryIndexSettingsUpdate to the collection built by this DSL
+    */
+  fun add(item: GlobalTableGlobalSecondaryIndexSettingsUpdate) {
+    list.add(item)
+  }
+
+  /**
+    * Adds all given GlobalTableGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
+  fun addAll(items: Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds all given GlobalTableGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
+  infix fun addAll(items: Array<GlobalTableGlobalSecondaryIndexSettingsUpdate>) {
+    list.addAll(items)
+  }
+
+  /**
+    * Adds a GlobalTableGlobalSecondaryIndexSettingsUpdate to the collection built by this DSL
+    */
   operator fun GlobalTableGlobalSecondaryIndexSettingsUpdate.unaryPlus() {
     list.add(this)
   }
 
+  /**
+    * Adds all given GlobalTableGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
   operator fun Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }
 
+  /**
+    * Adds all given GlobalTableGlobalSecondaryIndexSettingsUpdate instances to the collection built by this DSL
+    */
   operator fun Array<GlobalTableGlobalSecondaryIndexSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }
