@@ -1,14 +1,8 @@
 # AWS-SDK DynamoDB Kotlin DSL 
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl)
+[![Maven Central](https://img.shields.io/maven-central/v/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.highteq.cylab%22%20AND%20a:%22awssdk-dynamodb-kotlin-dsl%22)
 
 This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder
-
-Current version is `2.5.54_ALPHA2`. The release is available as 
-
-    net.highteq.cylab:awssdk-dynamodb-kotlin-dsl:2.5.54_ALPHA2
-
-at maven central.
 
 **CAUTION:** This is very much work in progress and might not work as expected or at all.
 Feel free to try it out and give feedback at the generator project (see above)
@@ -54,14 +48,15 @@ For types that are used in collections, you can create a collection using `build
     buildAttributeDefinitionCollection {
     }
 
-The elements in this DSL can be added by the `item {}` sub DSL or by using the `+` operator on existing instances:
+The objects in this DSL can be added by the `o {}` sub DSL
+or by using the `+` operator on existing instances:
 
     buildAttributeDefinitionCollection {
-      add {
+      o {
         attributeName = Constants.ID
         attributeType = ScalarAttributeType.S
       }
-      add {
+      o {
         attributeName = Constants.NAME
         attributeType = ScalarAttributeType.S
       }
@@ -75,11 +70,11 @@ The same mechanism works, if the collection is part of a sub DSL:
 
     val createTableRequest = buildCreateTableRequest {
       attributeDefinitions {
-        add {
+        o {
           attributeName = Constants.ID
           attributeType = ScalarAttributeType.S
         }
-        add {
+        o {
           attributeName = Constants.NAME
           attributeType = ScalarAttributeType.S
         }
@@ -87,5 +82,40 @@ The same mechanism works, if the collection is part of a sub DSL:
         +existingAttribute
           
         +existingCollectionOfAttributes
+      }
+    }
+
+Like normal collections, you can also build Maps using `buildXXXMap`.
+This time the object DSL takes the key as parameter:
+
+    val hotelItem = buildAttributeValueMap {
+      o("ID") { s = hotel.id }
+      o("NAME") { s = hotel.name }
+      o("ADDRESS") { s = hotel.address }
+    }
+
+The same mechanism is also available in sub DSLs:
+
+    val deleteRequest = buildDeleteItemRequest {
+      tableName = "SomeTable"
+      key {
+        o("ID") { s = "someValue" }
+      }
+    }
+
+or in a nested AttributeValueMap
+
+    val putRequest = buildPutItemRequest {
+      item {
+        o("ID") { s = hotel.id }
+        o("NAME") { s = hotel.name }
+        o("ADDRESS") {
+          m {
+            o("STREET") { s = hotel.street }
+            o("ZIP") { s = hotel.zip }
+            o("CITY") { s = hotel.city }
+            o("STATE") { s = hotel.state }
+          }
+        }
       }
     }
