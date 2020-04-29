@@ -74,6 +74,7 @@ class GetItemResponseDSL {
     }
 
   
+  
     
   /**
     * The capacity units consumed by the GetItem operation. The data returned includes the total

@@ -307,6 +307,7 @@ class ConditionDSL {
     builder.comparisonOperator(value)
   }
 
+  
     
   /**
     * One or more values to evaluate against the supplied attribute. The number of values in the list depends on

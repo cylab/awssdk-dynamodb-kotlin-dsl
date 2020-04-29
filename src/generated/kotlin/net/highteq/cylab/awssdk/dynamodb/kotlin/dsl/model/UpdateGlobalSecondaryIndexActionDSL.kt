@@ -48,6 +48,7 @@ class UpdateGlobalSecondaryIndexActionDSL {
     }
 
   
+  
     
   /**
     * Represents the provisioned throughput settings for the specified global secondary index.

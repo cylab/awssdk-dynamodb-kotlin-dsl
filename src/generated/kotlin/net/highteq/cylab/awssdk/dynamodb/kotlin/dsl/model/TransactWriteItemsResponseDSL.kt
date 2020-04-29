@@ -73,6 +73,7 @@ class TransactWriteItemsResponseDSL {
     }
 
   
+  
     
   /**
     * The capacity units consumed by the entire TransactWriteItems operation. The values of the list

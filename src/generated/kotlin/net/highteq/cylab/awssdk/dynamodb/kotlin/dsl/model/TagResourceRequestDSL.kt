@@ -58,6 +58,7 @@ class TagResourceRequestDSL {
     }
 
   
+  
     
   /**
     * The tags to be assigned to the Amazon DynamoDB resource.

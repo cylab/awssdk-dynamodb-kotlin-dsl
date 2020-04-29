@@ -70,6 +70,7 @@ class ListTagsOfResourceResponseDSL {
     }
 
   
+  
     
   /**
     * The tags currently associated with the Amazon DynamoDB resource.

@@ -58,6 +58,7 @@ class UpdateGlobalTableResponseDSL {
     }
 
   
+  
     
   /**
     * Contains the details of the global table.

@@ -75,6 +75,7 @@ class GlobalSecondaryIndexUpdateDSL {
     }
 
   
+  
     
   /**
     * The parameters required for creating a global secondary index on an existing table:

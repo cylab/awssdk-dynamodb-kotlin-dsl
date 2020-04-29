@@ -70,6 +70,7 @@ class GetRecordsResponseDSL {
     }
 
   
+  
     
   /**
     * The stream records from the shard, which were retrieved using the shard iterator.

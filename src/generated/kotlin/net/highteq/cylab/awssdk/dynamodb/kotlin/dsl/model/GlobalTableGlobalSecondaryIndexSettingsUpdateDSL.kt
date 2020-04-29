@@ -56,6 +56,7 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
     }
 
   
+  
     
   /**
     * Auto scaling settings for managing a global secondary index's write capacity units.

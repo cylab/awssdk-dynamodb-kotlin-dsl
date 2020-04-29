@@ -57,6 +57,7 @@ class UpdateGlobalTableRequestDSL {
     }
 
   
+  
     
   /**
     * A list of Regions that should be added or removed from the global table.

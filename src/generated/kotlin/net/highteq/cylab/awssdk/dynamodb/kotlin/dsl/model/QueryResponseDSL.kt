@@ -127,6 +127,7 @@ class QueryResponseDSL {
     }
 
   
+  
     
   /**
     * The capacity units consumed by the Query operation. The data returned includes the total

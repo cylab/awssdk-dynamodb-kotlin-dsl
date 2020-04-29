@@ -53,6 +53,7 @@ class ContinuousBackupsDescriptionDSL {
     builder.continuousBackupsStatus(value)
   }
 
+  
     
   /**
     * The description of the point in time recovery settings applied to the table.

@@ -105,6 +105,7 @@ class BatchGetItemResponseDSL {
     }
 
   
+  
     
   /**
     * The read capacity units consumed by the entire BatchGetItem operation.

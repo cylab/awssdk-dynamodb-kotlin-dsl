@@ -106,6 +106,7 @@ class UpdateItemResponseDSL {
     }
 
   
+  
     
   /**
     * A map of attribute values as they appear before or after the UpdateItem operation, as determined

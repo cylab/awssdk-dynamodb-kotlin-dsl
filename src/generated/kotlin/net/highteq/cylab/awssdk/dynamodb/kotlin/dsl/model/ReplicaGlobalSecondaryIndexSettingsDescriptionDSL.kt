@@ -114,6 +114,7 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
     builder.indexStatus(value)
   }
 
+  
     
   /**
     * Auto scaling settings for a global secondary index replica's read capacity units.

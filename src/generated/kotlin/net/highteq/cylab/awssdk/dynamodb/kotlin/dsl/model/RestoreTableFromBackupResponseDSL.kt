@@ -58,6 +58,7 @@ class RestoreTableFromBackupResponseDSL {
     }
 
   
+  
     
   /**
     * The description of the table created from an existing backup.

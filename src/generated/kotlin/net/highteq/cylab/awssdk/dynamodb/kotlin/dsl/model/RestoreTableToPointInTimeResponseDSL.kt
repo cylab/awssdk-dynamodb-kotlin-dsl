@@ -58,6 +58,7 @@ class RestoreTableToPointInTimeResponseDSL {
     }
 
   
+  
     
   /**
     * Represents the properties of a table.

@@ -146,6 +146,7 @@ class SourceTableDetailsDSL {
     builder.billingMode(value)
   }
 
+  
     
   /**
     * Schema of the table.

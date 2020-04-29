@@ -160,6 +160,7 @@ class GetItemRequestDSL {
     builder.returnConsumedCapacity(value)
   }
 
+  
     
   /**
     * A map of attribute names to AttributeValue objects, representing the primary key of the item to

@@ -104,6 +104,7 @@ class DeleteItemResponseDSL {
     }
 
   
+  
     
   /**
     * A map of attribute names to AttributeValue objects, representing the item as it appeared before

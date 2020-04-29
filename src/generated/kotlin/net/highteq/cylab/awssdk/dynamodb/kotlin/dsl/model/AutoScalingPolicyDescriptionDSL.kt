@@ -45,6 +45,7 @@ class AutoScalingPolicyDescriptionDSL {
     }
 
   
+  
     
   /**
     * Represents a target tracking scaling policy configuration.

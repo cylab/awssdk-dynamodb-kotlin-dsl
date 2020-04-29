@@ -135,6 +135,7 @@ class RecordDSL {
     builder.eventName(value)
   }
 
+  
     
   /**
     * The main body of the stream record, containing all of the DynamoDB-specific fields.

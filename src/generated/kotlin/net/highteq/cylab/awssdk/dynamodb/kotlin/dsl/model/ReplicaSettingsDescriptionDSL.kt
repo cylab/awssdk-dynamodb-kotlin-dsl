@@ -139,6 +139,7 @@ class ReplicaSettingsDescriptionDSL {
     builder.replicaStatus(value)
   }
 
+  
     
   /**
     * The read/write capacity mode of the replica.

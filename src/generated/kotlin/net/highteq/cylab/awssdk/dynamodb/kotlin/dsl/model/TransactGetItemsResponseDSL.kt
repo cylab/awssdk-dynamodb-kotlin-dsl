@@ -80,6 +80,7 @@ class TransactGetItemsResponseDSL {
     }
 
   
+  
     
   /**
     * If the ReturnConsumedCapacity value was TOTAL, this is an array of

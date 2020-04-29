@@ -45,6 +45,7 @@ class GlobalTableDSL {
     }
 
   
+  
     
   /**
     * The Regions where the global table has replicas.

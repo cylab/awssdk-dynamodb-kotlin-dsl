@@ -69,6 +69,7 @@ class ListGlobalTablesResponseDSL {
     }
 
   
+  
     
   /**
     * List of global table names.

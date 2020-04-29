@@ -103,6 +103,7 @@ class ConsumedCapacityDSL {
     }
 
   
+  
     
   /**
     * The amount of throughput consumed on each global index affected by the operation.

@@ -130,6 +130,7 @@ class BatchWriteItemResponseDSL {
     }
 
   
+  
     
   /**
     * The capacity units consumed by the entire BatchWriteItem operation.

@@ -376,6 +376,7 @@ class UpdateItemRequestDSL {
     builder.returnValues(value)
   }
 
+  
     
   /**
     * This is a legacy parameter. Use UpdateExpression instead. For more information, see AttributeUpdates in the Amazon DynamoDB Developer Guide.

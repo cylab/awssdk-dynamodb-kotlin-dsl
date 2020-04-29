@@ -58,6 +58,7 @@ class DescribeTableResponseDSL {
     }
 
   
+  
     
   /**
     * The properties of the table.

@@ -278,6 +278,7 @@ class CreateTableRequestDSL {
     builder.billingMode(value)
   }
 
+  
     
   /**
     * An array of attributes that describe the key schema for the table and indexes.

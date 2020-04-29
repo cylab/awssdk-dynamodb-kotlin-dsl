@@ -104,6 +104,7 @@ class PutItemResponseDSL {
     }
 
   
+  
     
   /**
     * The attribute values as they appeared before the PutItem operation, but only if

@@ -78,6 +78,7 @@ class AutoScalingSettingsDescriptionDSL {
     }
 
   
+  
     
   /**
     * Information about the scaling policies.

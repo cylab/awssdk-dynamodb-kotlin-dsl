@@ -125,6 +125,7 @@ class StreamRecordDSL {
     builder.streamViewType(value)
   }
 
+  
     
   /**
     * The primary key attribute(s) for the DynamoDB item that was modified.

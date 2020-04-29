@@ -58,6 +58,7 @@ class CreateTableResponseDSL {
     }
 
   
+  
     
   /**
     * Represents the properties of the table.

@@ -118,6 +118,7 @@ class TransactWriteItemsRequestDSL {
     builder.returnItemCollectionMetrics(value)
   }
 
+  
     
   /**
     * An ordered array of up to 25 TransactWriteItem objects, each of which contains a

@@ -58,6 +58,7 @@ class DescribeBackupResponseDSL {
     }
 
   
+  
     
   /**
     * Contains the description of the backup created for the table.

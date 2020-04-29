@@ -85,6 +85,7 @@ class SourceTableFeatureDetailsDSL {
     }
 
   
+  
     
   /**
     * Represents the GSI properties for the table when the backup was created. It includes the IndexName,

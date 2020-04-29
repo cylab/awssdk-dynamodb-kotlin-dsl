@@ -178,6 +178,7 @@ class GlobalSecondaryIndexDescriptionDSL {
     builder.indexStatus(value)
   }
 
+  
     
   /**
     * The complete key schema for a global secondary index, which consists of one or more pairs of attribute names

@@ -57,6 +57,7 @@ class ReplicaGlobalSecondaryIndexSettingsUpdateDSL {
     }
 
   
+  
     
   /**
     * Auto scaling settings for managing a global secondary index replica's read capacity units.

@@ -71,6 +71,7 @@ class LocalSecondaryIndexInfoDSL {
     }
 
   
+  
     
   /**
     * The complete key schema for a local secondary index, which consists of one or more pairs of attribute names

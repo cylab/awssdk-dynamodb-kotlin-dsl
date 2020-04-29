@@ -126,6 +126,7 @@ class ScanResponseDSL {
     }
 
   
+  
     
   /**
     * The capacity units consumed by the Scan operation. The data returned includes the total

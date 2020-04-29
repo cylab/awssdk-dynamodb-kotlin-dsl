@@ -34,6 +34,7 @@ class ItemResponseDSL {
     }
 
   
+  
     
   /**
     * Map of attribute data consisting of the data type and attribute value.

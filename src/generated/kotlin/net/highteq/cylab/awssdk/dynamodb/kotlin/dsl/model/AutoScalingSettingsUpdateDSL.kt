@@ -78,6 +78,7 @@ class AutoScalingSettingsUpdateDSL {
     }
 
   
+  
     
   /**
     * The scaling policy to apply for scaling target global table or global secondary index capacity units.

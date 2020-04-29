@@ -119,6 +119,7 @@ class BatchGetItemRequestDSL {
     builder.returnConsumedCapacity(value)
   }
 
+  
     
   /**
     * A map of one or more table names and, for each table, a map that describes one or more items to retrieve from

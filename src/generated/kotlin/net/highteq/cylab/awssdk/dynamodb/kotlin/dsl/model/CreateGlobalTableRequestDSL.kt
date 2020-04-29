@@ -57,6 +57,7 @@ class CreateGlobalTableRequestDSL {
     }
 
   
+  
     
   /**
     * The Regions where the global table needs to be created.

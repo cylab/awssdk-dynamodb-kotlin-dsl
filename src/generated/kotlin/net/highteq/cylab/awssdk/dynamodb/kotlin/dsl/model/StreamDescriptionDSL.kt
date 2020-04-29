@@ -191,6 +191,7 @@ class StreamDescriptionDSL {
     builder.streamViewType(value)
   }
 
+  
     
   /**
     * The key attribute(s) of the stream's DynamoDB table.

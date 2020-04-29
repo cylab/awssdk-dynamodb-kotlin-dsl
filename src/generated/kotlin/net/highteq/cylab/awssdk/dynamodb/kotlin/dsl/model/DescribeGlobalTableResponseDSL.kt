@@ -58,6 +58,7 @@ class DescribeGlobalTableResponseDSL {
     }
 
   
+  
     
   /**
     * Contains the details of the global table.

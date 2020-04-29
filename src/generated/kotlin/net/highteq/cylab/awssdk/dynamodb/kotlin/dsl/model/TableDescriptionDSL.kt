@@ -399,6 +399,7 @@ class TableDescriptionDSL {
     builder.tableStatus(value)
   }
 
+  
     
   /**
     * An array of AttributeDefinition objects. Each of these objects describes one attribute in the

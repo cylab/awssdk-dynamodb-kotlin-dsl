@@ -60,6 +60,7 @@ class DescribeStreamResponseDSL {
     }
 
   
+  
     
   /**
     * A complete description of the stream, including its creation date and time, the DynamoDB table associated

@@ -77,6 +77,7 @@ class ListStreamsResponseDSL {
     }
 
   
+  
     
   /**
     * A list of stream descriptors associated with the current account and endpoint.

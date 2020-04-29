@@ -68,6 +68,7 @@ class TransactGetItemsRequestDSL {
     builder.returnConsumedCapacity(value)
   }
 
+  
     
   /**
     * An ordered array of up to 25 TransactGetItem objects, each of which contains a Get

@@ -58,6 +58,7 @@ class UpdateTableResponseDSL {
     }
 
   
+  
     
   /**
     * Represents the properties of the table.

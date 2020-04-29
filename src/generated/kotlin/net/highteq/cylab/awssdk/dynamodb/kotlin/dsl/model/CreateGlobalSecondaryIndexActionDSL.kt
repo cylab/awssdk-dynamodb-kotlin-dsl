@@ -73,6 +73,7 @@ class CreateGlobalSecondaryIndexActionDSL {
     }
 
   
+  
     
   /**
     * The key schema for the global secondary index.

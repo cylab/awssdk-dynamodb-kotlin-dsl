@@ -71,6 +71,7 @@ class TransactWriteItemDSL {
     }
 
   
+  
     
   /**
     * A request to perform a check item operation.

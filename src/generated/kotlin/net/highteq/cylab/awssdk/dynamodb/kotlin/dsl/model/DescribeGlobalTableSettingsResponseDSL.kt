@@ -69,6 +69,7 @@ class DescribeGlobalTableSettingsResponseDSL {
     }
 
   
+  
     
   /**
     * The Region-specific settings for the global table.

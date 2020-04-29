@@ -58,6 +58,7 @@ class DeleteTableResponseDSL {
     }
 
   
+  
     
   /**
     * Represents the properties of a table.
