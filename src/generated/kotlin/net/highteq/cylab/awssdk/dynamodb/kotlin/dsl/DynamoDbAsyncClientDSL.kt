@@ -15,6 +15,7 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientAsyncConfiguration
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.async.SdkAsyncHttpClient
+import software.amazon.awssdk.http.async.SdkAsyncHttpClient.Builder
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 
@@ -85,6 +86,17 @@ class DynamoDbAsyncClientDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.httpClient(value)
+    }
+
+
+  /**
+    * 
+    */
+  var httpClientBuilder: Builder<*>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.httpClientBuilder(value)
     }
 
 

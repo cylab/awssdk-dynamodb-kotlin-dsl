@@ -14,6 +14,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.SdkHttpClient
+import software.amazon.awssdk.http.SdkHttpClient.Builder
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClient
 
@@ -63,6 +64,17 @@ class DynamoDbStreamsClientDSL {
     get() = throw UnsupportedOperationException()
     set(value) {
       builder.httpClient(value)
+    }
+
+
+  /**
+    * 
+    */
+  var httpClientBuilder: Builder<*>?
+    @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
+    get() = throw UnsupportedOperationException()
+    set(value) {
+      builder.httpClientBuilder(value)
     }
 
 
