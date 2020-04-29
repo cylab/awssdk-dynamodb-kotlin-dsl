@@ -122,7 +122,14 @@ class DynamoDbAsyncClientDSL {
     }
 
   
-  
+    
+  /**
+    * 
+    */
+  fun enableEndpointDiscovery() {
+    builder.enableEndpointDiscovery()
+  }
+
   
 }
 
