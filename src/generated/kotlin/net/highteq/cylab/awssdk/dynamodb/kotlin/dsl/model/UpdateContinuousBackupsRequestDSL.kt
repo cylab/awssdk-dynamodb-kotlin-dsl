@@ -25,7 +25,7 @@ inline class UpdateContinuousBackupsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateContinuousBackupsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class UpdateContinuousBackupsRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class UpdateContinuousBackupsRequestDSL(
       builder.pointInTimeRecoverySpecification(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class UpdateContinuousBackupsRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-    
   /**
     * 
     */

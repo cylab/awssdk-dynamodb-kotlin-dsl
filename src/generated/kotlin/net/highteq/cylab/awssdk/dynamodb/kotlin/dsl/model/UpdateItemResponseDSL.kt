@@ -28,7 +28,7 @@ inline class UpdateItemResponseDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateItemResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class UpdateItemResponseDSL(
     set(value) {
       builder.attributes(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class UpdateItemResponseDSL(
       builder.consumedCapacity(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class UpdateItemResponseDSL(
     set(value) {
       builder.itemCollectionMetrics(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class UpdateItemResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -83,9 +79,6 @@ inline class UpdateItemResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */
@@ -93,14 +86,12 @@ inline class UpdateItemResponseDSL(
     builder.attributes(buildAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
-
 
   /**
     * 

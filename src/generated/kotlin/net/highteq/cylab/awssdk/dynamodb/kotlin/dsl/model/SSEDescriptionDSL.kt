@@ -25,7 +25,7 @@ inline class SSEDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): SSEDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class SSEDescriptionDSL(
     set(value) {
       builder.kmsMasterKeyArn(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class SSEDescriptionDSL(
       builder.sseType(value)
     }
 
-
   /**
     * 
     */
@@ -58,14 +56,12 @@ inline class SSEDescriptionDSL(
       builder.status(value)
     }
 
-    
   /**
     * 
     */
   inline fun sseType(value: String?) {
     builder.sseType(value)
   }
-
 
   /**
     * 
@@ -74,8 +70,6 @@ inline class SSEDescriptionDSL(
     builder.status(value)
   }
 
-  
-  
 }
 
 /**

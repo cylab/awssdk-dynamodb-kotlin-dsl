@@ -26,7 +26,7 @@ inline class TransactGetItemsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): TransactGetItemsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class TransactGetItemsRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class TransactGetItemsRequestDSL(
       builder.returnConsumedCapacity(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class TransactGetItemsRequestDSL(
       builder.transactItems(value)
     }
 
-    
   /**
     * 
     */
@@ -67,8 +64,6 @@ inline class TransactGetItemsRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-  
-    
   /**
     * 
     */

@@ -25,7 +25,7 @@ inline class GetShardIteratorResponseDSL(
 ){
   @PublishedApi
   internal fun build(): GetShardIteratorResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class GetShardIteratorResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class GetShardIteratorResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class GetShardIteratorResponseDSL(
       builder.shardIterator(value)
     }
 
-  
-  
-  
 }
 
 /**

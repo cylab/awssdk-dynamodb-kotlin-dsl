@@ -25,7 +25,7 @@ inline class UpdateDSL(
 ){
   @PublishedApi
   internal fun build(): Update = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class UpdateDSL(
     set(value) {
       builder.conditionExpression(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class UpdateDSL(
       builder.expressionAttributeNames(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class UpdateDSL(
     set(value) {
       builder.expressionAttributeValues(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class UpdateDSL(
       builder.key(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class UpdateDSL(
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
     }
-
 
   /**
     * 
@@ -91,7 +86,6 @@ inline class UpdateDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -102,7 +96,6 @@ inline class UpdateDSL(
       builder.updateExpression(value)
     }
 
-    
   /**
     * 
     */
@@ -110,15 +103,12 @@ inline class UpdateDSL(
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

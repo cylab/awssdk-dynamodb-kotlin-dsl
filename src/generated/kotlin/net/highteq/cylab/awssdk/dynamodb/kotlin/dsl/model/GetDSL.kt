@@ -24,7 +24,7 @@ inline class GetDSL(
 ){
   @PublishedApi
   internal fun build(): Get = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class GetDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class GetDSL(
       builder.key(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class GetDSL(
     set(value) {
       builder.projectionExpression(value)
     }
-
 
   /**
     * 
@@ -68,9 +65,6 @@ inline class GetDSL(
       builder.tableName(value)
     }
 
-  
-  
-    
   /**
     * 
     */

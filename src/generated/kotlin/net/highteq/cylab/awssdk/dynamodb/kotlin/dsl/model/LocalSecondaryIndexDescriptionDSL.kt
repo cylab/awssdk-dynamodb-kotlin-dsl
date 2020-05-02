@@ -25,7 +25,7 @@ inline class LocalSecondaryIndexDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): LocalSecondaryIndexDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class LocalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.indexArn(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class LocalSecondaryIndexDescriptionDSL(
       builder.indexName(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class LocalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.indexSizeBytes(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class LocalSecondaryIndexDescriptionDSL(
       builder.itemCount(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class LocalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.keySchema(value)
     }
-
 
   /**
     * 
@@ -91,16 +86,12 @@ inline class LocalSecondaryIndexDescriptionDSL(
       builder.projection(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
-
 
   /**
     * 

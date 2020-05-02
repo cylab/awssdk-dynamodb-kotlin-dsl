@@ -23,7 +23,7 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): AutoScalingTargetTrackingScalingPolicyConfigurationDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL(
     set(value) {
       builder.disableScaleIn(value)
     }
-
 
   /**
     * 
@@ -45,7 +44,6 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL(
       builder.scaleInCooldown(value)
     }
 
-
   /**
     * 
     */
@@ -55,7 +53,6 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL(
     set(value) {
       builder.scaleOutCooldown(value)
     }
-
 
   /**
     * 
@@ -67,9 +64,6 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL(
       builder.targetValue(value)
     }
 
-  
-  
-  
 }
 
 /**

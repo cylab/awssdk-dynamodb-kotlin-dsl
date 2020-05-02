@@ -24,7 +24,7 @@ inline class DescribeLimitsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeLimitsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,9 +35,6 @@ inline class DescribeLimitsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

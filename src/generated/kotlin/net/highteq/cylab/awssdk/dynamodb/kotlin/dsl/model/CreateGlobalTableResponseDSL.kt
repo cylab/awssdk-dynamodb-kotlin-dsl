@@ -26,7 +26,7 @@ inline class CreateGlobalTableResponseDSL(
 ){
   @PublishedApi
   internal fun build(): CreateGlobalTableResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class CreateGlobalTableResponseDSL(
     set(value) {
       builder.globalTableDescription(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class CreateGlobalTableResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class CreateGlobalTableResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

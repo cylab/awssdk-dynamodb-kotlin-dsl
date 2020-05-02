@@ -24,7 +24,7 @@ inline class DeleteTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DeleteTableRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DeleteTableRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

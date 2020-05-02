@@ -24,7 +24,7 @@ inline class RestoreTableFromBackupRequestDSL(
 ){
   @PublishedApi
   internal fun build(): RestoreTableFromBackupRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class RestoreTableFromBackupRequestDSL(
     set(value) {
       builder.backupArn(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class RestoreTableFromBackupRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class RestoreTableFromBackupRequestDSL(
       builder.targetTableName(value)
     }
 
-  
-  
-  
 }
 
 /**

@@ -24,7 +24,7 @@ inline class TimeToLiveDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): TimeToLiveDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class TimeToLiveDescriptionDSL(
     set(value) {
       builder.attributeName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class TimeToLiveDescriptionDSL(
       builder.timeToLiveStatus(value)
     }
 
-    
   /**
     * 
     */
@@ -54,8 +52,6 @@ inline class TimeToLiveDescriptionDSL(
     builder.timeToLiveStatus(value)
   }
 
-  
-  
 }
 
 /**

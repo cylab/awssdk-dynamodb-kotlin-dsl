@@ -27,7 +27,7 @@ inline class BatchWriteItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): BatchWriteItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class BatchWriteItemRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class BatchWriteItemRequestDSL(
       builder.requestItems(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class BatchWriteItemRequestDSL(
     set(value) {
       builder.returnConsumedCapacity(value)
     }
-
 
   /**
     * 
@@ -71,14 +68,12 @@ inline class BatchWriteItemRequestDSL(
       builder.returnItemCollectionMetrics(value)
     }
 
-    
   /**
     * 
     */
   inline fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
-
 
   /**
     * 
@@ -87,8 +82,6 @@ inline class BatchWriteItemRequestDSL(
     builder.returnItemCollectionMetrics(value)
   }
 
-  
-  
 }
 
 /**

@@ -27,7 +27,7 @@ inline class ProvisionedThroughputExceededExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): ProvisionedThroughputExceededException = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -93,14 +88,12 @@ inline class ProvisionedThroughputExceededExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -109,14 +102,12 @@ inline class ProvisionedThroughputExceededExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -125,8 +116,6 @@ inline class ProvisionedThroughputExceededExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

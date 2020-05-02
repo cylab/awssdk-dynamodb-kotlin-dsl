@@ -30,7 +30,7 @@ inline class PutItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): PutItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -40,7 +40,6 @@ inline class PutItemRequestDSL(
     set(value) {
       builder.conditionExpression(value)
     }
-
 
   /**
     * 
@@ -52,7 +51,6 @@ inline class PutItemRequestDSL(
       builder.conditionalOperator(value)
     }
 
-
   /**
     * 
     */
@@ -62,7 +60,6 @@ inline class PutItemRequestDSL(
     set(value) {
       builder.expected(value)
     }
-
 
   /**
     * 
@@ -74,7 +71,6 @@ inline class PutItemRequestDSL(
       builder.expressionAttributeNames(value)
     }
 
-
   /**
     * 
     */
@@ -84,7 +80,6 @@ inline class PutItemRequestDSL(
     set(value) {
       builder.expressionAttributeValues(value)
     }
-
 
   /**
     * 
@@ -96,7 +91,6 @@ inline class PutItemRequestDSL(
       builder.item(value)
     }
 
-
   /**
     * 
     */
@@ -106,7 +100,6 @@ inline class PutItemRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -118,7 +111,6 @@ inline class PutItemRequestDSL(
       builder.returnConsumedCapacity(value)
     }
 
-
   /**
     * 
     */
@@ -128,7 +120,6 @@ inline class PutItemRequestDSL(
     set(value) {
       builder.returnItemCollectionMetrics(value)
     }
-
 
   /**
     * 
@@ -140,7 +131,6 @@ inline class PutItemRequestDSL(
       builder.returnValues(value)
     }
 
-
   /**
     * 
     */
@@ -151,14 +141,12 @@ inline class PutItemRequestDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
   inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
-
 
   /**
     * 
@@ -167,14 +155,12 @@ inline class PutItemRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-
   /**
     * 
     */
   inline fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
   }
-
 
   /**
     * 
@@ -183,8 +169,6 @@ inline class PutItemRequestDSL(
     builder.returnValues(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -192,14 +176,12 @@ inline class PutItemRequestDSL(
     builder.expected(buildExpectedAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

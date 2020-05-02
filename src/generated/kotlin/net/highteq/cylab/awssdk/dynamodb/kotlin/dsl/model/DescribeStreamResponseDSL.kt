@@ -26,7 +26,7 @@ inline class DescribeStreamResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeStreamResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class DescribeStreamResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class DescribeStreamResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class DescribeStreamResponseDSL(
       builder.streamDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */

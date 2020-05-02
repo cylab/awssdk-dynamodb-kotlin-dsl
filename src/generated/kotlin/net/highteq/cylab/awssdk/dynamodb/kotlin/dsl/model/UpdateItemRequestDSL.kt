@@ -31,7 +31,7 @@ inline class UpdateItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -41,7 +41,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.attributeUpdates(value)
     }
-
 
   /**
     * 
@@ -53,7 +52,6 @@ inline class UpdateItemRequestDSL(
       builder.conditionExpression(value)
     }
 
-
   /**
     * 
     */
@@ -63,7 +61,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.conditionalOperator(value)
     }
-
 
   /**
     * 
@@ -75,7 +72,6 @@ inline class UpdateItemRequestDSL(
       builder.expected(value)
     }
 
-
   /**
     * 
     */
@@ -85,7 +81,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -97,7 +92,6 @@ inline class UpdateItemRequestDSL(
       builder.expressionAttributeValues(value)
     }
 
-
   /**
     * 
     */
@@ -107,7 +101,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.key(value)
     }
-
 
   /**
     * 
@@ -119,7 +112,6 @@ inline class UpdateItemRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -129,7 +121,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.returnConsumedCapacity(value)
     }
-
 
   /**
     * 
@@ -141,7 +132,6 @@ inline class UpdateItemRequestDSL(
       builder.returnItemCollectionMetrics(value)
     }
 
-
   /**
     * 
     */
@@ -151,7 +141,6 @@ inline class UpdateItemRequestDSL(
     set(value) {
       builder.returnValues(value)
     }
-
 
   /**
     * 
@@ -163,7 +152,6 @@ inline class UpdateItemRequestDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -174,14 +162,12 @@ inline class UpdateItemRequestDSL(
       builder.updateExpression(value)
     }
 
-    
   /**
     * 
     */
   inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
-
 
   /**
     * 
@@ -190,14 +176,12 @@ inline class UpdateItemRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-
   /**
     * 
     */
   inline fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
   }
-
 
   /**
     * 
@@ -206,15 +190,12 @@ inline class UpdateItemRequestDSL(
     builder.returnValues(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun attributeUpdates(dslBlock: AttributeValueUpdateMapDSL.() -> Unit) {
     builder.attributeUpdates(buildAttributeValueUpdateMap(dslBlock))
   }
-
 
   /**
     * 
@@ -223,14 +204,12 @@ inline class UpdateItemRequestDSL(
     builder.expected(buildExpectedAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

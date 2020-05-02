@@ -24,7 +24,7 @@ inline class DescribeContinuousBackupsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeContinuousBackupsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DescribeContinuousBackupsRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DescribeContinuousBackupsRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

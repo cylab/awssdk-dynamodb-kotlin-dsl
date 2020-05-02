@@ -24,7 +24,7 @@ inline class ListGlobalTablesRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ListGlobalTablesRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ListGlobalTablesRequestDSL(
     set(value) {
       builder.exclusiveStartGlobalTableName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ListGlobalTablesRequestDSL(
       builder.limit(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class ListGlobalTablesRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -68,9 +65,6 @@ inline class ListGlobalTablesRequestDSL(
       builder.regionName(value)
     }
 
-  
-  
-  
 }
 
 /**

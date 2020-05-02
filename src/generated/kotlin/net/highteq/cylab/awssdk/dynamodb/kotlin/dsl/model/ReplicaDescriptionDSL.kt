@@ -23,7 +23,7 @@ inline class ReplicaDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -34,9 +34,6 @@ inline class ReplicaDescriptionDSL(
       builder.regionName(value)
     }
 
-  
-  
-  
 }
 
 /**

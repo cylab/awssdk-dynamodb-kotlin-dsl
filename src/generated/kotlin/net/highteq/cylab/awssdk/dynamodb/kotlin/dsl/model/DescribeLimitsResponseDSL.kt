@@ -25,7 +25,7 @@ inline class DescribeLimitsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeLimitsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class DescribeLimitsResponseDSL(
     set(value) {
       builder.accountMaxReadCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class DescribeLimitsResponseDSL(
       builder.accountMaxWriteCapacityUnits(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class DescribeLimitsResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class DescribeLimitsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class DescribeLimitsResponseDSL(
     set(value) {
       builder.tableMaxReadCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -91,9 +86,6 @@ inline class DescribeLimitsResponseDSL(
       builder.tableMaxWriteCapacityUnits(value)
     }
 
-  
-  
-  
 }
 
 /**

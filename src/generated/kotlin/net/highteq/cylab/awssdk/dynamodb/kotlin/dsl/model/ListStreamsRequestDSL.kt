@@ -24,7 +24,7 @@ inline class ListStreamsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ListStreamsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ListStreamsRequestDSL(
     set(value) {
       builder.exclusiveStartStreamArn(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ListStreamsRequestDSL(
       builder.limit(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class ListStreamsRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -68,9 +65,6 @@ inline class ListStreamsRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

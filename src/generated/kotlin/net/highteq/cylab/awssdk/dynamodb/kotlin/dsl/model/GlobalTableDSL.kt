@@ -24,7 +24,7 @@ inline class GlobalTableDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalTable = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class GlobalTableDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class GlobalTableDSL(
       builder.replicationGroup(value)
     }
 
-  
-  
-    
   /**
     * 
     */

@@ -28,7 +28,7 @@ inline class KeysAndAttributesDSL(
 ){
   @PublishedApi
   internal fun build(): KeysAndAttributes = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class KeysAndAttributesDSL(
     set(value) {
       builder.attributesToGet(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class KeysAndAttributesDSL(
       builder.consistentRead(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class KeysAndAttributesDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class KeysAndAttributesDSL(
       builder.keys(value)
     }
 
-
   /**
     * 
     */
@@ -83,9 +79,6 @@ inline class KeysAndAttributesDSL(
       builder.projectionExpression(value)
     }
 
-  
-  
-  
 }
 
 /**

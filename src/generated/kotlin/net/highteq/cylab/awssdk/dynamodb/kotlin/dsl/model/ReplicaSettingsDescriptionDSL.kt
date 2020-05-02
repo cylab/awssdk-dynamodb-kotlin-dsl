@@ -27,7 +27,7 @@ inline class ReplicaSettingsDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaSettingsDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class ReplicaSettingsDescriptionDSL(
     set(value) {
       builder.regionName(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class ReplicaSettingsDescriptionDSL(
       builder.replicaBillingModeSummary(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class ReplicaSettingsDescriptionDSL(
     set(value) {
       builder.replicaGlobalSecondaryIndexSettings(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class ReplicaSettingsDescriptionDSL(
       builder.replicaProvisionedReadCapacityAutoScalingSettings(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class ReplicaSettingsDescriptionDSL(
     set(value) {
       builder.replicaProvisionedReadCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -93,7 +88,6 @@ inline class ReplicaSettingsDescriptionDSL(
       builder.replicaProvisionedWriteCapacityAutoScalingSettings(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class ReplicaSettingsDescriptionDSL(
     set(value) {
       builder.replicaProvisionedWriteCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -115,7 +108,6 @@ inline class ReplicaSettingsDescriptionDSL(
       builder.replicaStatus(value)
     }
 
-    
   /**
     * 
     */
@@ -123,15 +115,12 @@ inline class ReplicaSettingsDescriptionDSL(
     builder.replicaStatus(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun replicaBillingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) {
     builder.replicaBillingModeSummary(buildBillingModeSummary(dslBlock))
   }
-
 
   /**
     * 
@@ -140,14 +129,12 @@ inline class ReplicaSettingsDescriptionDSL(
     builder.replicaGlobalSecondaryIndexSettings(buildReplicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun replicaProvisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.replicaProvisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
-
 
   /**
     * 

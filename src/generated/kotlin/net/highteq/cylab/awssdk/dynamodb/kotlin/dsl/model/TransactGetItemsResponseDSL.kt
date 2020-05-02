@@ -27,7 +27,7 @@ inline class TransactGetItemsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): TransactGetItemsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class TransactGetItemsResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class TransactGetItemsResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class TransactGetItemsResponseDSL(
     set(value) {
       builder.responses(value)
     }
-
 
   /**
     * 
@@ -71,16 +68,12 @@ inline class TransactGetItemsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
   }
-
 
   /**
     * 

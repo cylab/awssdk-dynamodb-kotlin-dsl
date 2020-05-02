@@ -26,7 +26,7 @@ inline class GetRecordsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): GetRecordsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class GetRecordsResponseDSL(
     set(value) {
       builder.nextShardIterator(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class GetRecordsResponseDSL(
       builder.records(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class GetRecordsResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class GetRecordsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

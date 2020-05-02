@@ -24,7 +24,7 @@ inline class AutoScalingPolicyUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): AutoScalingPolicyUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class AutoScalingPolicyUpdateDSL(
     set(value) {
       builder.policyName(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class AutoScalingPolicyUpdateDSL(
       builder.targetTrackingScalingPolicyConfiguration(value)
     }
 
-  
-  
-    
   /**
     * 
     */

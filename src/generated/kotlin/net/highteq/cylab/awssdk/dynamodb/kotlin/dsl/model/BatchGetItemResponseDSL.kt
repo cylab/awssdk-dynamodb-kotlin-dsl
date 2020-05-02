@@ -28,7 +28,7 @@ inline class BatchGetItemResponseDSL(
 ){
   @PublishedApi
   internal fun build(): BatchGetItemResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class BatchGetItemResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class BatchGetItemResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class BatchGetItemResponseDSL(
     set(value) {
       builder.responses(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class BatchGetItemResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -83,16 +79,12 @@ inline class BatchGetItemResponseDSL(
       builder.unprocessedKeys(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
   }
-
 
   /**
     * 

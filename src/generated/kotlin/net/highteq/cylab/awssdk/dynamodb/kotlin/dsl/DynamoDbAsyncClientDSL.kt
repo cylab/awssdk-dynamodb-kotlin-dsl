@@ -46,7 +46,7 @@ inline class DynamoDbAsyncClientDSL(
 ){
   @PublishedApi
   internal fun build(): DynamoDbAsyncClient = builder.build()
-    
+
   /**
     * 
     */
@@ -56,7 +56,6 @@ inline class DynamoDbAsyncClientDSL(
     set(value) {
       builder.asyncConfiguration(value)
     }
-
 
   /**
     * 
@@ -68,7 +67,6 @@ inline class DynamoDbAsyncClientDSL(
       builder.credentialsProvider(value)
     }
 
-
   /**
     * 
     */
@@ -78,7 +76,6 @@ inline class DynamoDbAsyncClientDSL(
     set(value) {
       builder.endpointOverride(value)
     }
-
 
   /**
     * 
@@ -90,7 +87,6 @@ inline class DynamoDbAsyncClientDSL(
       builder.httpClient(value)
     }
 
-
   /**
     * 
     */
@@ -100,7 +96,6 @@ inline class DynamoDbAsyncClientDSL(
     set(value) {
       builder.httpClientBuilder(value)
     }
-
 
   /**
     * 
@@ -112,7 +107,6 @@ inline class DynamoDbAsyncClientDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -123,8 +117,6 @@ inline class DynamoDbAsyncClientDSL(
       builder.region(value)
     }
 
-  
-    
   /**
     * 
     */
@@ -132,7 +124,6 @@ inline class DynamoDbAsyncClientDSL(
     builder.enableEndpointDiscovery()
   }
 
-  
 }
 
 /**

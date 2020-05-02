@@ -26,7 +26,7 @@ inline class BackupDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): BackupDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class BackupDescriptionDSL(
     set(value) {
       builder.backupDetails(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class BackupDescriptionDSL(
       builder.sourceTableDetails(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class BackupDescriptionDSL(
       builder.sourceTableFeatureDetails(value)
     }
 
-  
-  
-    
   /**
     * 
     */
@@ -69,14 +64,12 @@ inline class BackupDescriptionDSL(
     builder.backupDetails(buildBackupDetails(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) {
     builder.sourceTableDetails(buildSourceTableDetails(dslBlock))
   }
-
 
   /**
     * 

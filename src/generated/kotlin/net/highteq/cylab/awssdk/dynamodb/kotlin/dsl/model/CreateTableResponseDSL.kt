@@ -26,7 +26,7 @@ inline class CreateTableResponseDSL(
 ){
   @PublishedApi
   internal fun build(): CreateTableResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class CreateTableResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class CreateTableResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class CreateTableResponseDSL(
       builder.tableDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */

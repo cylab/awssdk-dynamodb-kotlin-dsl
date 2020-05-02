@@ -25,7 +25,7 @@ inline class PutDSL(
 ){
   @PublishedApi
   internal fun build(): Put = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class PutDSL(
     set(value) {
       builder.conditionExpression(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class PutDSL(
       builder.expressionAttributeNames(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class PutDSL(
     set(value) {
       builder.expressionAttributeValues(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class PutDSL(
       builder.item(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class PutDSL(
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
     }
-
 
   /**
     * 
@@ -91,7 +86,6 @@ inline class PutDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
@@ -99,15 +93,12 @@ inline class PutDSL(
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

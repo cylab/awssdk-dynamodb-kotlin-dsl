@@ -24,7 +24,7 @@ inline class ListTablesRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ListTablesRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ListTablesRequestDSL(
     set(value) {
       builder.exclusiveStartTableName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ListTablesRequestDSL(
       builder.limit(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class ListTablesRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

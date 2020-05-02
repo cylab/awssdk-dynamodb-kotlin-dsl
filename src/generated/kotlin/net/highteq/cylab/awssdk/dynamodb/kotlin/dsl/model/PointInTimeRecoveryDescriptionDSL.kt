@@ -25,7 +25,7 @@ inline class PointInTimeRecoveryDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): PointInTimeRecoveryDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class PointInTimeRecoveryDescriptionDSL(
     set(value) {
       builder.earliestRestorableDateTime(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class PointInTimeRecoveryDescriptionDSL(
       builder.latestRestorableDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class PointInTimeRecoveryDescriptionDSL(
       builder.pointInTimeRecoveryStatus(value)
     }
 
-    
   /**
     * 
     */
@@ -66,8 +63,6 @@ inline class PointInTimeRecoveryDescriptionDSL(
     builder.pointInTimeRecoveryStatus(value)
   }
 
-  
-  
 }
 
 /**

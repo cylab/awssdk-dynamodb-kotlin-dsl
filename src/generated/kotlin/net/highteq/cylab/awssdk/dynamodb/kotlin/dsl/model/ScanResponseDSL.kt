@@ -27,7 +27,7 @@ inline class ScanResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ScanResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class ScanResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class ScanResponseDSL(
       builder.count(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class ScanResponseDSL(
     set(value) {
       builder.items(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class ScanResponseDSL(
       builder.lastEvaluatedKey(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class ScanResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -93,7 +88,6 @@ inline class ScanResponseDSL(
       builder.scannedCount(value)
     }
 
-
   /**
     * 
     */
@@ -104,16 +98,12 @@ inline class ScanResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
-
 
   /**
     * 

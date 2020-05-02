@@ -24,7 +24,7 @@ inline class DescribeGlobalTableSettingsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeGlobalTableSettingsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DescribeGlobalTableSettingsRequestDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DescribeGlobalTableSettingsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

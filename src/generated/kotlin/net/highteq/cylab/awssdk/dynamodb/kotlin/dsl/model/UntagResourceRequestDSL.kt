@@ -24,7 +24,7 @@ inline class UntagResourceRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UntagResourceRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class UntagResourceRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class UntagResourceRequestDSL(
       builder.resourceArn(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class UntagResourceRequestDSL(
       builder.tagKeys(value)
     }
 
-  
-  
-  
 }
 
 /**

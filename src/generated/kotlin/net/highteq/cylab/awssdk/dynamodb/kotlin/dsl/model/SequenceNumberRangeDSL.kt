@@ -23,7 +23,7 @@ inline class SequenceNumberRangeDSL(
 ){
   @PublishedApi
   internal fun build(): SequenceNumberRange = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class SequenceNumberRangeDSL(
     set(value) {
       builder.endingSequenceNumber(value)
     }
-
 
   /**
     * 
@@ -45,9 +44,6 @@ inline class SequenceNumberRangeDSL(
       builder.startingSequenceNumber(value)
     }
 
-  
-  
-  
 }
 
 /**

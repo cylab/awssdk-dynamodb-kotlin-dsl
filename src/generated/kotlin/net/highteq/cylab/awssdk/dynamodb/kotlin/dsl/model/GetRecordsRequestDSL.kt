@@ -24,7 +24,7 @@ inline class GetRecordsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): GetRecordsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class GetRecordsRequestDSL(
     set(value) {
       builder.limit(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class GetRecordsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class GetRecordsRequestDSL(
       builder.shardIterator(value)
     }
 
-  
-  
-  
 }
 
 /**

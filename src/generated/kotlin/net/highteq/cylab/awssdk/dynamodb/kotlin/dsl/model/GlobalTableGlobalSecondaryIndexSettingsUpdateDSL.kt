@@ -24,7 +24,7 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalTableGlobalSecondaryIndexSettingsUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
       builder.provisionedWriteCapacityAutoScalingSettingsUpdate(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
       builder.provisionedWriteCapacityUnits(value)
     }
 
-  
-  
-    
   /**
     * 
     */

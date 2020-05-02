@@ -26,7 +26,7 @@ inline class DeleteTableResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteTableResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class DeleteTableResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class DeleteTableResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class DeleteTableResponseDSL(
       builder.tableDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */

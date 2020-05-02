@@ -26,7 +26,7 @@ inline class ListTagsOfResourceResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ListTagsOfResourceResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ListTagsOfResourceResponseDSL(
     set(value) {
       builder.nextToken(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ListTagsOfResourceResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ListTagsOfResourceResponseDSL(
     set(value) {
       builder.sdkHttpResponse(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class ListTagsOfResourceResponseDSL(
       builder.tags(value)
     }
 
-  
-  
-    
   /**
     * 
     */

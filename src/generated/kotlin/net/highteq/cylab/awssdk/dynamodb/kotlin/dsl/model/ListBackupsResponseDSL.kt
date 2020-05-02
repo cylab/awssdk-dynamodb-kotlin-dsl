@@ -26,7 +26,7 @@ inline class ListBackupsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ListBackupsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ListBackupsResponseDSL(
     set(value) {
       builder.backupSummaries(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ListBackupsResponseDSL(
       builder.lastEvaluatedBackupArn(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ListBackupsResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class ListBackupsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

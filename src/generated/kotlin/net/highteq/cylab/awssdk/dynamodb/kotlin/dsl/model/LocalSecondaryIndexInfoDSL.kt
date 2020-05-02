@@ -25,7 +25,7 @@ inline class LocalSecondaryIndexInfoDSL(
 ){
   @PublishedApi
   internal fun build(): LocalSecondaryIndexInfo = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class LocalSecondaryIndexInfoDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class LocalSecondaryIndexInfoDSL(
       builder.keySchema(value)
     }
 
-
   /**
     * 
     */
@@ -58,16 +56,12 @@ inline class LocalSecondaryIndexInfoDSL(
       builder.projection(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
-
 
   /**
     * 

@@ -26,7 +26,7 @@ inline class StreamRecordDSL(
 ){
   @PublishedApi
   internal fun build(): StreamRecord = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class StreamRecordDSL(
     set(value) {
       builder.approximateCreationDateTime(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class StreamRecordDSL(
       builder.keys(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class StreamRecordDSL(
     set(value) {
       builder.newImage(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class StreamRecordDSL(
       builder.oldImage(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class StreamRecordDSL(
     set(value) {
       builder.sequenceNumber(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class StreamRecordDSL(
       builder.sizeBytes(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class StreamRecordDSL(
       builder.streamViewType(value)
     }
 
-    
   /**
     * 
     */
@@ -111,8 +104,6 @@ inline class StreamRecordDSL(
     builder.streamViewType(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -120,14 +111,12 @@ inline class StreamRecordDSL(
     builder.keys(buildAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun newImage(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.newImage(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

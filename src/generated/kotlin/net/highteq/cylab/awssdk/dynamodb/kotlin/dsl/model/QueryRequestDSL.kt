@@ -29,7 +29,7 @@ inline class QueryRequestDSL(
 ){
   @PublishedApi
   internal fun build(): QueryRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -39,7 +39,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.attributesToGet(value)
     }
-
 
   /**
     * 
@@ -51,7 +50,6 @@ inline class QueryRequestDSL(
       builder.conditionalOperator(value)
     }
 
-
   /**
     * 
     */
@@ -61,7 +59,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.consistentRead(value)
     }
-
 
   /**
     * 
@@ -73,7 +70,6 @@ inline class QueryRequestDSL(
       builder.exclusiveStartKey(value)
     }
 
-
   /**
     * 
     */
@@ -83,7 +79,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -95,7 +90,6 @@ inline class QueryRequestDSL(
       builder.expressionAttributeValues(value)
     }
 
-
   /**
     * 
     */
@@ -105,7 +99,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.filterExpression(value)
     }
-
 
   /**
     * 
@@ -117,7 +110,6 @@ inline class QueryRequestDSL(
       builder.indexName(value)
     }
 
-
   /**
     * 
     */
@@ -127,7 +119,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.keyConditionExpression(value)
     }
-
 
   /**
     * 
@@ -139,7 +130,6 @@ inline class QueryRequestDSL(
       builder.keyConditions(value)
     }
 
-
   /**
     * 
     */
@@ -149,7 +139,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.limit(value)
     }
-
 
   /**
     * 
@@ -161,7 +150,6 @@ inline class QueryRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -171,7 +159,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.projectionExpression(value)
     }
-
 
   /**
     * 
@@ -183,7 +170,6 @@ inline class QueryRequestDSL(
       builder.queryFilter(value)
     }
 
-
   /**
     * 
     */
@@ -193,7 +179,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.returnConsumedCapacity(value)
     }
-
 
   /**
     * 
@@ -205,7 +190,6 @@ inline class QueryRequestDSL(
       builder.scanIndexForward(value)
     }
 
-
   /**
     * 
     */
@@ -215,7 +199,6 @@ inline class QueryRequestDSL(
     set(value) {
       builder.select(value)
     }
-
 
   /**
     * 
@@ -227,14 +210,12 @@ inline class QueryRequestDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
   inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
-
 
   /**
     * 
@@ -243,7 +224,6 @@ inline class QueryRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-
   /**
     * 
     */
@@ -251,15 +231,12 @@ inline class QueryRequestDSL(
     builder.select(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun exclusiveStartKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.exclusiveStartKey(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 
@@ -268,14 +245,12 @@ inline class QueryRequestDSL(
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun keyConditions(dslBlock: ConditionMapDSL.() -> Unit) {
     builder.keyConditions(buildConditionMap(dslBlock))
   }
-
 
   /**
     * 

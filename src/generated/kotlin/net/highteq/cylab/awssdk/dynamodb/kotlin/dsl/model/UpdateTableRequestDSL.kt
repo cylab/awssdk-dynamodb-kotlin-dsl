@@ -30,7 +30,7 @@ inline class UpdateTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -40,7 +40,6 @@ inline class UpdateTableRequestDSL(
     set(value) {
       builder.attributeDefinitions(value)
     }
-
 
   /**
     * 
@@ -52,7 +51,6 @@ inline class UpdateTableRequestDSL(
       builder.billingMode(value)
     }
 
-
   /**
     * 
     */
@@ -62,7 +60,6 @@ inline class UpdateTableRequestDSL(
     set(value) {
       builder.globalSecondaryIndexUpdates(value)
     }
-
 
   /**
     * 
@@ -74,7 +71,6 @@ inline class UpdateTableRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -84,7 +80,6 @@ inline class UpdateTableRequestDSL(
     set(value) {
       builder.provisionedThroughput(value)
     }
-
 
   /**
     * 
@@ -96,7 +91,6 @@ inline class UpdateTableRequestDSL(
       builder.sseSpecification(value)
     }
 
-
   /**
     * 
     */
@@ -106,7 +100,6 @@ inline class UpdateTableRequestDSL(
     set(value) {
       builder.streamSpecification(value)
     }
-
 
   /**
     * 
@@ -118,7 +111,6 @@ inline class UpdateTableRequestDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
@@ -126,15 +118,12 @@ inline class UpdateTableRequestDSL(
     builder.billingMode(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
     builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -143,7 +132,6 @@ inline class UpdateTableRequestDSL(
     builder.globalSecondaryIndexUpdates(buildGlobalSecondaryIndexUpdateCollection(dslBlock))
   }
 
-
   /**
     * 
     */
@@ -151,14 +139,12 @@ inline class UpdateTableRequestDSL(
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
     builder.sseSpecification(buildSSESpecification(dslBlock))
   }
-
 
   /**
     * 

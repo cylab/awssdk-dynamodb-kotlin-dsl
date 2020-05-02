@@ -26,7 +26,7 @@ inline class ConditionCheckDSL(
 ){
   @PublishedApi
   internal fun build(): ConditionCheck = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ConditionCheckDSL(
     set(value) {
       builder.conditionExpression(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ConditionCheckDSL(
       builder.expressionAttributeNames(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ConditionCheckDSL(
     set(value) {
       builder.expressionAttributeValues(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class ConditionCheckDSL(
       builder.key(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class ConditionCheckDSL(
     set(value) {
       builder.returnValuesOnConditionCheckFailure(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class ConditionCheckDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
@@ -100,15 +94,12 @@ inline class ConditionCheckDSL(
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

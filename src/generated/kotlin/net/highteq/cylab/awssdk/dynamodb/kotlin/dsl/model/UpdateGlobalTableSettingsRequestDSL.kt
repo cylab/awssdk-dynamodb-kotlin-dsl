@@ -28,7 +28,7 @@ inline class UpdateGlobalTableSettingsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateGlobalTableSettingsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     set(value) {
       builder.globalTableBillingMode(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
       builder.globalTableGlobalSecondaryIndexSettingsUpdate(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
       builder.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(value)
     }
 
-
   /**
     * 
     */
@@ -82,7 +78,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     set(value) {
       builder.globalTableProvisionedWriteCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -94,7 +89,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -105,7 +99,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
       builder.replicaSettingsUpdate(value)
     }
 
-    
   /**
     * 
     */
@@ -113,8 +106,6 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     builder.globalTableBillingMode(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -122,14 +113,12 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     builder.globalTableGlobalSecondaryIndexSettingsUpdate(buildGlobalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
     builder.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
   }
-
 
   /**
     * 

@@ -30,7 +30,7 @@ inline class DeleteItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -40,7 +40,6 @@ inline class DeleteItemRequestDSL(
     set(value) {
       builder.conditionExpression(value)
     }
-
 
   /**
     * 
@@ -52,7 +51,6 @@ inline class DeleteItemRequestDSL(
       builder.conditionalOperator(value)
     }
 
-
   /**
     * 
     */
@@ -62,7 +60,6 @@ inline class DeleteItemRequestDSL(
     set(value) {
       builder.expected(value)
     }
-
 
   /**
     * 
@@ -74,7 +71,6 @@ inline class DeleteItemRequestDSL(
       builder.expressionAttributeNames(value)
     }
 
-
   /**
     * 
     */
@@ -84,7 +80,6 @@ inline class DeleteItemRequestDSL(
     set(value) {
       builder.expressionAttributeValues(value)
     }
-
 
   /**
     * 
@@ -96,7 +91,6 @@ inline class DeleteItemRequestDSL(
       builder.key(value)
     }
 
-
   /**
     * 
     */
@@ -106,7 +100,6 @@ inline class DeleteItemRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -118,7 +111,6 @@ inline class DeleteItemRequestDSL(
       builder.returnConsumedCapacity(value)
     }
 
-
   /**
     * 
     */
@@ -128,7 +120,6 @@ inline class DeleteItemRequestDSL(
     set(value) {
       builder.returnItemCollectionMetrics(value)
     }
-
 
   /**
     * 
@@ -140,7 +131,6 @@ inline class DeleteItemRequestDSL(
       builder.returnValues(value)
     }
 
-
   /**
     * 
     */
@@ -151,14 +141,12 @@ inline class DeleteItemRequestDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
   inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
-
 
   /**
     * 
@@ -167,14 +155,12 @@ inline class DeleteItemRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-
   /**
     * 
     */
   inline fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
   }
-
 
   /**
     * 
@@ -183,8 +169,6 @@ inline class DeleteItemRequestDSL(
     builder.returnValues(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -192,14 +176,12 @@ inline class DeleteItemRequestDSL(
     builder.expected(buildExpectedAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

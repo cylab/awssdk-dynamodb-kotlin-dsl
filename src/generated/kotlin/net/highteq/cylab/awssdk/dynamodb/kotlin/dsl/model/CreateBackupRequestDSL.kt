@@ -24,7 +24,7 @@ inline class CreateBackupRequestDSL(
 ){
   @PublishedApi
   internal fun build(): CreateBackupRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class CreateBackupRequestDSL(
     set(value) {
       builder.backupName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class CreateBackupRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class CreateBackupRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

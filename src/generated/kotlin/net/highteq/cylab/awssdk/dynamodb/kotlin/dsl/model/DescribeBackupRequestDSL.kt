@@ -24,7 +24,7 @@ inline class DescribeBackupRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeBackupRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DescribeBackupRequestDSL(
     set(value) {
       builder.backupArn(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DescribeBackupRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

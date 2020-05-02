@@ -26,7 +26,7 @@ inline class GlobalSecondaryIndexInfoDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalSecondaryIndexInfo = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class GlobalSecondaryIndexInfoDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class GlobalSecondaryIndexInfoDSL(
       builder.keySchema(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class GlobalSecondaryIndexInfoDSL(
     set(value) {
       builder.projection(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class GlobalSecondaryIndexInfoDSL(
       builder.provisionedThroughput(value)
     }
 
-  
-  
-    
   /**
     * 
     */
@@ -80,14 +74,12 @@ inline class GlobalSecondaryIndexInfoDSL(
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
     builder.projection(buildProjection(dslBlock))
   }
-
 
   /**
     * 

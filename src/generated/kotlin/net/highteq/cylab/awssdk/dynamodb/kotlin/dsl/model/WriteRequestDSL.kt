@@ -27,7 +27,7 @@ inline class WriteRequestDSL(
 ){
   @PublishedApi
   internal fun build(): WriteRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class WriteRequestDSL(
     set(value) {
       builder.deleteRequest(value)
     }
-
 
   /**
     * 
@@ -49,16 +48,12 @@ inline class WriteRequestDSL(
       builder.putRequest(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
     builder.deleteRequest(buildDeleteRequest(dslBlock))
   }
-
 
   /**
     * 

@@ -26,7 +26,7 @@ inline class ResourceNotFoundExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): ResourceNotFoundException = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ResourceNotFoundExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ResourceNotFoundExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ResourceNotFoundExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class ResourceNotFoundExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class ResourceNotFoundExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -92,14 +87,12 @@ inline class ResourceNotFoundExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -108,14 +101,12 @@ inline class ResourceNotFoundExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -124,8 +115,6 @@ inline class ResourceNotFoundExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

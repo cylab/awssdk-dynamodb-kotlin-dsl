@@ -25,7 +25,7 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
       builder.indexStatus(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
     set(value) {
       builder.provisionedReadCapacityAutoScalingSettings(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
       builder.provisionedReadCapacityUnits(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
     set(value) {
       builder.provisionedWriteCapacityAutoScalingSettings(value)
     }
-
 
   /**
     * 
@@ -91,7 +86,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
       builder.provisionedWriteCapacityUnits(value)
     }
 
-    
   /**
     * 
     */
@@ -99,15 +93,12 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
     builder.indexStatus(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun provisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.provisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
-
 
   /**
     * 

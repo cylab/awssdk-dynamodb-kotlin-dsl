@@ -27,7 +27,7 @@ inline class TransactWriteItemsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): TransactWriteItemsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class TransactWriteItemsResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class TransactWriteItemsResponseDSL(
       builder.itemCollectionMetrics(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class TransactWriteItemsResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -71,9 +68,6 @@ inline class TransactWriteItemsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

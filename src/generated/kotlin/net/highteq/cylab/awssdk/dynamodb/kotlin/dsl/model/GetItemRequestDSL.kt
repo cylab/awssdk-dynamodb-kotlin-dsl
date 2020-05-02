@@ -26,7 +26,7 @@ inline class GetItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): GetItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class GetItemRequestDSL(
     set(value) {
       builder.attributesToGet(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class GetItemRequestDSL(
       builder.consistentRead(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class GetItemRequestDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class GetItemRequestDSL(
       builder.key(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class GetItemRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class GetItemRequestDSL(
       builder.projectionExpression(value)
     }
 
-
   /**
     * 
     */
@@ -102,7 +96,6 @@ inline class GetItemRequestDSL(
     set(value) {
       builder.returnConsumedCapacity(value)
     }
-
 
   /**
     * 
@@ -114,7 +107,6 @@ inline class GetItemRequestDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
@@ -122,8 +114,6 @@ inline class GetItemRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-  
-    
   /**
     * 
     */

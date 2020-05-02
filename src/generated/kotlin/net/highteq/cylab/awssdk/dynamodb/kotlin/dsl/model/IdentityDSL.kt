@@ -23,7 +23,7 @@ inline class IdentityDSL(
 ){
   @PublishedApi
   internal fun build(): Identity = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class IdentityDSL(
     set(value) {
       builder.principalId(value)
     }
-
 
   /**
     * 
@@ -45,9 +44,6 @@ inline class IdentityDSL(
       builder.type(value)
     }
 
-  
-  
-  
 }
 
 /**

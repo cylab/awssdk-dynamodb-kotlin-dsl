@@ -24,7 +24,7 @@ inline class DescribeStreamRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeStreamRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DescribeStreamRequestDSL(
     set(value) {
       builder.exclusiveStartShardId(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class DescribeStreamRequestDSL(
       builder.limit(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class DescribeStreamRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -68,9 +65,6 @@ inline class DescribeStreamRequestDSL(
       builder.streamArn(value)
     }
 
-  
-  
-  
 }
 
 /**

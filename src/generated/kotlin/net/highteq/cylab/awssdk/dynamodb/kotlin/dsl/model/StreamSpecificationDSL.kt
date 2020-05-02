@@ -24,7 +24,7 @@ inline class StreamSpecificationDSL(
 ){
   @PublishedApi
   internal fun build(): StreamSpecification = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class StreamSpecificationDSL(
     set(value) {
       builder.streamEnabled(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class StreamSpecificationDSL(
       builder.streamViewType(value)
     }
 
-    
   /**
     * 
     */
@@ -54,8 +52,6 @@ inline class StreamSpecificationDSL(
     builder.streamViewType(value)
   }
 
-  
-  
 }
 
 /**

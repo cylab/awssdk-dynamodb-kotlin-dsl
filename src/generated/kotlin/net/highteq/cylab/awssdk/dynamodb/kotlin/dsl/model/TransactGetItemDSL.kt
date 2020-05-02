@@ -24,7 +24,7 @@ inline class TransactGetItemDSL(
 ){
   @PublishedApi
   internal fun build(): TransactGetItem = builder.build()
-    
+
   /**
     * 
     */
@@ -35,9 +35,6 @@ inline class TransactGetItemDSL(
       builder.get(value)
     }
 
-  
-  
-    
   /**
     * 
     */

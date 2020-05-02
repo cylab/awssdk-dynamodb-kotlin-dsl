@@ -24,7 +24,7 @@ inline class DescribeEndpointsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeEndpointsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,9 +35,6 @@ inline class DescribeEndpointsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

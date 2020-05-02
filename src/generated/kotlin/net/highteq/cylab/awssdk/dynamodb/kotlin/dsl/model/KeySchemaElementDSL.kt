@@ -33,7 +33,7 @@ inline class KeySchemaElementDSL(
 ){
   @PublishedApi
   internal fun build(): KeySchemaElement = builder.build()
-    
+
   /**
     * 
     */
@@ -43,7 +43,6 @@ inline class KeySchemaElementDSL(
     set(value) {
       builder.attributeName(value)
     }
-
 
   /**
     * 
@@ -55,7 +54,6 @@ inline class KeySchemaElementDSL(
       builder.keyType(value)
     }
 
-    
   /**
     * 
     */
@@ -63,8 +61,6 @@ inline class KeySchemaElementDSL(
     builder.keyType(value)
   }
 
-  
-  
 }
 
 /**

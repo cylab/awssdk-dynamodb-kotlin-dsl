@@ -27,7 +27,7 @@ inline class ProvisionedThroughputDSL(
 ){
   @PublishedApi
   internal fun build(): ProvisionedThroughput = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class ProvisionedThroughputDSL(
     set(value) {
       builder.readCapacityUnits(value)
     }
-
 
   /**
     * 
@@ -49,9 +48,6 @@ inline class ProvisionedThroughputDSL(
       builder.writeCapacityUnits(value)
     }
 
-  
-  
-  
 }
 
 /**

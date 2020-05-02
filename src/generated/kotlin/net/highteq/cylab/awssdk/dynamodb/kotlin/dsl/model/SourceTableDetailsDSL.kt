@@ -27,7 +27,7 @@ inline class SourceTableDetailsDSL(
 ){
   @PublishedApi
   internal fun build(): SourceTableDetails = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class SourceTableDetailsDSL(
     set(value) {
       builder.billingMode(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class SourceTableDetailsDSL(
       builder.itemCount(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class SourceTableDetailsDSL(
     set(value) {
       builder.keySchema(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class SourceTableDetailsDSL(
       builder.provisionedThroughput(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class SourceTableDetailsDSL(
     set(value) {
       builder.tableArn(value)
     }
-
 
   /**
     * 
@@ -93,7 +88,6 @@ inline class SourceTableDetailsDSL(
       builder.tableCreationDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class SourceTableDetailsDSL(
     set(value) {
       builder.tableId(value)
     }
-
 
   /**
     * 
@@ -115,7 +108,6 @@ inline class SourceTableDetailsDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -126,7 +118,6 @@ inline class SourceTableDetailsDSL(
       builder.tableSizeBytes(value)
     }
 
-    
   /**
     * 
     */
@@ -134,15 +125,12 @@ inline class SourceTableDetailsDSL(
     builder.billingMode(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
-
 
   /**
     * 

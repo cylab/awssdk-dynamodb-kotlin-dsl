@@ -26,7 +26,7 @@ inline class DescribeBackupResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeBackupResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class DescribeBackupResponseDSL(
     set(value) {
       builder.backupDescription(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class DescribeBackupResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class DescribeBackupResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

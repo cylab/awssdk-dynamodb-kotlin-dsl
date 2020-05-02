@@ -28,7 +28,7 @@ inline class TransactWriteItemDSL(
 ){
   @PublishedApi
   internal fun build(): TransactWriteItem = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class TransactWriteItemDSL(
     set(value) {
       builder.conditionCheck(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class TransactWriteItemDSL(
       builder.delete(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class TransactWriteItemDSL(
     set(value) {
       builder.put(value)
     }
-
 
   /**
     * 
@@ -72,16 +69,12 @@ inline class TransactWriteItemDSL(
       builder.update(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
     builder.conditionCheck(buildConditionCheck(dslBlock))
   }
-
 
   /**
     * 
@@ -90,14 +83,12 @@ inline class TransactWriteItemDSL(
     builder.delete(buildDelete(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun put(dslBlock: PutDSL.() -> Unit) {
     builder.put(buildPut(dslBlock))
   }
-
 
   /**
     * 

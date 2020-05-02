@@ -24,7 +24,7 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
       builder.provisionedReadCapacityAutoScalingSettingsUpdate(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
       builder.provisionedReadCapacityUnits(value)
     }
 
-  
-  
-    
   /**
     * 
     */

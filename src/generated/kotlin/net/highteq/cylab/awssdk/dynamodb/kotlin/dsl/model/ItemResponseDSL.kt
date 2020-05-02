@@ -24,7 +24,7 @@ inline class ItemResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ItemResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,9 +35,6 @@ inline class ItemResponseDSL(
       builder.item(value)
     }
 
-  
-  
-    
   /**
     * 
     */

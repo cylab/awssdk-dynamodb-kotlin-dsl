@@ -37,7 +37,7 @@ inline class ConditionDSL(
 ){
   @PublishedApi
   internal fun build(): Condition = builder.build()
-    
+
   /**
     * 
     */
@@ -47,7 +47,6 @@ inline class ConditionDSL(
     set(value) {
       builder.attributeValueList(value)
     }
-
 
   /**
     * 
@@ -59,7 +58,6 @@ inline class ConditionDSL(
       builder.comparisonOperator(value)
     }
 
-    
   /**
     * 
     */
@@ -67,8 +65,6 @@ inline class ConditionDSL(
     builder.comparisonOperator(value)
   }
 
-  
-    
   /**
     * 
     */

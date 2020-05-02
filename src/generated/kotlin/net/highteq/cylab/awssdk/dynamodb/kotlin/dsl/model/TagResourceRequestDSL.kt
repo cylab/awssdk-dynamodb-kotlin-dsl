@@ -25,7 +25,7 @@ inline class TagResourceRequestDSL(
 ){
   @PublishedApi
   internal fun build(): TagResourceRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class TagResourceRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class TagResourceRequestDSL(
       builder.resourceArn(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class TagResourceRequestDSL(
       builder.tags(value)
     }
 
-  
-  
-    
   /**
     * 
     */

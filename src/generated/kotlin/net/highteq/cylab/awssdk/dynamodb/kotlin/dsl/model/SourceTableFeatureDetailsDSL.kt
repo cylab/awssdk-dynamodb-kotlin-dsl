@@ -29,7 +29,7 @@ inline class SourceTableFeatureDetailsDSL(
 ){
   @PublishedApi
   internal fun build(): SourceTableFeatureDetails = builder.build()
-    
+
   /**
     * 
     */
@@ -39,7 +39,6 @@ inline class SourceTableFeatureDetailsDSL(
     set(value) {
       builder.globalSecondaryIndexes(value)
     }
-
 
   /**
     * 
@@ -51,7 +50,6 @@ inline class SourceTableFeatureDetailsDSL(
       builder.localSecondaryIndexes(value)
     }
 
-
   /**
     * 
     */
@@ -61,7 +59,6 @@ inline class SourceTableFeatureDetailsDSL(
     set(value) {
       builder.sseDescription(value)
     }
-
 
   /**
     * 
@@ -73,7 +70,6 @@ inline class SourceTableFeatureDetailsDSL(
       builder.streamDescription(value)
     }
 
-
   /**
     * 
     */
@@ -84,16 +80,12 @@ inline class SourceTableFeatureDetailsDSL(
       builder.timeToLiveDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) {
     builder.globalSecondaryIndexes(buildGlobalSecondaryIndexInfoCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -102,7 +94,6 @@ inline class SourceTableFeatureDetailsDSL(
     builder.localSecondaryIndexes(buildLocalSecondaryIndexInfoCollection(dslBlock))
   }
 
-
   /**
     * 
     */
@@ -110,14 +101,12 @@ inline class SourceTableFeatureDetailsDSL(
     builder.sseDescription(buildSSEDescription(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
     builder.streamDescription(buildStreamSpecification(dslBlock))
   }
-
 
   /**
     * 

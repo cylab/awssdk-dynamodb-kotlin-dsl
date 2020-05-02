@@ -26,7 +26,7 @@ inline class DeleteBackupResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteBackupResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class DeleteBackupResponseDSL(
     set(value) {
       builder.backupDescription(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class DeleteBackupResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class DeleteBackupResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

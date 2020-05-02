@@ -27,7 +27,7 @@ inline class TransactWriteItemsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): TransactWriteItemsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class TransactWriteItemsRequestDSL(
     set(value) {
       builder.clientRequestToken(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class TransactWriteItemsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class TransactWriteItemsRequestDSL(
     set(value) {
       builder.returnConsumedCapacity(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class TransactWriteItemsRequestDSL(
       builder.returnItemCollectionMetrics(value)
     }
 
-
   /**
     * 
     */
@@ -82,14 +78,12 @@ inline class TransactWriteItemsRequestDSL(
       builder.transactItems(value)
     }
 
-    
   /**
     * 
     */
   inline fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
-
 
   /**
     * 
@@ -98,8 +92,6 @@ inline class TransactWriteItemsRequestDSL(
     builder.returnItemCollectionMetrics(value)
   }
 
-  
-    
   /**
     * 
     */

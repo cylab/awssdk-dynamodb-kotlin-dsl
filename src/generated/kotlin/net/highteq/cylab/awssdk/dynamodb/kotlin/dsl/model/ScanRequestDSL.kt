@@ -29,7 +29,7 @@ inline class ScanRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ScanRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -39,7 +39,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.attributesToGet(value)
     }
-
 
   /**
     * 
@@ -51,7 +50,6 @@ inline class ScanRequestDSL(
       builder.conditionalOperator(value)
     }
 
-
   /**
     * 
     */
@@ -61,7 +59,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.consistentRead(value)
     }
-
 
   /**
     * 
@@ -73,7 +70,6 @@ inline class ScanRequestDSL(
       builder.exclusiveStartKey(value)
     }
 
-
   /**
     * 
     */
@@ -83,7 +79,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.expressionAttributeNames(value)
     }
-
 
   /**
     * 
@@ -95,7 +90,6 @@ inline class ScanRequestDSL(
       builder.expressionAttributeValues(value)
     }
 
-
   /**
     * 
     */
@@ -105,7 +99,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.filterExpression(value)
     }
-
 
   /**
     * 
@@ -117,7 +110,6 @@ inline class ScanRequestDSL(
       builder.indexName(value)
     }
 
-
   /**
     * 
     */
@@ -127,7 +119,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.limit(value)
     }
-
 
   /**
     * 
@@ -139,7 +130,6 @@ inline class ScanRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -149,7 +139,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.projectionExpression(value)
     }
-
 
   /**
     * 
@@ -161,7 +150,6 @@ inline class ScanRequestDSL(
       builder.returnConsumedCapacity(value)
     }
 
-
   /**
     * 
     */
@@ -171,7 +159,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.scanFilter(value)
     }
-
 
   /**
     * 
@@ -183,7 +170,6 @@ inline class ScanRequestDSL(
       builder.segment(value)
     }
 
-
   /**
     * 
     */
@@ -193,7 +179,6 @@ inline class ScanRequestDSL(
     set(value) {
       builder.select(value)
     }
-
 
   /**
     * 
@@ -205,7 +190,6 @@ inline class ScanRequestDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -216,14 +200,12 @@ inline class ScanRequestDSL(
       builder.totalSegments(value)
     }
 
-    
   /**
     * 
     */
   inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
-
 
   /**
     * 
@@ -232,7 +214,6 @@ inline class ScanRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-
   /**
     * 
     */
@@ -240,8 +221,6 @@ inline class ScanRequestDSL(
     builder.select(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -249,14 +228,12 @@ inline class ScanRequestDSL(
     builder.exclusiveStartKey(buildAttributeValueMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
-
 
   /**
     * 

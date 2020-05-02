@@ -26,7 +26,7 @@ inline class RestoreTableFromBackupResponseDSL(
 ){
   @PublishedApi
   internal fun build(): RestoreTableFromBackupResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class RestoreTableFromBackupResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class RestoreTableFromBackupResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class RestoreTableFromBackupResponseDSL(
       builder.tableDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */

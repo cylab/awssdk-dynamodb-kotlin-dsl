@@ -26,7 +26,7 @@ inline class BatchGetItemRequestDSL(
 ){
   @PublishedApi
   internal fun build(): BatchGetItemRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class BatchGetItemRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class BatchGetItemRequestDSL(
       builder.requestItems(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class BatchGetItemRequestDSL(
       builder.returnConsumedCapacity(value)
     }
 
-    
   /**
     * 
     */
@@ -67,8 +64,6 @@ inline class BatchGetItemRequestDSL(
     builder.returnConsumedCapacity(value)
   }
 
-  
-    
   /**
     * 
     */

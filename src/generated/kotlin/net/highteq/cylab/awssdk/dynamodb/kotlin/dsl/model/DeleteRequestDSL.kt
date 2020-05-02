@@ -24,7 +24,7 @@ inline class DeleteRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,9 +35,6 @@ inline class DeleteRequestDSL(
       builder.key(value)
     }
 
-  
-  
-    
   /**
     * 
     */

@@ -32,7 +32,7 @@ inline class GlobalSecondaryIndexUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalSecondaryIndexUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -42,7 +42,6 @@ inline class GlobalSecondaryIndexUpdateDSL(
     set(value) {
       builder.create(value)
     }
-
 
   /**
     * 
@@ -54,7 +53,6 @@ inline class GlobalSecondaryIndexUpdateDSL(
       builder.delete(value)
     }
 
-
   /**
     * 
     */
@@ -65,9 +63,6 @@ inline class GlobalSecondaryIndexUpdateDSL(
       builder.update(value)
     }
 
-  
-  
-    
   /**
     * 
     */
@@ -75,14 +70,12 @@ inline class GlobalSecondaryIndexUpdateDSL(
     builder.create(buildCreateGlobalSecondaryIndexAction(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun delete(dslBlock: DeleteGlobalSecondaryIndexActionDSL.() -> Unit) {
     builder.delete(buildDeleteGlobalSecondaryIndexAction(dslBlock))
   }
-
 
   /**
     * 

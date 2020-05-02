@@ -24,7 +24,7 @@ inline class DeleteBackupRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteBackupRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DeleteBackupRequestDSL(
     set(value) {
       builder.backupArn(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DeleteBackupRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-  
-  
-  
 }
 
 /**

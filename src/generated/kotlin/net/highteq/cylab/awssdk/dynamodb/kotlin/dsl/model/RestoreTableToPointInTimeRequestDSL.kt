@@ -25,7 +25,7 @@ inline class RestoreTableToPointInTimeRequestDSL(
 ){
   @PublishedApi
   internal fun build(): RestoreTableToPointInTimeRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class RestoreTableToPointInTimeRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class RestoreTableToPointInTimeRequestDSL(
       builder.restoreDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class RestoreTableToPointInTimeRequestDSL(
     set(value) {
       builder.sourceTableName(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class RestoreTableToPointInTimeRequestDSL(
       builder.targetTableName(value)
     }
 
-
   /**
     * 
     */
@@ -80,9 +76,6 @@ inline class RestoreTableToPointInTimeRequestDSL(
       builder.useLatestRestorableTime(value)
     }
 
-  
-  
-  
 }
 
 /**

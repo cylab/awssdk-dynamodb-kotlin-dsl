@@ -28,7 +28,7 @@ inline class StreamDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): StreamDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class StreamDescriptionDSL(
     set(value) {
       builder.creationRequestDateTime(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class StreamDescriptionDSL(
       builder.keySchema(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class StreamDescriptionDSL(
     set(value) {
       builder.lastEvaluatedShardId(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class StreamDescriptionDSL(
       builder.shards(value)
     }
 
-
   /**
     * 
     */
@@ -82,7 +78,6 @@ inline class StreamDescriptionDSL(
     set(value) {
       builder.streamArn(value)
     }
-
 
   /**
     * 
@@ -94,7 +89,6 @@ inline class StreamDescriptionDSL(
       builder.streamLabel(value)
     }
 
-
   /**
     * 
     */
@@ -104,7 +98,6 @@ inline class StreamDescriptionDSL(
     set(value) {
       builder.streamStatus(value)
     }
-
 
   /**
     * 
@@ -116,7 +109,6 @@ inline class StreamDescriptionDSL(
       builder.streamViewType(value)
     }
 
-
   /**
     * 
     */
@@ -127,14 +119,12 @@ inline class StreamDescriptionDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
   inline fun streamStatus(value: String?) {
     builder.streamStatus(value)
   }
-
 
   /**
     * 
@@ -143,15 +133,12 @@ inline class StreamDescriptionDSL(
     builder.streamViewType(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
-
 
   /**
     * 

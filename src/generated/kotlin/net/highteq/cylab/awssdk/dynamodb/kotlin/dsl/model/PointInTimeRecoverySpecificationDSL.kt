@@ -23,7 +23,7 @@ inline class PointInTimeRecoverySpecificationDSL(
 ){
   @PublishedApi
   internal fun build(): PointInTimeRecoverySpecification = builder.build()
-    
+
   /**
     * 
     */
@@ -34,9 +34,6 @@ inline class PointInTimeRecoverySpecificationDSL(
       builder.pointInTimeRecoveryEnabled(value)
     }
 
-  
-  
-  
 }
 
 /**

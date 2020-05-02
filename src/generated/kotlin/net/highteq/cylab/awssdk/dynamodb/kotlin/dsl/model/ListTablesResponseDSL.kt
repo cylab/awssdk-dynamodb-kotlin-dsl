@@ -25,7 +25,7 @@ inline class ListTablesResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ListTablesResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ListTablesResponseDSL(
     set(value) {
       builder.lastEvaluatedTableName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ListTablesResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class ListTablesResponseDSL(
     set(value) {
       builder.sdkHttpResponse(value)
     }
-
 
   /**
     * 
@@ -69,9 +66,6 @@ inline class ListTablesResponseDSL(
       builder.tableNames(value)
     }
 
-  
-  
-  
 }
 
 /**

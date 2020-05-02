@@ -26,7 +26,7 @@ inline class UpdateTimeToLiveResponseDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateTimeToLiveResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class UpdateTimeToLiveResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class UpdateTimeToLiveResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class UpdateTimeToLiveResponseDSL(
       builder.timeToLiveSpecification(value)
     }
 
-  
-  
-    
   /**
     * 
     */

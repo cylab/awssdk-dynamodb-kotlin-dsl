@@ -53,7 +53,7 @@ inline class TransactionCanceledExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): TransactionCanceledException = builder.build()
-    
+
   /**
     * 
     */
@@ -63,7 +63,6 @@ inline class TransactionCanceledExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -75,7 +74,6 @@ inline class TransactionCanceledExceptionDSL(
       builder.cancellationReasons(value)
     }
 
-
   /**
     * 
     */
@@ -85,7 +83,6 @@ inline class TransactionCanceledExceptionDSL(
     set(value) {
       builder.cause(value)
     }
-
 
   /**
     * 
@@ -97,7 +94,6 @@ inline class TransactionCanceledExceptionDSL(
       builder.clockSkew(value)
     }
 
-
   /**
     * 
     */
@@ -107,7 +103,6 @@ inline class TransactionCanceledExceptionDSL(
     set(value) {
       builder.message(value)
     }
-
 
   /**
     * 
@@ -119,7 +114,6 @@ inline class TransactionCanceledExceptionDSL(
       builder.requestId(value)
     }
 
-
   /**
     * 
     */
@@ -130,14 +124,12 @@ inline class TransactionCanceledExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -146,14 +138,12 @@ inline class TransactionCanceledExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -162,8 +152,6 @@ inline class TransactionCanceledExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-    
   /**
     * 
     */

@@ -26,7 +26,7 @@ inline class CancellationReasonDSL(
 ){
   @PublishedApi
   internal fun build(): CancellationReason = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class CancellationReasonDSL(
     set(value) {
       builder.code(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class CancellationReasonDSL(
       builder.item(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class CancellationReasonDSL(
       builder.message(value)
     }
 
-  
-  
-    
   /**
     * 
     */

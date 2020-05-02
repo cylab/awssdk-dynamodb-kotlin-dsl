@@ -23,7 +23,7 @@ inline class EndpointDSL(
 ){
   @PublishedApi
   internal fun build(): Endpoint = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class EndpointDSL(
     set(value) {
       builder.address(value)
     }
-
 
   /**
     * 
@@ -45,9 +44,6 @@ inline class EndpointDSL(
       builder.cachePeriodInMinutes(value)
     }
 
-  
-  
-  
 }
 
 /**

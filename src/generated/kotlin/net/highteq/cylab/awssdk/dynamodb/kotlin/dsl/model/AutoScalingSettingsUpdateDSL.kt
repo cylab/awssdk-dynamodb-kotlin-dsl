@@ -24,7 +24,7 @@ inline class AutoScalingSettingsUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): AutoScalingSettingsUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class AutoScalingSettingsUpdateDSL(
     set(value) {
       builder.autoScalingDisabled(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class AutoScalingSettingsUpdateDSL(
       builder.autoScalingRoleArn(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class AutoScalingSettingsUpdateDSL(
     set(value) {
       builder.maximumUnits(value)
     }
-
 
   /**
     * 
@@ -68,7 +65,6 @@ inline class AutoScalingSettingsUpdateDSL(
       builder.minimumUnits(value)
     }
 
-
   /**
     * 
     */
@@ -79,9 +75,6 @@ inline class AutoScalingSettingsUpdateDSL(
       builder.scalingPolicyUpdate(value)
     }
 
-  
-  
-    
   /**
     * 
     */

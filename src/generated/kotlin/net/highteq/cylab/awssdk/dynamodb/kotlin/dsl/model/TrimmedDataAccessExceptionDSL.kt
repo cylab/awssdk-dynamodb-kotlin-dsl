@@ -34,7 +34,7 @@ inline class TrimmedDataAccessExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): TrimmedDataAccessException = builder.build()
-    
+
   /**
     * 
     */
@@ -44,7 +44,6 @@ inline class TrimmedDataAccessExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -56,7 +55,6 @@ inline class TrimmedDataAccessExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -66,7 +64,6 @@ inline class TrimmedDataAccessExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -78,7 +75,6 @@ inline class TrimmedDataAccessExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -88,7 +84,6 @@ inline class TrimmedDataAccessExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -100,14 +95,12 @@ inline class TrimmedDataAccessExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -116,14 +109,12 @@ inline class TrimmedDataAccessExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -132,8 +123,6 @@ inline class TrimmedDataAccessExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

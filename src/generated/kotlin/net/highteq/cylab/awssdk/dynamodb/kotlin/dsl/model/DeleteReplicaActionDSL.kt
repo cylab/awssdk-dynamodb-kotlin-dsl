@@ -23,7 +23,7 @@ inline class DeleteReplicaActionDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteReplicaAction = builder.build()
-    
+
   /**
     * 
     */
@@ -34,9 +34,6 @@ inline class DeleteReplicaActionDSL(
       builder.regionName(value)
     }
 
-  
-  
-  
 }
 
 /**

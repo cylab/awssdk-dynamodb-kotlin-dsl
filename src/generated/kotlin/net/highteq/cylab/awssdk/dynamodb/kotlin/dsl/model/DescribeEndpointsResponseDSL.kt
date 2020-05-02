@@ -26,7 +26,7 @@ inline class DescribeEndpointsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeEndpointsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class DescribeEndpointsResponseDSL(
     set(value) {
       builder.endpoints(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class DescribeEndpointsResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class DescribeEndpointsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

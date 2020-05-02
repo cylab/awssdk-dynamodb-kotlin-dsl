@@ -27,7 +27,7 @@ inline class GetItemResponseDSL(
 ){
   @PublishedApi
   internal fun build(): GetItemResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class GetItemResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class GetItemResponseDSL(
       builder.item(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class GetItemResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -71,16 +68,12 @@ inline class GetItemResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
-
 
   /**
     * 

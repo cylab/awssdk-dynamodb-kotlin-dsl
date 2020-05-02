@@ -27,7 +27,7 @@ inline class ConsumedCapacityDSL(
 ){
   @PublishedApi
   internal fun build(): ConsumedCapacity = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class ConsumedCapacityDSL(
     set(value) {
       builder.capacityUnits(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class ConsumedCapacityDSL(
       builder.globalSecondaryIndexes(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class ConsumedCapacityDSL(
     set(value) {
       builder.localSecondaryIndexes(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class ConsumedCapacityDSL(
       builder.readCapacityUnits(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class ConsumedCapacityDSL(
     set(value) {
       builder.table(value)
     }
-
 
   /**
     * 
@@ -93,7 +88,6 @@ inline class ConsumedCapacityDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -104,9 +98,6 @@ inline class ConsumedCapacityDSL(
       builder.writeCapacityUnits(value)
     }
 
-  
-  
-    
   /**
     * 
     */
@@ -114,14 +105,12 @@ inline class ConsumedCapacityDSL(
     builder.globalSecondaryIndexes(buildCapacityMap(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
     builder.localSecondaryIndexes(buildCapacityMap(dslBlock))
   }
-
 
   /**
     * 

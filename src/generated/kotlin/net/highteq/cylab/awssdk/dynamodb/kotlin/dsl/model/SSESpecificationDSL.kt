@@ -24,7 +24,7 @@ inline class SSESpecificationDSL(
 ){
   @PublishedApi
   internal fun build(): SSESpecification = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class SSESpecificationDSL(
     set(value) {
       builder.enabled(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class SSESpecificationDSL(
       builder.kmsMasterKeyId(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class SSESpecificationDSL(
       builder.sseType(value)
     }
 
-    
   /**
     * 
     */
@@ -65,8 +62,6 @@ inline class SSESpecificationDSL(
     builder.sseType(value)
   }
 
-  
-  
 }
 
 /**

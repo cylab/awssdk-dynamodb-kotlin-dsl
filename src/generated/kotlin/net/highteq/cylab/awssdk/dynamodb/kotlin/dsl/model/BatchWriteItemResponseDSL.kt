@@ -28,7 +28,7 @@ inline class BatchWriteItemResponseDSL(
 ){
   @PublishedApi
   internal fun build(): BatchWriteItemResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class BatchWriteItemResponseDSL(
     set(value) {
       builder.consumedCapacity(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class BatchWriteItemResponseDSL(
       builder.itemCollectionMetrics(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class BatchWriteItemResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class BatchWriteItemResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -83,9 +79,6 @@ inline class BatchWriteItemResponseDSL(
       builder.unprocessedItems(value)
     }
 
-  
-  
-    
   /**
     * 
     */

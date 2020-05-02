@@ -24,7 +24,7 @@ inline class UpdateGlobalSecondaryIndexActionDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateGlobalSecondaryIndexAction = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class UpdateGlobalSecondaryIndexActionDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class UpdateGlobalSecondaryIndexActionDSL(
       builder.provisionedThroughput(value)
     }
 
-  
-  
-    
   /**
     * 
     */

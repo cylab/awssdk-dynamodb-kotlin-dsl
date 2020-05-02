@@ -33,7 +33,7 @@ inline class AttributeValueUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): AttributeValueUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -43,7 +43,6 @@ inline class AttributeValueUpdateDSL(
     set(value) {
       builder.action(value)
     }
-
 
   /**
     * 
@@ -55,7 +54,6 @@ inline class AttributeValueUpdateDSL(
       builder.value(value)
     }
 
-    
   /**
     * 
     */
@@ -63,8 +61,6 @@ inline class AttributeValueUpdateDSL(
     builder.action(value)
   }
 
-  
-    
   /**
     * 
     */

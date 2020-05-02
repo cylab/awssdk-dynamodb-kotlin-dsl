@@ -23,7 +23,7 @@ inline class DeleteGlobalSecondaryIndexActionDSL(
 ){
   @PublishedApi
   internal fun build(): DeleteGlobalSecondaryIndexAction = builder.build()
-    
+
   /**
     * 
     */
@@ -34,9 +34,6 @@ inline class DeleteGlobalSecondaryIndexActionDSL(
       builder.indexName(value)
     }
 
-  
-  
-  
 }
 
 /**

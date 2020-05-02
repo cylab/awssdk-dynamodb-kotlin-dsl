@@ -24,7 +24,7 @@ inline class ListTagsOfResourceRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ListTagsOfResourceRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ListTagsOfResourceRequestDSL(
     set(value) {
       builder.nextToken(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ListTagsOfResourceRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class ListTagsOfResourceRequestDSL(
       builder.resourceArn(value)
     }
 
-  
-  
-  
 }
 
 /**

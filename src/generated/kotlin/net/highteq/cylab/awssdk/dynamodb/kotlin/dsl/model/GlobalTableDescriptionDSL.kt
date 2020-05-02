@@ -26,7 +26,7 @@ inline class GlobalTableDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalTableDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class GlobalTableDescriptionDSL(
     set(value) {
       builder.creationDateTime(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class GlobalTableDescriptionDSL(
       builder.globalTableArn(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class GlobalTableDescriptionDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class GlobalTableDescriptionDSL(
       builder.globalTableStatus(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class GlobalTableDescriptionDSL(
       builder.replicationGroup(value)
     }
 
-    
   /**
     * 
     */
@@ -89,8 +84,6 @@ inline class GlobalTableDescriptionDSL(
     builder.globalTableStatus(value)
   }
 
-  
-    
   /**
     * 
     */

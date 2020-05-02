@@ -31,7 +31,7 @@ inline class ReplicaUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -41,7 +41,6 @@ inline class ReplicaUpdateDSL(
     set(value) {
       builder.create(value)
     }
-
 
   /**
     * 
@@ -53,16 +52,12 @@ inline class ReplicaUpdateDSL(
       builder.delete(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun create(dslBlock: CreateReplicaActionDSL.() -> Unit) {
     builder.create(buildCreateReplicaAction(dslBlock))
   }
-
 
   /**
     * 

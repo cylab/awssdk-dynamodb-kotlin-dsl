@@ -25,7 +25,7 @@ inline class ContinuousBackupsDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): ContinuousBackupsDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ContinuousBackupsDescriptionDSL(
     set(value) {
       builder.continuousBackupsStatus(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ContinuousBackupsDescriptionDSL(
       builder.pointInTimeRecoveryDescription(value)
     }
 
-    
   /**
     * 
     */
@@ -55,8 +53,6 @@ inline class ContinuousBackupsDescriptionDSL(
     builder.continuousBackupsStatus(value)
   }
 
-  
-    
   /**
     * 
     */

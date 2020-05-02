@@ -35,7 +35,7 @@ inline class DynamoDbStreamsClientDSL(
 ){
   @PublishedApi
   internal fun build(): DynamoDbStreamsClient = builder.build()
-    
+
   /**
     * 
     */
@@ -45,7 +45,6 @@ inline class DynamoDbStreamsClientDSL(
     set(value) {
       builder.credentialsProvider(value)
     }
-
 
   /**
     * 
@@ -57,7 +56,6 @@ inline class DynamoDbStreamsClientDSL(
       builder.endpointOverride(value)
     }
 
-
   /**
     * 
     */
@@ -67,7 +65,6 @@ inline class DynamoDbStreamsClientDSL(
     set(value) {
       builder.httpClient(value)
     }
-
 
   /**
     * 
@@ -79,7 +76,6 @@ inline class DynamoDbStreamsClientDSL(
       builder.httpClientBuilder(value)
     }
 
-
   /**
     * 
     */
@@ -89,7 +85,6 @@ inline class DynamoDbStreamsClientDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -101,9 +96,6 @@ inline class DynamoDbStreamsClientDSL(
       builder.region(value)
     }
 
-  
-  
-  
 }
 
 /**

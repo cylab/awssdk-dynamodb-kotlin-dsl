@@ -25,7 +25,7 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): PointInTimeRecoveryUnavailableException = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -79,7 +75,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -91,14 +86,12 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -107,14 +100,12 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -123,8 +114,6 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

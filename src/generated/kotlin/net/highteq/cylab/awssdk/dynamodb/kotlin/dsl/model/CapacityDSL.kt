@@ -23,7 +23,7 @@ inline class CapacityDSL(
 ){
   @PublishedApi
   internal fun build(): Capacity = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class CapacityDSL(
     set(value) {
       builder.capacityUnits(value)
     }
-
 
   /**
     * 
@@ -45,7 +44,6 @@ inline class CapacityDSL(
       builder.readCapacityUnits(value)
     }
 
-
   /**
     * 
     */
@@ -56,9 +54,6 @@ inline class CapacityDSL(
       builder.writeCapacityUnits(value)
     }
 
-  
-  
-  
 }
 
 /**

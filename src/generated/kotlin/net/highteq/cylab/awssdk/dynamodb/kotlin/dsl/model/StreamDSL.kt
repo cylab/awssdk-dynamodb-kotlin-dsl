@@ -23,7 +23,7 @@ inline class StreamDSL(
 ){
   @PublishedApi
   internal fun build(): Stream = builder.build()
-    
+
   /**
     * 
     */
@@ -33,7 +33,6 @@ inline class StreamDSL(
     set(value) {
       builder.streamArn(value)
     }
-
 
   /**
     * 
@@ -45,7 +44,6 @@ inline class StreamDSL(
       builder.streamLabel(value)
     }
 
-
   /**
     * 
     */
@@ -56,9 +54,6 @@ inline class StreamDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

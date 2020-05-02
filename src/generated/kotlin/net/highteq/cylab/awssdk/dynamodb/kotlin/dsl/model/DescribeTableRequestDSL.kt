@@ -24,7 +24,7 @@ inline class DescribeTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): DescribeTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class DescribeTableRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -46,9 +45,6 @@ inline class DescribeTableRequestDSL(
       builder.tableName(value)
     }
 
-  
-  
-  
 }
 
 /**

@@ -26,7 +26,7 @@ inline class ListStreamsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ListStreamsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ListStreamsResponseDSL(
     set(value) {
       builder.lastEvaluatedStreamArn(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ListStreamsResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ListStreamsResponseDSL(
     set(value) {
       builder.sdkHttpResponse(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class ListStreamsResponseDSL(
       builder.streams(value)
     }
 
-  
-  
-    
   /**
     * 
     */

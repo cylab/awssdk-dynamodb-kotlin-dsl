@@ -35,7 +35,7 @@ inline class LimitExceededExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): LimitExceededException = builder.build()
-    
+
   /**
     * 
     */
@@ -45,7 +45,6 @@ inline class LimitExceededExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -57,7 +56,6 @@ inline class LimitExceededExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -67,7 +65,6 @@ inline class LimitExceededExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -79,7 +76,6 @@ inline class LimitExceededExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -89,7 +85,6 @@ inline class LimitExceededExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -101,14 +96,12 @@ inline class LimitExceededExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -117,14 +110,12 @@ inline class LimitExceededExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -133,8 +124,6 @@ inline class LimitExceededExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

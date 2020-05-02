@@ -25,7 +25,7 @@ inline class ProjectionDSL(
 ){
   @PublishedApi
   internal fun build(): Projection = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ProjectionDSL(
     set(value) {
       builder.nonKeyAttributes(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ProjectionDSL(
       builder.projectionType(value)
     }
 
-    
   /**
     * 
     */
@@ -55,8 +53,6 @@ inline class ProjectionDSL(
     builder.projectionType(value)
   }
 
-  
-  
 }
 
 /**

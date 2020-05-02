@@ -26,7 +26,7 @@ inline class ItemCollectionMetricsDSL(
 ){
   @PublishedApi
   internal fun build(): ItemCollectionMetrics = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ItemCollectionMetricsDSL(
     set(value) {
       builder.itemCollectionKey(value)
     }
-
 
   /**
     * 
@@ -48,9 +47,6 @@ inline class ItemCollectionMetricsDSL(
       builder.sizeEstimateRangeGB(value)
     }
 
-  
-  
-    
   /**
     * 
     */

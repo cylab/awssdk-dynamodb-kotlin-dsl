@@ -26,7 +26,7 @@ inline class UpdateContinuousBackupsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateContinuousBackupsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class UpdateContinuousBackupsResponseDSL(
     set(value) {
       builder.continuousBackupsDescription(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class UpdateContinuousBackupsResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class UpdateContinuousBackupsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

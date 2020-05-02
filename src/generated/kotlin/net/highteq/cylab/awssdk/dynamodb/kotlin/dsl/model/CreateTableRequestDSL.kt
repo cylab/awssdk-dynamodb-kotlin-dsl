@@ -33,7 +33,7 @@ inline class CreateTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): CreateTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -43,7 +43,6 @@ inline class CreateTableRequestDSL(
     set(value) {
       builder.attributeDefinitions(value)
     }
-
 
   /**
     * 
@@ -55,7 +54,6 @@ inline class CreateTableRequestDSL(
       builder.billingMode(value)
     }
 
-
   /**
     * 
     */
@@ -65,7 +63,6 @@ inline class CreateTableRequestDSL(
     set(value) {
       builder.globalSecondaryIndexes(value)
     }
-
 
   /**
     * 
@@ -77,7 +74,6 @@ inline class CreateTableRequestDSL(
       builder.keySchema(value)
     }
 
-
   /**
     * 
     */
@@ -87,7 +83,6 @@ inline class CreateTableRequestDSL(
     set(value) {
       builder.localSecondaryIndexes(value)
     }
-
 
   /**
     * 
@@ -99,7 +94,6 @@ inline class CreateTableRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -109,7 +103,6 @@ inline class CreateTableRequestDSL(
     set(value) {
       builder.provisionedThroughput(value)
     }
-
 
   /**
     * 
@@ -121,7 +114,6 @@ inline class CreateTableRequestDSL(
       builder.sseSpecification(value)
     }
 
-
   /**
     * 
     */
@@ -131,7 +123,6 @@ inline class CreateTableRequestDSL(
     set(value) {
       builder.streamSpecification(value)
     }
-
 
   /**
     * 
@@ -143,7 +134,6 @@ inline class CreateTableRequestDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -154,7 +144,6 @@ inline class CreateTableRequestDSL(
       builder.tags(value)
     }
 
-    
   /**
     * 
     */
@@ -162,15 +151,12 @@ inline class CreateTableRequestDSL(
     builder.billingMode(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
     builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -179,14 +165,12 @@ inline class CreateTableRequestDSL(
     builder.globalSecondaryIndexes(buildGlobalSecondaryIndexCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -195,14 +179,12 @@ inline class CreateTableRequestDSL(
     builder.localSecondaryIndexes(buildLocalSecondaryIndexCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
   }
-
 
   /**
     * 
@@ -211,14 +193,12 @@ inline class CreateTableRequestDSL(
     builder.sseSpecification(buildSSESpecification(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
     builder.streamSpecification(buildStreamSpecification(dslBlock))
   }
-
 
   /**
     * 

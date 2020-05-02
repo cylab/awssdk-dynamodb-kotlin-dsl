@@ -25,7 +25,7 @@ inline class BillingModeSummaryDSL(
 ){
   @PublishedApi
   internal fun build(): BillingModeSummary = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class BillingModeSummaryDSL(
     set(value) {
       builder.billingMode(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class BillingModeSummaryDSL(
       builder.lastUpdateToPayPerRequestDateTime(value)
     }
 
-    
   /**
     * 
     */
@@ -55,8 +53,6 @@ inline class BillingModeSummaryDSL(
     builder.billingMode(value)
   }
 
-  
-  
 }
 
 /**

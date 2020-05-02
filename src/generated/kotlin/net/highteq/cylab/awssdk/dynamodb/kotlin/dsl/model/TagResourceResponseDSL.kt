@@ -25,7 +25,7 @@ inline class TagResourceResponseDSL(
 ){
   @PublishedApi
   internal fun build(): TagResourceResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class TagResourceResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -47,9 +46,6 @@ inline class TagResourceResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-  
 }
 
 /**

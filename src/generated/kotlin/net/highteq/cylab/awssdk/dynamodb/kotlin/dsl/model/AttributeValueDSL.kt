@@ -28,7 +28,7 @@ inline class AttributeValueDSL(
 ){
   @PublishedApi
   internal fun build(): AttributeValue = builder.build()
-    
+
   /**
     * 
     */
@@ -38,7 +38,6 @@ inline class AttributeValueDSL(
     set(value) {
       builder.b(value)
     }
-
 
   /**
     * 
@@ -50,7 +49,6 @@ inline class AttributeValueDSL(
       builder.bool(value)
     }
 
-
   /**
     * 
     */
@@ -60,7 +58,6 @@ inline class AttributeValueDSL(
     set(value) {
       builder.bs(value)
     }
-
 
   /**
     * 
@@ -72,7 +69,6 @@ inline class AttributeValueDSL(
       builder.l(value)
     }
 
-
   /**
     * 
     */
@@ -82,7 +78,6 @@ inline class AttributeValueDSL(
     set(value) {
       builder.m(value)
     }
-
 
   /**
     * 
@@ -94,7 +89,6 @@ inline class AttributeValueDSL(
       builder.n(value)
     }
 
-
   /**
     * 
     */
@@ -104,7 +98,6 @@ inline class AttributeValueDSL(
     set(value) {
       builder.ns(value)
     }
-
 
   /**
     * 
@@ -116,7 +109,6 @@ inline class AttributeValueDSL(
       builder.nul(value)
     }
 
-
   /**
     * 
     */
@@ -126,7 +118,6 @@ inline class AttributeValueDSL(
     set(value) {
       builder.s(value)
     }
-
 
   /**
     * 
@@ -138,16 +129,12 @@ inline class AttributeValueDSL(
       builder.ss(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun l(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
     builder.l(buildAttributeValueCollection(dslBlock))
   }
-
 
   /**
     * 

@@ -25,7 +25,7 @@ inline class UntagResourceResponseDSL(
 ){
   @PublishedApi
   internal fun build(): UntagResourceResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class UntagResourceResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -47,9 +46,6 @@ inline class UntagResourceResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-  
 }
 
 /**

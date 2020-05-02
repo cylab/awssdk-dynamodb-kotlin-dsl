@@ -26,7 +26,7 @@ inline class BackupDetailsDSL(
 ){
   @PublishedApi
   internal fun build(): BackupDetails = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class BackupDetailsDSL(
     set(value) {
       builder.backupArn(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class BackupDetailsDSL(
       builder.backupCreationDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class BackupDetailsDSL(
     set(value) {
       builder.backupExpiryDateTime(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class BackupDetailsDSL(
       builder.backupName(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class BackupDetailsDSL(
     set(value) {
       builder.backupSizeBytes(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class BackupDetailsDSL(
       builder.backupStatus(value)
     }
 
-
   /**
     * 
     */
@@ -103,14 +97,12 @@ inline class BackupDetailsDSL(
       builder.backupType(value)
     }
 
-    
   /**
     * 
     */
   inline fun backupStatus(value: String?) {
     builder.backupStatus(value)
   }
-
 
   /**
     * 
@@ -119,8 +111,6 @@ inline class BackupDetailsDSL(
     builder.backupType(value)
   }
 
-  
-  
 }
 
 /**

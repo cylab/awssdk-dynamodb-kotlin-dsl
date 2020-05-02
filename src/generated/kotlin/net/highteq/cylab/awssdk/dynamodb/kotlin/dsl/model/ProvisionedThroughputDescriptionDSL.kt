@@ -25,7 +25,7 @@ inline class ProvisionedThroughputDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): ProvisionedThroughputDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ProvisionedThroughputDescriptionDSL(
     set(value) {
       builder.lastDecreaseDateTime(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ProvisionedThroughputDescriptionDSL(
       builder.lastIncreaseDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class ProvisionedThroughputDescriptionDSL(
     set(value) {
       builder.numberOfDecreasesToday(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class ProvisionedThroughputDescriptionDSL(
       builder.readCapacityUnits(value)
     }
 
-
   /**
     * 
     */
@@ -80,9 +76,6 @@ inline class ProvisionedThroughputDescriptionDSL(
       builder.writeCapacityUnits(value)
     }
 
-  
-  
-  
 }
 
 /**

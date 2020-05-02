@@ -25,7 +25,7 @@ inline class UpdateTimeToLiveRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateTimeToLiveRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class UpdateTimeToLiveRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class UpdateTimeToLiveRequestDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class UpdateTimeToLiveRequestDSL(
       builder.timeToLiveSpecification(value)
     }
 
-  
-  
-    
   /**
     * 
     */

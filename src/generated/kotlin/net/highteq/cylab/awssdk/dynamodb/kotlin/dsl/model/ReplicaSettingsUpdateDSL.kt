@@ -25,7 +25,7 @@ inline class ReplicaSettingsUpdateDSL(
 ){
   @PublishedApi
   internal fun build(): ReplicaSettingsUpdate = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class ReplicaSettingsUpdateDSL(
     set(value) {
       builder.regionName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class ReplicaSettingsUpdateDSL(
       builder.replicaGlobalSecondaryIndexSettingsUpdate(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class ReplicaSettingsUpdateDSL(
     set(value) {
       builder.replicaProvisionedReadCapacityAutoScalingSettingsUpdate(value)
     }
-
 
   /**
     * 
@@ -69,16 +66,12 @@ inline class ReplicaSettingsUpdateDSL(
       builder.replicaProvisionedReadCapacityUnits(value)
     }
 
-  
-  
-    
   /**
     * 
     */
   inline fun replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
     builder.replicaGlobalSecondaryIndexSettingsUpdate(buildReplicaGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
-
 
   /**
     * 

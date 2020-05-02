@@ -26,7 +26,7 @@ inline class CreateBackupResponseDSL(
 ){
   @PublishedApi
   internal fun build(): CreateBackupResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class CreateBackupResponseDSL(
     set(value) {
       builder.backupDetails(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class CreateBackupResponseDSL(
       builder.responseMetadata(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class CreateBackupResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

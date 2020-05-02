@@ -26,7 +26,7 @@ inline class UpdateGlobalTableSettingsResponseDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateGlobalTableSettingsResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class UpdateGlobalTableSettingsResponseDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class UpdateGlobalTableSettingsResponseDSL(
       builder.replicaSettings(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class UpdateGlobalTableSettingsResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class UpdateGlobalTableSettingsResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

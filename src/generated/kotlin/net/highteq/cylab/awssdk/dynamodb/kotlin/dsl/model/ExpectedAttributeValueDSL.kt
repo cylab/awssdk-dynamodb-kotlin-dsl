@@ -41,7 +41,7 @@ inline class ExpectedAttributeValueDSL(
 ){
   @PublishedApi
   internal fun build(): ExpectedAttributeValue = builder.build()
-    
+
   /**
     * 
     */
@@ -51,7 +51,6 @@ inline class ExpectedAttributeValueDSL(
     set(value) {
       builder.attributeValueList(value)
     }
-
 
   /**
     * 
@@ -63,7 +62,6 @@ inline class ExpectedAttributeValueDSL(
       builder.comparisonOperator(value)
     }
 
-
   /**
     * 
     */
@@ -73,7 +71,6 @@ inline class ExpectedAttributeValueDSL(
     set(value) {
       builder.exists(value)
     }
-
 
   /**
     * 
@@ -85,7 +82,6 @@ inline class ExpectedAttributeValueDSL(
       builder.value(value)
     }
 
-    
   /**
     * 
     */
@@ -93,15 +89,12 @@ inline class ExpectedAttributeValueDSL(
     builder.comparisonOperator(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun attributeValueList(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
     builder.attributeValueList(buildAttributeValueCollection(dslBlock))
   }
-
 
   /**
     * 

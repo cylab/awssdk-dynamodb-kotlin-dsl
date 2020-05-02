@@ -26,7 +26,7 @@ inline class BackupSummaryDSL(
 ){
   @PublishedApi
   internal fun build(): BackupSummary = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class BackupSummaryDSL(
     set(value) {
       builder.backupArn(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class BackupSummaryDSL(
       builder.backupCreationDateTime(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class BackupSummaryDSL(
     set(value) {
       builder.backupExpiryDateTime(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class BackupSummaryDSL(
       builder.backupName(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class BackupSummaryDSL(
     set(value) {
       builder.backupSizeBytes(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class BackupSummaryDSL(
       builder.backupStatus(value)
     }
 
-
   /**
     * 
     */
@@ -102,7 +96,6 @@ inline class BackupSummaryDSL(
     set(value) {
       builder.backupType(value)
     }
-
 
   /**
     * 
@@ -114,7 +107,6 @@ inline class BackupSummaryDSL(
       builder.tableArn(value)
     }
 
-
   /**
     * 
     */
@@ -124,7 +116,6 @@ inline class BackupSummaryDSL(
     set(value) {
       builder.tableId(value)
     }
-
 
   /**
     * 
@@ -136,14 +127,12 @@ inline class BackupSummaryDSL(
       builder.tableName(value)
     }
 
-    
   /**
     * 
     */
   inline fun backupStatus(value: String?) {
     builder.backupStatus(value)
   }
-
 
   /**
     * 
@@ -152,8 +141,6 @@ inline class BackupSummaryDSL(
     builder.backupType(value)
   }
 
-  
-  
 }
 
 /**

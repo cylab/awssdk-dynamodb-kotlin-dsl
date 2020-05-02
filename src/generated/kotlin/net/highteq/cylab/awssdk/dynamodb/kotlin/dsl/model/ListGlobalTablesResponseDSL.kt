@@ -26,7 +26,7 @@ inline class ListGlobalTablesResponseDSL(
 ){
   @PublishedApi
   internal fun build(): ListGlobalTablesResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ListGlobalTablesResponseDSL(
     set(value) {
       builder.globalTables(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ListGlobalTablesResponseDSL(
       builder.lastEvaluatedGlobalTableName(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ListGlobalTablesResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -70,9 +67,6 @@ inline class ListGlobalTablesResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-  
-  
-    
   /**
     * 
     */

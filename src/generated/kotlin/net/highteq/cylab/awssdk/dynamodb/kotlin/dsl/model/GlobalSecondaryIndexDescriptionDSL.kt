@@ -27,7 +27,7 @@ inline class GlobalSecondaryIndexDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): GlobalSecondaryIndexDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -37,7 +37,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.backfilling(value)
     }
-
 
   /**
     * 
@@ -49,7 +48,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
       builder.indexArn(value)
     }
 
-
   /**
     * 
     */
@@ -59,7 +57,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.indexName(value)
     }
-
 
   /**
     * 
@@ -71,7 +68,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
       builder.indexSizeBytes(value)
     }
 
-
   /**
     * 
     */
@@ -81,7 +77,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.indexStatus(value)
     }
-
 
   /**
     * 
@@ -93,7 +88,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
       builder.itemCount(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     set(value) {
       builder.keySchema(value)
     }
-
 
   /**
     * 
@@ -115,7 +108,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
       builder.projection(value)
     }
 
-
   /**
     * 
     */
@@ -126,7 +118,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
       builder.provisionedThroughput(value)
     }
 
-    
   /**
     * 
     */
@@ -134,8 +125,6 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     builder.indexStatus(value)
   }
 
-  
-    
   /**
     * 
     */
@@ -143,14 +132,12 @@ inline class GlobalSecondaryIndexDescriptionDSL(
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
     builder.projection(buildProjection(dslBlock))
   }
-
 
   /**
     * 

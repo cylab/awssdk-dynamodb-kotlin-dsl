@@ -26,7 +26,7 @@ inline class ListBackupsRequestDSL(
 ){
   @PublishedApi
   internal fun build(): ListBackupsRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class ListBackupsRequestDSL(
     set(value) {
       builder.backupType(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class ListBackupsRequestDSL(
       builder.exclusiveStartBackupArn(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class ListBackupsRequestDSL(
     set(value) {
       builder.limit(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class ListBackupsRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class ListBackupsRequestDSL(
     set(value) {
       builder.tableName(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class ListBackupsRequestDSL(
       builder.timeRangeLowerBound(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class ListBackupsRequestDSL(
       builder.timeRangeUpperBound(value)
     }
 
-    
   /**
     * 
     */
@@ -111,8 +104,6 @@ inline class ListBackupsRequestDSL(
     builder.backupType(value)
   }
 
-  
-  
 }
 
 /**

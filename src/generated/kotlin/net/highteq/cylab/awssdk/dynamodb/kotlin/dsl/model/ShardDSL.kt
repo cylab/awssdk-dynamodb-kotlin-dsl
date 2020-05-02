@@ -24,7 +24,7 @@ inline class ShardDSL(
 ){
   @PublishedApi
   internal fun build(): Shard = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class ShardDSL(
     set(value) {
       builder.parentShardId(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class ShardDSL(
       builder.sequenceNumberRange(value)
     }
 
-
   /**
     * 
     */
@@ -57,9 +55,6 @@ inline class ShardDSL(
       builder.shardId(value)
     }
 
-  
-  
-    
   /**
     * 
     */

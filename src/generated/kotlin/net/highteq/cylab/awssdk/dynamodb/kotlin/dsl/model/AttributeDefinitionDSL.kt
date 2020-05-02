@@ -24,7 +24,7 @@ inline class AttributeDefinitionDSL(
 ){
   @PublishedApi
   internal fun build(): AttributeDefinition = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class AttributeDefinitionDSL(
     set(value) {
       builder.attributeName(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class AttributeDefinitionDSL(
       builder.attributeType(value)
     }
 
-    
   /**
     * 
     */
@@ -54,8 +52,6 @@ inline class AttributeDefinitionDSL(
     builder.attributeType(value)
   }
 
-  
-  
 }
 
 /**

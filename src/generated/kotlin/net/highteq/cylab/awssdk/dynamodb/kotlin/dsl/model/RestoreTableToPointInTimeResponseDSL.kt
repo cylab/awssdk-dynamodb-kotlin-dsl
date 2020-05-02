@@ -26,7 +26,7 @@ inline class RestoreTableToPointInTimeResponseDSL(
 ){
   @PublishedApi
   internal fun build(): RestoreTableToPointInTimeResponse = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class RestoreTableToPointInTimeResponseDSL(
     set(value) {
       builder.responseMetadata(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class RestoreTableToPointInTimeResponseDSL(
       builder.sdkHttpResponse(value)
     }
 
-
   /**
     * 
     */
@@ -59,9 +57,6 @@ inline class RestoreTableToPointInTimeResponseDSL(
       builder.tableDescription(value)
     }
 
-  
-  
-    
   /**
     * 
     */

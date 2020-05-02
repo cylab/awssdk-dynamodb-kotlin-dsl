@@ -25,7 +25,7 @@ inline class CreateGlobalTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): CreateGlobalTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class CreateGlobalTableRequestDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class CreateGlobalTableRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class CreateGlobalTableRequestDSL(
       builder.replicationGroup(value)
     }
 
-  
-  
-    
   /**
     * 
     */

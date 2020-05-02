@@ -34,7 +34,7 @@ inline class TableDescriptionDSL(
 ){
   @PublishedApi
   internal fun build(): TableDescription = builder.build()
-    
+
   /**
     * 
     */
@@ -44,7 +44,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.attributeDefinitions(value)
     }
-
 
   /**
     * 
@@ -56,7 +55,6 @@ inline class TableDescriptionDSL(
       builder.billingModeSummary(value)
     }
 
-
   /**
     * 
     */
@@ -66,7 +64,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.creationDateTime(value)
     }
-
 
   /**
     * 
@@ -78,7 +75,6 @@ inline class TableDescriptionDSL(
       builder.globalSecondaryIndexes(value)
     }
 
-
   /**
     * 
     */
@@ -88,7 +84,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.itemCount(value)
     }
-
 
   /**
     * 
@@ -100,7 +95,6 @@ inline class TableDescriptionDSL(
       builder.keySchema(value)
     }
 
-
   /**
     * 
     */
@@ -110,7 +104,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.latestStreamArn(value)
     }
-
 
   /**
     * 
@@ -122,7 +115,6 @@ inline class TableDescriptionDSL(
       builder.latestStreamLabel(value)
     }
 
-
   /**
     * 
     */
@@ -132,7 +124,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.localSecondaryIndexes(value)
     }
-
 
   /**
     * 
@@ -144,7 +135,6 @@ inline class TableDescriptionDSL(
       builder.provisionedThroughput(value)
     }
 
-
   /**
     * 
     */
@@ -154,7 +144,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.restoreSummary(value)
     }
-
 
   /**
     * 
@@ -166,7 +155,6 @@ inline class TableDescriptionDSL(
       builder.sseDescription(value)
     }
 
-
   /**
     * 
     */
@@ -176,7 +164,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.streamSpecification(value)
     }
-
 
   /**
     * 
@@ -188,7 +175,6 @@ inline class TableDescriptionDSL(
       builder.tableArn(value)
     }
 
-
   /**
     * 
     */
@@ -198,7 +184,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.tableId(value)
     }
-
 
   /**
     * 
@@ -210,7 +195,6 @@ inline class TableDescriptionDSL(
       builder.tableName(value)
     }
 
-
   /**
     * 
     */
@@ -220,7 +204,6 @@ inline class TableDescriptionDSL(
     set(value) {
       builder.tableSizeBytes(value)
     }
-
 
   /**
     * 
@@ -232,7 +215,6 @@ inline class TableDescriptionDSL(
       builder.tableStatus(value)
     }
 
-    
   /**
     * 
     */
@@ -240,15 +222,12 @@ inline class TableDescriptionDSL(
     builder.tableStatus(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
     builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -257,14 +236,12 @@ inline class TableDescriptionDSL(
     builder.billingModeSummary(buildBillingModeSummary(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexDescriptionCollectionDSL.() -> Unit) {
     builder.globalSecondaryIndexes(buildGlobalSecondaryIndexDescriptionCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -273,14 +250,12 @@ inline class TableDescriptionDSL(
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexDescriptionCollectionDSL.() -> Unit) {
     builder.localSecondaryIndexes(buildLocalSecondaryIndexDescriptionCollection(dslBlock))
   }
-
 
   /**
     * 
@@ -289,7 +264,6 @@ inline class TableDescriptionDSL(
     builder.provisionedThroughput(buildProvisionedThroughputDescription(dslBlock))
   }
 
-
   /**
     * 
     */
@@ -297,14 +271,12 @@ inline class TableDescriptionDSL(
     builder.restoreSummary(buildRestoreSummary(dslBlock))
   }
 
-
   /**
     * 
     */
   inline fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
     builder.sseDescription(buildSSEDescription(dslBlock))
   }
-
 
   /**
     * 

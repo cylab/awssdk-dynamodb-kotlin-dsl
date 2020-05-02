@@ -26,7 +26,7 @@ inline class InvalidRestoreTimeExceptionDSL(
 ){
   @PublishedApi
   internal fun build(): InvalidRestoreTimeException = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class InvalidRestoreTimeExceptionDSL(
     set(value) {
       builder.awsErrorDetails(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class InvalidRestoreTimeExceptionDSL(
       builder.cause(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class InvalidRestoreTimeExceptionDSL(
     set(value) {
       builder.clockSkew(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class InvalidRestoreTimeExceptionDSL(
       builder.message(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class InvalidRestoreTimeExceptionDSL(
     set(value) {
       builder.requestId(value)
     }
-
 
   /**
     * 
@@ -92,14 +87,12 @@ inline class InvalidRestoreTimeExceptionDSL(
       builder.statusCode(value)
     }
 
-    
   /**
     * 
     */
   inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
-
 
   /**
     * 
@@ -108,14 +101,12 @@ inline class InvalidRestoreTimeExceptionDSL(
     builder.message(value)
   }
 
-
   /**
     * 
     */
   inline fun requestId(value: String?) {
     builder.requestId(value)
   }
-
 
   /**
     * 
@@ -124,8 +115,6 @@ inline class InvalidRestoreTimeExceptionDSL(
     builder.statusCode(value)
   }
 
-  
-  
 }
 
 /**

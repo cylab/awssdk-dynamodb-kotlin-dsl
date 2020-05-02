@@ -24,7 +24,7 @@ inline class RestoreSummaryDSL(
 ){
   @PublishedApi
   internal fun build(): RestoreSummary = builder.build()
-    
+
   /**
     * 
     */
@@ -34,7 +34,6 @@ inline class RestoreSummaryDSL(
     set(value) {
       builder.restoreDateTime(value)
     }
-
 
   /**
     * 
@@ -46,7 +45,6 @@ inline class RestoreSummaryDSL(
       builder.restoreInProgress(value)
     }
 
-
   /**
     * 
     */
@@ -56,7 +54,6 @@ inline class RestoreSummaryDSL(
     set(value) {
       builder.sourceBackupArn(value)
     }
-
 
   /**
     * 
@@ -68,9 +65,6 @@ inline class RestoreSummaryDSL(
       builder.sourceTableArn(value)
     }
 
-  
-  
-  
 }
 
 /**

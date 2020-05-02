@@ -26,7 +26,7 @@ inline class RecordDSL(
 ){
   @PublishedApi
   internal fun build(): Record = builder.build()
-    
+
   /**
     * 
     */
@@ -36,7 +36,6 @@ inline class RecordDSL(
     set(value) {
       builder.awsRegion(value)
     }
-
 
   /**
     * 
@@ -48,7 +47,6 @@ inline class RecordDSL(
       builder.dynamodb(value)
     }
 
-
   /**
     * 
     */
@@ -58,7 +56,6 @@ inline class RecordDSL(
     set(value) {
       builder.eventID(value)
     }
-
 
   /**
     * 
@@ -70,7 +67,6 @@ inline class RecordDSL(
       builder.eventName(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class RecordDSL(
     set(value) {
       builder.eventSource(value)
     }
-
 
   /**
     * 
@@ -92,7 +87,6 @@ inline class RecordDSL(
       builder.eventVersion(value)
     }
 
-
   /**
     * 
     */
@@ -103,7 +97,6 @@ inline class RecordDSL(
       builder.userIdentity(value)
     }
 
-    
   /**
     * 
     */
@@ -111,15 +104,12 @@ inline class RecordDSL(
     builder.eventName(value)
   }
 
-  
-    
   /**
     * 
     */
   inline fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
     builder.dynamodb(buildStreamRecord(dslBlock))
   }
-
 
   /**
     * 

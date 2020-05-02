@@ -25,7 +25,7 @@ inline class UpdateGlobalTableRequestDSL(
 ){
   @PublishedApi
   internal fun build(): UpdateGlobalTableRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class UpdateGlobalTableRequestDSL(
     set(value) {
       builder.globalTableName(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class UpdateGlobalTableRequestDSL(
       builder.overrideConfiguration(value)
     }
 
-
   /**
     * 
     */
@@ -58,9 +56,6 @@ inline class UpdateGlobalTableRequestDSL(
       builder.replicaUpdates(value)
     }
 
-  
-  
-    
   /**
     * 
     */

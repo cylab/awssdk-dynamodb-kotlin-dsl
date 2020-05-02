@@ -25,7 +25,7 @@ inline class GetShardIteratorRequestDSL(
 ){
   @PublishedApi
   internal fun build(): GetShardIteratorRequest = builder.build()
-    
+
   /**
     * 
     */
@@ -35,7 +35,6 @@ inline class GetShardIteratorRequestDSL(
     set(value) {
       builder.overrideConfiguration(value)
     }
-
 
   /**
     * 
@@ -47,7 +46,6 @@ inline class GetShardIteratorRequestDSL(
       builder.sequenceNumber(value)
     }
 
-
   /**
     * 
     */
@@ -57,7 +55,6 @@ inline class GetShardIteratorRequestDSL(
     set(value) {
       builder.shardId(value)
     }
-
 
   /**
     * 
@@ -69,7 +66,6 @@ inline class GetShardIteratorRequestDSL(
       builder.shardIteratorType(value)
     }
 
-
   /**
     * 
     */
@@ -80,7 +76,6 @@ inline class GetShardIteratorRequestDSL(
       builder.streamArn(value)
     }
 
-    
   /**
     * 
     */
@@ -88,8 +83,6 @@ inline class GetShardIteratorRequestDSL(
     builder.shardIteratorType(value)
   }
 
-  
-  
 }
 
 /**
