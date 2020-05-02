@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   * Represents a new global secondary index to be added to an existing table.
   */
 @DynamodbDSL
-class CreateGlobalSecondaryIndexActionDSL {
+inline class CreateGlobalSecondaryIndexActionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CreateGlobalSecondaryIndexAction.builder()
+  val builder: CreateGlobalSecondaryIndexAction.Builder
+){
+  @PublishedApi
   internal fun build(): CreateGlobalSecondaryIndexAction = builder.build()
     
   /**
-    * The name of the global secondary index to be created.
+    * 
     */
-  var indexName: String?
+  inline var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class CreateGlobalSecondaryIndexActionDSL {
 
 
   /**
-    * The key schema for the global secondary index.
+    * 
     */
-  var keySchema: Collection<KeySchemaElement>?
+  inline var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,10 +50,9 @@ class CreateGlobalSecondaryIndexActionDSL {
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
-    *  primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  var projection: Projection?
+  inline var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,12 +61,9 @@ class CreateGlobalSecondaryIndexActionDSL {
 
 
   /**
-    * Represents the provisioned throughput settings for the specified global secondary index.
     * 
-    *  For current minimum and maximum provisioned throughput values, see Limits in the
-    *  Amazon DynamoDB Developer Guide.
     */
-  var provisionedThroughput: ProvisionedThroughput?
+  inline var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,29 +74,25 @@ class CreateGlobalSecondaryIndexActionDSL {
   
     
   /**
-    * The key schema for the global secondary index.
+    * 
     */
-  fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
+  inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into an index. These are in addition to the
-    *  primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  fun projection(dslBlock: ProjectionDSL.() -> Unit) {
+  inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
     builder.projection(buildProjection(dslBlock))
   }
 
 
   /**
-    * Represents the provisioned throughput settings for the specified global secondary index.
     * 
-    *  For current minimum and maximum provisioned throughput values, see Limits in the
-    *  Amazon DynamoDB Developer Guide.
     */
-  fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
+  inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
   }
 
@@ -108,5 +102,5 @@ class CreateGlobalSecondaryIndexActionDSL {
   * Builds instances of type CreateGlobalSecondaryIndexAction:
   * Represents a new global secondary index to be added to an existing table.
   */
-fun buildCreateGlobalSecondaryIndexAction(dslBlock: CreateGlobalSecondaryIndexActionDSL.() -> Unit) =
-  CreateGlobalSecondaryIndexActionDSL().apply(dslBlock).build()
+inline fun buildCreateGlobalSecondaryIndexAction(dslBlock: CreateGlobalSecondaryIndexActionDSL.() -> Unit) =
+  CreateGlobalSecondaryIndexActionDSL(CreateGlobalSecondaryIndexAction.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   * Contains details about the global table.
   */
 @DynamodbDSL
-class GlobalTableDescriptionDSL {
+inline class GlobalTableDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GlobalTableDescription.builder()
+  val builder: GlobalTableDescription.Builder
+){
+  @PublishedApi
   internal fun build(): GlobalTableDescription = builder.build()
     
   /**
-    * The creation time of the global table.
+    * 
     */
-  var creationDateTime: Instant?
+  inline var creationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The unique identifier of the global table.
+    * 
     */
-  var globalTableArn: String?
+  inline var globalTableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The global table name.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,17 +61,9 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The current state of the global table:
     * 
-    *  CREATING - The global table is being created.
-    * 
-    *  UPDATING - The global table is being updated.
-    * 
-    *  DELETING - The global table is being deleted.
-    * 
-    *  ACTIVE - The global table is ready for use.
     */
-  var globalTableStatus: GlobalTableStatus?
+  inline var globalTableStatus: GlobalTableStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -78,9 +72,9 @@ class GlobalTableDescriptionDSL {
 
 
   /**
-    * The Regions where the global table has replicas.
+    * 
     */
-  var replicationGroup: Collection<ReplicaDescription>?
+  inline var replicationGroup: Collection<ReplicaDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -89,26 +83,18 @@ class GlobalTableDescriptionDSL {
 
     
   /**
-    * The current state of the global table:
     * 
-    *  CREATING - The global table is being created.
-    * 
-    *  UPDATING - The global table is being updated.
-    * 
-    *  DELETING - The global table is being deleted.
-    * 
-    *  ACTIVE - The global table is ready for use.
     */
-  fun globalTableStatus(value: String?) {
+  inline fun globalTableStatus(value: String?) {
     builder.globalTableStatus(value)
   }
 
   
     
   /**
-    * The Regions where the global table has replicas.
+    * 
     */
-  fun replicationGroup(dslBlock: ReplicaDescriptionCollectionDSL.() -> Unit) {
+  inline fun replicationGroup(dslBlock: ReplicaDescriptionCollectionDSL.() -> Unit) {
     builder.replicationGroup(buildReplicaDescriptionCollection(dslBlock))
   }
 
@@ -118,5 +104,5 @@ class GlobalTableDescriptionDSL {
   * Builds instances of type GlobalTableDescription:
   * Contains details about the global table.
   */
-fun buildGlobalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) =
-  GlobalTableDescriptionDSL().apply(dslBlock).build()
+inline fun buildGlobalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) =
+  GlobalTableDescriptionDSL(GlobalTableDescription.builder()).apply(dslBlock).build()

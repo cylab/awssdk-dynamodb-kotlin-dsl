@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateContinuousBackupsRes
   * 
   */
 @DynamodbDSL
-class UpdateContinuousBackupsResponseDSL {
+inline class UpdateContinuousBackupsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateContinuousBackupsResponse.builder()
+  val builder: UpdateContinuousBackupsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateContinuousBackupsResponse = builder.build()
     
   /**
-    * Represents the continuous backups and point in time recovery settings on the table.
+    * 
     */
-  var continuousBackupsDescription: ContinuousBackupsDescription?
+  inline var continuousBackupsDescription: ContinuousBackupsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class UpdateContinuousBackupsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class UpdateContinuousBackupsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class UpdateContinuousBackupsResponseDSL {
   
     
   /**
-    * Represents the continuous backups and point in time recovery settings on the table.
+    * 
     */
-  fun continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) {
+  inline fun continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) {
     builder.continuousBackupsDescription(buildContinuousBackupsDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class UpdateContinuousBackupsResponseDSL {
   * Builds instances of type UpdateContinuousBackupsResponse:
   * 
   */
-fun buildUpdateContinuousBackupsResponse(dslBlock: UpdateContinuousBackupsResponseDSL.() -> Unit) =
-  UpdateContinuousBackupsResponseDSL().apply(dslBlock).build()
+inline fun buildUpdateContinuousBackupsResponse(dslBlock: UpdateContinuousBackupsResponseDSL.() -> Unit) =
+  UpdateContinuousBackupsResponseDSL(UpdateContinuousBackupsResponse.builder()).apply(dslBlock).build()

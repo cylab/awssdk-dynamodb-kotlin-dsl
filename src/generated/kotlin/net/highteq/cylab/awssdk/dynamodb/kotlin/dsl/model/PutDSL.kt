@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   * Represents a request to perform a PutItem operation.
   */
 @DynamodbDSL
-class PutDSL {
+inline class PutDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Put.builder()
+  val builder: Put.Builder
+){
+  @PublishedApi
   internal fun build(): Put = builder.build()
     
   /**
-    * A condition that must be satisfied in order for a conditional update to succeed.
+    * 
     */
-  var conditionExpression: String?
+  inline var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class PutDSL {
 
 
   /**
-    * One or more substitution tokens for attribute names in an expression.
+    * 
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class PutDSL {
 
 
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  var expressionAttributeValues: Map<String, AttributeValue>?
+  inline var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,12 +60,9 @@ class PutDSL {
 
 
   /**
-    * A map of attribute name to attribute values, representing the primary key of the item to be written by
-    *  PutItem. All of the table's primary key attributes must be specified, and their data types must
-    *  match those of the table's key schema. If any attributes are present in the item that are part of an index
-    *  key schema for the table, their types must match the index key schema.
+    * 
     */
-  var item: Map<String, AttributeValue>?
+  inline var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,11 +71,9 @@ class PutDSL {
 
 
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Put
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
-    *  ALL_OLD.
+    * 
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
+  inline var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -85,9 +82,9 @@ class PutDSL {
 
 
   /**
-    * Name of the table in which to write the item.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -96,31 +93,26 @@ class PutDSL {
 
     
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Put
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
-    *  ALL_OLD.
+    * 
     */
-  fun returnValuesOnConditionCheckFailure(value: String?) {
+  inline fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
   
     
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * A map of attribute name to attribute values, representing the primary key of the item to be written by
-    *  PutItem. All of the table's primary key attributes must be specified, and their data types must
-    *  match those of the table's key schema. If any attributes are present in the item that are part of an index
-    *  key schema for the table, their types must match the index key schema.
+    * 
     */
-  fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.item(buildAttributeValueMap(dslBlock))
   }
 
@@ -130,5 +122,5 @@ class PutDSL {
   * Builds instances of type Put:
   * Represents a request to perform a PutItem operation.
   */
-fun buildPut(dslBlock: PutDSL.() -> Unit) =
-  PutDSL().apply(dslBlock).build()
+inline fun buildPut(dslBlock: PutDSL.() -> Unit) =
+  PutDSL(Put.builder()).apply(dslBlock).build()

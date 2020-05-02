@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -28,15 +28,17 @@ import software.amazon.awssdk.services.dynamodb.model.TrimmedDataAccessException
   *  exists.
   */
 @DynamodbDSL
-class TrimmedDataAccessExceptionDSL {
+inline class TrimmedDataAccessExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TrimmedDataAccessException.builder()
+  val builder: TrimmedDataAccessException.Builder
+){
+  @PublishedApi
   internal fun build(): TrimmedDataAccessException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,7 +49,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,7 +60,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -69,7 +71,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -80,7 +82,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -91,7 +93,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -102,7 +104,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -110,7 +112,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -118,7 +120,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -126,7 +128,7 @@ class TrimmedDataAccessExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -147,5 +149,5 @@ class TrimmedDataAccessExceptionDSL {
   *  the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer
   *  exists.
   */
-fun buildTrimmedDataAccessException(dslBlock: TrimmedDataAccessExceptionDSL.() -> Unit) =
-  TrimmedDataAccessExceptionDSL().apply(dslBlock).build()
+inline fun buildTrimmedDataAccessException(dslBlock: TrimmedDataAccessExceptionDSL.() -> Unit) =
+  TrimmedDataAccessExceptionDSL(TrimmedDataAccessException.builder()).apply(dslBlock).build()

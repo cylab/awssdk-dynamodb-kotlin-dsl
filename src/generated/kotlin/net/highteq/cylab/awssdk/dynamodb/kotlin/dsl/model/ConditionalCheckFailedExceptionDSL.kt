@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ConditionalCheckFailedExce
   * A condition specified in the operation could not be evaluated.
   */
 @DynamodbDSL
-class ConditionalCheckFailedExceptionDSL {
+inline class ConditionalCheckFailedExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ConditionalCheckFailedException.builder()
+  val builder: ConditionalCheckFailedException.Builder
+){
+  @PublishedApi
   internal fun build(): ConditionalCheckFailedException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +51,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,7 +62,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,7 +73,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,7 +84,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,7 +95,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -101,7 +103,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -109,7 +111,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -117,7 +119,7 @@ class ConditionalCheckFailedExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -129,5 +131,5 @@ class ConditionalCheckFailedExceptionDSL {
   * Builds instances of type ConditionalCheckFailedException:
   * A condition specified in the operation could not be evaluated.
   */
-fun buildConditionalCheckFailedException(dslBlock: ConditionalCheckFailedExceptionDSL.() -> Unit) =
-  ConditionalCheckFailedExceptionDSL().apply(dslBlock).build()
+inline fun buildConditionalCheckFailedException(dslBlock: ConditionalCheckFailedExceptionDSL.() -> Unit) =
+  ConditionalCheckFailedExceptionDSL(ConditionalCheckFailedException.builder()).apply(dslBlock).build()

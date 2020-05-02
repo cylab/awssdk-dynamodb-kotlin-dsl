@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -16,18 +16,20 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
 
 /**
   * Builds instances of type ReplicaSettingsUpdate:
-  * Represents the settings for a global table in a Region that will be modified.
+  * Represents the settings for a global table in a region that will be modified.
   */
 @DynamodbDSL
-class ReplicaSettingsUpdateDSL {
+inline class ReplicaSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaSettingsUpdate.builder()
+  val builder: ReplicaSettingsUpdate.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaSettingsUpdate = builder.build()
     
   /**
-    * The Region of the replica to be added.
+    * 
     */
-  var regionName: String?
+  inline var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class ReplicaSettingsUpdateDSL {
 
 
   /**
-    * Represents the settings of a global secondary index for a global table that will be modified.
+    * 
     */
-  var replicaGlobalSecondaryIndexSettingsUpdate: Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>?
+  inline var replicaGlobalSecondaryIndexSettingsUpdate: Collection<ReplicaGlobalSecondaryIndexSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class ReplicaSettingsUpdateDSL {
 
 
   /**
-    * Auto scaling settings for managing a global table replica's read capacity units.
+    * 
     */
-  var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
+  inline var replicaProvisionedReadCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,10 +60,9 @@ class ReplicaSettingsUpdateDSL {
 
 
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var replicaProvisionedReadCapacityUnits: Long?
+  inline var replicaProvisionedReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,17 +73,17 @@ class ReplicaSettingsUpdateDSL {
   
     
   /**
-    * Represents the settings of a global secondary index for a global table that will be modified.
+    * 
     */
-  fun replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
+  inline fun replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
     builder.replicaGlobalSecondaryIndexSettingsUpdate(buildReplicaGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
 
 
   /**
-    * Auto scaling settings for managing a global table replica's read capacity units.
+    * 
     */
-  fun replicaProvisionedReadCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
+  inline fun replicaProvisionedReadCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
     builder.replicaProvisionedReadCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
   }
 
@@ -90,7 +91,7 @@ class ReplicaSettingsUpdateDSL {
 
 /**
   * Builds instances of type ReplicaSettingsUpdate:
-  * Represents the settings for a global table in a Region that will be modified.
+  * Represents the settings for a global table in a region that will be modified.
   */
-fun buildReplicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) =
-  ReplicaSettingsUpdateDSL().apply(dslBlock).build()
+inline fun buildReplicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) =
+  ReplicaSettingsUpdateDSL(ReplicaSettingsUpdate.builder()).apply(dslBlock).build()

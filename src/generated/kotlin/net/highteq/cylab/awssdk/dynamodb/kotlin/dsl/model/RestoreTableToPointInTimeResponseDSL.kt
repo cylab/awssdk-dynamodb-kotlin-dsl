@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   * 
   */
 @DynamodbDSL
-class RestoreTableToPointInTimeResponseDSL {
+inline class RestoreTableToPointInTimeResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = RestoreTableToPointInTimeResponse.builder()
+  val builder: RestoreTableToPointInTimeResponse.Builder
+){
+  @PublishedApi
   internal fun build(): RestoreTableToPointInTimeResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class RestoreTableToPointInTimeResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class RestoreTableToPointInTimeResponseDSL {
 
 
   /**
-    * Represents the properties of a table.
+    * 
     */
-  var tableDescription: TableDescription?
+  inline var tableDescription: TableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class RestoreTableToPointInTimeResponseDSL {
   
     
   /**
-    * Represents the properties of a table.
+    * 
     */
-  fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
+  inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
     builder.tableDescription(buildTableDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class RestoreTableToPointInTimeResponseDSL {
   * Builds instances of type RestoreTableToPointInTimeResponse:
   * 
   */
-fun buildRestoreTableToPointInTimeResponse(dslBlock: RestoreTableToPointInTimeResponseDSL.() -> Unit) =
-  RestoreTableToPointInTimeResponseDSL().apply(dslBlock).build()
+inline fun buildRestoreTableToPointInTimeResponse(dslBlock: RestoreTableToPointInTimeResponseDSL.() -> Unit) =
+  RestoreTableToPointInTimeResponseDSL(RestoreTableToPointInTimeResponse.builder()).apply(dslBlock).build()

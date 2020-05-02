@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableRequest
   * 
   */
 @DynamodbDSL
-class DescribeGlobalTableRequestDSL {
+inline class DescribeGlobalTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeGlobalTableRequest.builder()
+  val builder: DescribeGlobalTableRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeGlobalTableRequest = builder.build()
     
   /**
-    * The name of the global table.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +39,7 @@ class DescribeGlobalTableRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,5 +55,5 @@ class DescribeGlobalTableRequestDSL {
   * Builds instances of type DescribeGlobalTableRequest:
   * 
   */
-fun buildDescribeGlobalTableRequest(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
-  DescribeGlobalTableRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeGlobalTableRequest(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
+  DescribeGlobalTableRequestDSL(DescribeGlobalTableRequest.builder()).apply(dslBlock).build()

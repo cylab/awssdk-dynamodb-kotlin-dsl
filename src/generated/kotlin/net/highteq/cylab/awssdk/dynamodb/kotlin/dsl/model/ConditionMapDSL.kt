@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Condition
 
@@ -26,43 +28,47 @@ import software.amazon.awssdk.services.dynamodb.model.Condition
   *  scan results and returns only the desired values.
   */
 @DynamodbDSL
-class ConditionMapDSL {
-  private val map = mutableMapOf<String, Condition>()
+inline class ConditionMapDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val map : MutableMap<String, Condition>
+) {
+  @PublishedApi
   internal fun build() : Map<String, Condition> = map
 
   /**
     * Builds an object of type Condition from 
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
-  fun o(key: String, dslBlock: ConditionDSL.() -> Unit) {
-    map[key] = ConditionDSL().apply(dslBlock).build()
+  inline fun o(key: String, dslBlock: ConditionDSL.() -> Unit) {
+    map[key] = buildCondition(dslBlock)
   }
 
   /**
     * Adds a pair of String -> Condition to the map
     */
-  operator fun Pair<String, Condition>.unaryPlus() {
+  inline operator fun Pair<String, Condition>.unaryPlus() {
     map[this.first] = this.second
   }
 
   /**
     * Adds all given Pair<String, Condition> instances to the map
     */
-  operator fun Collection<Pair<String, Condition>>.unaryPlus() {
+  inline operator fun Collection<Pair<String, Condition>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all given Pair<String, Condition> instances to the map
     */
-  operator fun Array<Pair<String, Condition>>.unaryPlus() {
+  inline operator fun Array<Pair<String, Condition>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all entries in the given map
     */
-  operator fun Map<String, Condition>.unaryPlus() {
+  inline operator fun Map<String, Condition>.unaryPlus() {
     map.putAll(this)
   }
 }
@@ -83,5 +89,5 @@ class ConditionMapDSL {
   *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
   *  scan results and returns only the desired values.
   */
-fun buildConditionMap(dslBlock: ConditionMapDSL.() -> Unit) =
-  ConditionMapDSL().apply(dslBlock).build()
+inline fun buildConditionMap(dslBlock: ConditionMapDSL.() -> Unit) =
+  ConditionMapDSL(mutableMapOf<String, Condition>()).apply(dslBlock).build()

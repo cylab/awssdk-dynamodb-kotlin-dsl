@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 
@@ -23,36 +25,40 @@ import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
   *  one of String, Number, or Binary. The attribute cannot be nested within a List or a Map.
   */
 @DynamodbDSL
-class KeySchemaElementCollectionDSL {
-  private val list = ArrayList<KeySchemaElement>()
-  internal fun build() : List<KeySchemaElement> = list
+inline class KeySchemaElementCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<KeySchemaElement>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type KeySchemaElement from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: KeySchemaElementDSL.() -> Unit) {
-    list.add(KeySchemaElementDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: KeySchemaElementDSL.() -> Unit) {
+    list.add(buildKeySchemaElement(dslBlock))
   }
 
   /**
     * Adds a KeySchemaElement to the collection built by this DSL
     */
-  operator fun KeySchemaElement.unaryPlus() {
+  inline operator fun KeySchemaElement.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given KeySchemaElement instances to the collection built by this DSL
     */
-  operator fun Collection<KeySchemaElement>.unaryPlus() {
+  inline operator fun Collection<KeySchemaElement>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given KeySchemaElement instances to the collection built by this DSL
     */
-  operator fun Array<KeySchemaElement>.unaryPlus() {
+  inline operator fun Array<KeySchemaElement>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -70,5 +76,5 @@ class KeySchemaElementCollectionDSL {
   *  A KeySchemaElement must be a scalar, top-level attribute (not a nested attribute). The data type must be
   *  one of String, Number, or Binary. The attribute cannot be nested within a List or a Map.
   */
-fun buildKeySchemaElementCollection(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) =
-  KeySchemaElementCollectionDSL().apply(dslBlock).build()
+inline fun buildKeySchemaElementCollection(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) =
+  KeySchemaElementCollectionDSL(mutableListOf<KeySchemaElement>()).apply(dslBlock).build()

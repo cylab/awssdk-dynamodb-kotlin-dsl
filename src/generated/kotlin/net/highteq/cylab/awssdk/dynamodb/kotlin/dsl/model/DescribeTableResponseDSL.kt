@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   * Represents the output of a DescribeTable operation.
   */
 @DynamodbDSL
-class DescribeTableResponseDSL {
+inline class DescribeTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeTableResponse.builder()
+  val builder: DescribeTableResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeTableResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DescribeTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class DescribeTableResponseDSL {
 
 
   /**
-    * The properties of the table.
+    * 
     */
-  var table: TableDescription?
+  inline var table: TableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class DescribeTableResponseDSL {
   
     
   /**
-    * The properties of the table.
+    * 
     */
-  fun table(dslBlock: TableDescriptionDSL.() -> Unit) {
+  inline fun table(dslBlock: TableDescriptionDSL.() -> Unit) {
     builder.table(buildTableDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class DescribeTableResponseDSL {
   * Builds instances of type DescribeTableResponse:
   * Represents the output of a DescribeTable operation.
   */
-fun buildDescribeTableResponse(dslBlock: DescribeTableResponseDSL.() -> Unit) =
-  DescribeTableResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeTableResponse(dslBlock: DescribeTableResponseDSL.() -> Unit) =
+  DescribeTableResponseDSL(DescribeTableResponse.builder()).apply(dslBlock).build()

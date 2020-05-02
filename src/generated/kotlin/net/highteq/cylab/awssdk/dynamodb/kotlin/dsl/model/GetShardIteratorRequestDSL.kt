@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ShardIteratorType
   * Represents the input of a GetShardIterator operation.
   */
 @DynamodbDSL
-class GetShardIteratorRequestDSL {
+inline class GetShardIteratorRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GetShardIteratorRequest.builder()
+  val builder: GetShardIteratorRequest.Builder
+){
+  @PublishedApi
   internal fun build(): GetShardIteratorRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The sequence number of a stream record in the shard from which to start reading.
+    * 
     */
-  var sequenceNumber: String?
+  inline var sequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The identifier of the shard. The iterator will be returned for this shard ID.
+    * 
     */
-  var shardId: String?
+  inline var shardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,22 +60,9 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * Determines how the shard iterator is used to start reading stream records from the shard:
     * 
-    *  AT_SEQUENCE_NUMBER - Start reading exactly from the position denoted by a specific sequence
-    *  number.
-    * 
-    *  AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence
-    *  number.
-    * 
-    *  TRIM_HORIZON - Start reading at the last (untrimmed) stream record, which is the oldest record
-    *  in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age
-    *  exceeds this limit are subject to removal (trimming) from the stream.
-    * 
-    *  LATEST - Start reading just after the most recent stream record in the shard, so that you always
-    *  read the most recent data in the shard.
     */
-  var shardIteratorType: ShardIteratorType?
+  inline var shardIteratorType: ShardIteratorType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,9 +71,9 @@ class GetShardIteratorRequestDSL {
 
 
   /**
-    * The Amazon Resource Name (ARN) for the stream.
+    * 
     */
-  var streamArn: String?
+  inline var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,22 +82,9 @@ class GetShardIteratorRequestDSL {
 
     
   /**
-    * Determines how the shard iterator is used to start reading stream records from the shard:
     * 
-    *  AT_SEQUENCE_NUMBER - Start reading exactly from the position denoted by a specific sequence
-    *  number.
-    * 
-    *  AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence
-    *  number.
-    * 
-    *  TRIM_HORIZON - Start reading at the last (untrimmed) stream record, which is the oldest record
-    *  in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age
-    *  exceeds this limit are subject to removal (trimming) from the stream.
-    * 
-    *  LATEST - Start reading just after the most recent stream record in the shard, so that you always
-    *  read the most recent data in the shard.
     */
-  fun shardIteratorType(value: String?) {
+  inline fun shardIteratorType(value: String?) {
     builder.shardIteratorType(value)
   }
 
@@ -120,5 +96,5 @@ class GetShardIteratorRequestDSL {
   * Builds instances of type GetShardIteratorRequest:
   * Represents the input of a GetShardIterator operation.
   */
-fun buildGetShardIteratorRequest(dslBlock: GetShardIteratorRequestDSL.() -> Unit) =
-  GetShardIteratorRequestDSL().apply(dslBlock).build()
+inline fun buildGetShardIteratorRequest(dslBlock: GetShardIteratorRequestDSL.() -> Unit) =
+  GetShardIteratorRequestDSL(GetShardIteratorRequest.builder()).apply(dslBlock).build()

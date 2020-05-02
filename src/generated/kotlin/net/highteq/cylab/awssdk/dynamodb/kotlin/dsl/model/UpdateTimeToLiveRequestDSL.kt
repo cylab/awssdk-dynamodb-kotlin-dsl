@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTimeToLiveRequest
   * Represents the input of an UpdateTimeToLive operation.
   */
 @DynamodbDSL
-class UpdateTimeToLiveRequestDSL {
+inline class UpdateTimeToLiveRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateTimeToLiveRequest.builder()
+  val builder: UpdateTimeToLiveRequest.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateTimeToLiveRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class UpdateTimeToLiveRequestDSL {
 
 
   /**
-    * The name of the table to be configured.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class UpdateTimeToLiveRequestDSL {
 
 
   /**
-    * Represents the settings used to enable or disable Time to Live for the specified table.
+    * 
     */
-  var timeToLiveSpecification: TimeToLiveSpecification?
+  inline var timeToLiveSpecification: TimeToLiveSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class UpdateTimeToLiveRequestDSL {
   
     
   /**
-    * Represents the settings used to enable or disable Time to Live for the specified table.
+    * 
     */
-  fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
+  inline fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
     builder.timeToLiveSpecification(buildTimeToLiveSpecification(dslBlock))
   }
 
@@ -72,5 +74,5 @@ class UpdateTimeToLiveRequestDSL {
   * Builds instances of type UpdateTimeToLiveRequest:
   * Represents the input of an UpdateTimeToLive operation.
   */
-fun buildUpdateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
-  UpdateTimeToLiveRequestDSL().apply(dslBlock).build()
+inline fun buildUpdateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
+  UpdateTimeToLiveRequestDSL(UpdateTimeToLiveRequest.builder()).apply(dslBlock).build()

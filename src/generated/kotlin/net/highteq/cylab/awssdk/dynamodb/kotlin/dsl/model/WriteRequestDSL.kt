@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,18 +18,20 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   * Builds instances of type WriteRequest:
   * Represents an operation to perform - either DeleteItem or PutItem. You can only request one
   *  of these operations, not both, in a single WriteRequest. If you do need to perform both of these
-  *  operations, you need to provide two separate WriteRequest objects.
+  *  operations, you will need to provide two separate WriteRequest objects.
   */
 @DynamodbDSL
-class WriteRequestDSL {
+inline class WriteRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = WriteRequest.builder()
+  val builder: WriteRequest.Builder
+){
+  @PublishedApi
   internal fun build(): WriteRequest = builder.build()
     
   /**
-    * A request to perform a DeleteItem operation.
+    * 
     */
-  var deleteRequest: DeleteRequest?
+  inline var deleteRequest: DeleteRequest?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,9 +40,9 @@ class WriteRequestDSL {
 
 
   /**
-    * A request to perform a PutItem operation.
+    * 
     */
-  var putRequest: PutRequest?
+  inline var putRequest: PutRequest?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,17 +53,17 @@ class WriteRequestDSL {
   
     
   /**
-    * A request to perform a DeleteItem operation.
+    * 
     */
-  fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
+  inline fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
     builder.deleteRequest(buildDeleteRequest(dslBlock))
   }
 
 
   /**
-    * A request to perform a PutItem operation.
+    * 
     */
-  fun putRequest(dslBlock: PutRequestDSL.() -> Unit) {
+  inline fun putRequest(dslBlock: PutRequestDSL.() -> Unit) {
     builder.putRequest(buildPutRequest(dslBlock))
   }
 
@@ -71,7 +73,7 @@ class WriteRequestDSL {
   * Builds instances of type WriteRequest:
   * Represents an operation to perform - either DeleteItem or PutItem. You can only request one
   *  of these operations, not both, in a single WriteRequest. If you do need to perform both of these
-  *  operations, you need to provide two separate WriteRequest objects.
+  *  operations, you will need to provide two separate WriteRequest objects.
   */
-fun buildWriteRequest(dslBlock: WriteRequestDSL.() -> Unit) =
-  WriteRequestDSL().apply(dslBlock).build()
+inline fun buildWriteRequest(dslBlock: WriteRequestDSL.() -> Unit) =
+  WriteRequestDSL(WriteRequest.builder()).apply(dslBlock).build()

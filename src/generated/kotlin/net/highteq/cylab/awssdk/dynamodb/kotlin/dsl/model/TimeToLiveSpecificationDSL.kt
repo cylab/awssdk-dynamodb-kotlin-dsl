@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -14,18 +14,20 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveSpecification
 
 /**
   * Builds instances of type TimeToLiveSpecification:
-  * Represents the settings used to enable or disable Time to Live (TTL) for the specified table.
+  * Represents the settings used to enable or disable Time to Live for the specified table.
   */
 @DynamodbDSL
-class TimeToLiveSpecificationDSL {
+inline class TimeToLiveSpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TimeToLiveSpecification.builder()
+  val builder: TimeToLiveSpecification.Builder
+){
+  @PublishedApi
   internal fun build(): TimeToLiveSpecification = builder.build()
     
   /**
-    * The name of the TTL attribute used to store the expiration time for items in the table.
+    * 
     */
-  var attributeName: String?
+  inline var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -34,9 +36,9 @@ class TimeToLiveSpecificationDSL {
 
 
   /**
-    * Indicates whether TTL is to be enabled (true) or disabled (false) on the table.
+    * 
     */
-  var enabled: Boolean?
+  inline var enabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class TimeToLiveSpecificationDSL {
 
 /**
   * Builds instances of type TimeToLiveSpecification:
-  * Represents the settings used to enable or disable Time to Live (TTL) for the specified table.
+  * Represents the settings used to enable or disable Time to Live for the specified table.
   */
-fun buildTimeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) =
-  TimeToLiveSpecificationDSL().apply(dslBlock).build()
+inline fun buildTimeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) =
+  TimeToLiveSpecificationDSL(TimeToLiveSpecification.builder()).apply(dslBlock).build()

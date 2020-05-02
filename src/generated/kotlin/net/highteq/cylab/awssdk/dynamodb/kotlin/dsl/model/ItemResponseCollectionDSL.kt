@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ItemResponse
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.ItemResponse
   * Details for the requested item.
   */
 @DynamodbDSL
-class ItemResponseCollectionDSL {
-  private val list = ArrayList<ItemResponse>()
-  internal fun build() : List<ItemResponse> = list
+inline class ItemResponseCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ItemResponse>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ItemResponse from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ItemResponseDSL.() -> Unit) {
-    list.add(ItemResponseDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ItemResponseDSL.() -> Unit) {
+    list.add(buildItemResponse(dslBlock))
   }
 
   /**
     * Adds a ItemResponse to the collection built by this DSL
     */
-  operator fun ItemResponse.unaryPlus() {
+  inline operator fun ItemResponse.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ItemResponse instances to the collection built by this DSL
     */
-  operator fun Collection<ItemResponse>.unaryPlus() {
+  inline operator fun Collection<ItemResponse>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ItemResponse instances to the collection built by this DSL
     */
-  operator fun Array<ItemResponse>.unaryPlus() {
+  inline operator fun Array<ItemResponse>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class ItemResponseCollectionDSL {
   * Builds instances of type ItemResponse:
   * Details for the requested item.
   */
-fun buildItemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =
-  ItemResponseCollectionDSL().apply(dslBlock).build()
+inline fun buildItemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =
+  ItemResponseCollectionDSL(mutableListOf<ItemResponse>()).apply(dslBlock).build()

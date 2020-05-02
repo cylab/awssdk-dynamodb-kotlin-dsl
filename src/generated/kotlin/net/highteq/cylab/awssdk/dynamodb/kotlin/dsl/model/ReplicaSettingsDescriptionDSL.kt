@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,15 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaStatus
   * Represents the properties of a replica.
   */
 @DynamodbDSL
-class ReplicaSettingsDescriptionDSL {
+inline class ReplicaSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaSettingsDescription.builder()
+  val builder: ReplicaSettingsDescription.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaSettingsDescription = builder.build()
     
   /**
-    * The Region name of the replica.
+    * 
     */
-  var regionName: String?
+  inline var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,9 +40,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * The read/write capacity mode of the replica.
+    * 
     */
-  var replicaBillingModeSummary: BillingModeSummary?
+  inline var replicaBillingModeSummary: BillingModeSummary?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,9 +51,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * Replica global secondary index settings for the global table.
+    * 
     */
-  var replicaGlobalSecondaryIndexSettings: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>?
+  inline var replicaGlobalSecondaryIndexSettings: Collection<ReplicaGlobalSecondaryIndexSettingsDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * Auto scaling settings for a global table replica's read capacity units.
+    * 
     */
-  var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+  inline var replicaProvisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,10 +73,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var replicaProvisionedReadCapacityUnits: Long?
+  inline var replicaProvisionedReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,9 +84,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * Auto scaling settings for a global table replica's write capacity units.
+    * 
     */
-  var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+  inline var replicaProvisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,10 +95,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
-    *  For more information, see Specifying Read and Write Requirements in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var replicaProvisionedWriteCapacityUnits: Long?
+  inline var replicaProvisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -106,17 +106,9 @@ class ReplicaSettingsDescriptionDSL {
 
 
   /**
-    * The current state of the Region:
     * 
-    *  CREATING - The Region is being created.
-    * 
-    *  UPDATING - The Region is being updated.
-    * 
-    *  DELETING - The Region is being deleted.
-    * 
-    *  ACTIVE - The Region is ready for use.
     */
-  var replicaStatus: ReplicaStatus?
+  inline var replicaStatus: ReplicaStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -125,50 +117,42 @@ class ReplicaSettingsDescriptionDSL {
 
     
   /**
-    * The current state of the Region:
     * 
-    *  CREATING - The Region is being created.
-    * 
-    *  UPDATING - The Region is being updated.
-    * 
-    *  DELETING - The Region is being deleted.
-    * 
-    *  ACTIVE - The Region is ready for use.
     */
-  fun replicaStatus(value: String?) {
+  inline fun replicaStatus(value: String?) {
     builder.replicaStatus(value)
   }
 
   
     
   /**
-    * The read/write capacity mode of the replica.
+    * 
     */
-  fun replicaBillingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) {
+  inline fun replicaBillingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) {
     builder.replicaBillingModeSummary(buildBillingModeSummary(dslBlock))
   }
 
 
   /**
-    * Replica global secondary index settings for the global table.
+    * 
     */
-  fun replicaGlobalSecondaryIndexSettings(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL.() -> Unit) {
+  inline fun replicaGlobalSecondaryIndexSettings(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL.() -> Unit) {
     builder.replicaGlobalSecondaryIndexSettings(buildReplicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock))
   }
 
 
   /**
-    * Auto scaling settings for a global table replica's read capacity units.
+    * 
     */
-  fun replicaProvisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
+  inline fun replicaProvisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.replicaProvisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
 
 
   /**
-    * Auto scaling settings for a global table replica's write capacity units.
+    * 
     */
-  fun replicaProvisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
+  inline fun replicaProvisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.replicaProvisionedWriteCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
 
@@ -178,5 +162,5 @@ class ReplicaSettingsDescriptionDSL {
   * Builds instances of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-fun buildReplicaSettingsDescription(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) =
-  ReplicaSettingsDescriptionDSL().apply(dslBlock).build()
+inline fun buildReplicaSettingsDescription(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) =
+  ReplicaSettingsDescriptionDSL(ReplicaSettingsDescription.builder()).apply(dslBlock).build()

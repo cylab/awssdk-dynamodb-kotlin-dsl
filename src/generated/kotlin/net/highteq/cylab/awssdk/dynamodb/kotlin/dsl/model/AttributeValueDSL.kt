@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -22,15 +22,17 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class AttributeValueDSL {
+inline class AttributeValueDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = AttributeValue.builder()
+  val builder: AttributeValue.Builder
+){
+  @PublishedApi
   internal fun build(): AttributeValue = builder.build()
     
   /**
     * 
     */
-  var b: SdkBytes?
+  inline var b: SdkBytes?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,11 +41,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type Boolean. For example:
     * 
-    *  "BOOL": true
     */
-  var bool: Boolean?
+  inline var bool: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,7 +54,7 @@ class AttributeValueDSL {
   /**
     * 
     */
-  var bs: Collection<SdkBytes>?
+  inline var bs: Collection<SdkBytes>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,11 +63,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type List. For example:
     * 
-    *  "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
     */
-  var l: Collection<AttributeValue>?
+  inline var l: Collection<AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,11 +74,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type Map. For example:
     * 
-    *  "M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}
     */
-  var m: Map<String, AttributeValue>?
+  inline var m: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -89,14 +85,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type Number. For example:
     * 
-    *  "N": "123.45"
-    * 
-    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
-    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
     */
-  var n: String?
+  inline var n: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,14 +96,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type Number Set. For example:
     * 
-    *  "NS": ["42.2", "-19", "7.5", "3.14"]
-    * 
-    *  Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and
-    *  libraries. However, DynamoDB treats them as number type attributes for mathematical operations.
     */
-  var ns: Collection<String>?
+  inline var ns: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -121,11 +107,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type Null. For example:
     * 
-    *  "NULL": true
     */
-  var nul: Boolean?
+  inline var nul: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -134,11 +118,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type String. For example:
     * 
-    *  "S": "Hello"
     */
-  var s: String?
+  inline var s: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -147,11 +129,9 @@ class AttributeValueDSL {
 
 
   /**
-    * An attribute of type String Set. For example:
     * 
-    *  "SS": ["Giraffe", "Hippo" ,"Zebra"]
     */
-  var ss: Collection<String>?
+  inline var ss: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -162,21 +142,17 @@ class AttributeValueDSL {
   
     
   /**
-    * An attribute of type List. For example:
     * 
-    *  "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
     */
-  fun l(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
+  inline fun l(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
     builder.l(buildAttributeValueCollection(dslBlock))
   }
 
 
   /**
-    * An attribute of type Map. For example:
     * 
-    *  "M": {"Name": {"S": "Joe"}, "Age": {"N": "35"}}
     */
-  fun m(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun m(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.m(buildAttributeValueMap(dslBlock))
   }
 
@@ -190,5 +166,5 @@ class AttributeValueDSL {
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-fun buildAttributeValue(dslBlock: AttributeValueDSL.() -> Unit) =
-  AttributeValueDSL().apply(dslBlock).build()
+inline fun buildAttributeValue(dslBlock: AttributeValueDSL.() -> Unit) =
+  AttributeValueDSL(AttributeValue.builder()).apply(dslBlock).build()

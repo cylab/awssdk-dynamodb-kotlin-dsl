@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.TableNotFoundException
   * A source table with the name TableName does not currently exist within the subscriber's account.
   */
 @DynamodbDSL
-class TableNotFoundExceptionDSL {
+inline class TableNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TableNotFoundException.builder()
+  val builder: TableNotFoundException.Builder
+){
+  @PublishedApi
   internal fun build(): TableNotFoundException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +51,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,7 +62,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,7 +73,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,7 +84,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,7 +95,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -101,7 +103,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -109,7 +111,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -117,7 +119,7 @@ class TableNotFoundExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -129,5 +131,5 @@ class TableNotFoundExceptionDSL {
   * Builds instances of type TableNotFoundException:
   * A source table with the name TableName does not currently exist within the subscriber's account.
   */
-fun buildTableNotFoundException(dslBlock: TableNotFoundExceptionDSL.() -> Unit) =
-  TableNotFoundExceptionDSL().apply(dslBlock).build()
+inline fun buildTableNotFoundException(dslBlock: TableNotFoundExceptionDSL.() -> Unit) =
+  TableNotFoundExceptionDSL(TableNotFoundException.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,18 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.PutRequest
   * Represents a request to perform a PutItem operation on an item.
   */
 @DynamodbDSL
-class PutRequestDSL {
+inline class PutRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = PutRequest.builder()
+  val builder: PutRequest.Builder
+){
+  @PublishedApi
   internal fun build(): PutRequest = builder.build()
     
   /**
-    * A map of attribute name to attribute values, representing the primary key of an item to be processed by
-    *  PutItem. All of the table's primary key attributes must be specified, and their data types must
-    *  match those of the table's key schema. If any attributes are present in the item that are part of an index
-    *  key schema for the table, their types must match the index key schema.
+    * 
     */
-  var item: Map<String, AttributeValue>?
+  inline var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,12 +39,9 @@ class PutRequestDSL {
   
     
   /**
-    * A map of attribute name to attribute values, representing the primary key of an item to be processed by
-    *  PutItem. All of the table's primary key attributes must be specified, and their data types must
-    *  match those of the table's key schema. If any attributes are present in the item that are part of an index
-    *  key schema for the table, their types must match the index key schema.
+    * 
     */
-  fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.item(buildAttributeValueMap(dslBlock))
   }
 
@@ -55,5 +51,5 @@ class PutRequestDSL {
   * Builds instances of type PutRequest:
   * Represents a request to perform a PutItem operation on an item.
   */
-fun buildPutRequest(dslBlock: PutRequestDSL.() -> Unit) =
-  PutRequestDSL().apply(dslBlock).build()
+inline fun buildPutRequest(dslBlock: PutRequestDSL.() -> Unit) =
+  PutRequestDSL(PutRequest.builder()).apply(dslBlock).build()

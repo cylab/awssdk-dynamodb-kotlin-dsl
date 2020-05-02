@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeEndpointsRequest
   * 
   */
 @DynamodbDSL
-class DescribeEndpointsRequestDSL {
+inline class DescribeEndpointsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeEndpointsRequest.builder()
+  val builder: DescribeEndpointsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeEndpointsRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -42,5 +44,5 @@ class DescribeEndpointsRequestDSL {
   * Builds instances of type DescribeEndpointsRequest:
   * 
   */
-fun buildDescribeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
-  DescribeEndpointsRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+  DescribeEndpointsRequestDSL(DescribeEndpointsRequest.builder()).apply(dslBlock).build()

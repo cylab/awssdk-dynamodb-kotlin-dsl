@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.Update
   * Represents a request to perform an UpdateItem operation.
   */
 @DynamodbDSL
-class UpdateDSL {
+inline class UpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Update.builder()
+  val builder: Update.Builder
+){
+  @PublishedApi
   internal fun build(): Update = builder.build()
     
   /**
-    * A condition that must be satisfied in order for a conditional update to succeed.
+    * 
     */
-  var conditionExpression: String?
+  inline var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class UpdateDSL {
 
 
   /**
-    * One or more substitution tokens for attribute names in an expression.
+    * 
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class UpdateDSL {
 
 
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  var expressionAttributeValues: Map<String, AttributeValue>?
+  inline var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,10 +60,9 @@ class UpdateDSL {
 
 
   /**
-    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * 
     */
-  var key: Map<String, AttributeValue>?
+  inline var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,11 +71,9 @@ class UpdateDSL {
 
 
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Update
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE, ALL_OLD,
-    *  UPDATED_OLD, ALL_NEW, UPDATED_NEW.
+    * 
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
+  inline var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,9 +82,9 @@ class UpdateDSL {
 
 
   /**
-    * Name of the table for the UpdateItem request.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,10 +93,9 @@ class UpdateDSL {
 
 
   /**
-    * An expression that defines one or more attributes to be updated, the action to be performed on them, and new
-    *  value(s) for them.
+    * 
     */
-  var updateExpression: String?
+  inline var updateExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -106,29 +104,26 @@ class UpdateDSL {
 
     
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Update
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE, ALL_OLD,
-    *  UPDATED_OLD, ALL_NEW, UPDATED_NEW.
+    * 
     */
-  fun returnValuesOnConditionCheckFailure(value: String?) {
+  inline fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
   
     
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * The primary key of the item to be updated. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * 
     */
-  fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.key(buildAttributeValueMap(dslBlock))
   }
 
@@ -138,5 +133,5 @@ class UpdateDSL {
   * Builds instances of type Update:
   * Represents a request to perform an UpdateItem operation.
   */
-fun buildUpdate(dslBlock: UpdateDSL.() -> Unit) =
-  UpdateDSL().apply(dslBlock).build()
+inline fun buildUpdate(dslBlock: UpdateDSL.() -> Unit) =
+  UpdateDSL(Update.builder()).apply(dslBlock).build()

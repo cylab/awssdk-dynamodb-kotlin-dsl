@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,16 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
   *  information is not returned in the response.
   */
 @DynamodbDSL
-class ItemCollectionMetricsDSL {
+inline class ItemCollectionMetricsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ItemCollectionMetrics.builder()
+  val builder: ItemCollectionMetrics.Builder
+){
+  @PublishedApi
   internal fun build(): ItemCollectionMetrics = builder.build()
     
   /**
-    * The partition key value of the item collection. This value is the same as the partition key value of the
-    *  item.
+    * 
     */
-  var itemCollectionKey: Map<String, AttributeValue>?
+  inline var itemCollectionKey: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,15 +39,9 @@ class ItemCollectionMetricsDSL {
 
 
   /**
-    * An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound
-    *  and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the
-    *  size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to
-    *  measure whether a local secondary index is approaching its size limit.
     * 
-    *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
-    *  estimate.
     */
-  var sizeEstimateRangeGB: Collection<Double>?
+  inline var sizeEstimateRangeGB: Collection<Double>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,10 +52,9 @@ class ItemCollectionMetricsDSL {
   
     
   /**
-    * The partition key value of the item collection. This value is the same as the partition key value of the
-    *  item.
+    * 
     */
-  fun itemCollectionKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun itemCollectionKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.itemCollectionKey(buildAttributeValueMap(dslBlock))
   }
 
@@ -72,5 +66,5 @@ class ItemCollectionMetricsDSL {
   *  is only returned if the request asked for it. If the table does not have any local secondary indexes, this
   *  information is not returned in the response.
   */
-fun buildItemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) =
-  ItemCollectionMetricsDSL().apply(dslBlock).build()
+inline fun buildItemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) =
+  ItemCollectionMetricsDSL(ItemCollectionMetrics.builder()).apply(dslBlock).build()

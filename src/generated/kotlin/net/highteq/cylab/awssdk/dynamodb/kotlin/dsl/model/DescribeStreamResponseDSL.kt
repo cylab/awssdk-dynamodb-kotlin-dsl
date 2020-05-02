@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.StreamDescription
   * Represents the output of a DescribeStream operation.
   */
 @DynamodbDSL
-class DescribeStreamResponseDSL {
+inline class DescribeStreamResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeStreamResponse.builder()
+  val builder: DescribeStreamResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeStreamResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DescribeStreamResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,11 +50,9 @@ class DescribeStreamResponseDSL {
 
 
   /**
-    * A complete description of the stream, including its creation date and time, the DynamoDB table associated
-    *  with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream
-    *  records within the shards.
+    * 
     */
-  var streamDescription: StreamDescription?
+  inline var streamDescription: StreamDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,11 +63,9 @@ class DescribeStreamResponseDSL {
   
     
   /**
-    * A complete description of the stream, including its creation date and time, the DynamoDB table associated
-    *  with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream
-    *  records within the shards.
+    * 
     */
-  fun streamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) {
+  inline fun streamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) {
     builder.streamDescription(buildStreamDescription(dslBlock))
   }
 
@@ -77,5 +75,5 @@ class DescribeStreamResponseDSL {
   * Builds instances of type DescribeStreamResponse:
   * Represents the output of a DescribeStream operation.
   */
-fun buildDescribeStreamResponse(dslBlock: DescribeStreamResponseDSL.() -> Unit) =
-  DescribeStreamResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeStreamResponse(dslBlock: DescribeStreamResponseDSL.() -> Unit) =
+  DescribeStreamResponseDSL(DescribeStreamResponse.builder()).apply(dslBlock).build()

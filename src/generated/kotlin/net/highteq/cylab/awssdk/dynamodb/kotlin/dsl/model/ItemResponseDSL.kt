@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.ItemResponse
   * Details for the requested item.
   */
 @DynamodbDSL
-class ItemResponseDSL {
+inline class ItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ItemResponse.builder()
+  val builder: ItemResponse.Builder
+){
+  @PublishedApi
   internal fun build(): ItemResponse = builder.build()
     
   /**
-    * Map of attribute data consisting of the data type and attribute value.
+    * 
     */
-  var item: Map<String, AttributeValue>?
+  inline var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class ItemResponseDSL {
   
     
   /**
-    * Map of attribute data consisting of the data type and attribute value.
+    * 
     */
-  fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.item(buildAttributeValueMap(dslBlock))
   }
 
@@ -49,5 +51,5 @@ class ItemResponseDSL {
   * Builds instances of type ItemResponse:
   * Details for the requested item.
   */
-fun buildItemResponse(dslBlock: ItemResponseDSL.() -> Unit) =
-  ItemResponseDSL().apply(dslBlock).build()
+inline fun buildItemResponse(dslBlock: ItemResponseDSL.() -> Unit) =
+  ItemResponseDSL(ItemResponse.builder()).apply(dslBlock).build()

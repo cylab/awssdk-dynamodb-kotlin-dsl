@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableFeatureDetails
   * Contains the description of the backup created for the table.
   */
 @DynamodbDSL
-class BackupDescriptionDSL {
+inline class BackupDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = BackupDescription.builder()
+  val builder: BackupDescription.Builder
+){
+  @PublishedApi
   internal fun build(): BackupDescription = builder.build()
     
   /**
-    * Contains the details of the backup created for the table.
+    * 
     */
-  var backupDetails: BackupDetails?
+  inline var backupDetails: BackupDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class BackupDescriptionDSL {
 
 
   /**
-    * Contains the details of the table when the backup was created.
+    * 
     */
-  var sourceTableDetails: SourceTableDetails?
+  inline var sourceTableDetails: SourceTableDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,10 +50,9 @@ class BackupDescriptionDSL {
 
 
   /**
-    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
-    *  GSIs, streams, TTL.
+    * 
     */
-  var sourceTableFeatureDetails: SourceTableFeatureDetails?
+  inline var sourceTableFeatureDetails: SourceTableFeatureDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,26 +63,25 @@ class BackupDescriptionDSL {
   
     
   /**
-    * Contains the details of the backup created for the table.
+    * 
     */
-  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
+  inline fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
     builder.backupDetails(buildBackupDetails(dslBlock))
   }
 
 
   /**
-    * Contains the details of the table when the backup was created.
+    * 
     */
-  fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) {
+  inline fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) {
     builder.sourceTableDetails(buildSourceTableDetails(dslBlock))
   }
 
 
   /**
-    * Contains the details of the features enabled on the table when the backup was created. For example, LSIs,
-    *  GSIs, streams, TTL.
+    * 
     */
-  fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) {
+  inline fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) {
     builder.sourceTableFeatureDetails(buildSourceTableFeatureDetails(dslBlock))
   }
 
@@ -91,5 +91,5 @@ class BackupDescriptionDSL {
   * Builds instances of type BackupDescription:
   * Contains the description of the backup created for the table.
   */
-fun buildBackupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) =
-  BackupDescriptionDSL().apply(dslBlock).build()
+inline fun buildBackupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) =
+  BackupDescriptionDSL(BackupDescription.builder()).apply(dslBlock).build()

@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 
@@ -18,43 +20,47 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class AttributeValueMapDSL {
-  private val map = mutableMapOf<String, AttributeValue>()
+inline class AttributeValueMapDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val map : MutableMap<String, AttributeValue>
+) {
+  @PublishedApi
   internal fun build() : Map<String, AttributeValue> = map
 
   /**
     * Builds an object of type AttributeValue from 
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
-  fun o(key: String, dslBlock: AttributeValueDSL.() -> Unit) {
-    map[key] = AttributeValueDSL().apply(dslBlock).build()
+  inline fun o(key: String, dslBlock: AttributeValueDSL.() -> Unit) {
+    map[key] = buildAttributeValue(dslBlock)
   }
 
   /**
     * Adds a pair of String -> AttributeValue to the map
     */
-  operator fun Pair<String, AttributeValue>.unaryPlus() {
+  inline operator fun Pair<String, AttributeValue>.unaryPlus() {
     map[this.first] = this.second
   }
 
   /**
     * Adds all given Pair<String, AttributeValue> instances to the map
     */
-  operator fun Collection<Pair<String, AttributeValue>>.unaryPlus() {
+  inline operator fun Collection<Pair<String, AttributeValue>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all given Pair<String, AttributeValue> instances to the map
     */
-  operator fun Array<Pair<String, AttributeValue>>.unaryPlus() {
+  inline operator fun Array<Pair<String, AttributeValue>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all entries in the given map
     */
-  operator fun Map<String, AttributeValue>.unaryPlus() {
+  inline operator fun Map<String, AttributeValue>.unaryPlus() {
     map.putAll(this)
   }
 }
@@ -67,5 +73,5 @@ class AttributeValueMapDSL {
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-fun buildAttributeValueMap(dslBlock: AttributeValueMapDSL.() -> Unit) =
-  AttributeValueMapDSL().apply(dslBlock).build()
+inline fun buildAttributeValueMap(dslBlock: AttributeValueMapDSL.() -> Unit) =
+  AttributeValueMapDSL(mutableMapOf<String, AttributeValue>()).apply(dslBlock).build()

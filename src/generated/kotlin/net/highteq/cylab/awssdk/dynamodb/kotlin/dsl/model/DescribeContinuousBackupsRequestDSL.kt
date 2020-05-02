@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeContinuousBackupsR
   * 
   */
 @DynamodbDSL
-class DescribeContinuousBackupsRequestDSL {
+inline class DescribeContinuousBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeContinuousBackupsRequest.builder()
+  val builder: DescribeContinuousBackupsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeContinuousBackupsRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,10 +37,9 @@ class DescribeContinuousBackupsRequestDSL {
 
 
   /**
-    * Name of the table for which the customer wants to check the continuous backups and point in time recovery
-    *  settings.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,5 +55,5 @@ class DescribeContinuousBackupsRequestDSL {
   * Builds instances of type DescribeContinuousBackupsRequest:
   * 
   */
-fun buildDescribeContinuousBackupsRequest(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
-  DescribeContinuousBackupsRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeContinuousBackupsRequest(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
+  DescribeContinuousBackupsRequestDSL(DescribeContinuousBackupsRequest.builder()).apply(dslBlock).build()

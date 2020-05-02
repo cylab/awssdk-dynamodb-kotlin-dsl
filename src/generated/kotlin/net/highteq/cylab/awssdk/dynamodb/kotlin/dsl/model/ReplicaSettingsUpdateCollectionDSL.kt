@@ -4,53 +4,59 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
 
 /**
   * Builds instances of type ReplicaSettingsUpdate:
-  * Represents the settings for a global table in a Region that will be modified.
+  * Represents the settings for a global table in a region that will be modified.
   */
 @DynamodbDSL
-class ReplicaSettingsUpdateCollectionDSL {
-  private val list = ArrayList<ReplicaSettingsUpdate>()
-  internal fun build() : List<ReplicaSettingsUpdate> = list
+inline class ReplicaSettingsUpdateCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ReplicaSettingsUpdate>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ReplicaSettingsUpdate from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) {
-    list.add(ReplicaSettingsUpdateDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) {
+    list.add(buildReplicaSettingsUpdate(dslBlock))
   }
 
   /**
     * Adds a ReplicaSettingsUpdate to the collection built by this DSL
     */
-  operator fun ReplicaSettingsUpdate.unaryPlus() {
+  inline operator fun ReplicaSettingsUpdate.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ReplicaSettingsUpdate instances to the collection built by this DSL
     */
-  operator fun Collection<ReplicaSettingsUpdate>.unaryPlus() {
+  inline operator fun Collection<ReplicaSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ReplicaSettingsUpdate instances to the collection built by this DSL
     */
-  operator fun Array<ReplicaSettingsUpdate>.unaryPlus() {
+  inline operator fun Array<ReplicaSettingsUpdate>.unaryPlus() {
     list.addAll(this)
   }
 }
 
 /**
   * Builds instances of type ReplicaSettingsUpdate:
-  * Represents the settings for a global table in a Region that will be modified.
+  * Represents the settings for a global table in a region that will be modified.
   */
-fun buildReplicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =
-  ReplicaSettingsUpdateCollectionDSL().apply(dslBlock).build()
+inline fun buildReplicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =
+  ReplicaSettingsUpdateCollectionDSL(mutableListOf<ReplicaSettingsUpdate>()).apply(dslBlock).build()

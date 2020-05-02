@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -27,15 +27,17 @@ import software.amazon.awssdk.services.dynamodb.model.KeyType
   *  one of String, Number, or Binary. The attribute cannot be nested within a List or a Map.
   */
 @DynamodbDSL
-class KeySchemaElementDSL {
+inline class KeySchemaElementDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = KeySchemaElement.builder()
+  val builder: KeySchemaElement.Builder
+){
+  @PublishedApi
   internal fun build(): KeySchemaElement = builder.build()
     
   /**
-    * The name of a key attribute.
+    * 
     */
-  var attributeName: String?
+  inline var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -44,21 +46,9 @@ class KeySchemaElementDSL {
 
 
   /**
-    * The role that this key attribute will assume:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  var keyType: KeyType?
+  inline var keyType: KeyType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,21 +57,9 @@ class KeySchemaElementDSL {
 
     
   /**
-    * The role that this key attribute will assume:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  fun keyType(value: String?) {
+  inline fun keyType(value: String?) {
     builder.keyType(value)
   }
 
@@ -102,5 +80,5 @@ class KeySchemaElementDSL {
   *  A KeySchemaElement must be a scalar, top-level attribute (not a nested attribute). The data type must be
   *  one of String, Number, or Binary. The attribute cannot be nested within a List or a Map.
   */
-fun buildKeySchemaElement(dslBlock: KeySchemaElementDSL.() -> Unit) =
-  KeySchemaElementDSL().apply(dslBlock).build()
+inline fun buildKeySchemaElement(dslBlock: KeySchemaElementDSL.() -> Unit) =
+  KeySchemaElementDSL(KeySchemaElement.builder()).apply(dslBlock).build()

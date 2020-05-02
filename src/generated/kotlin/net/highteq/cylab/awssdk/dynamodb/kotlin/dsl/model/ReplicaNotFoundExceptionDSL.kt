@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaNotFoundException
   * The specified replica is no longer part of the global table.
   */
 @DynamodbDSL
-class ReplicaNotFoundExceptionDSL {
+inline class ReplicaNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaNotFoundException.builder()
+  val builder: ReplicaNotFoundException.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaNotFoundException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +51,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,7 +62,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,7 +73,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,7 +84,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,7 +95,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -101,7 +103,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -109,7 +111,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -117,7 +119,7 @@ class ReplicaNotFoundExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -129,5 +131,5 @@ class ReplicaNotFoundExceptionDSL {
   * Builds instances of type ReplicaNotFoundException:
   * The specified replica is no longer part of the global table.
   */
-fun buildReplicaNotFoundException(dslBlock: ReplicaNotFoundExceptionDSL.() -> Unit) =
-  ReplicaNotFoundExceptionDSL().apply(dslBlock).build()
+inline fun buildReplicaNotFoundException(dslBlock: ReplicaNotFoundExceptionDSL.() -> Unit) =
+  ReplicaNotFoundExceptionDSL(ReplicaNotFoundException.builder()).apply(dslBlock).build()

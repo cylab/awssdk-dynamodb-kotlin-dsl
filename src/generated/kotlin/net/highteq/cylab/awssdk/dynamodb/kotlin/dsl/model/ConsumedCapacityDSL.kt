@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,15 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class ConsumedCapacityDSL {
+inline class ConsumedCapacityDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ConsumedCapacity.builder()
+  val builder: ConsumedCapacity.Builder
+){
+  @PublishedApi
   internal fun build(): ConsumedCapacity = builder.build()
     
   /**
-    * The total number of capacity units consumed by the operation.
+    * 
     */
-  var capacityUnits: Double?
+  inline var capacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,9 +40,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The amount of throughput consumed on each global index affected by the operation.
+    * 
     */
-  var globalSecondaryIndexes: Map<String, Capacity>?
+  inline var globalSecondaryIndexes: Map<String, Capacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,9 +51,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The amount of throughput consumed on each local index affected by the operation.
+    * 
     */
-  var localSecondaryIndexes: Map<String, Capacity>?
+  inline var localSecondaryIndexes: Map<String, Capacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The total number of read capacity units consumed by the operation.
+    * 
     */
-  var readCapacityUnits: Double?
+  inline var readCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,9 +73,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The amount of throughput consumed on the table affected by the operation.
+    * 
     */
-  var table: Capacity?
+  inline var table: Capacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,9 +84,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The name of the table that was affected by the operation.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,9 +95,9 @@ class ConsumedCapacityDSL {
 
 
   /**
-    * The total number of write capacity units consumed by the operation.
+    * 
     */
-  var writeCapacityUnits: Double?
+  inline var writeCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -106,25 +108,25 @@ class ConsumedCapacityDSL {
   
     
   /**
-    * The amount of throughput consumed on each global index affected by the operation.
+    * 
     */
-  fun globalSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
+  inline fun globalSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
     builder.globalSecondaryIndexes(buildCapacityMap(dslBlock))
   }
 
 
   /**
-    * The amount of throughput consumed on each local index affected by the operation.
+    * 
     */
-  fun localSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
+  inline fun localSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
     builder.localSecondaryIndexes(buildCapacityMap(dslBlock))
   }
 
 
   /**
-    * The amount of throughput consumed on the table affected by the operation.
+    * 
     */
-  fun table(dslBlock: CapacityDSL.() -> Unit) {
+  inline fun table(dslBlock: CapacityDSL.() -> Unit) {
     builder.table(buildCapacity(dslBlock))
   }
 
@@ -137,5 +139,5 @@ class ConsumedCapacityDSL {
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-fun buildConsumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) =
-  ConsumedCapacityDSL().apply(dslBlock).build()
+inline fun buildConsumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) =
+  ConsumedCapacityDSL(ConsumedCapacity.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.StreamRecord
   * A description of a unique event within a stream.
   */
 @DynamodbDSL
-class RecordDSL {
+inline class RecordDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Record.builder()
+  val builder: Record.Builder
+){
+  @PublishedApi
   internal fun build(): Record = builder.build()
     
   /**
-    * The region in which the GetRecords request was received.
+    * 
     */
-  var awsRegion: String?
+  inline var awsRegion: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class RecordDSL {
 
 
   /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
+    * 
     */
-  var dynamodb: StreamRecord?
+  inline var dynamodb: StreamRecord?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class RecordDSL {
 
 
   /**
-    * A globally unique identifier for the event that was recorded in this stream record.
+    * 
     */
-  var eventID: String?
+  inline var eventID: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,15 +61,9 @@ class RecordDSL {
 
 
   /**
-    * The type of data modification that was performed on the DynamoDB table:
     * 
-    *  INSERT - a new item was added to the table.
-    * 
-    *  MODIFY - one or more of an existing item's attributes were modified.
-    * 
-    *  REMOVE - the item was deleted from the table
     */
-  var eventName: OperationType?
+  inline var eventName: OperationType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,10 +72,9 @@ class RecordDSL {
 
 
   /**
-    * The AWS service from which the stream record originated. For DynamoDB Streams, this is
-    *  aws:dynamodb.
+    * 
     */
-  var eventSource: String?
+  inline var eventSource: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -88,14 +83,9 @@ class RecordDSL {
 
 
   /**
-    * The version number of the stream record format. This number is updated whenever the structure of
-    *  Record is modified.
     * 
-    *  Client applications must not assume that eventVersion will remain at a particular value, as this
-    *  number is subject to change at any time. In general, eventVersion will only increase as the
-    *  low-level DynamoDB Streams API evolves.
     */
-  var eventVersion: String?
+  inline var eventVersion: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -104,17 +94,9 @@ class RecordDSL {
 
 
   /**
-    * Items that are deleted by the Time to Live process after expiration have the following fields:
     * 
-    *  Records[].userIdentity.type
-    * 
-    *  "Service"
-    * 
-    *  Records[].userIdentity.principalId
-    * 
-    *  "dynamodb.amazonaws.com"
     */
-  var userIdentity: Identity?
+  inline var userIdentity: Identity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -123,40 +105,26 @@ class RecordDSL {
 
     
   /**
-    * The type of data modification that was performed on the DynamoDB table:
     * 
-    *  INSERT - a new item was added to the table.
-    * 
-    *  MODIFY - one or more of an existing item's attributes were modified.
-    * 
-    *  REMOVE - the item was deleted from the table
     */
-  fun eventName(value: String?) {
+  inline fun eventName(value: String?) {
     builder.eventName(value)
   }
 
   
     
   /**
-    * The main body of the stream record, containing all of the DynamoDB-specific fields.
+    * 
     */
-  fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
+  inline fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
     builder.dynamodb(buildStreamRecord(dslBlock))
   }
 
 
   /**
-    * Items that are deleted by the Time to Live process after expiration have the following fields:
     * 
-    *  Records[].userIdentity.type
-    * 
-    *  "Service"
-    * 
-    *  Records[].userIdentity.principalId
-    * 
-    *  "dynamodb.amazonaws.com"
     */
-  fun userIdentity(dslBlock: IdentityDSL.() -> Unit) {
+  inline fun userIdentity(dslBlock: IdentityDSL.() -> Unit) {
     builder.userIdentity(buildIdentity(dslBlock))
   }
 
@@ -166,5 +134,5 @@ class RecordDSL {
   * Builds instances of type Record:
   * A description of a unique event within a stream.
   */
-fun buildRecord(dslBlock: RecordDSL.() -> Unit) =
-  RecordDSL().apply(dslBlock).build()
+inline fun buildRecord(dslBlock: RecordDSL.() -> Unit) =
+  RecordDSL(Record.builder()).apply(dslBlock).build()

@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Stream
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   * Represents all of the data describing a particular stream.
   */
 @DynamodbDSL
-class StreamCollectionDSL {
-  private val list = ArrayList<Stream>()
-  internal fun build() : List<Stream> = list
+inline class StreamCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<Stream>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type Stream from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: StreamDSL.() -> Unit) {
-    list.add(StreamDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: StreamDSL.() -> Unit) {
+    list.add(buildStream(dslBlock))
   }
 
   /**
     * Adds a Stream to the collection built by this DSL
     */
-  operator fun Stream.unaryPlus() {
+  inline operator fun Stream.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given Stream instances to the collection built by this DSL
     */
-  operator fun Collection<Stream>.unaryPlus() {
+  inline operator fun Collection<Stream>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given Stream instances to the collection built by this DSL
     */
-  operator fun Array<Stream>.unaryPlus() {
+  inline operator fun Array<Stream>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class StreamCollectionDSL {
   * Builds instances of type Stream:
   * Represents all of the data describing a particular stream.
   */
-fun buildStreamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =
-  StreamCollectionDSL().apply(dslBlock).build()
+inline fun buildStreamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =
+  StreamCollectionDSL(mutableListOf<Stream>()).apply(dslBlock).build()

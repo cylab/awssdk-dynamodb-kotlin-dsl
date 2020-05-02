@@ -25,7 +25,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
+        freeCompilerArgs = listOf("-Xinline-classes", "-Xjsr305=strict")
         jvmTarget = "1.8"
     }
 }

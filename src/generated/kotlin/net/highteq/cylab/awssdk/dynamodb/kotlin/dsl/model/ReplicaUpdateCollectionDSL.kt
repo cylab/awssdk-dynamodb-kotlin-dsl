@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
 
@@ -20,36 +22,40 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
   *  An existing replica to be removed from an existing global table.
   */
 @DynamodbDSL
-class ReplicaUpdateCollectionDSL {
-  private val list = ArrayList<ReplicaUpdate>()
-  internal fun build() : List<ReplicaUpdate> = list
+inline class ReplicaUpdateCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ReplicaUpdate>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ReplicaUpdate from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ReplicaUpdateDSL.() -> Unit) {
-    list.add(ReplicaUpdateDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ReplicaUpdateDSL.() -> Unit) {
+    list.add(buildReplicaUpdate(dslBlock))
   }
 
   /**
     * Adds a ReplicaUpdate to the collection built by this DSL
     */
-  operator fun ReplicaUpdate.unaryPlus() {
+  inline operator fun ReplicaUpdate.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ReplicaUpdate instances to the collection built by this DSL
     */
-  operator fun Collection<ReplicaUpdate>.unaryPlus() {
+  inline operator fun Collection<ReplicaUpdate>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ReplicaUpdate instances to the collection built by this DSL
     */
-  operator fun Array<ReplicaUpdate>.unaryPlus() {
+  inline operator fun Array<ReplicaUpdate>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -64,5 +70,5 @@ class ReplicaUpdateCollectionDSL {
   * 
   *  An existing replica to be removed from an existing global table.
   */
-fun buildReplicaUpdateCollection(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) =
-  ReplicaUpdateCollectionDSL().apply(dslBlock).build()
+inline fun buildReplicaUpdateCollection(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) =
+  ReplicaUpdateCollectionDSL(mutableListOf<ReplicaUpdate>()).apply(dslBlock).build()

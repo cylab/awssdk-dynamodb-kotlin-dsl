@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,16 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItemsResponse
   * 
   */
 @DynamodbDSL
-class TransactWriteItemsResponseDSL {
+inline class TransactWriteItemsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TransactWriteItemsResponse.builder()
+  val builder: TransactWriteItemsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): TransactWriteItemsResponse = builder.build()
     
   /**
-    * The capacity units consumed by the entire TransactWriteItems operation. The values of the list
-    *  are ordered according to the ordering of the TransactItems request parameter.
+    * 
     */
-  var consumedCapacity: Collection<ConsumedCapacity>?
+  inline var consumedCapacity: Collection<ConsumedCapacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,11 +40,9 @@ class TransactWriteItemsResponseDSL {
 
 
   /**
-    * A list of tables that were processed by TransactWriteItems and, for each table, information
-    *  about any item collections that were affected by individual UpdateItem, PutItem, or
-    *  DeleteItem operations.
+    * 
     */
-  var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>?
+  inline var itemCollectionMetrics: Map<String, Collection<ItemCollectionMetrics>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,7 +53,7 @@ class TransactWriteItemsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,7 +64,7 @@ class TransactWriteItemsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,10 +75,9 @@ class TransactWriteItemsResponseDSL {
   
     
   /**
-    * The capacity units consumed by the entire TransactWriteItems operation. The values of the list
-    *  are ordered according to the ordering of the TransactItems request parameter.
+    * 
     */
-  fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
+  inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
   }
 
@@ -89,5 +87,5 @@ class TransactWriteItemsResponseDSL {
   * Builds instances of type TransactWriteItemsResponse:
   * 
   */
-fun buildTransactWriteItemsResponse(dslBlock: TransactWriteItemsResponseDSL.() -> Unit) =
-  TransactWriteItemsResponseDSL().apply(dslBlock).build()
+inline fun buildTransactWriteItemsResponse(dslBlock: TransactWriteItemsResponseDSL.() -> Unit) =
+  TransactWriteItemsResponseDSL(TransactWriteItemsResponse.builder()).apply(dslBlock).build()

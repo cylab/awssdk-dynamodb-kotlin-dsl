@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescrip
   * Represents the continuous backups and point in time recovery settings on the table.
   */
 @DynamodbDSL
-class ContinuousBackupsDescriptionDSL {
+inline class ContinuousBackupsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ContinuousBackupsDescription.builder()
+  val builder: ContinuousBackupsDescription.Builder
+){
+  @PublishedApi
   internal fun build(): ContinuousBackupsDescription = builder.build()
     
   /**
-    * ContinuousBackupsStatus can be one of the following states: ENABLED, DISABLED
+    * 
     */
-  var continuousBackupsStatus: ContinuousBackupsStatus?
+  inline var continuousBackupsStatus: ContinuousBackupsStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class ContinuousBackupsDescriptionDSL {
 
 
   /**
-    * The description of the point in time recovery settings applied to the table.
+    * 
     */
-  var pointInTimeRecoveryDescription: PointInTimeRecoveryDescription?
+  inline var pointInTimeRecoveryDescription: PointInTimeRecoveryDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,18 +49,18 @@ class ContinuousBackupsDescriptionDSL {
 
     
   /**
-    * ContinuousBackupsStatus can be one of the following states: ENABLED, DISABLED
+    * 
     */
-  fun continuousBackupsStatus(value: String?) {
+  inline fun continuousBackupsStatus(value: String?) {
     builder.continuousBackupsStatus(value)
   }
 
   
     
   /**
-    * The description of the point in time recovery settings applied to the table.
+    * 
     */
-  fun pointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) {
+  inline fun pointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) {
     builder.pointInTimeRecoveryDescription(buildPointInTimeRecoveryDescription(dslBlock))
   }
 
@@ -68,5 +70,5 @@ class ContinuousBackupsDescriptionDSL {
   * Builds instances of type ContinuousBackupsDescription:
   * Represents the continuous backups and point in time recovery settings on the table.
   */
-fun buildContinuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) =
-  ContinuousBackupsDescriptionDSL().apply(dslBlock).build()
+inline fun buildContinuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) =
+  ContinuousBackupsDescriptionDSL(ContinuousBackupsDescription.builder()).apply(dslBlock).build()

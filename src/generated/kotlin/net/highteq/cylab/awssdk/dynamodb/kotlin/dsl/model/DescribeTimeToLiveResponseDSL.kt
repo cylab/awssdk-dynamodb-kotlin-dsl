@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
   * 
   */
 @DynamodbDSL
-class DescribeTimeToLiveResponseDSL {
+inline class DescribeTimeToLiveResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeTimeToLiveResponse.builder()
+  val builder: DescribeTimeToLiveResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeTimeToLiveResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DescribeTimeToLiveResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class DescribeTimeToLiveResponseDSL {
   /**
     * 
     */
-  var timeToLiveDescription: TimeToLiveDescription?
+  inline var timeToLiveDescription: TimeToLiveDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,7 +65,7 @@ class DescribeTimeToLiveResponseDSL {
   /**
     * 
     */
-  fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) {
+  inline fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) {
     builder.timeToLiveDescription(buildTimeToLiveDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class DescribeTimeToLiveResponseDSL {
   * Builds instances of type DescribeTimeToLiveResponse:
   * 
   */
-fun buildDescribeTimeToLiveResponse(dslBlock: DescribeTimeToLiveResponseDSL.() -> Unit) =
-  DescribeTimeToLiveResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeTimeToLiveResponse(dslBlock: DescribeTimeToLiveResponseDSL.() -> Unit) =
+  DescribeTimeToLiveResponseDSL(DescribeTimeToLiveResponse.builder()).apply(dslBlock).build()

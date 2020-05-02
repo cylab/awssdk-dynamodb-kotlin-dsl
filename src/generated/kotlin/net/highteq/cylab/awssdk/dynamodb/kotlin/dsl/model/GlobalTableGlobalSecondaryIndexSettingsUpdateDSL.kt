@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondary
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
 @DynamodbDSL
-class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
+inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()
+  val builder: GlobalTableGlobalSecondaryIndexSettingsUpdate.Builder
+){
+  @PublishedApi
   internal fun build(): GlobalTableGlobalSecondaryIndexSettingsUpdate = builder.build()
     
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    * 
     */
-  var indexName: String?
+  inline var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
 
 
   /**
-    * Auto scaling settings for managing a global secondary index's write capacity units.
+    * 
     */
-  var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
+  inline var provisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
 
 
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    * 
     */
-  var provisionedWriteCapacityUnits: Long?
+  inline var provisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,9 +61,9 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
   
     
   /**
-    * Auto scaling settings for managing a global secondary index's write capacity units.
+    * 
     */
-  fun provisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
+  inline fun provisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
     builder.provisionedWriteCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
   }
 
@@ -71,5 +73,5 @@ class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL {
   * Builds instances of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-fun buildGlobalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
-  GlobalTableGlobalSecondaryIndexSettingsUpdateDSL().apply(dslBlock).build()
+inline fun buildGlobalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
+  GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()).apply(dslBlock).build()

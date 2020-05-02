@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
   * Represents the properties of a global table.
   */
 @DynamodbDSL
-class GlobalTableDSL {
+inline class GlobalTableDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GlobalTable.builder()
+  val builder: GlobalTable.Builder
+){
+  @PublishedApi
   internal fun build(): GlobalTable = builder.build()
     
   /**
-    * The global table name.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class GlobalTableDSL {
 
 
   /**
-    * The Regions where the global table has replicas.
+    * 
     */
-  var replicationGroup: Collection<Replica>?
+  inline var replicationGroup: Collection<Replica>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class GlobalTableDSL {
   
     
   /**
-    * The Regions where the global table has replicas.
+    * 
     */
-  fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
+  inline fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
     builder.replicationGroup(buildReplicaCollection(dslBlock))
   }
 
@@ -60,5 +62,5 @@ class GlobalTableDSL {
   * Builds instances of type GlobalTable:
   * Represents the properties of a global table.
   */
-fun buildGlobalTable(dslBlock: GlobalTableDSL.() -> Unit) =
-  GlobalTableDSL().apply(dslBlock).build()
+inline fun buildGlobalTable(dslBlock: GlobalTableDSL.() -> Unit) =
+  GlobalTableDSL(GlobalTable.builder()).apply(dslBlock).build()

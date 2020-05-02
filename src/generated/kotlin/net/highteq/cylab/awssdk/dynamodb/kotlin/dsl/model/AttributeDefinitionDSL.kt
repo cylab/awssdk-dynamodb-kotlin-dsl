@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
   * Represents an attribute for describing the key schema for the table and indexes.
   */
 @DynamodbDSL
-class AttributeDefinitionDSL {
+inline class AttributeDefinitionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = AttributeDefinition.builder()
+  val builder: AttributeDefinition.Builder
+){
+  @PublishedApi
   internal fun build(): AttributeDefinition = builder.build()
     
   /**
-    * A name for the attribute.
+    * 
     */
-  var attributeName: String?
+  inline var attributeName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,15 +37,9 @@ class AttributeDefinitionDSL {
 
 
   /**
-    * The data type for the attribute, where:
     * 
-    *  S - the attribute is of type String
-    * 
-    *  N - the attribute is of type Number
-    * 
-    *  B - the attribute is of type Binary
     */
-  var attributeType: ScalarAttributeType?
+  inline var attributeType: ScalarAttributeType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,15 +48,9 @@ class AttributeDefinitionDSL {
 
     
   /**
-    * The data type for the attribute, where:
     * 
-    *  S - the attribute is of type String
-    * 
-    *  N - the attribute is of type Number
-    * 
-    *  B - the attribute is of type Binary
     */
-  fun attributeType(value: String?) {
+  inline fun attributeType(value: String?) {
     builder.attributeType(value)
   }
 
@@ -72,5 +62,5 @@ class AttributeDefinitionDSL {
   * Builds instances of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
-fun buildAttributeDefinition(dslBlock: AttributeDefinitionDSL.() -> Unit) =
-  AttributeDefinitionDSL().apply(dslBlock).build()
+inline fun buildAttributeDefinition(dslBlock: AttributeDefinitionDSL.() -> Unit) =
+  AttributeDefinitionDSL(AttributeDefinition.builder()).apply(dslBlock).build()

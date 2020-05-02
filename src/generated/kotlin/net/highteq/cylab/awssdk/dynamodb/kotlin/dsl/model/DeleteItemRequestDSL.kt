@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -24,28 +24,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValue
   * Represents the input of a DeleteItem operation.
   */
 @DynamodbDSL
-class DeleteItemRequestDSL {
+inline class DeleteItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DeleteItemRequest.builder()
+  val builder: DeleteItemRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DeleteItemRequest = builder.build()
     
   /**
-    * A condition that must be satisfied in order for a conditional DeleteItem to succeed.
     * 
-    *  An expression can contain any of the following:
-    * 
-    *  Functions:
-    *  attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size
-    * 
-    *  These function names are case-sensitive.
-    * 
-    *  Comparison operators: = | &lt;&gt; | &lt; | &gt; | &lt;= | &gt;= | BETWEEN | IN 
-    * 
-    *  Logical operators: AND | OR | NOT
-    * 
-    *  For more information about condition expressions, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var conditionExpression: String?
+  inline var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,9 +43,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var conditionalOperator: ConditionalOperator?
+  inline var conditionalOperator: ConditionalOperator?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,9 +54,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var expected: Map<String, ExpectedAttributeValue>?
+  inline var expected: Map<String, ExpectedAttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,37 +65,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * One or more substitution tokens for attribute names in an expression. The following are some use cases for
-    *  using ExpressionAttributeNames:
     * 
-    *  To access an attribute whose name conflicts with a DynamoDB reserved word.
-    * 
-    *  To create a placeholder for repeating occurrences of an attribute name in an expression.
-    * 
-    *  To prevent special characters in an attribute name from being misinterpreted in an expression.
-    * 
-    *  Use the # character in an expression to dereference an attribute name. For example, consider the
-    *  following attribute name:
-    * 
-    *  Percentile
-    * 
-    *  The name of this attribute conflicts with a reserved word, so it cannot be used directly in an expression.
-    *  (For the complete list of reserved words, see Reserved Words
-    *  in the Amazon DynamoDB Developer Guide). To work around this, you could specify the following for
-    *  ExpressionAttributeNames:
-    * 
-    *  {"#P":"Percentile"}
-    * 
-    *  You could then use this substitution in an expression, as in this example:
-    * 
-    *  #P = :val
-    * 
-    *  Tokens that begin with the : character are expression attribute values, which are placeholders
-    *  for the actual value at runtime.
-    * 
-    *  For more information on expression attribute names, see Specifying Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -115,24 +76,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * One or more values that can be substituted in an expression.
     * 
-    *  Use the : (colon) character in an expression to dereference an attribute value. For example, suppose
-    *  that you wanted to check whether the value of the ProductStatus attribute was one of the following:
-    * 
-    *  Available | Backordered | Discontinued
-    * 
-    *  You would first need to specify ExpressionAttributeValues as follows:
-    * 
-    *  { ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }
-    * 
-    *  You could then use these values in an expression, such as this:
-    * 
-    *  ProductStatus IN (:avail, :back, :disc)
-    * 
-    *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeValues: Map<String, AttributeValue>?
+  inline var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -141,14 +87,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  delete.
     * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
     */
-  var key: Map<String, AttributeValue>?
+  inline var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -159,7 +100,7 @@ class DeleteItemRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -168,9 +109,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity?
+  inline var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -179,11 +120,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections, if any, that were modified during the operation are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
+    * 
     */
-  var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
+  inline var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -192,18 +131,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * Use ReturnValues if you want to get the item attributes as they appeared before they were
-    *  deleted. For DeleteItem, the valid values are:
     * 
-    *  NONE - If ReturnValues is not specified, or if its value is NONE, then
-    *  nothing is returned. (This setting is the default for ReturnValues.)
-    * 
-    *  ALL_OLD - The content of the old item is returned.
-    * 
-    *  The ReturnValues parameter is used by several DynamoDB operations; however,
-    *  DeleteItem does not recognize any values other than NONE or ALL_OLD.
     */
-  var returnValues: ReturnValue?
+  inline var returnValues: ReturnValue?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -212,9 +142,9 @@ class DeleteItemRequestDSL {
 
 
   /**
-    * The name of the table from which to delete the item.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -223,89 +153,58 @@ class DeleteItemRequestDSL {
 
     
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see ConditionalOperator in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  fun conditionalOperator(value: String?) {
+  inline fun conditionalOperator(value: String?) {
     builder.conditionalOperator(value)
   }
 
 
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  fun returnConsumedCapacity(value: String?) {
+  inline fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 
 
   /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections, if any, that were modified during the operation are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
+    * 
     */
-  fun returnItemCollectionMetrics(value: String?) {
+  inline fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
   }
 
 
   /**
-    * Use ReturnValues if you want to get the item attributes as they appeared before they were
-    *  deleted. For DeleteItem, the valid values are:
     * 
-    *  NONE - If ReturnValues is not specified, or if its value is NONE, then
-    *  nothing is returned. (This setting is the default for ReturnValues.)
-    * 
-    *  ALL_OLD - The content of the old item is returned.
-    * 
-    *  The ReturnValues parameter is used by several DynamoDB operations; however,
-    *  DeleteItem does not recognize any values other than NONE or ALL_OLD.
     */
-  fun returnValues(value: String?) {
+  inline fun returnValues(value: String?) {
     builder.returnValues(value)
   }
 
   
     
   /**
-    * This is a legacy parameter. Use ConditionExpression instead. For more information, see Expected in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  fun expected(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) {
+  inline fun expected(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) {
     builder.expected(buildExpectedAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * One or more values that can be substituted in an expression.
     * 
-    *  Use the : (colon) character in an expression to dereference an attribute value. For example, suppose
-    *  that you wanted to check whether the value of the ProductStatus attribute was one of the following:
-    * 
-    *  Available | Backordered | Discontinued
-    * 
-    *  You would first need to specify ExpressionAttributeValues as follows:
-    * 
-    *  { ":avail":{"S":"Available"}, ":back":{"S":"Backordered"}, ":disc":{"S":"Discontinued"} }
-    * 
-    *  You could then use these values in an expression, such as this:
-    * 
-    *  ProductStatus IN (:avail, :back, :disc)
-    * 
-    *  For more information on expression attribute values, see Condition Expressions in the Amazon DynamoDB Developer Guide.
     */
-  fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * A map of attribute names to AttributeValue objects, representing the primary key of the item to
-    *  delete.
     * 
-    *  For the primary key, you must provide all of the attributes. For example, with a simple primary key, you only
-    *  need to provide a value for the partition key. For a composite primary key, you must provide values for both
-    *  the partition key and the sort key.
     */
-  fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.key(buildAttributeValueMap(dslBlock))
   }
 
@@ -315,5 +214,5 @@ class DeleteItemRequestDSL {
   * Builds instances of type DeleteItemRequest:
   * Represents the input of a DeleteItem operation.
   */
-fun buildDeleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
-  DeleteItemRequestDSL().apply(dslBlock).build()
+inline fun buildDeleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+  DeleteItemRequestDSL(DeleteItemRequest.builder()).apply(dslBlock).build()

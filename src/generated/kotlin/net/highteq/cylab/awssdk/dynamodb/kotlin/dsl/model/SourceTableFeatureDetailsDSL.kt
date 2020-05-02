@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -23,16 +23,17 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
   *  streams, TTL.
   */
 @DynamodbDSL
-class SourceTableFeatureDetailsDSL {
+inline class SourceTableFeatureDetailsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = SourceTableFeatureDetails.builder()
+  val builder: SourceTableFeatureDetails.Builder
+){
+  @PublishedApi
   internal fun build(): SourceTableFeatureDetails = builder.build()
     
   /**
-    * Represents the GSI properties for the table when the backup was created. It includes the IndexName,
-    *  KeySchema, Projection, and ProvisionedThroughput for the GSIs on the table at the time of backup.
+    * 
     */
-  var globalSecondaryIndexes: Collection<GlobalSecondaryIndexInfo>?
+  inline var globalSecondaryIndexes: Collection<GlobalSecondaryIndexInfo>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,10 +42,9 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
-    * Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema
-    *  and Projection for the LSIs on the table at the time of backup.
+    * 
     */
-  var localSecondaryIndexes: Collection<LocalSecondaryIndexInfo>?
+  inline var localSecondaryIndexes: Collection<LocalSecondaryIndexInfo>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,9 +53,9 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
-    * The description of the server-side encryption status on the table when the backup was created.
+    * 
     */
-  var sseDescription: SSEDescription?
+  inline var sseDescription: SSEDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -64,9 +64,9 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
-    * Stream settings on the table when the backup was created.
+    * 
     */
-  var streamDescription: StreamSpecification?
+  inline var streamDescription: StreamSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -75,9 +75,9 @@ class SourceTableFeatureDetailsDSL {
 
 
   /**
-    * Time to Live settings on the table when the backup was created.
+    * 
     */
-  var timeToLiveDescription: TimeToLiveDescription?
+  inline var timeToLiveDescription: TimeToLiveDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -88,43 +88,41 @@ class SourceTableFeatureDetailsDSL {
   
     
   /**
-    * Represents the GSI properties for the table when the backup was created. It includes the IndexName,
-    *  KeySchema, Projection, and ProvisionedThroughput for the GSIs on the table at the time of backup.
+    * 
     */
-  fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) {
+  inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) {
     builder.globalSecondaryIndexes(buildGlobalSecondaryIndexInfoCollection(dslBlock))
   }
 
 
   /**
-    * Represents the LSI properties for the table when the backup was created. It includes the IndexName, KeySchema
-    *  and Projection for the LSIs on the table at the time of backup.
+    * 
     */
-  fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) {
+  inline fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) {
     builder.localSecondaryIndexes(buildLocalSecondaryIndexInfoCollection(dslBlock))
   }
 
 
   /**
-    * The description of the server-side encryption status on the table when the backup was created.
+    * 
     */
-  fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
+  inline fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
     builder.sseDescription(buildSSEDescription(dslBlock))
   }
 
 
   /**
-    * Stream settings on the table when the backup was created.
+    * 
     */
-  fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
+  inline fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
     builder.streamDescription(buildStreamSpecification(dslBlock))
   }
 
 
   /**
-    * Time to Live settings on the table when the backup was created.
+    * 
     */
-  fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) {
+  inline fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) {
     builder.timeToLiveDescription(buildTimeToLiveDescription(dslBlock))
   }
 
@@ -135,5 +133,5 @@ class SourceTableFeatureDetailsDSL {
   * Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs,
   *  streams, TTL.
   */
-fun buildSourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) =
-  SourceTableFeatureDetailsDSL().apply(dslBlock).build()
+inline fun buildSourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) =
+  SourceTableFeatureDetailsDSL(SourceTableFeatureDetails.builder()).apply(dslBlock).build()

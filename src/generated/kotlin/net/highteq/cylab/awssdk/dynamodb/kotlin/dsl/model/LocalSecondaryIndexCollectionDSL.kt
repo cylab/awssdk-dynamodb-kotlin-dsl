@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndex
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndex
   * Represents the properties of a local secondary index.
   */
 @DynamodbDSL
-class LocalSecondaryIndexCollectionDSL {
-  private val list = ArrayList<LocalSecondaryIndex>()
-  internal fun build() : List<LocalSecondaryIndex> = list
+inline class LocalSecondaryIndexCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<LocalSecondaryIndex>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type LocalSecondaryIndex from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: LocalSecondaryIndexDSL.() -> Unit) {
-    list.add(LocalSecondaryIndexDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: LocalSecondaryIndexDSL.() -> Unit) {
+    list.add(buildLocalSecondaryIndex(dslBlock))
   }
 
   /**
     * Adds a LocalSecondaryIndex to the collection built by this DSL
     */
-  operator fun LocalSecondaryIndex.unaryPlus() {
+  inline operator fun LocalSecondaryIndex.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
     */
-  operator fun Collection<LocalSecondaryIndex>.unaryPlus() {
+  inline operator fun Collection<LocalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given LocalSecondaryIndex instances to the collection built by this DSL
     */
-  operator fun Array<LocalSecondaryIndex>.unaryPlus() {
+  inline operator fun Array<LocalSecondaryIndex>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class LocalSecondaryIndexCollectionDSL {
   * Builds instances of type LocalSecondaryIndex:
   * Represents the properties of a local secondary index.
   */
-fun buildLocalSecondaryIndexCollection(dslBlock: LocalSecondaryIndexCollectionDSL.() -> Unit) =
-  LocalSecondaryIndexCollectionDSL().apply(dslBlock).build()
+inline fun buildLocalSecondaryIndexCollection(dslBlock: LocalSecondaryIndexCollectionDSL.() -> Unit) =
+  LocalSecondaryIndexCollectionDSL(mutableListOf<LocalSecondaryIndex>()).apply(dslBlock).build()

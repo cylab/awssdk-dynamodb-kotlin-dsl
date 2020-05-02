@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   * Represents a request to perform a DeleteItem operation.
   */
 @DynamodbDSL
-class DeleteDSL {
+inline class DeleteDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Delete.builder()
+  val builder: Delete.Builder
+){
+  @PublishedApi
   internal fun build(): Delete = builder.build()
     
   /**
-    * A condition that must be satisfied in order for a conditional delete to succeed.
+    * 
     */
-  var conditionExpression: String?
+  inline var conditionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class DeleteDSL {
 
 
   /**
-    * One or more substitution tokens for attribute names in an expression.
+    * 
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class DeleteDSL {
 
 
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  var expressionAttributeValues: Map<String, AttributeValue>?
+  inline var expressionAttributeValues: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,10 +60,9 @@ class DeleteDSL {
 
 
   /**
-    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * 
     */
-  var key: Map<String, AttributeValue>?
+  inline var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,11 +71,9 @@ class DeleteDSL {
 
 
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Delete
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
-    *  ALL_OLD.
+    * 
     */
-  var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
+  inline var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,9 +82,9 @@ class DeleteDSL {
 
 
   /**
-    * Name of the table in which the item to be deleted resides.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,29 +93,26 @@ class DeleteDSL {
 
     
   /**
-    * Use ReturnValuesOnConditionCheckFailure to get the item attributes if the Delete
-    *  condition fails. For ReturnValuesOnConditionCheckFailure, the valid values are: NONE and
-    *  ALL_OLD.
+    * 
     */
-  fun returnValuesOnConditionCheckFailure(value: String?) {
+  inline fun returnValuesOnConditionCheckFailure(value: String?) {
     builder.returnValuesOnConditionCheckFailure(value)
   }
 
   
     
   /**
-    * One or more values that can be substituted in an expression.
+    * 
     */
-  fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * The primary key of the item to be deleted. Each element consists of an attribute name and a value for that
-    *  attribute.
+    * 
     */
-  fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.key(buildAttributeValueMap(dslBlock))
   }
 
@@ -126,5 +122,5 @@ class DeleteDSL {
   * Builds instances of type Delete:
   * Represents a request to perform a DeleteItem operation.
   */
-fun buildDelete(dslBlock: DeleteDSL.() -> Unit) =
-  DeleteDSL().apply(dslBlock).build()
+inline fun buildDelete(dslBlock: DeleteDSL.() -> Unit) =
+  DeleteDSL(Delete.builder()).apply(dslBlock).build()

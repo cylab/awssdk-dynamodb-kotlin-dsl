@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BackupSummary
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.BackupSummary
   * Contains details for the backup.
   */
 @DynamodbDSL
-class BackupSummaryCollectionDSL {
-  private val list = ArrayList<BackupSummary>()
-  internal fun build() : List<BackupSummary> = list
+inline class BackupSummaryCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<BackupSummary>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type BackupSummary from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: BackupSummaryDSL.() -> Unit) {
-    list.add(BackupSummaryDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: BackupSummaryDSL.() -> Unit) {
+    list.add(buildBackupSummary(dslBlock))
   }
 
   /**
     * Adds a BackupSummary to the collection built by this DSL
     */
-  operator fun BackupSummary.unaryPlus() {
+  inline operator fun BackupSummary.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given BackupSummary instances to the collection built by this DSL
     */
-  operator fun Collection<BackupSummary>.unaryPlus() {
+  inline operator fun Collection<BackupSummary>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given BackupSummary instances to the collection built by this DSL
     */
-  operator fun Array<BackupSummary>.unaryPlus() {
+  inline operator fun Array<BackupSummary>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class BackupSummaryCollectionDSL {
   * Builds instances of type BackupSummary:
   * Contains details for the backup.
   */
-fun buildBackupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =
-  BackupSummaryCollectionDSL().apply(dslBlock).build()
+inline fun buildBackupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =
+  BackupSummaryCollectionDSL(mutableListOf<BackupSummary>()).apply(dslBlock).build()

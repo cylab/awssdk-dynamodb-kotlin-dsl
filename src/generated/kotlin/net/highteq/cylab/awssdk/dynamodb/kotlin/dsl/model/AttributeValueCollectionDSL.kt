@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 
@@ -18,36 +20,40 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class AttributeValueCollectionDSL {
-  private val list = ArrayList<AttributeValue>()
-  internal fun build() : List<AttributeValue> = list
+inline class AttributeValueCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<AttributeValue>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type AttributeValue from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: AttributeValueDSL.() -> Unit) {
-    list.add(AttributeValueDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: AttributeValueDSL.() -> Unit) {
+    list.add(buildAttributeValue(dslBlock))
   }
 
   /**
     * Adds a AttributeValue to the collection built by this DSL
     */
-  operator fun AttributeValue.unaryPlus() {
+  inline operator fun AttributeValue.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given AttributeValue instances to the collection built by this DSL
     */
-  operator fun Collection<AttributeValue>.unaryPlus() {
+  inline operator fun Collection<AttributeValue>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given AttributeValue instances to the collection built by this DSL
     */
-  operator fun Array<AttributeValue>.unaryPlus() {
+  inline operator fun Array<AttributeValue>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -60,5 +66,5 @@ class AttributeValueCollectionDSL {
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-fun buildAttributeValueCollection(dslBlock: AttributeValueCollectionDSL.() -> Unit) =
-  AttributeValueCollectionDSL().apply(dslBlock).build()
+inline fun buildAttributeValueCollection(dslBlock: AttributeValueCollectionDSL.() -> Unit) =
+  AttributeValueCollectionDSL(mutableListOf<AttributeValue>()).apply(dslBlock).build()

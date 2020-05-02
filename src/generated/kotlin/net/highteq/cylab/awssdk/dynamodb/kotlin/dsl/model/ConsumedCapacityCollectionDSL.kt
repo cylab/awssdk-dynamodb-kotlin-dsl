@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 
@@ -17,36 +19,40 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class ConsumedCapacityCollectionDSL {
-  private val list = ArrayList<ConsumedCapacity>()
-  internal fun build() : List<ConsumedCapacity> = list
+inline class ConsumedCapacityCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ConsumedCapacity>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ConsumedCapacity from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    list.add(ConsumedCapacityDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+    list.add(buildConsumedCapacity(dslBlock))
   }
 
   /**
     * Adds a ConsumedCapacity to the collection built by this DSL
     */
-  operator fun ConsumedCapacity.unaryPlus() {
+  inline operator fun ConsumedCapacity.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ConsumedCapacity instances to the collection built by this DSL
     */
-  operator fun Collection<ConsumedCapacity>.unaryPlus() {
+  inline operator fun Collection<ConsumedCapacity>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ConsumedCapacity instances to the collection built by this DSL
     */
-  operator fun Array<ConsumedCapacity>.unaryPlus() {
+  inline operator fun Array<ConsumedCapacity>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -58,5 +64,5 @@ class ConsumedCapacityCollectionDSL {
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-fun buildConsumedCapacityCollection(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) =
-  ConsumedCapacityCollectionDSL().apply(dslBlock).build()
+inline fun buildConsumedCapacityCollection(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) =
+  ConsumedCapacityCollectionDSL(mutableListOf<ConsumedCapacity>()).apply(dslBlock).build()

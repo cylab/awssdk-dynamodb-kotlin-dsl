@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.CancellationReason
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
 @DynamodbDSL
-class CancellationReasonDSL {
+inline class CancellationReasonDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CancellationReason.builder()
+  val builder: CancellationReason.Builder
+){
+  @PublishedApi
   internal fun build(): CancellationReason = builder.build()
     
   /**
-    * Status code for the result of the cancelled transaction.
+    * 
     */
-  var code: String?
+  inline var code: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class CancellationReasonDSL {
 
 
   /**
-    * Item in the request which caused the transaction to get cancelled.
+    * 
     */
-  var item: Map<String, AttributeValue>?
+  inline var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class CancellationReasonDSL {
 
 
   /**
-    * Cancellation reason message description.
+    * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class CancellationReasonDSL {
   
     
   /**
-    * Item in the request which caused the transaction to get cancelled.
+    * 
     */
-  fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.item(buildAttributeValueMap(dslBlock))
   }
 
@@ -75,5 +77,5 @@ class CancellationReasonDSL {
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
-fun buildCancellationReason(dslBlock: CancellationReasonDSL.() -> Unit) =
-  CancellationReasonDSL().apply(dslBlock).build()
+inline fun buildCancellationReason(dslBlock: CancellationReasonDSL.() -> Unit) =
+  CancellationReasonDSL(CancellationReason.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -17,15 +17,17 @@ import software.amazon.awssdk.services.dynamodb.model.Capacity
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
 @DynamodbDSL
-class CapacityDSL {
+inline class CapacityDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Capacity.builder()
+  val builder: Capacity.Builder
+){
+  @PublishedApi
   internal fun build(): Capacity = builder.build()
     
   /**
-    * The total number of capacity units consumed on a table or an index.
+    * 
     */
-  var capacityUnits: Double?
+  inline var capacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -34,9 +36,9 @@ class CapacityDSL {
 
 
   /**
-    * The total number of read capacity units consumed on a table or an index.
+    * 
     */
-  var readCapacityUnits: Double?
+  inline var readCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -45,9 +47,9 @@ class CapacityDSL {
 
 
   /**
-    * The total number of write capacity units consumed on a table or an index.
+    * 
     */
-  var writeCapacityUnits: Double?
+  inline var writeCapacityUnits: Double?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -63,5 +65,5 @@ class CapacityDSL {
   * Builds instances of type Capacity:
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
-fun buildCapacity(dslBlock: CapacityDSL.() -> Unit) =
-  CapacityDSL().apply(dslBlock).build()
+inline fun buildCapacity(dslBlock: CapacityDSL.() -> Unit) =
+  CapacityDSL(Capacity.builder()).apply(dslBlock).build()

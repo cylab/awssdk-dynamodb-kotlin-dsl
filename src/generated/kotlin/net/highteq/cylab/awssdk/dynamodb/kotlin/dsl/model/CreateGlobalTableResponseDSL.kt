@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableDescription
   * 
   */
 @DynamodbDSL
-class CreateGlobalTableResponseDSL {
+inline class CreateGlobalTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CreateGlobalTableResponse.builder()
+  val builder: CreateGlobalTableResponse.Builder
+){
+  @PublishedApi
   internal fun build(): CreateGlobalTableResponse = builder.build()
     
   /**
-    * Contains the details of the global table.
+    * 
     */
-  var globalTableDescription: GlobalTableDescription?
+  inline var globalTableDescription: GlobalTableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class CreateGlobalTableResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class CreateGlobalTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class CreateGlobalTableResponseDSL {
   
     
   /**
-    * Contains the details of the global table.
+    * 
     */
-  fun globalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) {
+  inline fun globalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) {
     builder.globalTableDescription(buildGlobalTableDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class CreateGlobalTableResponseDSL {
   * Builds instances of type CreateGlobalTableResponse:
   * 
   */
-fun buildCreateGlobalTableResponse(dslBlock: CreateGlobalTableResponseDSL.() -> Unit) =
-  CreateGlobalTableResponseDSL().apply(dslBlock).build()
+inline fun buildCreateGlobalTableResponse(dslBlock: CreateGlobalTableResponseDSL.() -> Unit) =
+  CreateGlobalTableResponseDSL(CreateGlobalTableResponse.builder()).apply(dslBlock).build()

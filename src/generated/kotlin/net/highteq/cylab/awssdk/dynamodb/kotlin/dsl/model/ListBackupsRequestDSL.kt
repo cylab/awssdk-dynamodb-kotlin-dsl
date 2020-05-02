@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,23 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ListBackupsRequest
   * 
   */
 @DynamodbDSL
-class ListBackupsRequestDSL {
+inline class ListBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ListBackupsRequest.builder()
+  val builder: ListBackupsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): ListBackupsRequest = builder.build()
     
   /**
-    * The backups from the table specified by BackupType are listed.
     * 
-    *  Where BackupType can be:
-    * 
-    *  USER - On-demand backup created by you.
-    * 
-    *  SYSTEM - On-demand backup automatically created by DynamoDB.
-    * 
-    *  ALL - All types of on-demand backups (USER and SYSTEM).
     */
-  var backupType: BackupTypeFilter?
+  inline var backupType: BackupTypeFilter?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -45,12 +39,9 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * LastEvaluatedBackupArn is the Amazon Resource Name (ARN) of the backup last evaluated when the
-    *  current page of results was returned, inclusive of the current page of results. This value may be specified
-    *  as the ExclusiveStartBackupArn of a new ListBackups operation in order to fetch the
-    *  next page of results.
+    * 
     */
-  var exclusiveStartBackupArn: String?
+  inline var exclusiveStartBackupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,9 +50,9 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * Maximum number of backups to return at once.
+    * 
     */
-  var limit: Int?
+  inline var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,7 +63,7 @@ class ListBackupsRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,9 +72,9 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * The backups from the table specified by TableName are listed.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,9 +83,9 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * Only backups created after this time are listed. TimeRangeLowerBound is inclusive.
+    * 
     */
-  var timeRangeLowerBound: Instant?
+  inline var timeRangeLowerBound: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -103,9 +94,9 @@ class ListBackupsRequestDSL {
 
 
   /**
-    * Only backups created before this time are listed. TimeRangeUpperBound is exclusive.
+    * 
     */
-  var timeRangeUpperBound: Instant?
+  inline var timeRangeUpperBound: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -114,17 +105,9 @@ class ListBackupsRequestDSL {
 
     
   /**
-    * The backups from the table specified by BackupType are listed.
     * 
-    *  Where BackupType can be:
-    * 
-    *  USER - On-demand backup created by you.
-    * 
-    *  SYSTEM - On-demand backup automatically created by DynamoDB.
-    * 
-    *  ALL - All types of on-demand backups (USER and SYSTEM).
     */
-  fun backupType(value: String?) {
+  inline fun backupType(value: String?) {
     builder.backupType(value)
   }
 
@@ -136,5 +119,5 @@ class ListBackupsRequestDSL {
   * Builds instances of type ListBackupsRequest:
   * 
   */
-fun buildListBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
-  ListBackupsRequestDSL().apply(dslBlock).build()
+inline fun buildListBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
+  ListBackupsRequestDSL(ListBackupsRequest.builder()).apply(dslBlock).build()

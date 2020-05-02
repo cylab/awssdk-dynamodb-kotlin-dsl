@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsDescription
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   * Represents the properties of a global secondary index.
   */
 @DynamodbDSL
-class ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL {
-  private val list = ArrayList<ReplicaGlobalSecondaryIndexSettingsDescription>()
-  internal fun build() : List<ReplicaGlobalSecondaryIndexSettingsDescription> = list
+inline class ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ReplicaGlobalSecondaryIndexSettingsDescription>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ReplicaGlobalSecondaryIndexSettingsDescription from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
-    list.add(ReplicaGlobalSecondaryIndexSettingsDescriptionDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) {
+    list.add(buildReplicaGlobalSecondaryIndexSettingsDescription(dslBlock))
   }
 
   /**
     * Adds a ReplicaGlobalSecondaryIndexSettingsDescription to the collection built by this DSL
     */
-  operator fun ReplicaGlobalSecondaryIndexSettingsDescription.unaryPlus() {
+  inline operator fun ReplicaGlobalSecondaryIndexSettingsDescription.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
     */
-  operator fun Collection<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
+  inline operator fun Collection<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ReplicaGlobalSecondaryIndexSettingsDescription instances to the collection built by this DSL
     */
-  operator fun Array<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
+  inline operator fun Array<ReplicaGlobalSecondaryIndexSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL {
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsDescription:
   * Represents the properties of a global secondary index.
   */
-fun buildReplicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL.() -> Unit) =
-  ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL().apply(dslBlock).build()
+inline fun buildReplicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL.() -> Unit) =
+  ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL(mutableListOf<ReplicaGlobalSecondaryIndexSettingsDescription>()).apply(dslBlock).build()

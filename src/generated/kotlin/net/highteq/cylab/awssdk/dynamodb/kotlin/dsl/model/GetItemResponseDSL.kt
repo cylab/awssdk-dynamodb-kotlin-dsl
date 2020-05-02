@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,18 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.GetItemResponse
   * Represents the output of a GetItem operation.
   */
 @DynamodbDSL
-class GetItemResponseDSL {
+inline class GetItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GetItemResponse.builder()
+  val builder: GetItemResponse.Builder
+){
+  @PublishedApi
   internal fun build(): GetItemResponse = builder.build()
     
   /**
-    * The capacity units consumed by the GetItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Read/Write Capacity Mode in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var consumedCapacity: ConsumedCapacity?
+  inline var consumedCapacity: ConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,10 +40,9 @@ class GetItemResponseDSL {
 
 
   /**
-    * A map of attribute names to AttributeValue objects, as specified by
-    *  ProjectionExpression.
+    * 
     */
-  var item: Map<String, AttributeValue>?
+  inline var item: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -55,7 +53,7 @@ class GetItemResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,7 +64,7 @@ class GetItemResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -77,21 +75,17 @@ class GetItemResponseDSL {
   
     
   /**
-    * The capacity units consumed by the GetItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Read/Write Capacity Mode in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+  inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
 
 
   /**
-    * A map of attribute names to AttributeValue objects, as specified by
-    *  ProjectionExpression.
+    * 
     */
-  fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.item(buildAttributeValueMap(dslBlock))
   }
 
@@ -101,5 +95,5 @@ class GetItemResponseDSL {
   * Builds instances of type GetItemResponse:
   * Represents the output of a GetItem operation.
   */
-fun buildGetItemResponse(dslBlock: GetItemResponseDSL.() -> Unit) =
-  GetItemResponseDSL().apply(dslBlock).build()
+inline fun buildGetItemResponse(dslBlock: GetItemResponseDSL.() -> Unit) =
+  GetItemResponseDSL(GetItemResponse.builder()).apply(dslBlock).build()

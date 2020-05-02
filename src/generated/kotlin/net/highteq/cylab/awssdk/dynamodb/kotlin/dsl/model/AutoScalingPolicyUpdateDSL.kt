@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -15,18 +15,20 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
 
 /**
   * Builds instances of type AutoScalingPolicyUpdate:
-  * Represents the auto scaling policy to be modified.
+  * Represents the autoscaling policy to be modified.
   */
 @DynamodbDSL
-class AutoScalingPolicyUpdateDSL {
+inline class AutoScalingPolicyUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = AutoScalingPolicyUpdate.builder()
+  val builder: AutoScalingPolicyUpdate.Builder
+){
+  @PublishedApi
   internal fun build(): AutoScalingPolicyUpdate = builder.build()
     
   /**
-    * The name of the scaling policy.
+    * 
     */
-  var policyName: String?
+  inline var policyName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class AutoScalingPolicyUpdateDSL {
 
 
   /**
-    * Represents a target tracking scaling policy configuration.
+    * 
     */
-  var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate?
+  inline var targetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class AutoScalingPolicyUpdateDSL {
   
     
   /**
-    * Represents a target tracking scaling policy configuration.
+    * 
     */
-  fun targetTrackingScalingPolicyConfiguration(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) {
+  inline fun targetTrackingScalingPolicyConfiguration(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) {
     builder.targetTrackingScalingPolicyConfiguration(buildAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock))
   }
 
@@ -58,7 +60,7 @@ class AutoScalingPolicyUpdateDSL {
 
 /**
   * Builds instances of type AutoScalingPolicyUpdate:
-  * Represents the auto scaling policy to be modified.
+  * Represents the autoscaling policy to be modified.
   */
-fun buildAutoScalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) =
-  AutoScalingPolicyUpdateDSL().apply(dslBlock).build()
+inline fun buildAutoScalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) =
+  AutoScalingPolicyUpdateDSL(AutoScalingPolicyUpdate.builder()).apply(dslBlock).build()

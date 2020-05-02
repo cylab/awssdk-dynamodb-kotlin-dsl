@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -22,19 +22,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateItemResponse
   * Represents the output of an UpdateItem operation.
   */
 @DynamodbDSL
-class UpdateItemResponseDSL {
+inline class UpdateItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateItemResponse.builder()
+  val builder: UpdateItemResponse.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateItemResponse = builder.build()
     
   /**
-    * A map of attribute values as they appear before or after the UpdateItem operation, as determined
-    *  by the ReturnValues parameter.
     * 
-    *  The Attributes map is only present if ReturnValues was specified as something other
-    *  than NONE in the request. Each element represents one attribute.
     */
-  var attributes: Map<String, AttributeValue>?
+  inline var attributes: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -43,12 +41,9 @@ class UpdateItemResponseDSL {
 
 
   /**
-    * The capacity units consumed by the UpdateItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var consumedCapacity: ConsumedCapacity?
+  inline var consumedCapacity: ConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,26 +52,9 @@ class UpdateItemResponseDSL {
 
 
   /**
-    * Information about item collections, if any, that were affected by the UpdateItem operation.
-    *  ItemCollectionMetrics is only returned if the ReturnItemCollectionMetrics parameter
-    *  was specified. If the table does not have any local secondary indexes, this information is not returned in
-    *  the response.
     * 
-    *  Each ItemCollectionMetrics element consists of:
-    * 
-    *  ItemCollectionKey - The partition key value of the item collection. This is the same as the
-    *  partition key value of the item itself.
-    * 
-    *  SizeEstimateRangeGB - An estimate of item collection size, in gigabytes. This value is a
-    *  two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the
-    *  size of all the items in the table, plus the size of all attributes projected into all of the local secondary
-    *  indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size
-    *  limit.
-    * 
-    *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
-    *  estimate.
     */
-  var itemCollectionMetrics: ItemCollectionMetrics?
+  inline var itemCollectionMetrics: ItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -87,7 +65,7 @@ class UpdateItemResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -98,7 +76,7 @@ class UpdateItemResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -109,49 +87,25 @@ class UpdateItemResponseDSL {
   
     
   /**
-    * A map of attribute values as they appear before or after the UpdateItem operation, as determined
-    *  by the ReturnValues parameter.
     * 
-    *  The Attributes map is only present if ReturnValues was specified as something other
-    *  than NONE in the request. Each element represents one attribute.
     */
-  fun attributes(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun attributes(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.attributes(buildAttributeValueMap(dslBlock))
   }
 
 
   /**
-    * The capacity units consumed by the UpdateItem operation. The data returned includes the total
-    *  provisioned throughput consumed, along with statistics for the table and any indexes involved in the
-    *  operation. ConsumedCapacity is only returned if the ReturnConsumedCapacity
-    *  parameter was specified. For more information, see Provisioned Throughput in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
+  inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacity(dslBlock))
   }
 
 
   /**
-    * Information about item collections, if any, that were affected by the UpdateItem operation.
-    *  ItemCollectionMetrics is only returned if the ReturnItemCollectionMetrics parameter
-    *  was specified. If the table does not have any local secondary indexes, this information is not returned in
-    *  the response.
     * 
-    *  Each ItemCollectionMetrics element consists of:
-    * 
-    *  ItemCollectionKey - The partition key value of the item collection. This is the same as the
-    *  partition key value of the item itself.
-    * 
-    *  SizeEstimateRangeGB - An estimate of item collection size, in gigabytes. This value is a
-    *  two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the
-    *  size of all the items in the table, plus the size of all attributes projected into all of the local secondary
-    *  indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size
-    *  limit.
-    * 
-    *  The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the
-    *  estimate.
     */
-  fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) {
+  inline fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) {
     builder.itemCollectionMetrics(buildItemCollectionMetrics(dslBlock))
   }
 
@@ -161,5 +115,5 @@ class UpdateItemResponseDSL {
   * Builds instances of type UpdateItemResponse:
   * Represents the output of an UpdateItem operation.
   */
-fun buildUpdateItemResponse(dslBlock: UpdateItemResponseDSL.() -> Unit) =
-  UpdateItemResponseDSL().apply(dslBlock).build()
+inline fun buildUpdateItemResponse(dslBlock: UpdateItemResponseDSL.() -> Unit) =
+  UpdateItemResponseDSL(UpdateItemResponse.builder()).apply(dslBlock).build()

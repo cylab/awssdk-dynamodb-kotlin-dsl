@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.streams
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -15,9 +15,9 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientAsyncConfiguration
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.async.SdkAsyncHttpClient
-import software.amazon.awssdk.http.async.SdkAsyncHttpClient.Builder
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient
+import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClientBuilder
 
 /**
   * Builds instances of type DynamoDbStreamsAsyncClient:
@@ -31,15 +31,17 @@ import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClie
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class DynamoDbStreamsAsyncClientDSL {
+inline class DynamoDbStreamsAsyncClientDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DynamoDbStreamsAsyncClient.builder()
+  val builder: DynamoDbStreamsAsyncClientBuilder
+){
+  @PublishedApi
   internal fun build(): DynamoDbStreamsAsyncClient = builder.build()
     
   /**
     * 
     */
-  var asyncConfiguration: ClientAsyncConfiguration?
+  inline var asyncConfiguration: ClientAsyncConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var credentialsProvider: AwsCredentialsProvider?
+  inline var credentialsProvider: AwsCredentialsProvider?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +63,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var endpointOverride: URI?
+  inline var endpointOverride: URI?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,7 +74,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var httpClient: SdkAsyncHttpClient?
+  inline var httpClient: SdkAsyncHttpClient?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,7 +85,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var httpClientBuilder: Builder<*>?
+  inline var httpClientBuilder: SdkAsyncHttpClient.Builder<*>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,7 +96,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var overrideConfiguration: ClientOverrideConfiguration?
+  inline var overrideConfiguration: ClientOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -105,7 +107,7 @@ class DynamoDbStreamsAsyncClientDSL {
   /**
     * 
     */
-  var region: Region?
+  inline var region: Region?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -128,5 +130,5 @@ class DynamoDbStreamsAsyncClientDSL {
   *  application development with Streams, see Capturing Table Activity with
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
-fun buildDynamoDbStreamsAsyncClient(dslBlock: DynamoDbStreamsAsyncClientDSL.() -> Unit) =
-  DynamoDbStreamsAsyncClientDSL().apply(dslBlock).build()
+inline fun buildDynamoDbStreamsAsyncClient(dslBlock: DynamoDbStreamsAsyncClientDSL.() -> Unit) =
+  DynamoDbStreamsAsyncClientDSL(DynamoDbStreamsAsyncClient.builder()).apply(dslBlock).build()

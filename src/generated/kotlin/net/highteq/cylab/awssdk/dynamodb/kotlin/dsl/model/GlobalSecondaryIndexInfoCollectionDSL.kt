@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexInfo
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexInfo
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
 @DynamodbDSL
-class GlobalSecondaryIndexInfoCollectionDSL {
-  private val list = ArrayList<GlobalSecondaryIndexInfo>()
-  internal fun build() : List<GlobalSecondaryIndexInfo> = list
+inline class GlobalSecondaryIndexInfoCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<GlobalSecondaryIndexInfo>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type GlobalSecondaryIndexInfo from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) {
-    list.add(GlobalSecondaryIndexInfoDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) {
+    list.add(buildGlobalSecondaryIndexInfo(dslBlock))
   }
 
   /**
     * Adds a GlobalSecondaryIndexInfo to the collection built by this DSL
     */
-  operator fun GlobalSecondaryIndexInfo.unaryPlus() {
+  inline operator fun GlobalSecondaryIndexInfo.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given GlobalSecondaryIndexInfo instances to the collection built by this DSL
     */
-  operator fun Collection<GlobalSecondaryIndexInfo>.unaryPlus() {
+  inline operator fun Collection<GlobalSecondaryIndexInfo>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given GlobalSecondaryIndexInfo instances to the collection built by this DSL
     */
-  operator fun Array<GlobalSecondaryIndexInfo>.unaryPlus() {
+  inline operator fun Array<GlobalSecondaryIndexInfo>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class GlobalSecondaryIndexInfoCollectionDSL {
   * Builds instances of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-fun buildGlobalSecondaryIndexInfoCollection(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) =
-  GlobalSecondaryIndexInfoCollectionDSL().apply(dslBlock).build()
+inline fun buildGlobalSecondaryIndexInfoCollection(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) =
+  GlobalSecondaryIndexInfoCollectionDSL(mutableListOf<GlobalSecondaryIndexInfo>()).apply(dslBlock).build()

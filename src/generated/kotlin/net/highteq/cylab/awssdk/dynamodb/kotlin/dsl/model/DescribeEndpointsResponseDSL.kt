@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
   * 
   */
 @DynamodbDSL
-class DescribeEndpointsResponseDSL {
+inline class DescribeEndpointsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeEndpointsResponse.builder()
+  val builder: DescribeEndpointsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeEndpointsResponse = builder.build()
     
   /**
-    * List of endpoints.
+    * 
     */
-  var endpoints: Collection<Endpoint>?
+  inline var endpoints: Collection<Endpoint>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DescribeEndpointsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class DescribeEndpointsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class DescribeEndpointsResponseDSL {
   
     
   /**
-    * List of endpoints.
+    * 
     */
-  fun endpoints(dslBlock: EndpointCollectionDSL.() -> Unit) {
+  inline fun endpoints(dslBlock: EndpointCollectionDSL.() -> Unit) {
     builder.endpoints(buildEndpointCollection(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class DescribeEndpointsResponseDSL {
   * Builds instances of type DescribeEndpointsResponse:
   * 
   */
-fun buildDescribeEndpointsResponse(dslBlock: DescribeEndpointsResponseDSL.() -> Unit) =
-  DescribeEndpointsResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeEndpointsResponse(dslBlock: DescribeEndpointsResponseDSL.() -> Unit) =
+  DescribeEndpointsResponseDSL(DescribeEndpointsResponse.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,16 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.Record
   * Represents the output of a GetRecords operation.
   */
 @DynamodbDSL
-class GetRecordsResponseDSL {
+inline class GetRecordsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GetRecordsResponse.builder()
+  val builder: GetRecordsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): GetRecordsResponse = builder.build()
     
   /**
-    * The next position in the shard from which to start sequentially reading stream records. If set to
-    *  null, the shard has been closed and the requested iterator will not return any more data.
+    * 
     */
-  var nextShardIterator: String?
+  inline var nextShardIterator: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,9 +39,9 @@ class GetRecordsResponseDSL {
 
 
   /**
-    * The stream records from the shard, which were retrieved using the shard iterator.
+    * 
     */
-  var records: Collection<Record>?
+  inline var records: Collection<Record>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +52,7 @@ class GetRecordsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +63,7 @@ class GetRecordsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,9 +74,9 @@ class GetRecordsResponseDSL {
   
     
   /**
-    * The stream records from the shard, which were retrieved using the shard iterator.
+    * 
     */
-  fun records(dslBlock: RecordCollectionDSL.() -> Unit) {
+  inline fun records(dslBlock: RecordCollectionDSL.() -> Unit) {
     builder.records(buildRecordCollection(dslBlock))
   }
 
@@ -85,5 +86,5 @@ class GetRecordsResponseDSL {
   * Builds instances of type GetRecordsResponse:
   * Represents the output of a GetRecords operation.
   */
-fun buildGetRecordsResponse(dslBlock: GetRecordsResponseDSL.() -> Unit) =
-  GetRecordsResponseDSL().apply(dslBlock).build()
+inline fun buildGetRecordsResponse(dslBlock: GetRecordsResponseDSL.() -> Unit) =
+  GetRecordsResponseDSL(GetRecordsResponse.builder()).apply(dslBlock).build()

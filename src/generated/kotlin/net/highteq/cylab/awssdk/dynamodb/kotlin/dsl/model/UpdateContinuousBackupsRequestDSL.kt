@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateContinuousBackupsReq
   * 
   */
 @DynamodbDSL
-class UpdateContinuousBackupsRequestDSL {
+inline class UpdateContinuousBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateContinuousBackupsRequest.builder()
+  val builder: UpdateContinuousBackupsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateContinuousBackupsRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class UpdateContinuousBackupsRequestDSL {
 
 
   /**
-    * Represents the settings used to enable point in time recovery.
+    * 
     */
-  var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification?
+  inline var pointInTimeRecoverySpecification: PointInTimeRecoverySpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class UpdateContinuousBackupsRequestDSL {
 
 
   /**
-    * The name of the table.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class UpdateContinuousBackupsRequestDSL {
   
     
   /**
-    * Represents the settings used to enable point in time recovery.
+    * 
     */
-  fun pointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) {
+  inline fun pointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) {
     builder.pointInTimeRecoverySpecification(buildPointInTimeRecoverySpecification(dslBlock))
   }
 
@@ -72,5 +74,5 @@ class UpdateContinuousBackupsRequestDSL {
   * Builds instances of type UpdateContinuousBackupsRequest:
   * 
   */
-fun buildUpdateContinuousBackupsRequest(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
-  UpdateContinuousBackupsRequestDSL().apply(dslBlock).build()
+inline fun buildUpdateContinuousBackupsRequest(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
+  UpdateContinuousBackupsRequestDSL(UpdateContinuousBackupsRequest.builder()).apply(dslBlock).build()

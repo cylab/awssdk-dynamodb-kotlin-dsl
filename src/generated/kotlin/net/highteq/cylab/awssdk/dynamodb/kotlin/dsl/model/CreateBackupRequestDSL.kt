@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.CreateBackupRequest
   * 
   */
 @DynamodbDSL
-class CreateBackupRequestDSL {
+inline class CreateBackupRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CreateBackupRequest.builder()
+  val builder: CreateBackupRequest.Builder
+){
+  @PublishedApi
   internal fun build(): CreateBackupRequest = builder.build()
     
   /**
-    * Specified name for the backup.
+    * 
     */
-  var backupName: String?
+  inline var backupName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +39,7 @@ class CreateBackupRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class CreateBackupRequestDSL {
 
 
   /**
-    * The name of the table.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -64,5 +66,5 @@ class CreateBackupRequestDSL {
   * Builds instances of type CreateBackupRequest:
   * 
   */
-fun buildCreateBackupRequest(dslBlock: CreateBackupRequestDSL.() -> Unit) =
-  CreateBackupRequestDSL().apply(dslBlock).build()
+inline fun buildCreateBackupRequest(dslBlock: CreateBackupRequestDSL.() -> Unit) =
+  CreateBackupRequestDSL(CreateBackupRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -26,25 +26,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
   *  An existing global secondary index to be removed from an existing table.
   */
 @DynamodbDSL
-class GlobalSecondaryIndexUpdateDSL {
+inline class GlobalSecondaryIndexUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GlobalSecondaryIndexUpdate.builder()
+  val builder: GlobalSecondaryIndexUpdate.Builder
+){
+  @PublishedApi
   internal fun build(): GlobalSecondaryIndexUpdate = builder.build()
     
   /**
-    * The parameters required for creating a global secondary index on an existing table:
     * 
-    *  IndexName 
-    * 
-    *  KeySchema 
-    * 
-    *  AttributeDefinitions 
-    * 
-    *  Projection 
-    * 
-    *  ProvisionedThroughput
     */
-  var create: CreateGlobalSecondaryIndexAction?
+  inline var create: CreateGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,9 +45,9 @@ class GlobalSecondaryIndexUpdateDSL {
 
 
   /**
-    * The name of an existing global secondary index to be removed.
+    * 
     */
-  var delete: DeleteGlobalSecondaryIndexAction?
+  inline var delete: DeleteGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -64,10 +56,9 @@ class GlobalSecondaryIndexUpdateDSL {
 
 
   /**
-    * The name of an existing global secondary index, along with new provisioned throughput settings to be applied
-    *  to that index.
+    * 
     */
-  var update: UpdateGlobalSecondaryIndexAction?
+  inline var update: UpdateGlobalSecondaryIndexAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -78,36 +69,25 @@ class GlobalSecondaryIndexUpdateDSL {
   
     
   /**
-    * The parameters required for creating a global secondary index on an existing table:
     * 
-    *  IndexName 
-    * 
-    *  KeySchema 
-    * 
-    *  AttributeDefinitions 
-    * 
-    *  Projection 
-    * 
-    *  ProvisionedThroughput
     */
-  fun create(dslBlock: CreateGlobalSecondaryIndexActionDSL.() -> Unit) {
+  inline fun create(dslBlock: CreateGlobalSecondaryIndexActionDSL.() -> Unit) {
     builder.create(buildCreateGlobalSecondaryIndexAction(dslBlock))
   }
 
 
   /**
-    * The name of an existing global secondary index to be removed.
+    * 
     */
-  fun delete(dslBlock: DeleteGlobalSecondaryIndexActionDSL.() -> Unit) {
+  inline fun delete(dslBlock: DeleteGlobalSecondaryIndexActionDSL.() -> Unit) {
     builder.delete(buildDeleteGlobalSecondaryIndexAction(dslBlock))
   }
 
 
   /**
-    * The name of an existing global secondary index, along with new provisioned throughput settings to be applied
-    *  to that index.
+    * 
     */
-  fun update(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) {
+  inline fun update(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) {
     builder.update(buildUpdateGlobalSecondaryIndexAction(dslBlock))
   }
 
@@ -123,5 +103,5 @@ class GlobalSecondaryIndexUpdateDSL {
   * 
   *  An existing global secondary index to be removed from an existing table.
   */
-fun buildGlobalSecondaryIndexUpdate(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) =
-  GlobalSecondaryIndexUpdateDSL().apply(dslBlock).build()
+inline fun buildGlobalSecondaryIndexUpdate(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) =
+  GlobalSecondaryIndexUpdateDSL(GlobalSecondaryIndexUpdate.builder()).apply(dslBlock).build()

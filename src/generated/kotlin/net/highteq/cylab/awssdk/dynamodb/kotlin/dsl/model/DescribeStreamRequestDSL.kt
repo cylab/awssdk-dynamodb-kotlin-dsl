@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,16 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest
   * Represents the input of a DescribeStream operation.
   */
 @DynamodbDSL
-class DescribeStreamRequestDSL {
+inline class DescribeStreamRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeStreamRequest.builder()
+  val builder: DescribeStreamRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeStreamRequest = builder.build()
     
   /**
-    * The shard ID of the first item that this operation will evaluate. Use the value that was returned for
-    *  LastEvaluatedShardId in the previous operation.
+    * 
     */
-  var exclusiveStartShardId: String?
+  inline var exclusiveStartShardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +37,9 @@ class DescribeStreamRequestDSL {
 
 
   /**
-    * The maximum number of shard objects to return. The upper limit is 100.
+    * 
     */
-  var limit: Int?
+  inline var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +50,7 @@ class DescribeStreamRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,9 +59,9 @@ class DescribeStreamRequestDSL {
 
 
   /**
-    * The Amazon Resource Name (ARN) for the stream.
+    * 
     */
-  var streamArn: String?
+  inline var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,5 +77,5 @@ class DescribeStreamRequestDSL {
   * Builds instances of type DescribeStreamRequest:
   * Represents the input of a DescribeStream operation.
   */
-fun buildDescribeStreamRequest(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  DescribeStreamRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeStreamRequest(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
+  DescribeStreamRequestDSL(DescribeStreamRequest.builder()).apply(dslBlock).build()

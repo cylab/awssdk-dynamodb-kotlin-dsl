@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.UntagResourceResponse
   * 
   */
 @DynamodbDSL
-class UntagResourceResponseDSL {
+inline class UntagResourceResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UntagResourceResponse.builder()
+  val builder: UntagResourceResponse.Builder
+){
+  @PublishedApi
   internal fun build(): UntagResourceResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class UntagResourceResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,5 +56,5 @@ class UntagResourceResponseDSL {
   * Builds instances of type UntagResourceResponse:
   * 
   */
-fun buildUntagResourceResponse(dslBlock: UntagResourceResponseDSL.() -> Unit) =
-  UntagResourceResponseDSL().apply(dslBlock).build()
+inline fun buildUntagResourceResponse(dslBlock: UntagResourceResponseDSL.() -> Unit) =
+  UntagResourceResponseDSL(UntagResourceResponse.builder()).apply(dslBlock).build()

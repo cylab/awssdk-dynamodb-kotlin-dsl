@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -25,15 +25,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
   *  An existing replica to be removed from an existing global table.
   */
 @DynamodbDSL
-class ReplicaUpdateDSL {
+inline class ReplicaUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaUpdate.builder()
+  val builder: ReplicaUpdate.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaUpdate = builder.build()
     
   /**
-    * The parameters required for creating a replica on an existing global table.
+    * 
     */
-  var create: CreateReplicaAction?
+  inline var create: CreateReplicaAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -42,9 +44,9 @@ class ReplicaUpdateDSL {
 
 
   /**
-    * The name of the existing replica to be removed.
+    * 
     */
-  var delete: DeleteReplicaAction?
+  inline var delete: DeleteReplicaAction?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -55,17 +57,17 @@ class ReplicaUpdateDSL {
   
     
   /**
-    * The parameters required for creating a replica on an existing global table.
+    * 
     */
-  fun create(dslBlock: CreateReplicaActionDSL.() -> Unit) {
+  inline fun create(dslBlock: CreateReplicaActionDSL.() -> Unit) {
     builder.create(buildCreateReplicaAction(dslBlock))
   }
 
 
   /**
-    * The name of the existing replica to be removed.
+    * 
     */
-  fun delete(dslBlock: DeleteReplicaActionDSL.() -> Unit) {
+  inline fun delete(dslBlock: DeleteReplicaActionDSL.() -> Unit) {
     builder.delete(buildDeleteReplicaAction(dslBlock))
   }
 
@@ -81,5 +83,5 @@ class ReplicaUpdateDSL {
   * 
   *  An existing replica to be removed from an existing global table.
   */
-fun buildReplicaUpdate(dslBlock: ReplicaUpdateDSL.() -> Unit) =
-  ReplicaUpdateDSL().apply(dslBlock).build()
+inline fun buildReplicaUpdate(dslBlock: ReplicaUpdateDSL.() -> Unit) =
+  ReplicaUpdateDSL(ReplicaUpdate.builder()).apply(dslBlock).build()

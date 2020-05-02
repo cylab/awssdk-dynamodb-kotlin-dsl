@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 
@@ -18,43 +20,47 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   *  and the sort key.
   */
 @DynamodbDSL
-class KeysAndAttributesMapDSL {
-  private val map = mutableMapOf<String, KeysAndAttributes>()
+inline class KeysAndAttributesMapDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val map : MutableMap<String, KeysAndAttributes>
+) {
+  @PublishedApi
   internal fun build() : Map<String, KeysAndAttributes> = map
 
   /**
     * Builds an object of type KeysAndAttributes from 
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
-  fun o(key: String, dslBlock: KeysAndAttributesDSL.() -> Unit) {
-    map[key] = KeysAndAttributesDSL().apply(dslBlock).build()
+  inline fun o(key: String, dslBlock: KeysAndAttributesDSL.() -> Unit) {
+    map[key] = buildKeysAndAttributes(dslBlock)
   }
 
   /**
     * Adds a pair of String -> KeysAndAttributes to the map
     */
-  operator fun Pair<String, KeysAndAttributes>.unaryPlus() {
+  inline operator fun Pair<String, KeysAndAttributes>.unaryPlus() {
     map[this.first] = this.second
   }
 
   /**
     * Adds all given Pair<String, KeysAndAttributes> instances to the map
     */
-  operator fun Collection<Pair<String, KeysAndAttributes>>.unaryPlus() {
+  inline operator fun Collection<Pair<String, KeysAndAttributes>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all given Pair<String, KeysAndAttributes> instances to the map
     */
-  operator fun Array<Pair<String, KeysAndAttributes>>.unaryPlus() {
+  inline operator fun Array<Pair<String, KeysAndAttributes>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all entries in the given map
     */
-  operator fun Map<String, KeysAndAttributes>.unaryPlus() {
+  inline operator fun Map<String, KeysAndAttributes>.unaryPlus() {
     map.putAll(this)
   }
 }
@@ -67,5 +73,5 @@ class KeysAndAttributesMapDSL {
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-fun buildKeysAndAttributesMap(dslBlock: KeysAndAttributesMapDSL.() -> Unit) =
-  KeysAndAttributesMapDSL().apply(dslBlock).build()
+inline fun buildKeysAndAttributesMap(dslBlock: KeysAndAttributesMapDSL.() -> Unit) =
+  KeysAndAttributesMapDSL(mutableMapOf<String, KeysAndAttributes>()).apply(dslBlock).build()

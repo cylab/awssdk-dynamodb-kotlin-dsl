@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
 @DynamodbDSL
-class GlobalSecondaryIndexInfoDSL {
+inline class GlobalSecondaryIndexInfoDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GlobalSecondaryIndexInfo.builder()
+  val builder: GlobalSecondaryIndexInfo.Builder
+){
+  @PublishedApi
   internal fun build(): GlobalSecondaryIndexInfo = builder.build()
     
   /**
-    * The name of the global secondary index.
+    * 
     */
-  var indexName: String?
+  inline var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,22 +39,9 @@ class GlobalSecondaryIndexInfoDSL {
 
 
   /**
-    * The complete key schema for a global secondary index, which consists of one or more pairs of attribute names
-    *  and key types:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  var keySchema: Collection<KeySchemaElement>?
+  inline var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,10 +50,9 @@ class GlobalSecondaryIndexInfoDSL {
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into the global secondary index. These are
-    *  in addition to the primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  var projection: Projection?
+  inline var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,9 +61,9 @@ class GlobalSecondaryIndexInfoDSL {
 
 
   /**
-    * Represents the provisioned throughput settings for the specified global secondary index.
+    * 
     */
-  var provisionedThroughput: ProvisionedThroughput?
+  inline var provisionedThroughput: ProvisionedThroughput?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -86,39 +74,25 @@ class GlobalSecondaryIndexInfoDSL {
   
     
   /**
-    * The complete key schema for a global secondary index, which consists of one or more pairs of attribute names
-    *  and key types:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
+  inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into the global secondary index. These are
-    *  in addition to the primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  fun projection(dslBlock: ProjectionDSL.() -> Unit) {
+  inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
     builder.projection(buildProjection(dslBlock))
   }
 
 
   /**
-    * Represents the provisioned throughput settings for the specified global secondary index.
+    * 
     */
-  fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
+  inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
     builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
   }
 
@@ -128,5 +102,5 @@ class GlobalSecondaryIndexInfoDSL {
   * Builds instances of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-fun buildGlobalSecondaryIndexInfo(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) =
-  GlobalSecondaryIndexInfoDSL().apply(dslBlock).build()
+inline fun buildGlobalSecondaryIndexInfo(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) =
+  GlobalSecondaryIndexInfoDSL(GlobalSecondaryIndexInfo.builder()).apply(dslBlock).build()

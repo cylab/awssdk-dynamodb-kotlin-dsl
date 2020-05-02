@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,16 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest
   * Represents the input of a ListStreams operation.
   */
 @DynamodbDSL
-class ListStreamsRequestDSL {
+inline class ListStreamsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ListStreamsRequest.builder()
+  val builder: ListStreamsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): ListStreamsRequest = builder.build()
     
   /**
-    * The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was
-    *  returned for LastEvaluatedStreamArn in the previous operation.
+    * 
     */
-  var exclusiveStartStreamArn: String?
+  inline var exclusiveStartStreamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +37,9 @@ class ListStreamsRequestDSL {
 
 
   /**
-    * The maximum number of streams to return. The upper limit is 100.
+    * 
     */
-  var limit: Int?
+  inline var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,7 +50,7 @@ class ListStreamsRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,9 +59,9 @@ class ListStreamsRequestDSL {
 
 
   /**
-    * If this parameter is provided, then only the streams associated with this table name are returned.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -76,5 +77,5 @@ class ListStreamsRequestDSL {
   * Builds instances of type ListStreamsRequest:
   * Represents the input of a ListStreams operation.
   */
-fun buildListStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  ListStreamsRequestDSL().apply(dslBlock).build()
+inline fun buildListStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
+  ListStreamsRequestDSL(ListStreamsRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -17,15 +17,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   * Contains the details of the replica.
   */
 @DynamodbDSL
-class ReplicaDescriptionDSL {
+inline class ReplicaDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaDescription.builder()
+  val builder: ReplicaDescription.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaDescription = builder.build()
     
   /**
-    * The name of the Region.
+    * 
     */
-  var regionName: String?
+  inline var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,5 +43,5 @@ class ReplicaDescriptionDSL {
   * Builds instances of type ReplicaDescription:
   * Contains the details of the replica.
   */
-fun buildReplicaDescription(dslBlock: ReplicaDescriptionDSL.() -> Unit) =
-  ReplicaDescriptionDSL().apply(dslBlock).build()
+inline fun buildReplicaDescription(dslBlock: ReplicaDescriptionDSL.() -> Unit) =
+  ReplicaDescriptionDSL(ReplicaDescription.builder()).apply(dslBlock).build()

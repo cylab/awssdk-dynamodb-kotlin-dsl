@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.Shard
   * A uniquely identified group of stream records within a stream.
   */
 @DynamodbDSL
-class ShardDSL {
+inline class ShardDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Shard.builder()
+  val builder: Shard.Builder
+){
+  @PublishedApi
   internal fun build(): Shard = builder.build()
     
   /**
-    * The shard ID of the current shard's parent.
+    * 
     */
-  var parentShardId: String?
+  inline var parentShardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class ShardDSL {
 
 
   /**
-    * The range of possible sequence numbers for the shard.
+    * 
     */
-  var sequenceNumberRange: SequenceNumberRange?
+  inline var sequenceNumberRange: SequenceNumberRange?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class ShardDSL {
 
 
   /**
-    * The system-generated identifier for this shard.
+    * 
     */
-  var shardId: String?
+  inline var shardId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,9 +61,9 @@ class ShardDSL {
   
     
   /**
-    * The range of possible sequence numbers for the shard.
+    * 
     */
-  fun sequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) {
+  inline fun sequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) {
     builder.sequenceNumberRange(buildSequenceNumberRange(dslBlock))
   }
 
@@ -71,5 +73,5 @@ class ShardDSL {
   * Builds instances of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-fun buildShard(dslBlock: ShardDSL.() -> Unit) =
-  ShardDSL().apply(dslBlock).build()
+inline fun buildShard(dslBlock: ShardDSL.() -> Unit) =
+  ShardDSL(Shard.builder()).apply(dslBlock).build()

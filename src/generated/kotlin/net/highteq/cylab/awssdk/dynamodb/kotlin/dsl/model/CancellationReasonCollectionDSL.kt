@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
 
@@ -16,36 +18,40 @@ import software.amazon.awssdk.services.dynamodb.model.CancellationReason
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
 @DynamodbDSL
-class CancellationReasonCollectionDSL {
-  private val list = ArrayList<CancellationReason>()
-  internal fun build() : List<CancellationReason> = list
+inline class CancellationReasonCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<CancellationReason>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type CancellationReason from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: CancellationReasonDSL.() -> Unit) {
-    list.add(CancellationReasonDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: CancellationReasonDSL.() -> Unit) {
+    list.add(buildCancellationReason(dslBlock))
   }
 
   /**
     * Adds a CancellationReason to the collection built by this DSL
     */
-  operator fun CancellationReason.unaryPlus() {
+  inline operator fun CancellationReason.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given CancellationReason instances to the collection built by this DSL
     */
-  operator fun Collection<CancellationReason>.unaryPlus() {
+  inline operator fun Collection<CancellationReason>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given CancellationReason instances to the collection built by this DSL
     */
-  operator fun Array<CancellationReason>.unaryPlus() {
+  inline operator fun Array<CancellationReason>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -56,5 +62,5 @@ class CancellationReasonCollectionDSL {
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
-fun buildCancellationReasonCollection(dslBlock: CancellationReasonCollectionDSL.() -> Unit) =
-  CancellationReasonCollectionDSL().apply(dslBlock).build()
+inline fun buildCancellationReasonCollection(dslBlock: CancellationReasonCollectionDSL.() -> Unit) =
+  CancellationReasonCollectionDSL(mutableListOf<CancellationReason>()).apply(dslBlock).build()

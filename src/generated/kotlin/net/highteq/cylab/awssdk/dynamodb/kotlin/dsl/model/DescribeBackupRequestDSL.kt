@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeBackupRequest
   * 
   */
 @DynamodbDSL
-class DescribeBackupRequestDSL {
+inline class DescribeBackupRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeBackupRequest.builder()
+  val builder: DescribeBackupRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeBackupRequest = builder.build()
     
   /**
-    * The Amazon Resource Name (ARN) associated with the backup.
+    * 
     */
-  var backupArn: String?
+  inline var backupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +39,7 @@ class DescribeBackupRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,5 +55,5 @@ class DescribeBackupRequestDSL {
   * Builds instances of type DescribeBackupRequest:
   * 
   */
-fun buildDescribeBackupRequest(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
-  DescribeBackupRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeBackupRequest(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
+  DescribeBackupRequestDSL(DescribeBackupRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,23 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   * Represents the output of a ListStreams operation.
   */
 @DynamodbDSL
-class ListStreamsResponseDSL {
+inline class ListStreamsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ListStreamsResponse.builder()
+  val builder: ListStreamsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): ListStreamsResponse = builder.build()
     
   /**
-    * The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value
-    *  to start a new operation, excluding this value in the new request.
     * 
-    *  If LastEvaluatedStreamArn is empty, then the "last page" of results has been processed and there
-    *  is no more data to be retrieved.
-    * 
-    *  If LastEvaluatedStreamArn is not empty, it does not necessarily mean that there is more data in
-    *  the result set. The only way to know when you have reached the end of the result set is when
-    *  LastEvaluatedStreamArn is empty.
     */
-  var lastEvaluatedStreamArn: String?
+  inline var lastEvaluatedStreamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,7 +41,7 @@ class ListStreamsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,7 +52,7 @@ class ListStreamsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -67,9 +61,9 @@ class ListStreamsResponseDSL {
 
 
   /**
-    * A list of stream descriptors associated with the current account and endpoint.
+    * 
     */
-  var streams: Collection<Stream>?
+  inline var streams: Collection<Stream>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -80,9 +74,9 @@ class ListStreamsResponseDSL {
   
     
   /**
-    * A list of stream descriptors associated with the current account and endpoint.
+    * 
     */
-  fun streams(dslBlock: StreamCollectionDSL.() -> Unit) {
+  inline fun streams(dslBlock: StreamCollectionDSL.() -> Unit) {
     builder.streams(buildStreamCollection(dslBlock))
   }
 
@@ -92,5 +86,5 @@ class ListStreamsResponseDSL {
   * Builds instances of type ListStreamsResponse:
   * Represents the output of a ListStreams operation.
   */
-fun buildListStreamsResponse(dslBlock: ListStreamsResponseDSL.() -> Unit) =
-  ListStreamsResponseDSL().apply(dslBlock).build()
+inline fun buildListStreamsResponse(dslBlock: ListStreamsResponseDSL.() -> Unit) =
+  ListStreamsResponseDSL(ListStreamsResponse.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   * Represents the output of a DeleteTable operation.
   */
 @DynamodbDSL
-class DeleteTableResponseDSL {
+inline class DeleteTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DeleteTableResponse.builder()
+  val builder: DeleteTableResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DeleteTableResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DeleteTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class DeleteTableResponseDSL {
 
 
   /**
-    * Represents the properties of a table.
+    * 
     */
-  var tableDescription: TableDescription?
+  inline var tableDescription: TableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class DeleteTableResponseDSL {
   
     
   /**
-    * Represents the properties of a table.
+    * 
     */
-  fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
+  inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
     builder.tableDescription(buildTableDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class DeleteTableResponseDSL {
   * Builds instances of type DeleteTableResponse:
   * Represents the output of a DeleteTable operation.
   */
-fun buildDeleteTableResponse(dslBlock: DeleteTableResponseDSL.() -> Unit) =
-  DeleteTableResponseDSL().apply(dslBlock).build()
+inline fun buildDeleteTableResponse(dslBlock: DeleteTableResponseDSL.() -> Unit) =
+  DeleteTableResponseDSL(DeleteTableResponse.builder()).apply(dslBlock).build()

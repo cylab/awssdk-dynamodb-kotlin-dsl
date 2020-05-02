@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItemsRequest
   * 
   */
 @DynamodbDSL
-class TransactGetItemsRequestDSL {
+inline class TransactGetItemsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TransactGetItemsRequest.builder()
+  val builder: TransactGetItemsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): TransactGetItemsRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,10 +39,9 @@ class TransactGetItemsRequestDSL {
 
 
   /**
-    * A value of TOTAL causes consumed capacity information to be returned, and a value of
-    *  NONE prevents that information from being returned. No other value is valid.
+    * 
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity?
+  inline var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -49,10 +50,9 @@ class TransactGetItemsRequestDSL {
 
 
   /**
-    * An ordered array of up to 25 TransactGetItem objects, each of which contains a Get
-    *  structure.
+    * 
     */
-  var transactItems: Collection<TransactGetItem>?
+  inline var transactItems: Collection<TransactGetItem>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,20 +61,18 @@ class TransactGetItemsRequestDSL {
 
     
   /**
-    * A value of TOTAL causes consumed capacity information to be returned, and a value of
-    *  NONE prevents that information from being returned. No other value is valid.
+    * 
     */
-  fun returnConsumedCapacity(value: String?) {
+  inline fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 
   
     
   /**
-    * An ordered array of up to 25 TransactGetItem objects, each of which contains a Get
-    *  structure.
+    * 
     */
-  fun transactItems(dslBlock: TransactGetItemCollectionDSL.() -> Unit) {
+  inline fun transactItems(dslBlock: TransactGetItemCollectionDSL.() -> Unit) {
     builder.transactItems(buildTransactGetItemCollection(dslBlock))
   }
 
@@ -84,5 +82,5 @@ class TransactGetItemsRequestDSL {
   * Builds instances of type TransactGetItemsRequest:
   * 
   */
-fun buildTransactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
-  TransactGetItemsRequestDSL().apply(dslBlock).build()
+inline fun buildTransactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
+  TransactGetItemsRequestDSL(TransactGetItemsRequest.builder()).apply(dslBlock).build()

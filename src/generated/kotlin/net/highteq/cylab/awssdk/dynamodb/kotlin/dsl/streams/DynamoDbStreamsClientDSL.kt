@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.streams
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -14,9 +14,9 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.SdkHttpClient
-import software.amazon.awssdk.http.SdkHttpClient.Builder
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClient
+import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClientBuilder
 
 /**
   * Builds instances of type DynamoDbStreamsClient:
@@ -29,15 +29,17 @@ import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClient
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class DynamoDbStreamsClientDSL {
+inline class DynamoDbStreamsClientDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DynamoDbStreamsClient.builder()
+  val builder: DynamoDbStreamsClientBuilder
+){
+  @PublishedApi
   internal fun build(): DynamoDbStreamsClient = builder.build()
     
   /**
     * 
     */
-  var credentialsProvider: AwsCredentialsProvider?
+  inline var credentialsProvider: AwsCredentialsProvider?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,7 +50,7 @@ class DynamoDbStreamsClientDSL {
   /**
     * 
     */
-  var endpointOverride: URI?
+  inline var endpointOverride: URI?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +61,7 @@ class DynamoDbStreamsClientDSL {
   /**
     * 
     */
-  var httpClient: SdkHttpClient?
+  inline var httpClient: SdkHttpClient?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +72,7 @@ class DynamoDbStreamsClientDSL {
   /**
     * 
     */
-  var httpClientBuilder: Builder<*>?
+  inline var httpClientBuilder: SdkHttpClient.Builder<*>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,7 +83,7 @@ class DynamoDbStreamsClientDSL {
   /**
     * 
     */
-  var overrideConfiguration: ClientOverrideConfiguration?
+  inline var overrideConfiguration: ClientOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,7 +94,7 @@ class DynamoDbStreamsClientDSL {
   /**
     * 
     */
-  var region: Region?
+  inline var region: Region?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -114,5 +116,5 @@ class DynamoDbStreamsClientDSL {
   *  application development with Streams, see Capturing Table Activity with
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
-fun buildDynamoDbStreamsClient(dslBlock: DynamoDbStreamsClientDSL.() -> Unit) =
-  DynamoDbStreamsClientDSL().apply(dslBlock).build()
+inline fun buildDynamoDbStreamsClient(dslBlock: DynamoDbStreamsClientDSL.() -> Unit) =
+  DynamoDbStreamsClientDSL(DynamoDbStreamsClient.builder()).apply(dslBlock).build()

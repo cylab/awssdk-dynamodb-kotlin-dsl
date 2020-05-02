@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.TransactWriteItem
 
@@ -15,36 +17,40 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItem
   *  atomically.
   */
 @DynamodbDSL
-class TransactWriteItemCollectionDSL {
-  private val list = ArrayList<TransactWriteItem>()
-  internal fun build() : List<TransactWriteItem> = list
+inline class TransactWriteItemCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<TransactWriteItem>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type TransactWriteItem from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: TransactWriteItemDSL.() -> Unit) {
-    list.add(TransactWriteItemDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: TransactWriteItemDSL.() -> Unit) {
+    list.add(buildTransactWriteItem(dslBlock))
   }
 
   /**
     * Adds a TransactWriteItem to the collection built by this DSL
     */
-  operator fun TransactWriteItem.unaryPlus() {
+  inline operator fun TransactWriteItem.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given TransactWriteItem instances to the collection built by this DSL
     */
-  operator fun Collection<TransactWriteItem>.unaryPlus() {
+  inline operator fun Collection<TransactWriteItem>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given TransactWriteItem instances to the collection built by this DSL
     */
-  operator fun Array<TransactWriteItem>.unaryPlus() {
+  inline operator fun Array<TransactWriteItem>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -54,5 +60,5 @@ class TransactWriteItemCollectionDSL {
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-fun buildTransactWriteItemCollection(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) =
-  TransactWriteItemCollectionDSL().apply(dslBlock).build()
+inline fun buildTransactWriteItemCollection(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) =
+  TransactWriteItemCollectionDSL(mutableListOf<TransactWriteItem>()).apply(dslBlock).build()

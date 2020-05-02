@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -17,15 +17,17 @@ import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
   * The beginning and ending sequence numbers for the stream records contained within a shard.
   */
 @DynamodbDSL
-class SequenceNumberRangeDSL {
+inline class SequenceNumberRangeDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = SequenceNumberRange.builder()
+  val builder: SequenceNumberRange.Builder
+){
+  @PublishedApi
   internal fun build(): SequenceNumberRange = builder.build()
     
   /**
-    * The last sequence number.
+    * 
     */
-  var endingSequenceNumber: String?
+  inline var endingSequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -34,9 +36,9 @@ class SequenceNumberRangeDSL {
 
 
   /**
-    * The first sequence number.
+    * 
     */
-  var startingSequenceNumber: String?
+  inline var startingSequenceNumber: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,5 +54,5 @@ class SequenceNumberRangeDSL {
   * Builds instances of type SequenceNumberRange:
   * The beginning and ending sequence numbers for the stream records contained within a shard.
   */
-fun buildSequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) =
-  SequenceNumberRangeDSL().apply(dslBlock).build()
+inline fun buildSequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) =
+  SequenceNumberRangeDSL(SequenceNumberRange.builder()).apply(dslBlock).build()

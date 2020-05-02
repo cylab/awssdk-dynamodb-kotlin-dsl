@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
   * 
   */
 @DynamodbDSL
-class CreateGlobalTableRequestDSL {
+inline class CreateGlobalTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CreateGlobalTableRequest.builder()
+  val builder: CreateGlobalTableRequest.Builder
+){
+  @PublishedApi
   internal fun build(): CreateGlobalTableRequest = builder.build()
     
   /**
-    * The global table name.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class CreateGlobalTableRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class CreateGlobalTableRequestDSL {
 
 
   /**
-    * The Regions where the global table needs to be created.
+    * 
     */
-  var replicationGroup: Collection<Replica>?
+  inline var replicationGroup: Collection<Replica>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class CreateGlobalTableRequestDSL {
   
     
   /**
-    * The Regions where the global table needs to be created.
+    * 
     */
-  fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
+  inline fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
     builder.replicationGroup(buildReplicaCollection(dslBlock))
   }
 
@@ -72,5 +74,5 @@ class CreateGlobalTableRequestDSL {
   * Builds instances of type CreateGlobalTableRequest:
   * 
   */
-fun buildCreateGlobalTableRequest(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
-  CreateGlobalTableRequestDSL().apply(dslBlock).build()
+inline fun buildCreateGlobalTableRequest(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
+  CreateGlobalTableRequestDSL(CreateGlobalTableRequest.builder()).apply(dslBlock).build()

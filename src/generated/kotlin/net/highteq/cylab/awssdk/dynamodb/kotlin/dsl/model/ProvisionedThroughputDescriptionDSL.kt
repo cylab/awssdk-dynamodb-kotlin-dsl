@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescr
   *  data about increases and decreases.
   */
 @DynamodbDSL
-class ProvisionedThroughputDescriptionDSL {
+inline class ProvisionedThroughputDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ProvisionedThroughputDescription.builder()
+  val builder: ProvisionedThroughputDescription.Builder
+){
+  @PublishedApi
   internal fun build(): ProvisionedThroughputDescription = builder.build()
     
   /**
-    * The date and time of the last provisioned throughput decrease for this table.
+    * 
     */
-  var lastDecreaseDateTime: Instant?
+  inline var lastDecreaseDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class ProvisionedThroughputDescriptionDSL {
 
 
   /**
-    * The date and time of the last provisioned throughput increase for this table.
+    * 
     */
-  var lastIncreaseDateTime: Instant?
+  inline var lastIncreaseDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,11 +49,9 @@ class ProvisionedThroughputDescriptionDSL {
 
 
   /**
-    * The number of provisioned throughput decreases for this table during this UTC calendar day. For current
-    *  maximums on provisioned throughput decreases, see Limits in the
-    *  Amazon DynamoDB Developer Guide.
+    * 
     */
-  var numberOfDecreasesToday: Long?
+  inline var numberOfDecreasesToday: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,12 +60,9 @@ class ProvisionedThroughputDescriptionDSL {
 
 
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException. Eventually consistent reads require less effort than strongly consistent
-    *  reads, so a setting of 50 ReadCapacityUnits per second provides 100 eventually consistent
-    *  ReadCapacityUnits per second.
+    * 
     */
-  var readCapacityUnits: Long?
+  inline var readCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,9 +71,9 @@ class ProvisionedThroughputDescriptionDSL {
 
 
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    * 
     */
-  var writeCapacityUnits: Long?
+  inline var writeCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,5 +90,5 @@ class ProvisionedThroughputDescriptionDSL {
   * Represents the provisioned throughput settings for the table, consisting of read and write capacity units, along with
   *  data about increases and decreases.
   */
-fun buildProvisionedThroughputDescription(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) =
-  ProvisionedThroughputDescriptionDSL().apply(dslBlock).build()
+inline fun buildProvisionedThroughputDescription(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) =
+  ProvisionedThroughputDescriptionDSL(ProvisionedThroughputDescription.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTableResponse
   * Represents the output of an UpdateTable operation.
   */
 @DynamodbDSL
-class UpdateTableResponseDSL {
+inline class UpdateTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateTableResponse.builder()
+  val builder: UpdateTableResponse.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateTableResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class UpdateTableResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class UpdateTableResponseDSL {
 
 
   /**
-    * Represents the properties of the table.
+    * 
     */
-  var tableDescription: TableDescription?
+  inline var tableDescription: TableDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class UpdateTableResponseDSL {
   
     
   /**
-    * Represents the properties of the table.
+    * 
     */
-  fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
+  inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
     builder.tableDescription(buildTableDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class UpdateTableResponseDSL {
   * Builds instances of type UpdateTableResponse:
   * Represents the output of an UpdateTable operation.
   */
-fun buildUpdateTableResponse(dslBlock: UpdateTableResponseDSL.() -> Unit) =
-  UpdateTableResponseDSL().apply(dslBlock).build()
+inline fun buildUpdateTableResponse(dslBlock: UpdateTableResponseDSL.() -> Unit) =
+  UpdateTableResponseDSL(UpdateTableResponse.builder()).apply(dslBlock).build()

@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexDescription
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexDescri
   * Represents the properties of a global secondary index.
   */
 @DynamodbDSL
-class GlobalSecondaryIndexDescriptionCollectionDSL {
-  private val list = ArrayList<GlobalSecondaryIndexDescription>()
-  internal fun build() : List<GlobalSecondaryIndexDescription> = list
+inline class GlobalSecondaryIndexDescriptionCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<GlobalSecondaryIndexDescription>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type GlobalSecondaryIndexDescription from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: GlobalSecondaryIndexDescriptionDSL.() -> Unit) {
-    list.add(GlobalSecondaryIndexDescriptionDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: GlobalSecondaryIndexDescriptionDSL.() -> Unit) {
+    list.add(buildGlobalSecondaryIndexDescription(dslBlock))
   }
 
   /**
     * Adds a GlobalSecondaryIndexDescription to the collection built by this DSL
     */
-  operator fun GlobalSecondaryIndexDescription.unaryPlus() {
+  inline operator fun GlobalSecondaryIndexDescription.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
     */
-  operator fun Collection<GlobalSecondaryIndexDescription>.unaryPlus() {
+  inline operator fun Collection<GlobalSecondaryIndexDescription>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given GlobalSecondaryIndexDescription instances to the collection built by this DSL
     */
-  operator fun Array<GlobalSecondaryIndexDescription>.unaryPlus() {
+  inline operator fun Array<GlobalSecondaryIndexDescription>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class GlobalSecondaryIndexDescriptionCollectionDSL {
   * Builds instances of type GlobalSecondaryIndexDescription:
   * Represents the properties of a global secondary index.
   */
-fun buildGlobalSecondaryIndexDescriptionCollection(dslBlock: GlobalSecondaryIndexDescriptionCollectionDSL.() -> Unit) =
-  GlobalSecondaryIndexDescriptionCollectionDSL().apply(dslBlock).build()
+inline fun buildGlobalSecondaryIndexDescriptionCollection(dslBlock: GlobalSecondaryIndexDescriptionCollectionDSL.() -> Unit) =
+  GlobalSecondaryIndexDescriptionCollectionDSL(mutableListOf<GlobalSecondaryIndexDescription>()).apply(dslBlock).build()

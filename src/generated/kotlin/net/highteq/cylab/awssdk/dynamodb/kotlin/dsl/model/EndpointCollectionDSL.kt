@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
   * An endpoint information details.
   */
 @DynamodbDSL
-class EndpointCollectionDSL {
-  private val list = ArrayList<Endpoint>()
-  internal fun build() : List<Endpoint> = list
+inline class EndpointCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<Endpoint>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type Endpoint from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: EndpointDSL.() -> Unit) {
-    list.add(EndpointDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: EndpointDSL.() -> Unit) {
+    list.add(buildEndpoint(dslBlock))
   }
 
   /**
     * Adds a Endpoint to the collection built by this DSL
     */
-  operator fun Endpoint.unaryPlus() {
+  inline operator fun Endpoint.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given Endpoint instances to the collection built by this DSL
     */
-  operator fun Collection<Endpoint>.unaryPlus() {
+  inline operator fun Collection<Endpoint>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given Endpoint instances to the collection built by this DSL
     */
-  operator fun Array<Endpoint>.unaryPlus() {
+  inline operator fun Array<Endpoint>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class EndpointCollectionDSL {
   * Builds instances of type Endpoint:
   * An endpoint information details.
   */
-fun buildEndpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =
-  EndpointCollectionDSL().apply(dslBlock).build()
+inline fun buildEndpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =
+  EndpointCollectionDSL(mutableListOf<Endpoint>()).apply(dslBlock).build()

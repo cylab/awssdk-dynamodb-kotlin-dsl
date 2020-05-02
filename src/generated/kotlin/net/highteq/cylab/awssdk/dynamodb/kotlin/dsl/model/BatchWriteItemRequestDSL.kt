@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,15 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   * Represents the input of a BatchWriteItem operation.
   */
 @DynamodbDSL
-class BatchWriteItemRequestDSL {
+inline class BatchWriteItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = BatchWriteItemRequest.builder()
+  val builder: BatchWriteItemRequest.Builder
+){
+  @PublishedApi
   internal fun build(): BatchWriteItemRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,30 +40,9 @@ class BatchWriteItemRequestDSL {
 
 
   /**
-    * A map of one or more table names and, for each table, a list of operations to be performed (
-    *  DeleteRequest or PutRequest). Each element in the map consists of the following:
     * 
-    *  DeleteRequest - Perform a DeleteItem operation on the specified item. The item to
-    *  be deleted is identified by a Key subelement:
-    * 
-    *  Key - A map of primary key attribute values that uniquely identify the item. Each entry in this
-    *  map consists of an attribute name and an attribute value. For each primary key, you must provide all
-    *  of the key attributes. For example, with a simple primary key, you only need to provide a value for the
-    *  partition key. For a composite primary key, you must provide values for both the partition key and the
-    *  sort key.
-    * 
-    *  PutRequest - Perform a PutItem operation on the specified item. The item to be put
-    *  is identified by an Item subelement:
-    * 
-    *  Item - A map of attributes and their values. Each entry in this map consists of an attribute
-    *  name and an attribute value. Attribute values must not be null; string and binary type attributes must have
-    *  lengths greater than zero; and set type attributes must not be empty. Requests that contain empty values are
-    *  rejected with a ValidationException exception.
-    * 
-    *  If you specify any attributes that are part of an index key, then the data types for those attributes must
-    *  match those of the schema in the table's attribute definition.
     */
-  var requestItems: Map<String, Collection<WriteRequest>>?
+  inline var requestItems: Map<String, Collection<WriteRequest>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,9 +51,9 @@ class BatchWriteItemRequestDSL {
 
 
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  var returnConsumedCapacity: ReturnConsumedCapacity?
+  inline var returnConsumedCapacity: ReturnConsumedCapacity?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,11 +62,9 @@ class BatchWriteItemRequestDSL {
 
 
   /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections, if any, that were modified during the operation are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
+    * 
     */
-  var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
+  inline var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,19 +73,17 @@ class BatchWriteItemRequestDSL {
 
     
   /**
-    * Sets the value of the ReturnConsumedCapacity property for this object.
+    * 
     */
-  fun returnConsumedCapacity(value: String?) {
+  inline fun returnConsumedCapacity(value: String?) {
     builder.returnConsumedCapacity(value)
   }
 
 
   /**
-    * Determines whether item collection metrics are returned. If set to SIZE, the response includes
-    *  statistics about item collections, if any, that were modified during the operation are returned in the
-    *  response. If set to NONE (the default), no statistics are returned.
+    * 
     */
-  fun returnItemCollectionMetrics(value: String?) {
+  inline fun returnItemCollectionMetrics(value: String?) {
     builder.returnItemCollectionMetrics(value)
   }
 
@@ -118,5 +95,5 @@ class BatchWriteItemRequestDSL {
   * Builds instances of type BatchWriteItemRequest:
   * Represents the input of a BatchWriteItem operation.
   */
-fun buildBatchWriteItemRequest(dslBlock: BatchWriteItemRequestDSL.() -> Unit) =
-  BatchWriteItemRequestDSL().apply(dslBlock).build()
+inline fun buildBatchWriteItemRequest(dslBlock: BatchWriteItemRequestDSL.() -> Unit) =
+  BatchWriteItemRequestDSL(BatchWriteItemRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,16 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
   * 
   */
 @DynamodbDSL
-class ListTagsOfResourceResponseDSL {
+inline class ListTagsOfResourceResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ListTagsOfResourceResponse.builder()
+  val builder: ListTagsOfResourceResponse.Builder
+){
+  @PublishedApi
   internal fun build(): ListTagsOfResourceResponse = builder.build()
     
   /**
-    * If this value is returned, there are additional results to be displayed. To retrieve them, call
-    *  ListTagsOfResource again, with NextToken set to this value.
+    * 
     */
-  var nextToken: String?
+  inline var nextToken: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +41,7 @@ class ListTagsOfResourceResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +52,7 @@ class ListTagsOfResourceResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +61,9 @@ class ListTagsOfResourceResponseDSL {
 
 
   /**
-    * The tags currently associated with the Amazon DynamoDB resource.
+    * 
     */
-  var tags: Collection<Tag>?
+  inline var tags: Collection<Tag>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,9 +74,9 @@ class ListTagsOfResourceResponseDSL {
   
     
   /**
-    * The tags currently associated with the Amazon DynamoDB resource.
+    * 
     */
-  fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
+  inline fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
     builder.tags(buildTagCollection(dslBlock))
   }
 
@@ -85,5 +86,5 @@ class ListTagsOfResourceResponseDSL {
   * Builds instances of type ListTagsOfResourceResponse:
   * 
   */
-fun buildListTagsOfResourceResponse(dslBlock: ListTagsOfResourceResponseDSL.() -> Unit) =
-  ListTagsOfResourceResponseDSL().apply(dslBlock).build()
+inline fun buildListTagsOfResourceResponse(dslBlock: ListTagsOfResourceResponseDSL.() -> Unit) =
+  ListTagsOfResourceResponseDSL(ListTagsOfResourceResponse.builder()).apply(dslBlock).build()

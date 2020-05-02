@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   * Contains the details of the replica.
   */
 @DynamodbDSL
-class ReplicaDescriptionCollectionDSL {
-  private val list = ArrayList<ReplicaDescription>()
-  internal fun build() : List<ReplicaDescription> = list
+inline class ReplicaDescriptionCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ReplicaDescription>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ReplicaDescription from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ReplicaDescriptionDSL.() -> Unit) {
-    list.add(ReplicaDescriptionDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ReplicaDescriptionDSL.() -> Unit) {
+    list.add(buildReplicaDescription(dslBlock))
   }
 
   /**
     * Adds a ReplicaDescription to the collection built by this DSL
     */
-  operator fun ReplicaDescription.unaryPlus() {
+  inline operator fun ReplicaDescription.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ReplicaDescription instances to the collection built by this DSL
     */
-  operator fun Collection<ReplicaDescription>.unaryPlus() {
+  inline operator fun Collection<ReplicaDescription>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ReplicaDescription instances to the collection built by this DSL
     */
-  operator fun Array<ReplicaDescription>.unaryPlus() {
+  inline operator fun Array<ReplicaDescription>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class ReplicaDescriptionCollectionDSL {
   * Builds instances of type ReplicaDescription:
   * Contains the details of the replica.
   */
-fun buildReplicaDescriptionCollection(dslBlock: ReplicaDescriptionCollectionDSL.() -> Unit) =
-  ReplicaDescriptionCollectionDSL().apply(dslBlock).build()
+inline fun buildReplicaDescriptionCollection(dslBlock: ReplicaDescriptionCollectionDSL.() -> Unit) =
+  ReplicaDescriptionCollectionDSL(mutableListOf<ReplicaDescription>()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.GetShardIteratorResponse
   * Represents the output of a GetShardIterator operation.
   */
 @DynamodbDSL
-class GetShardIteratorResponseDSL {
+inline class GetShardIteratorResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = GetShardIteratorResponse.builder()
+  val builder: GetShardIteratorResponse.Builder
+){
+  @PublishedApi
   internal fun build(): GetShardIteratorResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class GetShardIteratorResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,10 +49,9 @@ class GetShardIteratorResponseDSL {
 
 
   /**
-    * The position in the shard from which to start reading stream records sequentially. A shard iterator specifies
-    *  this position using the sequence number of a stream record in a shard.
+    * 
     */
-  var shardIterator: String?
+  inline var shardIterator: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,5 +67,5 @@ class GetShardIteratorResponseDSL {
   * Builds instances of type GetShardIteratorResponse:
   * Represents the output of a GetShardIterator operation.
   */
-fun buildGetShardIteratorResponse(dslBlock: GetShardIteratorResponseDSL.() -> Unit) =
-  GetShardIteratorResponseDSL().apply(dslBlock).build()
+inline fun buildGetShardIteratorResponse(dslBlock: GetShardIteratorResponseDSL.() -> Unit) =
+  GetShardIteratorResponseDSL(GetShardIteratorResponse.builder()).apply(dslBlock).build()

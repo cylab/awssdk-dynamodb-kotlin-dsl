@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -22,22 +22,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableSettingsR
   * 
   */
 @DynamodbDSL
-class UpdateGlobalTableSettingsRequestDSL {
+inline class UpdateGlobalTableSettingsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateGlobalTableSettingsRequest.builder()
+  val builder: UpdateGlobalTableSettingsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateGlobalTableSettingsRequest = builder.build()
     
   /**
-    * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
-    *  table defaults to PROVISIONED capacity billing mode.
     * 
-    *  PROVISIONED - We recommend using PROVISIONED for predictable workloads.
-    *  PROVISIONED sets the billing mode to Provisioned Mode.
-    * 
-    *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
-    *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  var globalTableBillingMode: BillingMode?
+  inline var globalTableBillingMode: BillingMode?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +41,9 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * Represents the settings of a global secondary index for a global table that will be modified.
+    * 
     */
-  var globalTableGlobalSecondaryIndexSettingsUpdate: Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>?
+  inline var globalTableGlobalSecondaryIndexSettingsUpdate: Collection<GlobalTableGlobalSecondaryIndexSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,9 +52,9 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * The name of the global table
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -68,9 +63,9 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * Auto scaling settings for managing provisioned write capacity for the global table.
+    * 
     */
-  var globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
+  inline var globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: AutoScalingSettingsUpdate?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -79,9 +74,9 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    * 
     */
-  var globalTableProvisionedWriteCapacityUnits: Long?
+  inline var globalTableProvisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,7 +87,7 @@ class UpdateGlobalTableSettingsRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -101,9 +96,9 @@ class UpdateGlobalTableSettingsRequestDSL {
 
 
   /**
-    * Represents the settings for a global table in a Region that will be modified.
+    * 
     */
-  var replicaSettingsUpdate: Collection<ReplicaSettingsUpdate>?
+  inline var replicaSettingsUpdate: Collection<ReplicaSettingsUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -112,41 +107,34 @@ class UpdateGlobalTableSettingsRequestDSL {
 
     
   /**
-    * The billing mode of the global table. If GlobalTableBillingMode is not specified, the global
-    *  table defaults to PROVISIONED capacity billing mode.
     * 
-    *  PROVISIONED - We recommend using PROVISIONED for predictable workloads.
-    *  PROVISIONED sets the billing mode to Provisioned Mode.
-    * 
-    *  PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable workloads.
-    *  PAY_PER_REQUEST sets the billing mode to On-Demand Mode.
     */
-  fun globalTableBillingMode(value: String?) {
+  inline fun globalTableBillingMode(value: String?) {
     builder.globalTableBillingMode(value)
   }
 
   
     
   /**
-    * Represents the settings of a global secondary index for a global table that will be modified.
+    * 
     */
-  fun globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
+  inline fun globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
     builder.globalTableGlobalSecondaryIndexSettingsUpdate(buildGlobalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
 
 
   /**
-    * Auto scaling settings for managing provisioned write capacity for the global table.
+    * 
     */
-  fun globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
+  inline fun globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
     builder.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
   }
 
 
   /**
-    * Represents the settings for a global table in a Region that will be modified.
+    * 
     */
-  fun replicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) {
+  inline fun replicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) {
     builder.replicaSettingsUpdate(buildReplicaSettingsUpdateCollection(dslBlock))
   }
 
@@ -156,5 +144,5 @@ class UpdateGlobalTableSettingsRequestDSL {
   * Builds instances of type UpdateGlobalTableSettingsRequest:
   * 
   */
-fun buildUpdateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
-  UpdateGlobalTableSettingsRequestDSL().apply(dslBlock).build()
+inline fun buildUpdateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+  UpdateGlobalTableSettingsRequestDSL(UpdateGlobalTableSettingsRequest.builder()).apply(dslBlock).build()

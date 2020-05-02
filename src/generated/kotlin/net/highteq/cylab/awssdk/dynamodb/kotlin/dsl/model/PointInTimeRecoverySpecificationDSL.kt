@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -17,15 +17,17 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoverySpecifi
   * Represents the settings used to enable point in time recovery.
   */
 @DynamodbDSL
-class PointInTimeRecoverySpecificationDSL {
+inline class PointInTimeRecoverySpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = PointInTimeRecoverySpecification.builder()
+  val builder: PointInTimeRecoverySpecification.Builder
+){
+  @PublishedApi
   internal fun build(): PointInTimeRecoverySpecification = builder.build()
     
   /**
-    * Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
+    * 
     */
-  var pointInTimeRecoveryEnabled: Boolean?
+  inline var pointInTimeRecoveryEnabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -41,5 +43,5 @@ class PointInTimeRecoverySpecificationDSL {
   * Builds instances of type PointInTimeRecoverySpecification:
   * Represents the settings used to enable point in time recovery.
   */
-fun buildPointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) =
-  PointInTimeRecoverySpecificationDSL().apply(dslBlock).build()
+inline fun buildPointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) =
+  PointInTimeRecoverySpecificationDSL(PointInTimeRecoverySpecification.builder()).apply(dslBlock).build()

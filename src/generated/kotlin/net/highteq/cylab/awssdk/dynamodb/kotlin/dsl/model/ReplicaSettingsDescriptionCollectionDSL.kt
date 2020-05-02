@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
   * Represents the properties of a replica.
   */
 @DynamodbDSL
-class ReplicaSettingsDescriptionCollectionDSL {
-  private val list = ArrayList<ReplicaSettingsDescription>()
-  internal fun build() : List<ReplicaSettingsDescription> = list
+inline class ReplicaSettingsDescriptionCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<ReplicaSettingsDescription>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type ReplicaSettingsDescription from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) {
-    list.add(ReplicaSettingsDescriptionDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) {
+    list.add(buildReplicaSettingsDescription(dslBlock))
   }
 
   /**
     * Adds a ReplicaSettingsDescription to the collection built by this DSL
     */
-  operator fun ReplicaSettingsDescription.unaryPlus() {
+  inline operator fun ReplicaSettingsDescription.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given ReplicaSettingsDescription instances to the collection built by this DSL
     */
-  operator fun Collection<ReplicaSettingsDescription>.unaryPlus() {
+  inline operator fun Collection<ReplicaSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given ReplicaSettingsDescription instances to the collection built by this DSL
     */
-  operator fun Array<ReplicaSettingsDescription>.unaryPlus() {
+  inline operator fun Array<ReplicaSettingsDescription>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class ReplicaSettingsDescriptionCollectionDSL {
   * Builds instances of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-fun buildReplicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =
-  ReplicaSettingsDescriptionCollectionDSL().apply(dslBlock).build()
+inline fun buildReplicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =
+  ReplicaSettingsDescriptionCollectionDSL(mutableListOf<ReplicaSettingsDescription>()).apply(dslBlock).build()

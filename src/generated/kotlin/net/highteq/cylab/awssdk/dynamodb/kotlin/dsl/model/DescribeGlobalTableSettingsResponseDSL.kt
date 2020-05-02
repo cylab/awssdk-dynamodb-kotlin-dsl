@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
   * 
   */
 @DynamodbDSL
-class DescribeGlobalTableSettingsResponseDSL {
+inline class DescribeGlobalTableSettingsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeGlobalTableSettingsResponse.builder()
+  val builder: DescribeGlobalTableSettingsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeGlobalTableSettingsResponse = builder.build()
     
   /**
-    * The name of the global table.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class DescribeGlobalTableSettingsResponseDSL {
 
 
   /**
-    * The Region-specific settings for the global table.
+    * 
     */
-  var replicaSettings: Collection<ReplicaSettingsDescription>?
+  inline var replicaSettings: Collection<ReplicaSettingsDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class DescribeGlobalTableSettingsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +63,7 @@ class DescribeGlobalTableSettingsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,9 +74,9 @@ class DescribeGlobalTableSettingsResponseDSL {
   
     
   /**
-    * The Region-specific settings for the global table.
+    * 
     */
-  fun replicaSettings(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) {
+  inline fun replicaSettings(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) {
     builder.replicaSettings(buildReplicaSettingsDescriptionCollection(dslBlock))
   }
 
@@ -84,5 +86,5 @@ class DescribeGlobalTableSettingsResponseDSL {
   * Builds instances of type DescribeGlobalTableSettingsResponse:
   * 
   */
-fun buildDescribeGlobalTableSettingsResponse(dslBlock: DescribeGlobalTableSettingsResponseDSL.() -> Unit) =
-  DescribeGlobalTableSettingsResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeGlobalTableSettingsResponse(dslBlock: DescribeGlobalTableSettingsResponseDSL.() -> Unit) =
+  DescribeGlobalTableSettingsResponseDSL(DescribeGlobalTableSettingsResponse.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeTableRequest
   * Represents the input of a DescribeTable operation.
   */
 @DynamodbDSL
-class DescribeTableRequestDSL {
+inline class DescribeTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeTableRequest.builder()
+  val builder: DescribeTableRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeTableRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class DescribeTableRequestDSL {
 
 
   /**
-    * The name of the table to describe.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,5 +55,5 @@ class DescribeTableRequestDSL {
   * Builds instances of type DescribeTableRequest:
   * Represents the input of a DescribeTable operation.
   */
-fun buildDescribeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
-  DescribeTableRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+  DescribeTableRequestDSL(DescribeTableRequest.builder()).apply(dslBlock).build()

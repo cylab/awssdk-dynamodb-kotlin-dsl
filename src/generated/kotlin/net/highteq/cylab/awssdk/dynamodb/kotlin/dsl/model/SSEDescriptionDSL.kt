@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
   * The description of the server-side encryption status on the specified table.
   */
 @DynamodbDSL
-class SSEDescriptionDSL {
+inline class SSEDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = SSEDescription.builder()
+  val builder: SSEDescription.Builder
+){
+  @PublishedApi
   internal fun build(): SSEDescription = builder.build()
     
   /**
-    * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
+    * 
     */
-  var kmsMasterKeyArn: String?
+  inline var kmsMasterKeyArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,12 +38,9 @@ class SSEDescriptionDSL {
 
 
   /**
-    * Server-side encryption type. The only supported value is:
     * 
-    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
-    *  account and is managed by AWS KMS (AWS KMS charges apply).
     */
-  var sseType: SSEType?
+  inline var sseType: SSEType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,13 +49,9 @@ class SSEDescriptionDSL {
 
 
   /**
-    * Represents the current state of server-side encryption. The only supported values are:
     * 
-    *  ENABLED - Server-side encryption is enabled.
-    * 
-    *  UPDATING - Server-side encryption is being updated.
     */
-  var status: SSEStatus?
+  inline var status: SSEStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,24 +60,17 @@ class SSEDescriptionDSL {
 
     
   /**
-    * Server-side encryption type. The only supported value is:
     * 
-    *  KMS - Server-side encryption that uses AWS Key Management Service. The key is stored in your
-    *  account and is managed by AWS KMS (AWS KMS charges apply).
     */
-  fun sseType(value: String?) {
+  inline fun sseType(value: String?) {
     builder.sseType(value)
   }
 
 
   /**
-    * Represents the current state of server-side encryption. The only supported values are:
     * 
-    *  ENABLED - Server-side encryption is enabled.
-    * 
-    *  UPDATING - Server-side encryption is being updated.
     */
-  fun status(value: String?) {
+  inline fun status(value: String?) {
     builder.status(value)
   }
 
@@ -94,5 +82,5 @@ class SSEDescriptionDSL {
   * Builds instances of type SSEDescription:
   * The description of the server-side encryption status on the specified table.
   */
-fun buildSSEDescription(dslBlock: SSEDescriptionDSL.() -> Unit) =
-  SSEDescriptionDSL().apply(dslBlock).build()
+inline fun buildSSEDescription(dslBlock: SSEDescriptionDSL.() -> Unit) =
+  SSEDescriptionDSL(SSEDescription.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.RestoreTableFromBackupRequ
   * 
   */
 @DynamodbDSL
-class RestoreTableFromBackupRequestDSL {
+inline class RestoreTableFromBackupRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = RestoreTableFromBackupRequest.builder()
+  val builder: RestoreTableFromBackupRequest.Builder
+){
+  @PublishedApi
   internal fun build(): RestoreTableFromBackupRequest = builder.build()
     
   /**
-    * The Amazon Resource Name (ARN) associated with the backup.
+    * 
     */
-  var backupArn: String?
+  inline var backupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,7 +39,7 @@ class RestoreTableFromBackupRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class RestoreTableFromBackupRequestDSL {
 
 
   /**
-    * The name of the new table to which the backup must be restored.
+    * 
     */
-  var targetTableName: String?
+  inline var targetTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -64,5 +66,5 @@ class RestoreTableFromBackupRequestDSL {
   * Builds instances of type RestoreTableFromBackupRequest:
   * 
   */
-fun buildRestoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
-  RestoreTableFromBackupRequestDSL().apply(dslBlock).build()
+inline fun buildRestoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
+  RestoreTableFromBackupRequestDSL(RestoreTableFromBackupRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.Projection
   * Represents the properties of a local secondary index.
   */
 @DynamodbDSL
-class LocalSecondaryIndexDSL {
+inline class LocalSecondaryIndexDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = LocalSecondaryIndex.builder()
+  val builder: LocalSecondaryIndex.Builder
+){
+  @PublishedApi
   internal fun build(): LocalSecondaryIndex = builder.build()
     
   /**
-    * The name of the local secondary index. The name must be unique among all other indexes on this table.
+    * 
     */
-  var indexName: String?
+  inline var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,22 +38,9 @@ class LocalSecondaryIndexDSL {
 
 
   /**
-    * The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and
-    *  key types:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  var keySchema: Collection<KeySchemaElement>?
+  inline var keySchema: Collection<KeySchemaElement>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,10 +49,9 @@ class LocalSecondaryIndexDSL {
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into the local secondary index. These are in
-    *  addition to the primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  var projection: Projection?
+  inline var projection: Projection?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,31 +62,17 @@ class LocalSecondaryIndexDSL {
   
     
   /**
-    * The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and
-    *  key types:
     * 
-    *  HASH - partition key
-    * 
-    *  RANGE - sort key
-    * 
-    *  The partition key of an item is also known as its hash attribute. The term "hash attribute" derives
-    *  from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based
-    *  on their partition key values.
-    * 
-    *  The sort key of an item is also known as its range attribute. The term "range attribute" derives from
-    *  the way DynamoDB stores items with the same partition key physically close together, in sorted order by the
-    *  sort key value.
     */
-  fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
+  inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
     builder.keySchema(buildKeySchemaElementCollection(dslBlock))
   }
 
 
   /**
-    * Represents attributes that are copied (projected) from the table into the local secondary index. These are in
-    *  addition to the primary key attributes and index key attributes, which are automatically projected.
+    * 
     */
-  fun projection(dslBlock: ProjectionDSL.() -> Unit) {
+  inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
     builder.projection(buildProjection(dslBlock))
   }
 
@@ -108,5 +82,5 @@ class LocalSecondaryIndexDSL {
   * Builds instances of type LocalSecondaryIndex:
   * Represents the properties of a local secondary index.
   */
-fun buildLocalSecondaryIndex(dslBlock: LocalSecondaryIndexDSL.() -> Unit) =
-  LocalSecondaryIndexDSL().apply(dslBlock).build()
+inline fun buildLocalSecondaryIndex(dslBlock: LocalSecondaryIndexDSL.() -> Unit) =
+  LocalSecondaryIndexDSL(LocalSecondaryIndex.builder()).apply(dslBlock).build()

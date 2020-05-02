@@ -4,8 +4,10 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Shard
 
@@ -14,36 +16,40 @@ import software.amazon.awssdk.services.dynamodb.model.Shard
   * A uniquely identified group of stream records within a stream.
   */
 @DynamodbDSL
-class ShardCollectionDSL {
-  private val list = ArrayList<Shard>()
-  internal fun build() : List<Shard> = list
+inline class ShardCollectionDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val list : MutableList<Shard>
+){
+  @PublishedApi
+  internal fun build() = list
 
   /**
     * Builds an object of type Shard from 
     * the given DSL in 'dslBlock' and adds it to the collection
     */
-  fun o(dslBlock: ShardDSL.() -> Unit) {
-    list.add(ShardDSL().apply(dslBlock).build())
+  inline fun o(dslBlock: ShardDSL.() -> Unit) {
+    list.add(buildShard(dslBlock))
   }
 
   /**
     * Adds a Shard to the collection built by this DSL
     */
-  operator fun Shard.unaryPlus() {
+  inline operator fun Shard.unaryPlus() {
     list.add(this)
   }
 
   /**
     * Adds all given Shard instances to the collection built by this DSL
     */
-  operator fun Collection<Shard>.unaryPlus() {
+  inline operator fun Collection<Shard>.unaryPlus() {
     list.addAll(this)
   }
 
   /**
     * Adds all given Shard instances to the collection built by this DSL
     */
-  operator fun Array<Shard>.unaryPlus() {
+  inline operator fun Array<Shard>.unaryPlus() {
     list.addAll(this)
   }
 }
@@ -52,5 +58,5 @@ class ShardCollectionDSL {
   * Builds instances of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-fun buildShardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =
-  ShardCollectionDSL().apply(dslBlock).build()
+inline fun buildShardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =
+  ShardCollectionDSL(mutableListOf<Shard>()).apply(dslBlock).build()

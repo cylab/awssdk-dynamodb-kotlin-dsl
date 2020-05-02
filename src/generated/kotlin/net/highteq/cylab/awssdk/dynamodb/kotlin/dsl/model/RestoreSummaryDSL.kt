@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.RestoreSummary
   * Contains details for the restore.
   */
 @DynamodbDSL
-class RestoreSummaryDSL {
+inline class RestoreSummaryDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = RestoreSummary.builder()
+  val builder: RestoreSummary.Builder
+){
+  @PublishedApi
   internal fun build(): RestoreSummary = builder.build()
     
   /**
-    * Point in time or source backup time.
+    * 
     */
-  var restoreDateTime: Instant?
+  inline var restoreDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class RestoreSummaryDSL {
 
 
   /**
-    * Indicates if a restore is in progress or not.
+    * 
     */
-  var restoreInProgress: Boolean?
+  inline var restoreInProgress: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class RestoreSummaryDSL {
 
 
   /**
-    * The Amazon Resource Name (ARN) of the backup from which the table was restored.
+    * 
     */
-  var sourceBackupArn: String?
+  inline var sourceBackupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,9 +59,9 @@ class RestoreSummaryDSL {
 
 
   /**
-    * The ARN of the source table of the backup that is being restored.
+    * 
     */
-  var sourceTableArn: String?
+  inline var sourceTableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -75,5 +77,5 @@ class RestoreSummaryDSL {
   * Builds instances of type RestoreSummary:
   * Contains details for the restore.
   */
-fun buildRestoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) =
-  RestoreSummaryDSL().apply(dslBlock).build()
+inline fun buildRestoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) =
+  RestoreSummaryDSL(RestoreSummary.builder()).apply(dslBlock).build()

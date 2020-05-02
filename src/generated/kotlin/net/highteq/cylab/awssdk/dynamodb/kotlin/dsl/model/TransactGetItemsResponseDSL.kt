@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,18 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItemsResponse
   * 
   */
 @DynamodbDSL
-class TransactGetItemsResponseDSL {
+inline class TransactGetItemsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TransactGetItemsResponse.builder()
+  val builder: TransactGetItemsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): TransactGetItemsResponse = builder.build()
     
   /**
-    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
-    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
-    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
-    *  units consumed by the TransactGetItems call in that table.
+    * 
     */
-  var consumedCapacity: Collection<ConsumedCapacity>?
+  inline var consumedCapacity: Collection<ConsumedCapacity>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -43,7 +42,7 @@ class TransactGetItemsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,16 +51,9 @@ class TransactGetItemsResponseDSL {
 
 
   /**
-    * An ordered array of up to 25 ItemResponse objects, each of which corresponds to the
-    *  TransactGetItem object in the same position in the TransactItems array. Each
-    *  ItemResponse object contains a Map of the name-value pairs that are the projected attributes of
-    *  the requested item.
     * 
-    *  If a requested item could not be retrieved, the corresponding ItemResponse object is Null, or if
-    *  the requested item has no projected attributes, the corresponding ItemResponse object is an
-    *  empty Map.
     */
-  var responses: Collection<ItemResponse>?
+  inline var responses: Collection<ItemResponse>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,7 +64,7 @@ class TransactGetItemsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,27 +75,17 @@ class TransactGetItemsResponseDSL {
   
     
   /**
-    * If the ReturnConsumedCapacity value was TOTAL, this is an array of
-    *  ConsumedCapacity objects, one for each table addressed by TransactGetItem objects
-    *  in the TransactItems parameter. These ConsumedCapacity objects report the read-capacity
-    *  units consumed by the TransactGetItems call in that table.
+    * 
     */
-  fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
+  inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
     builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
   }
 
 
   /**
-    * An ordered array of up to 25 ItemResponse objects, each of which corresponds to the
-    *  TransactGetItem object in the same position in the TransactItems array. Each
-    *  ItemResponse object contains a Map of the name-value pairs that are the projected attributes of
-    *  the requested item.
     * 
-    *  If a requested item could not be retrieved, the corresponding ItemResponse object is Null, or if
-    *  the requested item has no projected attributes, the corresponding ItemResponse object is an
-    *  empty Map.
     */
-  fun responses(dslBlock: ItemResponseCollectionDSL.() -> Unit) {
+  inline fun responses(dslBlock: ItemResponseCollectionDSL.() -> Unit) {
     builder.responses(buildItemResponseCollection(dslBlock))
   }
 
@@ -113,5 +95,5 @@ class TransactGetItemsResponseDSL {
   * Builds instances of type TransactGetItemsResponse:
   * 
   */
-fun buildTransactGetItemsResponse(dslBlock: TransactGetItemsResponseDSL.() -> Unit) =
-  TransactGetItemsResponseDSL().apply(dslBlock).build()
+inline fun buildTransactGetItemsResponse(dslBlock: TransactGetItemsResponseDSL.() -> Unit) =
+  TransactGetItemsResponseDSL(TransactGetItemsResponse.builder()).apply(dslBlock).build()

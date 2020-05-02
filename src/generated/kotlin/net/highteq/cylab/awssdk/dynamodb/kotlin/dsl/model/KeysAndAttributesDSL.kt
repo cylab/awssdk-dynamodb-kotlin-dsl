@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -22,15 +22,17 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   *  and the sort key.
   */
 @DynamodbDSL
-class KeysAndAttributesDSL {
+inline class KeysAndAttributesDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = KeysAndAttributes.builder()
+  val builder: KeysAndAttributes.Builder
+){
+  @PublishedApi
   internal fun build(): KeysAndAttributes = builder.build()
     
   /**
-    * This is a legacy parameter. Use ProjectionExpression instead. For more information, see Legacy Conditional Parameters in the Amazon DynamoDB Developer Guide.
+    * 
     */
-  var attributesToGet: Collection<String>?
+  inline var attributesToGet: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,10 +41,9 @@ class KeysAndAttributesDSL {
 
 
   /**
-    * The consistency of a read operation. If set to true, then a strongly consistent read is used;
-    *  otherwise, an eventually consistent read is used.
+    * 
     */
-  var consistentRead: Boolean?
+  inline var consistentRead: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,37 +52,9 @@ class KeysAndAttributesDSL {
 
 
   /**
-    * One or more substitution tokens for attribute names in an expression. The following are some use cases for
-    *  using ExpressionAttributeNames:
     * 
-    *  To access an attribute whose name conflicts with a DynamoDB reserved word.
-    * 
-    *  To create a placeholder for repeating occurrences of an attribute name in an expression.
-    * 
-    *  To prevent special characters in an attribute name from being misinterpreted in an expression.
-    * 
-    *  Use the # character in an expression to dereference an attribute name. For example, consider the
-    *  following attribute name:
-    * 
-    *  Percentile
-    * 
-    *  The name of this attribute conflicts with a reserved word, so it cannot be used directly in an expression.
-    *  (For the complete list of reserved words, see Reserved Words
-    *  in the Amazon DynamoDB Developer Guide). To work around this, you could specify the following for
-    *  ExpressionAttributeNames:
-    * 
-    *  {"#P":"Percentile"}
-    * 
-    *  You could then use this substitution in an expression, as in this example:
-    * 
-    *  #P = :val
-    * 
-    *  Tokens that begin with the : character are expression attribute values, which are placeholders
-    *  for the actual value at runtime.
-    * 
-    *  For more information on expression attribute names, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -90,9 +63,9 @@ class KeysAndAttributesDSL {
 
 
   /**
-    * The primary key attribute values that define the items and the attributes associated with the items.
+    * 
     */
-  var keys: Collection<Map<String, AttributeValue>>?
+  inline var keys: Collection<Map<String, AttributeValue>>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -101,16 +74,9 @@ class KeysAndAttributesDSL {
 
 
   /**
-    * A string that identifies one or more attributes to retrieve from the table. These attributes can include
-    *  scalars, sets, or elements of a JSON document. The attributes in the ProjectionExpression must
-    *  be separated by commas.
     * 
-    *  If no attribute names are specified, then all attributes will be returned. If any of the requested attributes
-    *  are not found, they will not appear in the result.
-    * 
-    *  For more information, see Accessing Item Attributes in the Amazon DynamoDB Developer Guide.
     */
-  var projectionExpression: String?
+  inline var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -130,5 +96,5 @@ class KeysAndAttributesDSL {
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-fun buildKeysAndAttributes(dslBlock: KeysAndAttributesDSL.() -> Unit) =
-  KeysAndAttributesDSL().apply(dslBlock).build()
+inline fun buildKeysAndAttributes(dslBlock: KeysAndAttributesDSL.() -> Unit) =
+  KeysAndAttributesDSL(KeysAndAttributes.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.BackupType
   * Contains details for the backup.
   */
 @DynamodbDSL
-class BackupSummaryDSL {
+inline class BackupSummaryDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = BackupSummary.builder()
+  val builder: BackupSummary.Builder
+){
+  @PublishedApi
   internal fun build(): BackupSummary = builder.build()
     
   /**
-    * ARN associated with the backup.
+    * 
     */
-  var backupArn: String?
+  inline var backupArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,9 +39,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Time at which the backup was created.
+    * 
     */
-  var backupCreationDateTime: Instant?
+  inline var backupCreationDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,10 +50,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Time at which the automatic on-demand backup created by DynamoDB will expire. This SYSTEM
-    *  on-demand backup expires automatically 35 days after its creation.
+    * 
     */
-  var backupExpiryDateTime: Instant?
+  inline var backupExpiryDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +61,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Name of the specified backup.
+    * 
     */
-  var backupName: String?
+  inline var backupName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,9 +72,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Size of the backup in bytes.
+    * 
     */
-  var backupSizeBytes: Long?
+  inline var backupSizeBytes: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -82,9 +83,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
+    * 
     */
-  var backupStatus: BackupStatus?
+  inline var backupStatus: BackupStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -93,17 +94,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * BackupType:
     * 
-    *  USER - You create and manage these using the on-demand backup feature.
-    * 
-    *  SYSTEM - If you delete a table with point-in-time recovery enabled, a SYSTEM backup
-    *  is automatically created and is retained for 35 days (at no additional cost). System backups allow you to
-    *  restore the deleted table to the state it was in just before the point of deletion.
-    * 
-    *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  var backupType: BackupType?
+  inline var backupType: BackupType?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -112,9 +105,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * ARN associated with the table.
+    * 
     */
-  var tableArn: String?
+  inline var tableArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -123,9 +116,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Unique identifier for the table.
+    * 
     */
-  var tableId: String?
+  inline var tableId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -134,9 +127,9 @@ class BackupSummaryDSL {
 
 
   /**
-    * Name of the table.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -145,25 +138,17 @@ class BackupSummaryDSL {
 
     
   /**
-    * Backup can be in one of the following states: CREATING, ACTIVE, DELETED.
+    * 
     */
-  fun backupStatus(value: String?) {
+  inline fun backupStatus(value: String?) {
     builder.backupStatus(value)
   }
 
 
   /**
-    * BackupType:
     * 
-    *  USER - You create and manage these using the on-demand backup feature.
-    * 
-    *  SYSTEM - If you delete a table with point-in-time recovery enabled, a SYSTEM backup
-    *  is automatically created and is retained for 35 days (at no additional cost). System backups allow you to
-    *  restore the deleted table to the state it was in just before the point of deletion.
-    * 
-    *  AWS_BACKUP - On-demand backup created by you from AWS Backup service.
     */
-  fun backupType(value: String?) {
+  inline fun backupType(value: String?) {
     builder.backupType(value)
   }
 
@@ -175,5 +160,5 @@ class BackupSummaryDSL {
   * Builds instances of type BackupSummary:
   * Contains details for the backup.
   */
-fun buildBackupSummary(dslBlock: BackupSummaryDSL.() -> Unit) =
-  BackupSummaryDSL().apply(dslBlock).build()
+inline fun buildBackupSummary(dslBlock: BackupSummaryDSL.() -> Unit) =
+  BackupSummaryDSL(BackupSummary.builder()).apply(dslBlock).build()

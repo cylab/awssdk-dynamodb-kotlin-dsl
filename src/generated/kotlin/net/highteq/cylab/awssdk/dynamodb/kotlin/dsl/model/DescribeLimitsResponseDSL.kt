@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,16 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
   * Represents the output of a DescribeLimits operation.
   */
 @DynamodbDSL
-class DescribeLimitsResponseDSL {
+inline class DescribeLimitsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeLimitsResponse.builder()
+  val builder: DescribeLimitsResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeLimitsResponse = builder.build()
     
   /**
-    * The maximum total read capacity units that your account allows you to provision across all of your tables in
-    *  this Region.
+    * 
     */
-  var accountMaxReadCapacityUnits: Long?
+  inline var accountMaxReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -37,10 +38,9 @@ class DescribeLimitsResponseDSL {
 
 
   /**
-    * The maximum total write capacity units that your account allows you to provision across all of your tables in
-    *  this Region.
+    * 
     */
-  var accountMaxWriteCapacityUnits: Long?
+  inline var accountMaxWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +51,7 @@ class DescribeLimitsResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +62,7 @@ class DescribeLimitsResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -71,11 +71,9 @@ class DescribeLimitsResponseDSL {
 
 
   /**
-    * The maximum read capacity units that your account allows you to provision for a new table that you are
-    *  creating in this Region, including the read capacity units provisioned for its global secondary indexes
-    *  (GSIs).
+    * 
     */
-  var tableMaxReadCapacityUnits: Long?
+  inline var tableMaxReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -84,11 +82,9 @@ class DescribeLimitsResponseDSL {
 
 
   /**
-    * The maximum write capacity units that your account allows you to provision for a new table that you are
-    *  creating in this Region, including the write capacity units provisioned for its global secondary indexes
-    *  (GSIs).
+    * 
     */
-  var tableMaxWriteCapacityUnits: Long?
+  inline var tableMaxWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -104,5 +100,5 @@ class DescribeLimitsResponseDSL {
   * Builds instances of type DescribeLimitsResponse:
   * Represents the output of a DescribeLimits operation.
   */
-fun buildDescribeLimitsResponse(dslBlock: DescribeLimitsResponseDSL.() -> Unit) =
-  DescribeLimitsResponseDSL().apply(dslBlock).build()
+inline fun buildDescribeLimitsResponse(dslBlock: DescribeLimitsResponseDSL.() -> Unit) =
+  DescribeLimitsResponseDSL(DescribeLimitsResponse.builder()).apply(dslBlock).build()

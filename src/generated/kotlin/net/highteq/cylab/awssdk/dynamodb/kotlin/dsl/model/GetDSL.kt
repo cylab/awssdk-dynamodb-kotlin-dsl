@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.Get
   * Specifies an item and related attribute values to retrieve in a TransactGetItem object.
   */
 @DynamodbDSL
-class GetDSL {
+inline class GetDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Get.builder()
+  val builder: Get.Builder
+){
+  @PublishedApi
   internal fun build(): Get = builder.build()
     
   /**
-    * One or more substitution tokens for attribute names in the ProjectionExpression parameter.
+    * 
     */
-  var expressionAttributeNames: Map<String, String>?
+  inline var expressionAttributeNames: Map<String, String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,10 +37,9 @@ class GetDSL {
 
 
   /**
-    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
-    *  retrieve.
+    * 
     */
-  var key: Map<String, AttributeValue>?
+  inline var key: Map<String, AttributeValue>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,12 +48,9 @@ class GetDSL {
 
 
   /**
-    * A string that identifies one or more attributes of the specified item to retrieve from the table. The
-    *  attributes in the expression must be separated by commas. If no attribute names are specified, then all
-    *  attributes of the specified item are returned. If any of the requested attributes are not found, they do not
-    *  appear in the result.
+    * 
     */
-  var projectionExpression: String?
+  inline var projectionExpression: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +59,9 @@ class GetDSL {
 
 
   /**
-    * The name of the table from which to retrieve the specified item.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,10 +72,9 @@ class GetDSL {
   
     
   /**
-    * A map of attribute names to AttributeValue objects that specifies the primary key of the item to
-    *  retrieve.
+    * 
     */
-  fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
+  inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
     builder.key(buildAttributeValueMap(dslBlock))
   }
 
@@ -87,5 +84,5 @@ class GetDSL {
   * Builds instances of type Get:
   * Specifies an item and related attribute values to retrieve in a TransactGetItem object.
   */
-fun buildGet(dslBlock: GetDSL.() -> Unit) =
-  GetDSL().apply(dslBlock).build()
+inline fun buildGet(dslBlock: GetDSL.() -> Unit) =
+  GetDSL(Get.builder()).apply(dslBlock).build()

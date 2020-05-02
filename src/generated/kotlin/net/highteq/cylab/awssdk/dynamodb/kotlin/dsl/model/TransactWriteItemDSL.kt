@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -22,15 +22,17 @@ import software.amazon.awssdk.services.dynamodb.model.Update
   *  atomically.
   */
 @DynamodbDSL
-class TransactWriteItemDSL {
+inline class TransactWriteItemDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TransactWriteItem.builder()
+  val builder: TransactWriteItem.Builder
+){
+  @PublishedApi
   internal fun build(): TransactWriteItem = builder.build()
     
   /**
-    * A request to perform a check item operation.
+    * 
     */
-  var conditionCheck: ConditionCheck?
+  inline var conditionCheck: ConditionCheck?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,9 +41,9 @@ class TransactWriteItemDSL {
 
 
   /**
-    * A request to perform a DeleteItem operation.
+    * 
     */
-  var delete: Delete?
+  inline var delete: Delete?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,9 +52,9 @@ class TransactWriteItemDSL {
 
 
   /**
-    * A request to perform a PutItem operation.
+    * 
     */
-  var put: Put?
+  inline var put: Put?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class TransactWriteItemDSL {
 
 
   /**
-    * A request to perform an UpdateItem operation.
+    * 
     */
-  var update: Update?
+  inline var update: Update?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -74,33 +76,33 @@ class TransactWriteItemDSL {
   
     
   /**
-    * A request to perform a check item operation.
+    * 
     */
-  fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
+  inline fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
     builder.conditionCheck(buildConditionCheck(dslBlock))
   }
 
 
   /**
-    * A request to perform a DeleteItem operation.
+    * 
     */
-  fun delete(dslBlock: DeleteDSL.() -> Unit) {
+  inline fun delete(dslBlock: DeleteDSL.() -> Unit) {
     builder.delete(buildDelete(dslBlock))
   }
 
 
   /**
-    * A request to perform a PutItem operation.
+    * 
     */
-  fun put(dslBlock: PutDSL.() -> Unit) {
+  inline fun put(dslBlock: PutDSL.() -> Unit) {
     builder.put(buildPut(dslBlock))
   }
 
 
   /**
-    * A request to perform an UpdateItem operation.
+    * 
     */
-  fun update(dslBlock: UpdateDSL.() -> Unit) {
+  inline fun update(dslBlock: UpdateDSL.() -> Unit) {
     builder.update(buildUpdate(dslBlock))
   }
 
@@ -111,5 +113,5 @@ class TransactWriteItemDSL {
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-fun buildTransactWriteItem(dslBlock: TransactWriteItemDSL.() -> Unit) =
-  TransactWriteItemDSL().apply(dslBlock).build()
+inline fun buildTransactWriteItem(dslBlock: TransactWriteItemDSL.() -> Unit) =
+  TransactWriteItemDSL(TransactWriteItem.builder()).apply(dslBlock).build()

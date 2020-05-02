@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.ListGlobalTablesRequest
   * 
   */
 @DynamodbDSL
-class ListGlobalTablesRequestDSL {
+inline class ListGlobalTablesRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ListGlobalTablesRequest.builder()
+  val builder: ListGlobalTablesRequest.Builder
+){
+  @PublishedApi
   internal fun build(): ListGlobalTablesRequest = builder.build()
     
   /**
-    * The first global table name that this operation will evaluate.
+    * 
     */
-  var exclusiveStartGlobalTableName: String?
+  inline var exclusiveStartGlobalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,13 +37,9 @@ class ListGlobalTablesRequestDSL {
 
 
   /**
-    * The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100.
     * 
-    *  If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the
-    *  table names collected up to that point, with a table name in the LastEvaluatedGlobalTableName to
-    *  apply in a subsequent operation to the ExclusiveStartGlobalTableName parameter.
     */
-  var limit: Int?
+  inline var limit: Int?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -52,7 +50,7 @@ class ListGlobalTablesRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +59,9 @@ class ListGlobalTablesRequestDSL {
 
 
   /**
-    * Lists the global tables in a specific Region.
+    * 
     */
-  var regionName: String?
+  inline var regionName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -79,5 +77,5 @@ class ListGlobalTablesRequestDSL {
   * Builds instances of type ListGlobalTablesRequest:
   * 
   */
-fun buildListGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
-  ListGlobalTablesRequestDSL().apply(dslBlock).build()
+inline fun buildListGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+  ListGlobalTablesRequestDSL(ListGlobalTablesRequest.builder()).apply(dslBlock).build()

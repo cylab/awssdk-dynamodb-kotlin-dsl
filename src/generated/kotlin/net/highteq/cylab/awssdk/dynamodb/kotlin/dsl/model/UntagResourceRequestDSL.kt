@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.UntagResourceRequest
   * 
   */
 @DynamodbDSL
-class UntagResourceRequestDSL {
+inline class UntagResourceRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UntagResourceRequest.builder()
+  val builder: UntagResourceRequest.Builder
+){
+  @PublishedApi
   internal fun build(): UntagResourceRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class UntagResourceRequestDSL {
 
 
   /**
-    * The DynamoDB resource that the tags will be removed from. This value is an Amazon Resource Name (ARN).
+    * 
     */
-  var resourceArn: String?
+  inline var resourceArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,10 +48,9 @@ class UntagResourceRequestDSL {
 
 
   /**
-    * A list of tag keys. Existing tags of the resource whose keys are members of this list will be removed from
-    *  the DynamoDB resource.
+    * 
     */
-  var tagKeys: Collection<String>?
+  inline var tagKeys: Collection<String>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -65,5 +66,5 @@ class UntagResourceRequestDSL {
   * Builds instances of type UntagResourceRequest:
   * 
   */
-fun buildUntagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
-  UntagResourceRequestDSL().apply(dslBlock).build()
+inline fun buildUntagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+  UntagResourceRequestDSL(UntagResourceRequest.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTimeToLiveResponse
   * 
   */
 @DynamodbDSL
-class UpdateTimeToLiveResponseDSL {
+inline class UpdateTimeToLiveResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateTimeToLiveResponse.builder()
+  val builder: UpdateTimeToLiveResponse.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateTimeToLiveResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class UpdateTimeToLiveResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +50,9 @@ class UpdateTimeToLiveResponseDSL {
 
 
   /**
-    * Represents the output of an UpdateTimeToLive operation.
+    * 
     */
-  var timeToLiveSpecification: TimeToLiveSpecification?
+  inline var timeToLiveSpecification: TimeToLiveSpecification?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class UpdateTimeToLiveResponseDSL {
   
     
   /**
-    * Represents the output of an UpdateTimeToLive operation.
+    * 
     */
-  fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
+  inline fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
     builder.timeToLiveSpecification(buildTimeToLiveSpecification(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class UpdateTimeToLiveResponseDSL {
   * Builds instances of type UpdateTimeToLiveResponse:
   * 
   */
-fun buildUpdateTimeToLiveResponse(dslBlock: UpdateTimeToLiveResponseDSL.() -> Unit) =
-  UpdateTimeToLiveResponseDSL().apply(dslBlock).build()
+inline fun buildUpdateTimeToLiveResponse(dslBlock: UpdateTimeToLiveResponseDSL.() -> Unit) =
+  UpdateTimeToLiveResponseDSL(UpdateTimeToLiveResponse.builder()).apply(dslBlock).build()

@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeTimeToLiveRequest
   * 
   */
 @DynamodbDSL
-class DescribeTimeToLiveRequestDSL {
+inline class DescribeTimeToLiveRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeTimeToLiveRequest.builder()
+  val builder: DescribeTimeToLiveRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeTimeToLiveRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class DescribeTimeToLiveRequestDSL {
 
 
   /**
-    * The name of the table to be described.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -53,5 +55,5 @@ class DescribeTimeToLiveRequestDSL {
   * Builds instances of type DescribeTimeToLiveRequest:
   * 
   */
-fun buildDescribeTimeToLiveRequest(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
-  DescribeTimeToLiveRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeTimeToLiveRequest(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
+  DescribeTimeToLiveRequestDSL(DescribeTimeToLiveRequest.builder()).apply(dslBlock).build()

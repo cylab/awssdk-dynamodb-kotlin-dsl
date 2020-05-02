@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.CreateBackupResponse
   * 
   */
 @DynamodbDSL
-class CreateBackupResponseDSL {
+inline class CreateBackupResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = CreateBackupResponse.builder()
+  val builder: CreateBackupResponse.Builder
+){
+  @PublishedApi
   internal fun build(): CreateBackupResponse = builder.build()
     
   /**
-    * Contains the details of the backup created for the table.
+    * 
     */
-  var backupDetails: BackupDetails?
+  inline var backupDetails: BackupDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class CreateBackupResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class CreateBackupResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class CreateBackupResponseDSL {
   
     
   /**
-    * Contains the details of the backup created for the table.
+    * 
     */
-  fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
+  inline fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
     builder.backupDetails(buildBackupDetails(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class CreateBackupResponseDSL {
   * Builds instances of type CreateBackupResponse:
   * 
   */
-fun buildCreateBackupResponse(dslBlock: CreateBackupResponseDSL.() -> Unit) =
-  CreateBackupResponseDSL().apply(dslBlock).build()
+inline fun buildCreateBackupResponse(dslBlock: CreateBackupResponseDSL.() -> Unit) =
+  CreateBackupResponseDSL(CreateBackupResponse.builder()).apply(dslBlock).build()

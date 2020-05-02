@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -15,9 +15,9 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientAsyncConfiguration
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.async.SdkAsyncHttpClient
-import software.amazon.awssdk.http.async.SdkAsyncHttpClient.Builder
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClientBuilder
 
 /**
   * Builds instances of type DynamoDbAsyncClient:
@@ -40,15 +40,17 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
   *  providing built-in high availability and data durability.
   */
 @DynamodbDSL
-class DynamoDbAsyncClientDSL {
+inline class DynamoDbAsyncClientDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DynamoDbAsyncClient.builder()
+  val builder: DynamoDbAsyncClientBuilder
+){
+  @PublishedApi
   internal fun build(): DynamoDbAsyncClient = builder.build()
     
   /**
     * 
     */
-  var asyncConfiguration: ClientAsyncConfiguration?
+  inline var asyncConfiguration: ClientAsyncConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -59,7 +61,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var credentialsProvider: AwsCredentialsProvider?
+  inline var credentialsProvider: AwsCredentialsProvider?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -70,7 +72,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var endpointOverride: URI?
+  inline var endpointOverride: URI?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,7 +83,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var httpClient: SdkAsyncHttpClient?
+  inline var httpClient: SdkAsyncHttpClient?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -92,7 +94,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var httpClientBuilder: Builder<*>?
+  inline var httpClientBuilder: SdkAsyncHttpClient.Builder<*>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -103,7 +105,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var overrideConfiguration: ClientOverrideConfiguration?
+  inline var overrideConfiguration: ClientOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -114,7 +116,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  var region: Region?
+  inline var region: Region?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -126,7 +128,7 @@ class DynamoDbAsyncClientDSL {
   /**
     * 
     */
-  fun enableEndpointDiscovery() {
+  inline fun enableEndpointDiscovery() {
     builder.enableEndpointDiscovery()
   }
 
@@ -153,5 +155,5 @@ class DynamoDbAsyncClientDSL {
   *  stored on solid state disks (SSDs) and automatically replicated across multiple Availability Zones in an AWS region,
   *  providing built-in high availability and data durability.
   */
-fun buildDynamoDbAsyncClient(dslBlock: DynamoDbAsyncClientDSL.() -> Unit) =
-  DynamoDbAsyncClientDSL().apply(dslBlock).build()
+inline fun buildDynamoDbAsyncClient(dslBlock: DynamoDbAsyncClientDSL.() -> Unit) =
+  DynamoDbAsyncClientDSL(DynamoDbAsyncClient.builder()).apply(dslBlock).build()

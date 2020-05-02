@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   * Represents the properties of a global secondary index.
   */
 @DynamodbDSL
-class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
+inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ReplicaGlobalSecondaryIndexSettingsDescription.builder()
+  val builder: ReplicaGlobalSecondaryIndexSettingsDescription.Builder
+){
+  @PublishedApi
   internal fun build(): ReplicaGlobalSecondaryIndexSettingsDescription = builder.build()
     
   /**
-    * The name of the global secondary index. The name must be unique among all other indexes on this table.
+    * 
     */
-  var indexName: String?
+  inline var indexName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,17 +38,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
 
   /**
-    * The current status of the global secondary index:
     * 
-    *  CREATING - The global secondary index is being created.
-    * 
-    *  UPDATING - The global secondary index is being updated.
-    * 
-    *  DELETING - The global secondary index is being deleted.
-    * 
-    *  ACTIVE - The global secondary index is ready for use.
     */
-  var indexStatus: IndexStatus?
+  inline var indexStatus: IndexStatus?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -55,9 +49,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
 
   /**
-    * Auto scaling settings for a global secondary index replica's read capacity units.
+    * 
     */
-  var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+  inline var provisionedReadCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -66,10 +60,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
 
   /**
-    * The maximum number of strongly consistent reads consumed per second before DynamoDB returns a
-    *  ThrottlingException.
+    * 
     */
-  var provisionedReadCapacityUnits: Long?
+  inline var provisionedReadCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -78,9 +71,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
 
   /**
-    * Auto scaling settings for a global secondary index replica's write capacity units.
+    * 
     */
-  var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
+  inline var provisionedWriteCapacityAutoScalingSettings: AutoScalingSettingsDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -89,9 +82,9 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
 
   /**
-    * The maximum number of writes consumed per second before DynamoDB returns a ThrottlingException.
+    * 
     */
-  var provisionedWriteCapacityUnits: Long?
+  inline var provisionedWriteCapacityUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -100,34 +93,26 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
 
     
   /**
-    * The current status of the global secondary index:
     * 
-    *  CREATING - The global secondary index is being created.
-    * 
-    *  UPDATING - The global secondary index is being updated.
-    * 
-    *  DELETING - The global secondary index is being deleted.
-    * 
-    *  ACTIVE - The global secondary index is ready for use.
     */
-  fun indexStatus(value: String?) {
+  inline fun indexStatus(value: String?) {
     builder.indexStatus(value)
   }
 
   
     
   /**
-    * Auto scaling settings for a global secondary index replica's read capacity units.
+    * 
     */
-  fun provisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
+  inline fun provisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.provisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
 
 
   /**
-    * Auto scaling settings for a global secondary index replica's write capacity units.
+    * 
     */
-  fun provisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
+  inline fun provisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
     builder.provisionedWriteCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
   }
 
@@ -137,5 +122,5 @@ class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL {
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsDescription:
   * Represents the properties of a global secondary index.
   */
-fun buildReplicaGlobalSecondaryIndexSettingsDescription(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) =
-  ReplicaGlobalSecondaryIndexSettingsDescriptionDSL().apply(dslBlock).build()
+inline fun buildReplicaGlobalSecondaryIndexSettingsDescription(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) =
+  ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(ReplicaGlobalSecondaryIndexSettingsDescription.builder()).apply(dslBlock).build()

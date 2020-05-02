@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.TagResourceResponse
   * 
   */
 @DynamodbDSL
-class TagResourceResponseDSL {
+inline class TagResourceResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TagResourceResponse.builder()
+  val builder: TagResourceResponse.Builder
+){
+  @PublishedApi
   internal fun build(): TagResourceResponse = builder.build()
     
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class TagResourceResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -54,5 +56,5 @@ class TagResourceResponseDSL {
   * Builds instances of type TagResourceResponse:
   * 
   */
-fun buildTagResourceResponse(dslBlock: TagResourceResponseDSL.() -> Unit) =
-  TagResourceResponseDSL().apply(dslBlock).build()
+inline fun buildTagResourceResponse(dslBlock: TagResourceResponseDSL.() -> Unit) =
+  TagResourceResponseDSL(TagResourceResponse.builder()).apply(dslBlock).build()

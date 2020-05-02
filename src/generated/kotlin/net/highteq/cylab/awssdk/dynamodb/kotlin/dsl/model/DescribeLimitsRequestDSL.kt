@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -18,15 +18,17 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsRequest
   * Represents the input of a DescribeLimits operation. Has no content.
   */
 @DynamodbDSL
-class DescribeLimitsRequestDSL {
+inline class DescribeLimitsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DescribeLimitsRequest.builder()
+  val builder: DescribeLimitsRequest.Builder
+){
+  @PublishedApi
   internal fun build(): DescribeLimitsRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -42,5 +44,5 @@ class DescribeLimitsRequestDSL {
   * Builds instances of type DescribeLimitsRequest:
   * Represents the input of a DescribeLimits operation. Has no content.
   */
-fun buildDescribeLimitsRequest(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
-  DescribeLimitsRequestDSL().apply(dslBlock).build()
+inline fun buildDescribeLimitsRequest(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
+  DescribeLimitsRequestDSL(DescribeLimitsRequest.builder()).apply(dslBlock).build()

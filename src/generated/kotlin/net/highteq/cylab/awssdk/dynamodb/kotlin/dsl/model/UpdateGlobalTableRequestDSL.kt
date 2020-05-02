@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableRequest
   * 
   */
 @DynamodbDSL
-class UpdateGlobalTableRequestDSL {
+inline class UpdateGlobalTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = UpdateGlobalTableRequest.builder()
+  val builder: UpdateGlobalTableRequest.Builder
+){
+  @PublishedApi
   internal fun build(): UpdateGlobalTableRequest = builder.build()
     
   /**
-    * The global table name.
+    * 
     */
-  var globalTableName: String?
+  inline var globalTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -38,7 +40,7 @@ class UpdateGlobalTableRequestDSL {
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class UpdateGlobalTableRequestDSL {
 
 
   /**
-    * A list of Regions that should be added or removed from the global table.
+    * 
     */
-  var replicaUpdates: Collection<ReplicaUpdate>?
+  inline var replicaUpdates: Collection<ReplicaUpdate>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -60,9 +62,9 @@ class UpdateGlobalTableRequestDSL {
   
     
   /**
-    * A list of Regions that should be added or removed from the global table.
+    * 
     */
-  fun replicaUpdates(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) {
+  inline fun replicaUpdates(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) {
     builder.replicaUpdates(buildReplicaUpdateCollection(dslBlock))
   }
 
@@ -72,5 +74,5 @@ class UpdateGlobalTableRequestDSL {
   * Builds instances of type UpdateGlobalTableRequest:
   * 
   */
-fun buildUpdateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
-  UpdateGlobalTableRequestDSL().apply(dslBlock).build()
+inline fun buildUpdateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+  UpdateGlobalTableRequestDSL(UpdateGlobalTableRequest.builder()).apply(dslBlock).build()

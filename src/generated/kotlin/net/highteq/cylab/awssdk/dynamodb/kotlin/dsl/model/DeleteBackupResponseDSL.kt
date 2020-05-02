@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.DeleteBackupResponse
   * 
   */
 @DynamodbDSL
-class DeleteBackupResponseDSL {
+inline class DeleteBackupResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = DeleteBackupResponse.builder()
+  val builder: DeleteBackupResponse.Builder
+){
+  @PublishedApi
   internal fun build(): DeleteBackupResponse = builder.build()
     
   /**
-    * Contains the description of the backup created for the table.
+    * 
     */
-  var backupDescription: BackupDescription?
+  inline var backupDescription: BackupDescription?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class DeleteBackupResponseDSL {
   /**
     * 
     */
-  var responseMetadata: AwsResponseMetadata?
+  inline var responseMetadata: AwsResponseMetadata?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class DeleteBackupResponseDSL {
   /**
     * 
     */
-  var sdkHttpResponse: SdkHttpResponse?
+  inline var sdkHttpResponse: SdkHttpResponse?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +63,9 @@ class DeleteBackupResponseDSL {
   
     
   /**
-    * Contains the description of the backup created for the table.
+    * 
     */
-  fun backupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) {
+  inline fun backupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) {
     builder.backupDescription(buildBackupDescription(dslBlock))
   }
 
@@ -73,5 +75,5 @@ class DeleteBackupResponseDSL {
   * Builds instances of type DeleteBackupResponse:
   * 
   */
-fun buildDeleteBackupResponse(dslBlock: DeleteBackupResponseDSL.() -> Unit) =
-  DeleteBackupResponseDSL().apply(dslBlock).build()
+inline fun buildDeleteBackupResponse(dslBlock: DeleteBackupResponseDSL.() -> Unit) =
+  DeleteBackupResponseDSL(DeleteBackupResponse.builder()).apply(dslBlock).build()

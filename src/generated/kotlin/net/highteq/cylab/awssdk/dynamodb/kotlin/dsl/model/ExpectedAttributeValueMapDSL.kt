@@ -4,15 +4,17 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
+import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
 
 /**
   * Builds instances of type ExpectedAttributeValue:
   * Represents a condition to be compared with an attribute value. This condition can be used with
-  *  DeleteItem, PutItem, or UpdateItem operations; if the comparison evaluates to
+  *  DeleteItem, PutItem or UpdateItem operations; if the comparison evaluates to
   *  true, the operation succeeds; if not, the operation fails. You can use ExpectedAttributeValue in one of
   *  two different ways:
   * 
@@ -30,43 +32,47 @@ import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
   *  ValidationException exception.
   */
 @DynamodbDSL
-class ExpectedAttributeValueMapDSL {
-  private val map = mutableMapOf<String, ExpectedAttributeValue>()
+inline class ExpectedAttributeValueMapDSL(
+  @PublishedApi
+  @Deprecated("Don't use internal fields!", level = WARNING)
+  internal val map : MutableMap<String, ExpectedAttributeValue>
+) {
+  @PublishedApi
   internal fun build() : Map<String, ExpectedAttributeValue> = map
 
   /**
     * Builds an object of type ExpectedAttributeValue from 
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
-  fun o(key: String, dslBlock: ExpectedAttributeValueDSL.() -> Unit) {
-    map[key] = ExpectedAttributeValueDSL().apply(dslBlock).build()
+  inline fun o(key: String, dslBlock: ExpectedAttributeValueDSL.() -> Unit) {
+    map[key] = buildExpectedAttributeValue(dslBlock)
   }
 
   /**
     * Adds a pair of String -> ExpectedAttributeValue to the map
     */
-  operator fun Pair<String, ExpectedAttributeValue>.unaryPlus() {
+  inline operator fun Pair<String, ExpectedAttributeValue>.unaryPlus() {
     map[this.first] = this.second
   }
 
   /**
     * Adds all given Pair<String, ExpectedAttributeValue> instances to the map
     */
-  operator fun Collection<Pair<String, ExpectedAttributeValue>>.unaryPlus() {
+  inline operator fun Collection<Pair<String, ExpectedAttributeValue>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all given Pair<String, ExpectedAttributeValue> instances to the map
     */
-  operator fun Array<Pair<String, ExpectedAttributeValue>>.unaryPlus() {
+  inline operator fun Array<Pair<String, ExpectedAttributeValue>>.unaryPlus() {
     this.forEach { map[it.first] = it.second }
   }
 
   /**
     * Adds all entries in the given map
     */
-  operator fun Map<String, ExpectedAttributeValue>.unaryPlus() {
+  inline operator fun Map<String, ExpectedAttributeValue>.unaryPlus() {
     map.putAll(this)
   }
 }
@@ -74,7 +80,7 @@ class ExpectedAttributeValueMapDSL {
 /**
   * Builds instances of type ExpectedAttributeValue:
   * Represents a condition to be compared with an attribute value. This condition can be used with
-  *  DeleteItem, PutItem, or UpdateItem operations; if the comparison evaluates to
+  *  DeleteItem, PutItem or UpdateItem operations; if the comparison evaluates to
   *  true, the operation succeeds; if not, the operation fails. You can use ExpectedAttributeValue in one of
   *  two different ways:
   * 
@@ -91,5 +97,5 @@ class ExpectedAttributeValueMapDSL {
   *  ComparisonOperator. Note that if you use both sets of parameters at once, DynamoDB will return a
   *  ValidationException exception.
   */
-fun buildExpectedAttributeValueMap(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) =
-  ExpectedAttributeValueMapDSL().apply(dslBlock).build()
+inline fun buildExpectedAttributeValueMap(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) =
+  ExpectedAttributeValueMapDSL(mutableMapOf<String, ExpectedAttributeValue>()).apply(dslBlock).build()

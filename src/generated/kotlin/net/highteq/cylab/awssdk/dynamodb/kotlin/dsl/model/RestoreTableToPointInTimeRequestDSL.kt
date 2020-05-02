@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.RestoreTableToPointInTimeR
   * 
   */
 @DynamodbDSL
-class RestoreTableToPointInTimeRequestDSL {
+inline class RestoreTableToPointInTimeRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = RestoreTableToPointInTimeRequest.builder()
+  val builder: RestoreTableToPointInTimeRequest.Builder
+){
+  @PublishedApi
   internal fun build(): RestoreTableToPointInTimeRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,9 +38,9 @@ class RestoreTableToPointInTimeRequestDSL {
 
 
   /**
-    * Time in the past to restore the table to.
+    * 
     */
-  var restoreDateTime: Instant?
+  inline var restoreDateTime: Instant?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -47,9 +49,9 @@ class RestoreTableToPointInTimeRequestDSL {
 
 
   /**
-    * Name of the source table that is being restored.
+    * 
     */
-  var sourceTableName: String?
+  inline var sourceTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -58,9 +60,9 @@ class RestoreTableToPointInTimeRequestDSL {
 
 
   /**
-    * The name of the new table to which it must be restored to.
+    * 
     */
-  var targetTableName: String?
+  inline var targetTableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -69,10 +71,9 @@ class RestoreTableToPointInTimeRequestDSL {
 
 
   /**
-    * Restore the table to the latest possible time. LatestRestorableDateTime is typically 5 minutes
-    *  before the current time.
+    * 
     */
-  var useLatestRestorableTime: Boolean?
+  inline var useLatestRestorableTime: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -88,5 +89,5 @@ class RestoreTableToPointInTimeRequestDSL {
   * Builds instances of type RestoreTableToPointInTimeRequest:
   * 
   */
-fun buildRestoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
-  RestoreTableToPointInTimeRequestDSL().apply(dslBlock).build()
+inline fun buildRestoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
+  RestoreTableToPointInTimeRequestDSL(RestoreTableToPointInTimeRequest.builder()).apply(dslBlock).build()

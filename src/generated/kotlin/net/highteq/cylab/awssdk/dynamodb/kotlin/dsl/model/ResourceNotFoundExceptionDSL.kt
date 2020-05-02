@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -20,15 +20,17 @@ import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException
   *  status might not be ACTIVE.
   */
 @DynamodbDSL
-class ResourceNotFoundExceptionDSL {
+inline class ResourceNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ResourceNotFoundException.builder()
+  val builder: ResourceNotFoundException.Builder
+){
+  @PublishedApi
   internal fun build(): ResourceNotFoundException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -39,7 +41,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -50,7 +52,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,7 +63,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -72,7 +74,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -83,7 +85,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -94,7 +96,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -102,7 +104,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -110,7 +112,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -118,7 +120,7 @@ class ResourceNotFoundExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -131,5 +133,5 @@ class ResourceNotFoundExceptionDSL {
   * The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its
   *  status might not be ACTIVE.
   */
-fun buildResourceNotFoundException(dslBlock: ResourceNotFoundExceptionDSL.() -> Unit) =
-  ResourceNotFoundExceptionDSL().apply(dslBlock).build()
+inline fun buildResourceNotFoundException(dslBlock: ResourceNotFoundExceptionDSL.() -> Unit) =
+  ResourceNotFoundExceptionDSL(ResourceNotFoundException.builder()).apply(dslBlock).build()

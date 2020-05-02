@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -17,15 +17,17 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   * Represents all of the data describing a particular stream.
   */
 @DynamodbDSL
-class StreamDSL {
+inline class StreamDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = Stream.builder()
+  val builder: Stream.Builder
+){
+  @PublishedApi
   internal fun build(): Stream = builder.build()
     
   /**
-    * The Amazon Resource Name (ARN) for the stream.
+    * 
     */
-  var streamArn: String?
+  inline var streamArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -34,19 +36,9 @@ class StreamDSL {
 
 
   /**
-    * A timestamp, in ISO 8601 format, for this stream.
     * 
-    *  Note that LatestStreamLabel is not a unique identifier for the stream, because it is possible
-    *  that a stream from another table might have the same timestamp. However, the combination of the following
-    *  three elements is guaranteed to be unique:
-    * 
-    *  the AWS customer ID.
-    * 
-    *  the table name
-    * 
-    *  the StreamLabel
     */
-  var streamLabel: String?
+  inline var streamLabel: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -55,9 +47,9 @@ class StreamDSL {
 
 
   /**
-    * The DynamoDB table with which the stream is associated.
+    * 
     */
-  var tableName: String?
+  inline var tableName: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,5 +65,5 @@ class StreamDSL {
   * Builds instances of type Stream:
   * Represents all of the data describing a particular stream.
   */
-fun buildStream(dslBlock: StreamDSL.() -> Unit) =
-  StreamDSL().apply(dslBlock).build()
+inline fun buildStream(dslBlock: StreamDSL.() -> Unit) =
+  StreamDSL(Stream.builder()).apply(dslBlock).build()

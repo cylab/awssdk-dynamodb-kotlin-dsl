@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -21,15 +21,17 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputExcee
   *  requests and use exponential backoff. For more information, go to Error Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide.
   */
 @DynamodbDSL
-class ProvisionedThroughputExceededExceptionDSL {
+inline class ProvisionedThroughputExceededExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = ProvisionedThroughputExceededException.builder()
+  val builder: ProvisionedThroughputExceededException.Builder
+){
+  @PublishedApi
   internal fun build(): ProvisionedThroughputExceededException = builder.build()
     
   /**
     * 
     */
-  var awsErrorDetails: AwsErrorDetails?
+  inline var awsErrorDetails: AwsErrorDetails?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -40,7 +42,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var cause: Throwable?
+  inline var cause: Throwable?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -51,7 +53,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var clockSkew: Duration?
+  inline var clockSkew: Duration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -62,7 +64,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var message: String?
+  inline var message: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -73,7 +75,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var requestId: String?
+  inline var requestId: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -84,7 +86,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  var statusCode: Int
+  inline var statusCode: Int
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -95,7 +97,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  fun cause(value: Throwable?) {
+  inline fun cause(value: Throwable?) {
     builder.cause(value)
   }
 
@@ -103,7 +105,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  fun message(value: String?) {
+  inline fun message(value: String?) {
     builder.message(value)
   }
 
@@ -111,7 +113,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  fun requestId(value: String?) {
+  inline fun requestId(value: String?) {
     builder.requestId(value)
   }
 
@@ -119,7 +121,7 @@ class ProvisionedThroughputExceededExceptionDSL {
   /**
     * 
     */
-  fun statusCode(value: Int) {
+  inline fun statusCode(value: Int) {
     builder.statusCode(value)
   }
 
@@ -133,5 +135,5 @@ class ProvisionedThroughputExceededExceptionDSL {
   *  Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of
   *  requests and use exponential backoff. For more information, go to Error Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide.
   */
-fun buildProvisionedThroughputExceededException(dslBlock: ProvisionedThroughputExceededExceptionDSL.() -> Unit) =
-  ProvisionedThroughputExceededExceptionDSL().apply(dslBlock).build()
+inline fun buildProvisionedThroughputExceededException(dslBlock: ProvisionedThroughputExceededExceptionDSL.() -> Unit) =
+  ProvisionedThroughputExceededExceptionDSL(ProvisionedThroughputExceededException.builder()).apply(dslBlock).build()

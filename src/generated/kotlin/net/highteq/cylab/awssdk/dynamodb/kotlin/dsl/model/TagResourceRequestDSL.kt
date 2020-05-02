@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -19,15 +19,17 @@ import software.amazon.awssdk.services.dynamodb.model.TagResourceRequest
   * 
   */
 @DynamodbDSL
-class TagResourceRequestDSL {
+inline class TagResourceRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = TagResourceRequest.builder()
+  val builder: TagResourceRequest.Builder
+){
+  @PublishedApi
   internal fun build(): TagResourceRequest = builder.build()
     
   /**
     * 
     */
-  var overrideConfiguration: AwsRequestOverrideConfiguration?
+  inline var overrideConfiguration: AwsRequestOverrideConfiguration?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -36,10 +38,9 @@ class TagResourceRequestDSL {
 
 
   /**
-    * Identifies the Amazon DynamoDB resource to which tags should be added. This value is an Amazon Resource Name
-    *  (ARN).
+    * 
     */
-  var resourceArn: String?
+  inline var resourceArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -48,9 +49,9 @@ class TagResourceRequestDSL {
 
 
   /**
-    * The tags to be assigned to the Amazon DynamoDB resource.
+    * 
     */
-  var tags: Collection<Tag>?
+  inline var tags: Collection<Tag>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -61,9 +62,9 @@ class TagResourceRequestDSL {
   
     
   /**
-    * The tags to be assigned to the Amazon DynamoDB resource.
+    * 
     */
-  fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
+  inline fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
     builder.tags(buildTagCollection(dslBlock))
   }
 
@@ -73,5 +74,5 @@ class TagResourceRequestDSL {
   * Builds instances of type TagResourceRequest:
   * 
   */
-fun buildTagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
-  TagResourceRequestDSL().apply(dslBlock).build()
+inline fun buildTagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
+  TagResourceRequestDSL(TagResourceRequest.builder()).apply(dslBlock).build()

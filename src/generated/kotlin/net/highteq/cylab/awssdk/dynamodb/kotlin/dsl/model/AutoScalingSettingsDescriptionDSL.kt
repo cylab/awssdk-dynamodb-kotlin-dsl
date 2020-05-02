@@ -4,7 +4,7 @@
   Apache License Version 2.0
   See LICENSE.txt for more info
 */
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "NOTHING_TO_INLINE")
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.HIDDEN
@@ -15,18 +15,20 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescrip
 
 /**
   * Builds instances of type AutoScalingSettingsDescription:
-  * Represents the auto scaling settings for a global table or global secondary index.
+  * Represents the autoscaling settings for a global table or global secondary index.
   */
 @DynamodbDSL
-class AutoScalingSettingsDescriptionDSL {
+inline class AutoScalingSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
-  val builder = AutoScalingSettingsDescription.builder()
+  val builder: AutoScalingSettingsDescription.Builder
+){
+  @PublishedApi
   internal fun build(): AutoScalingSettingsDescription = builder.build()
     
   /**
-    * Disabled auto scaling for this global table or global secondary index.
+    * 
     */
-  var autoScalingDisabled: Boolean?
+  inline var autoScalingDisabled: Boolean?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -35,9 +37,9 @@ class AutoScalingSettingsDescriptionDSL {
 
 
   /**
-    * Role ARN used for configuring the auto scaling policy.
+    * 
     */
-  var autoScalingRoleArn: String?
+  inline var autoScalingRoleArn: String?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -46,9 +48,9 @@ class AutoScalingSettingsDescriptionDSL {
 
 
   /**
-    * The maximum capacity units that a global table or global secondary index should be scaled up to.
+    * 
     */
-  var maximumUnits: Long?
+  inline var maximumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -57,9 +59,9 @@ class AutoScalingSettingsDescriptionDSL {
 
 
   /**
-    * The minimum capacity units that a global table or global secondary index should be scaled down to.
+    * 
     */
-  var minimumUnits: Long?
+  inline var minimumUnits: Long?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -68,9 +70,9 @@ class AutoScalingSettingsDescriptionDSL {
 
 
   /**
-    * Information about the scaling policies.
+    * 
     */
-  var scalingPolicies: Collection<AutoScalingPolicyDescription>?
+  inline var scalingPolicies: Collection<AutoScalingPolicyDescription>?
     @Deprecated("", level = HIDDEN) // Hide from Kotlin callers
     get() = throw UnsupportedOperationException()
     set(value) {
@@ -81,9 +83,9 @@ class AutoScalingSettingsDescriptionDSL {
   
     
   /**
-    * Information about the scaling policies.
+    * 
     */
-  fun scalingPolicies(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) {
+  inline fun scalingPolicies(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) {
     builder.scalingPolicies(buildAutoScalingPolicyDescriptionCollection(dslBlock))
   }
 
@@ -91,7 +93,7 @@ class AutoScalingSettingsDescriptionDSL {
 
 /**
   * Builds instances of type AutoScalingSettingsDescription:
-  * Represents the auto scaling settings for a global table or global secondary index.
+  * Represents the autoscaling settings for a global table or global secondary index.
   */
-fun buildAutoScalingSettingsDescription(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) =
-  AutoScalingSettingsDescriptionDSL().apply(dslBlock).build()
+inline fun buildAutoScalingSettingsDescription(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) =
+  AutoScalingSettingsDescriptionDSL(AutoScalingSettingsDescription.builder()).apply(dslBlock).build()
