@@ -2,7 +2,8 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/net.highteq.cylab/awssdk-dynamodb-kotlin-dsl.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.highteq.cylab%22%20AND%20a:%22awssdk-dynamodb-kotlin-dsl%22)
 
-This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder
+This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://github.com/cylab/aws-kotlin-dsl-builder.
+
 Everything is inlined, so performance impact should be negligible. 
 
 **CAUTION:** This is very much work in progress and might not work as expected or at all.
