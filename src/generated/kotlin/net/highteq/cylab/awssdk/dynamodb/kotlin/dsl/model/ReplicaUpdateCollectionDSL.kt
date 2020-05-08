@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
 
 /**
-  * Builds instances of type ReplicaUpdate:
+  * Builds a collection of type ReplicaUpdate:
   * Represents one of the following:
   * 
   *  A new replica to be added to an existing global table.
@@ -61,7 +61,7 @@ inline class ReplicaUpdateCollectionDSL(
 }
 
 /**
-  * Builds instances of type ReplicaUpdate:
+  * Builds a collection of type ReplicaUpdate:
   * Represents one of the following:
   * 
   *  A new replica to be added to an existing global table.

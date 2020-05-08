@@ -95,34 +95,6 @@ inline class TrimmedDataAccessExceptionDSL(
       builder.statusCode(value)
     }
 
-  /**
-    * 
-    */
-  inline fun cause(value: Throwable?) {
-    builder.cause(value)
-  }
-
-  /**
-    * 
-    */
-  inline fun message(value: String?) {
-    builder.message(value)
-  }
-
-  /**
-    * 
-    */
-  inline fun requestId(value: String?) {
-    builder.requestId(value)
-  }
-
-  /**
-    * 
-    */
-  inline fun statusCode(value: Int) {
-    builder.statusCode(value)
-  }
-
 }
 
 /**

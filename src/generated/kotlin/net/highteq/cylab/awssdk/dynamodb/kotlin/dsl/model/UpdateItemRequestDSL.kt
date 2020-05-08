@@ -11,6 +11,8 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
 import software.amazon.awssdk.services.dynamodb.model.ConditionalOperator
@@ -19,6 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.ReturnItemCollectionMetrics
 import software.amazon.awssdk.services.dynamodb.model.ReturnValue
 import software.amazon.awssdk.services.dynamodb.model.UpdateItemRequest
+import software.amazon.awssdk.services.dynamodb.transform.UpdateItemRequestMarshaller
 
 /**
   * Builds instances of type UpdateItemRequest:
@@ -226,3 +229,33 @@ inline class UpdateItemRequestDSL(
   */
 inline fun buildUpdateItemRequest(dslBlock: UpdateItemRequestDSL.() -> Unit) =
   UpdateItemRequestDSL(UpdateItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put,
+  *  delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new
+  *  attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected
+  *  attribute values).
+  * 
+  *  You can also return the item's attribute values in the same UpdateItem operation using the
+  *  ReturnValues parameter.
+  */
+inline fun DynamoDbAsyncClient.updateItemBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
+  this.updateItem(buildUpdateItemRequest(dslBlock))
+
+/**
+  * Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put,
+  *  delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new
+  *  attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected
+  *  attribute values).
+  * 
+  *  You can also return the item's attribute values in the same UpdateItem operation using the
+  *  ReturnValues parameter.
+  */
+inline fun DynamoDbClient.updateItemBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
+  this.updateItem(buildUpdateItemRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun UpdateItemRequestMarshaller.marshallBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
+  this.marshall(buildUpdateItemRequest(dslBlock))

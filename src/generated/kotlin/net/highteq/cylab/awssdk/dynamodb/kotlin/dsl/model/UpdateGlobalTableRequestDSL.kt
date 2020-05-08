@@ -11,8 +11,11 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
 import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableRequest
+import software.amazon.awssdk.services.dynamodb.transform.UpdateGlobalTableRequestMarshaller
 
 /**
   * Builds instances of type UpdateGlobalTableRequest:
@@ -71,3 +74,49 @@ inline class UpdateGlobalTableRequestDSL(
   */
 inline fun buildUpdateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
   UpdateGlobalTableRequestDSL(UpdateGlobalTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
+  *  this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
+  *  same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
+  *  units.
+  * 
+  *  Although you can use UpdateGlobalTable to add replicas and remove replicas in a single request, for
+  *  simplicity we recommend that you issue separate requests for adding or removing replicas.
+  * 
+  *  If global secondary indexes are specified, then the following conditions must also be met:
+  * 
+  *  The global secondary indexes must have the same name.
+  * 
+  *  The global secondary indexes must have the same hash key and sort key (if present).
+  * 
+  *  The global secondary indexes must have the same provisioned and maximum write capacity units.
+  */
+inline fun DynamoDbAsyncClient.updateGlobalTableBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+  this.updateGlobalTable(buildUpdateGlobalTableRequest(dslBlock))
+
+/**
+  * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
+  *  this operation. Any replica to be added must be empty, must have the same name as the global table, must have the
+  *  same key schema, and must have DynamoDB Streams enabled and must have same provisioned and maximum write capacity
+  *  units.
+  * 
+  *  Although you can use UpdateGlobalTable to add replicas and remove replicas in a single request, for
+  *  simplicity we recommend that you issue separate requests for adding or removing replicas.
+  * 
+  *  If global secondary indexes are specified, then the following conditions must also be met:
+  * 
+  *  The global secondary indexes must have the same name.
+  * 
+  *  The global secondary indexes must have the same hash key and sort key (if present).
+  * 
+  *  The global secondary indexes must have the same provisioned and maximum write capacity units.
+  */
+inline fun DynamoDbClient.updateGlobalTableBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+  this.updateGlobalTable(buildUpdateGlobalTableRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun UpdateGlobalTableRequestMarshaller.marshallBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+  this.marshall(buildUpdateGlobalTableRequest(dslBlock))

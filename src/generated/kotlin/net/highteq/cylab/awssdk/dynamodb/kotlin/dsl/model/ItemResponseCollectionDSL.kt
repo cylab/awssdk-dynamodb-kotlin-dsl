@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ItemResponse
 
 /**
-  * Builds instances of type ItemResponse:
+  * Builds a collection of type ItemResponse:
   * Details for the requested item.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class ItemResponseCollectionDSL(
 }
 
 /**
-  * Builds instances of type ItemResponse:
+  * Builds a collection of type ItemResponse:
   * Details for the requested item.
   */
 inline fun buildItemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =

@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 
 /**
-  * Builds instances of type AttributeDefinition:
+  * Builds a collection of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class AttributeDefinitionCollectionDSL(
 }
 
 /**
-  * Builds instances of type AttributeDefinition:
+  * Builds a collection of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
 inline fun buildAttributeDefinitionCollection(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) =

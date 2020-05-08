@@ -11,6 +11,8 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConditionalOperator
 import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest
@@ -18,6 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
 import software.amazon.awssdk.services.dynamodb.model.ReturnItemCollectionMetrics
 import software.amazon.awssdk.services.dynamodb.model.ReturnValue
+import software.amazon.awssdk.services.dynamodb.transform.DeleteItemRequestMarshaller
 
 /**
   * Builds instances of type DeleteItemRequest:
@@ -198,3 +201,41 @@ inline class DeleteItemRequestDSL(
   */
 inline fun buildDeleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
   DeleteItemRequestDSL(DeleteItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DeleteItemRequestMarshaller.marshallBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+  this.marshall(buildDeleteItemRequest(dslBlock))
+
+/**
+  * Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the
+  *  item if it exists, or if it has an expected attribute value.
+  * 
+  *  In addition to deleting an item, you can also return the item's attribute values in the same operation, using the
+  *  ReturnValues parameter.
+  * 
+  *  Unless you specify conditions, the DeleteItem is an idempotent operation; running it multiple times
+  *  on the same item or attribute does not result in an error response.
+  * 
+  *  Conditional deletes are useful for deleting items only if specific conditions are met. If those conditions are
+  *  met, DynamoDB performs the delete. Otherwise, the item is not deleted.
+  */
+inline fun DynamoDbAsyncClient.deleteItemBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+  this.deleteItem(buildDeleteItemRequest(dslBlock))
+
+/**
+  * Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the
+  *  item if it exists, or if it has an expected attribute value.
+  * 
+  *  In addition to deleting an item, you can also return the item's attribute values in the same operation, using the
+  *  ReturnValues parameter.
+  * 
+  *  Unless you specify conditions, the DeleteItem is an idempotent operation; running it multiple times
+  *  on the same item or attribute does not result in an error response.
+  * 
+  *  Conditional deletes are useful for deleting items only if specific conditions are met. If those conditions are
+  *  met, DynamoDB performs the delete. Otherwise, the item is not deleted.
+  */
+inline fun DynamoDbClient.deleteItemBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+  this.deleteItem(buildDeleteItemRequest(dslBlock))

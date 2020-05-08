@@ -11,8 +11,11 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.Tag
 import software.amazon.awssdk.services.dynamodb.model.TagResourceRequest
+import software.amazon.awssdk.services.dynamodb.transform.TagResourceRequestMarshaller
 
 /**
   * Builds instances of type TagResourceRequest:
@@ -71,3 +74,31 @@ inline class TagResourceRequestDSL(
   */
 inline fun buildTagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
   TagResourceRequestDSL(TagResourceRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that
+  *  they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up
+  *  to 5 times per second, per account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbAsyncClient.tagResourceBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
+  this.tagResource(buildTagResourceRequest(dslBlock))
+
+/**
+  * Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that
+  *  they appear on the Billing and Cost Management console for cost allocation tracking. You can call TagResource up
+  *  to 5 times per second, per account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbClient.tagResourceBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
+  this.tagResource(buildTagResourceRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun TagResourceRequestMarshaller.marshallBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
+  this.marshall(buildTagResourceRequest(dslBlock))

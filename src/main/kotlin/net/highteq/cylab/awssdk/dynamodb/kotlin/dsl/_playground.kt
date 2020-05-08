@@ -79,12 +79,22 @@ private class _Playground {
     tableName = "SomeTable"
   }
 
-  val deleteItemRequest = buildDeleteItemRequest {
-    tableName = "SomeTable"
-    key {
-      o("ID") { s = "someValue" }
-    }
-  }
+//  val result = buildDynamoDbAsyncClient{}.getItem {
+//    key { o("id") { s = "some id" } }
+//    tableName = "SomeTable"
+//  }
+//
+//  val result2 = buildDynamoDbAsyncClient{}.getItemBy {
+//    key { o("id") { s = "some id" } }
+//    tableName = "SomeTable"
+//  }
+//
+//  val deleteItemRequest = deleteItemRequestBy {
+//    tableName = "SomeTable"
+//    key {
+//      o("ID") { s = "someValue" }
+//    }
+//  }
 
 
   //val foo = buildAttributeMap {

@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeGlobalTableRequestMarshaller
 
 /**
   * Builds instances of type DescribeGlobalTableRequest:
@@ -53,3 +56,21 @@ inline class DescribeGlobalTableRequestDSL(
   */
 inline fun buildDescribeGlobalTableRequest(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
   DescribeGlobalTableRequestDSL(DescribeGlobalTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeGlobalTableRequestMarshaller.marshallBy(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeGlobalTableRequest(dslBlock))
+
+/**
+  * Returns information about the specified global table.
+  */
+inline fun DynamoDbAsyncClient.describeGlobalTableBy(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
+  this.describeGlobalTable(buildDescribeGlobalTableRequest(dslBlock))
+
+/**
+  * Returns information about the specified global table.
+  */
+inline fun DynamoDbClient.describeGlobalTableBy(dslBlock: DescribeGlobalTableRequestDSL.() -> Unit) =
+  this.describeGlobalTable(buildDescribeGlobalTableRequest(dslBlock))

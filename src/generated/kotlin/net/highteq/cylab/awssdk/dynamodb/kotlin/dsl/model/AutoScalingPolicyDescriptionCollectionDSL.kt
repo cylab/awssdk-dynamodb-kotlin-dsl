@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyDescription
 
 /**
-  * Builds instances of type AutoScalingPolicyDescription:
+  * Builds a collection of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class AutoScalingPolicyDescriptionCollectionDSL(
 }
 
 /**
-  * Builds instances of type AutoScalingPolicyDescription:
+  * Builds a collection of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
 inline fun buildAutoScalingPolicyDescriptionCollection(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) =

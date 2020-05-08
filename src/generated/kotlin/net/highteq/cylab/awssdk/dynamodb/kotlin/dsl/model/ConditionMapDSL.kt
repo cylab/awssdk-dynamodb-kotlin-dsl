@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Condition
 
 /**
-  * Builds instances of type Condition:
+  * Builds a maps of type Condition:
   * Represents the selection criteria for a Query or Scan operation:
   * 
   *  For a Query operation, Condition is used for specifying the KeyConditions to
@@ -74,7 +74,7 @@ inline class ConditionMapDSL(
 }
 
 /**
-  * Builds instances of type Condition:
+  * Builds a maps of type Condition:
   * Represents the selection criteria for a Query or Scan operation:
   * 
   *  For a Query operation, Condition is used for specifying the KeyConditions to

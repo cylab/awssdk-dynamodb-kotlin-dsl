@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Capacity
 
 /**
-  * Builds instances of type Capacity:
+  * Builds a maps of type Capacity:
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
 @DynamodbDSL
@@ -62,7 +62,7 @@ inline class CapacityMapDSL(
 }
 
 /**
-  * Builds instances of type Capacity:
+  * Builds a maps of type Capacity:
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
 inline fun buildCapacityMap(dslBlock: CapacityMapDSL.() -> Unit) =

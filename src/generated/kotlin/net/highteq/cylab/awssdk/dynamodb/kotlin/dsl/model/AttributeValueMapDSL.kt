@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 
 /**
-  * Builds instances of type AttributeValue:
+  * Builds a maps of type AttributeValue:
   * Represents the data for an attribute.
   * 
   *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.
@@ -66,7 +66,7 @@ inline class AttributeValueMapDSL(
 }
 
 /**
-  * Builds instances of type AttributeValue:
+  * Builds a maps of type AttributeValue:
   * Represents the data for an attribute.
   * 
   *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.

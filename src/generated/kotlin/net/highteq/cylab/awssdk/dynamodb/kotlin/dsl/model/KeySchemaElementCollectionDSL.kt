@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 
 /**
-  * Builds instances of type KeySchemaElement:
+  * Builds a collection of type KeySchemaElement:
   * Represents a single element of a key schema. A key schema specifies the attributes that make up the primary
   *  key of a table, or the key attributes of an index.
   * 
@@ -64,7 +64,7 @@ inline class KeySchemaElementCollectionDSL(
 }
 
 /**
-  * Builds instances of type KeySchemaElement:
+  * Builds a collection of type KeySchemaElement:
   * Represents a single element of a key schema. A key schema specifies the attributes that make up the primary
   *  key of a table, or the key attributes of an index.
   * 

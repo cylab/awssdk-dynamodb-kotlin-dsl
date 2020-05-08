@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalTable
 
 /**
-  * Builds instances of type GlobalTable:
+  * Builds a collection of type GlobalTable:
   * Represents the properties of a global table.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class GlobalTableCollectionDSL(
 }
 
 /**
-  * Builds instances of type GlobalTable:
+  * Builds a collection of type GlobalTable:
   * Represents the properties of a global table.
   */
 inline fun buildGlobalTableCollection(dslBlock: GlobalTableCollectionDSL.() -> Unit) =

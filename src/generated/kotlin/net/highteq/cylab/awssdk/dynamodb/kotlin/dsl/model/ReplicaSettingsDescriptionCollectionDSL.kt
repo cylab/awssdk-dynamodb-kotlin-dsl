@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
 
 /**
-  * Builds instances of type ReplicaSettingsDescription:
+  * Builds a collection of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class ReplicaSettingsDescriptionCollectionDSL(
 }
 
 /**
-  * Builds instances of type ReplicaSettingsDescription:
+  * Builds a collection of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
 inline fun buildReplicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =

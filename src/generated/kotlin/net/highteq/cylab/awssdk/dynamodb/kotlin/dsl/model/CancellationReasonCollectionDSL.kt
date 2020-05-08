@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
 
 /**
-  * Builds instances of type CancellationReason:
+  * Builds a collection of type CancellationReason:
   * An ordered list of errors for each item in the request which caused the transaction to get cancelled. The values of
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.
@@ -57,7 +57,7 @@ inline class CancellationReasonCollectionDSL(
 }
 
 /**
-  * Builds instances of type CancellationReason:
+  * Builds a collection of type CancellationReason:
   * An ordered list of errors for each item in the request which caused the transaction to get cancelled. The values of
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.

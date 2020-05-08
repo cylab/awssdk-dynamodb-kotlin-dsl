@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
 /**
-  * Builds instances of type Endpoint:
+  * Builds a collection of type Endpoint:
   * An endpoint information details.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class EndpointCollectionDSL(
 }
 
 /**
-  * Builds instances of type Endpoint:
+  * Builds a collection of type Endpoint:
   * An endpoint information details.
   */
 inline fun buildEndpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =

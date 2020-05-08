@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeTableRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeTableRequestMarshaller
 
 /**
   * Builds instances of type DescribeTableRequest:
@@ -53,3 +56,33 @@ inline class DescribeTableRequestDSL(
   */
 inline fun buildDescribeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
   DescribeTableRequestDSL(DescribeTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeTableRequestMarshaller.marshallBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeTableRequest(dslBlock))
+
+/**
+  * Returns information about the table, including the current status of the table, when it was created, the primary
+  *  key schema, and any indexes on the table.
+  * 
+  *  If you issue a DescribeTable request immediately after a CreateTable request, DynamoDB
+  *  might return a ResourceNotFoundException. This is because DescribeTable uses an
+  *  eventually consistent query, and the metadata for your table might not be available at that moment. Wait for a
+  *  few seconds, and then try the DescribeTable request again.
+  */
+inline fun DynamoDbAsyncClient.describeTableBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+  this.describeTable(buildDescribeTableRequest(dslBlock))
+
+/**
+  * Returns information about the table, including the current status of the table, when it was created, the primary
+  *  key schema, and any indexes on the table.
+  * 
+  *  If you issue a DescribeTable request immediately after a CreateTable request, DynamoDB
+  *  might return a ResourceNotFoundException. This is because DescribeTable uses an
+  *  eventually consistent query, and the metadata for your table might not be available at that moment. Wait for a
+  *  few seconds, and then try the DescribeTable request again.
+  */
+inline fun DynamoDbClient.describeTableBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+  this.describeTable(buildDescribeTableRequest(dslBlock))

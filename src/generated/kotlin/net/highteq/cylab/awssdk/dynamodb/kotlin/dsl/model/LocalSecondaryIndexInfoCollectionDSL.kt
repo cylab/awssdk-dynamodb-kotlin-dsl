@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexInfo
 
 /**
-  * Builds instances of type LocalSecondaryIndexInfo:
+  * Builds a collection of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class LocalSecondaryIndexInfoCollectionDSL(
 }
 
 /**
-  * Builds instances of type LocalSecondaryIndexInfo:
+  * Builds a collection of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
 inline fun buildLocalSecondaryIndexInfoCollection(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) =

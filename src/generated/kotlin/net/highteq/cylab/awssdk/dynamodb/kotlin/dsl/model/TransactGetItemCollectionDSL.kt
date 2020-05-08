@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
 
 /**
-  * Builds instances of type TransactGetItem:
+  * Builds a collection of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class TransactGetItemCollectionDSL(
 }
 
 /**
-  * Builds instances of type TransactGetItem:
+  * Builds a collection of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
 inline fun buildTransactGetItemCollection(dslBlock: TransactGetItemCollectionDSL.() -> Unit) =

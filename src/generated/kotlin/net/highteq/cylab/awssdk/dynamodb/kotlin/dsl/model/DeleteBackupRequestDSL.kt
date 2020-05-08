@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DeleteBackupRequest
+import software.amazon.awssdk.services.dynamodb.transform.DeleteBackupRequestMarshaller
 
 /**
   * Builds instances of type DeleteBackupRequest:
@@ -53,3 +56,25 @@ inline class DeleteBackupRequestDSL(
   */
 inline fun buildDeleteBackupRequest(dslBlock: DeleteBackupRequestDSL.() -> Unit) =
   DeleteBackupRequestDSL(DeleteBackupRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DeleteBackupRequestMarshaller.marshallBy(dslBlock: DeleteBackupRequestDSL.() -> Unit) =
+  this.marshall(buildDeleteBackupRequest(dslBlock))
+
+/**
+  * Deletes an existing backup of a table.
+  * 
+  *  You can call DeleteBackup at a maximum rate of 10 times per second.
+  */
+inline fun DynamoDbAsyncClient.deleteBackupBy(dslBlock: DeleteBackupRequestDSL.() -> Unit) =
+  this.deleteBackup(buildDeleteBackupRequest(dslBlock))
+
+/**
+  * Deletes an existing backup of a table.
+  * 
+  *  You can call DeleteBackup at a maximum rate of 10 times per second.
+  */
+inline fun DynamoDbClient.deleteBackupBy(dslBlock: DeleteBackupRequestDSL.() -> Unit) =
+  this.deleteBackup(buildDeleteBackupRequest(dslBlock))

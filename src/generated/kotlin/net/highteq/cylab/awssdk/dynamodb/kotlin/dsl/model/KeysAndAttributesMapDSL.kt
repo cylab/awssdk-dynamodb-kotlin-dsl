@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 
 /**
-  * Builds instances of type KeysAndAttributes:
+  * Builds a maps of type KeysAndAttributes:
   * Represents a set of primary keys and, for each key, the attributes to retrieve from the table.
   * 
   *  For each primary key, you must provide all of the key attributes. For example, with a simple primary key, you
@@ -66,7 +66,7 @@ inline class KeysAndAttributesMapDSL(
 }
 
 /**
-  * Builds instances of type KeysAndAttributes:
+  * Builds a maps of type KeysAndAttributes:
   * Represents a set of primary keys and, for each key, the attributes to retrieve from the table.
   * 
   *  For each primary key, you must provide all of the key attributes. For example, with a simple primary key, you

@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.ListTagsOfResourceRequest
+import software.amazon.awssdk.services.dynamodb.transform.ListTagsOfResourceRequestMarshaller
 
 /**
   * Builds instances of type ListTagsOfResourceRequest:
@@ -63,3 +66,29 @@ inline class ListTagsOfResourceRequestDSL(
   */
 inline fun buildListTagsOfResourceRequest(dslBlock: ListTagsOfResourceRequestDSL.() -> Unit) =
   ListTagsOfResourceRequestDSL(ListTagsOfResourceRequest.builder()).apply(dslBlock).build()
+
+/**
+  * List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per
+  *  account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbAsyncClient.listTagsOfResourceBy(dslBlock: ListTagsOfResourceRequestDSL.() -> Unit) =
+  this.listTagsOfResource(buildListTagsOfResourceRequest(dslBlock))
+
+/**
+  * List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource up to 10 times per second, per
+  *  account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbClient.listTagsOfResourceBy(dslBlock: ListTagsOfResourceRequestDSL.() -> Unit) =
+  this.listTagsOfResource(buildListTagsOfResourceRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun ListTagsOfResourceRequestMarshaller.marshallBy(dslBlock: ListTagsOfResourceRequestDSL.() -> Unit) =
+  this.marshall(buildListTagsOfResourceRequest(dslBlock))

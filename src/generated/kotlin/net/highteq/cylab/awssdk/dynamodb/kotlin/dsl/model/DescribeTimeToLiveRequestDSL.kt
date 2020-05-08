@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeTimeToLiveRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeTimeToLiveRequestMarshaller
 
 /**
   * Builds instances of type DescribeTimeToLiveRequest:
@@ -53,3 +56,21 @@ inline class DescribeTimeToLiveRequestDSL(
   */
 inline fun buildDescribeTimeToLiveRequest(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
   DescribeTimeToLiveRequestDSL(DescribeTimeToLiveRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeTimeToLiveRequestMarshaller.marshallBy(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeTimeToLiveRequest(dslBlock))
+
+/**
+  * Gives a description of the Time to Live (TTL) status on the specified table.
+  */
+inline fun DynamoDbAsyncClient.describeTimeToLiveBy(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
+  this.describeTimeToLive(buildDescribeTimeToLiveRequest(dslBlock))
+
+/**
+  * Gives a description of the Time to Live (TTL) status on the specified table.
+  */
+inline fun DynamoDbClient.describeTimeToLiveBy(dslBlock: DescribeTimeToLiveRequestDSL.() -> Unit) =
+  this.describeTimeToLive(buildDescribeTimeToLiveRequest(dslBlock))

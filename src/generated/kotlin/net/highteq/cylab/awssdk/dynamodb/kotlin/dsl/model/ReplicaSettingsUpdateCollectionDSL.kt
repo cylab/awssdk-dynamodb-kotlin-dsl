@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
 
 /**
-  * Builds instances of type ReplicaSettingsUpdate:
+  * Builds a collection of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class ReplicaSettingsUpdateCollectionDSL(
 }
 
 /**
-  * Builds instances of type ReplicaSettingsUpdate:
+  * Builds a collection of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
 inline fun buildReplicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =

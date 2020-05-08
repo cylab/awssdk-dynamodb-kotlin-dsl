@@ -121,3 +121,33 @@ or in a nested AttributeValueMap
         }
       }
     }
+
+## Extension functions for buildable types
+
+All methods, that take a single argument of a type for which a DSL
+exists, is complemented with a sub DSL variant as extension function.
+These functions always end with 'By' to make sure, no ambiguity is
+introduced with other overloads of the original method.
+
+So instead of
+
+    val putRequest = buildPutItemRequest {
+      tableName = "table"
+      item {
+        o("ID") { s = hotel.id }
+        o("NAME") { s = hotel.name }
+      }
+    }
+    
+    client.putItem(putRequest)
+
+you can just write
+
+    client.putItemBy {
+      tableName = "table"
+      item {
+        o("ID") { s = hotel.id }
+        o("NAME") { s = hotel.name }
+      }
+    }
+

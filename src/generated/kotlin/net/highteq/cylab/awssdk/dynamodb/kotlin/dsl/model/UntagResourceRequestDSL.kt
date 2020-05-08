@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.UntagResourceRequest
+import software.amazon.awssdk.services.dynamodb.transform.UntagResourceRequestMarshaller
 
 /**
   * Builds instances of type UntagResourceRequest:
@@ -63,3 +66,29 @@ inline class UntagResourceRequestDSL(
   */
 inline fun buildUntagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
   UntagResourceRequestDSL(UntagResourceRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per
+  *  second, per account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbAsyncClient.untagResourceBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+  this.untagResource(buildUntagResourceRequest(dslBlock))
+
+/**
+  * Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per
+  *  second, per account.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in
+  *  the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamoDbClient.untagResourceBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+  this.untagResource(buildUntagResourceRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun UntagResourceRequestMarshaller.marshallBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+  this.marshall(buildUntagResourceRequest(dslBlock))

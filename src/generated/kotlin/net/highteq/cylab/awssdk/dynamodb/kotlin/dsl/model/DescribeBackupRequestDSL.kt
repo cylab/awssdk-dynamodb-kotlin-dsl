@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeBackupRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeBackupRequestMarshaller
 
 /**
   * Builds instances of type DescribeBackupRequest:
@@ -53,3 +56,25 @@ inline class DescribeBackupRequestDSL(
   */
 inline fun buildDescribeBackupRequest(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
   DescribeBackupRequestDSL(DescribeBackupRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeBackupRequestMarshaller.marshallBy(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeBackupRequest(dslBlock))
+
+/**
+  * Describes an existing backup of a table.
+  * 
+  *  You can call DescribeBackup at a maximum rate of 10 times per second.
+  */
+inline fun DynamoDbAsyncClient.describeBackupBy(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
+  this.describeBackup(buildDescribeBackupRequest(dslBlock))
+
+/**
+  * Describes an existing backup of a table.
+  * 
+  *  You can call DescribeBackup at a maximum rate of 10 times per second.
+  */
+inline fun DynamoDbClient.describeBackupBy(dslBlock: DescribeBackupRequestDSL.() -> Unit) =
+  this.describeBackup(buildDescribeBackupRequest(dslBlock))

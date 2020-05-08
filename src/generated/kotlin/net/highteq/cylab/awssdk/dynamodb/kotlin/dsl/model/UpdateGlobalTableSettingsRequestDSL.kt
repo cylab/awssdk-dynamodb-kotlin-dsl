@@ -11,11 +11,14 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondaryIndexSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableSettingsRequest
+import software.amazon.awssdk.services.dynamodb.transform.UpdateGlobalTableSettingsRequestMarshaller
 
 /**
   * Builds instances of type UpdateGlobalTableSettingsRequest:
@@ -135,3 +138,21 @@ inline class UpdateGlobalTableSettingsRequestDSL(
   */
 inline fun buildUpdateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
   UpdateGlobalTableSettingsRequestDSL(UpdateGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Updates settings for a global table.
+  */
+inline fun DynamoDbAsyncClient.updateGlobalTableSettingsBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.updateGlobalTableSettings(buildUpdateGlobalTableSettingsRequest(dslBlock))
+
+/**
+  * Updates settings for a global table.
+  */
+inline fun DynamoDbClient.updateGlobalTableSettingsBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.updateGlobalTableSettings(buildUpdateGlobalTableSettingsRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun UpdateGlobalTableSettingsRequestMarshaller.marshallBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.marshall(buildUpdateGlobalTableSettingsRequest(dslBlock))

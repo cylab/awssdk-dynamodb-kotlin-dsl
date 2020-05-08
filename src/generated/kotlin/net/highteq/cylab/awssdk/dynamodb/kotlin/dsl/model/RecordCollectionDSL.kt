@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Record
 
 /**
-  * Builds instances of type Record:
+  * Builds a collection of type Record:
   * A description of a unique event within a stream.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class RecordCollectionDSL(
 }
 
 /**
-  * Builds instances of type Record:
+  * Builds a collection of type Record:
   * A description of a unique event within a stream.
   */
 inline fun buildRecordCollection(dslBlock: RecordCollectionDSL.() -> Unit) =

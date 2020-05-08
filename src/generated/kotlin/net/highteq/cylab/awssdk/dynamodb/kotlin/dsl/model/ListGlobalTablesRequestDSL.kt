@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.ListGlobalTablesRequest
+import software.amazon.awssdk.services.dynamodb.transform.ListGlobalTablesRequestMarshaller
 
 /**
   * Builds instances of type ListGlobalTablesRequest:
@@ -73,3 +76,21 @@ inline class ListGlobalTablesRequestDSL(
   */
 inline fun buildListGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
   ListGlobalTablesRequestDSL(ListGlobalTablesRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Lists all global tables that have a replica in the specified region.
+  */
+inline fun DynamoDbAsyncClient.listGlobalTablesBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+  this.listGlobalTables(buildListGlobalTablesRequest(dslBlock))
+
+/**
+  * Lists all global tables that have a replica in the specified region.
+  */
+inline fun DynamoDbClient.listGlobalTablesBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+  this.listGlobalTables(buildListGlobalTablesRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun ListGlobalTablesRequestMarshaller.marshallBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+  this.marshall(buildListGlobalTablesRequest(dslBlock))

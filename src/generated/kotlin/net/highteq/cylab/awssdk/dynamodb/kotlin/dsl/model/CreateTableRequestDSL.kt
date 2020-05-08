@@ -11,6 +11,8 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
 import software.amazon.awssdk.services.dynamodb.model.CreateTableRequest
@@ -21,6 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 import software.amazon.awssdk.services.dynamodb.model.SSESpecification
 import software.amazon.awssdk.services.dynamodb.model.StreamSpecification
 import software.amazon.awssdk.services.dynamodb.model.Tag
+import software.amazon.awssdk.services.dynamodb.transform.CreateTableRequestMarshaller
 
 /**
   * Builds instances of type CreateTableRequest:
@@ -215,3 +218,47 @@ inline class CreateTableRequestDSL(
   */
 inline fun buildCreateTableRequest(dslBlock: CreateTableRequestDSL.() -> Unit) =
   CreateTableRequestDSL(CreateTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun CreateTableRequestMarshaller.marshallBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
+  this.marshall(buildCreateTableRequest(dslBlock))
+
+/**
+  * The CreateTable operation adds a new table to your account. In an AWS account, table names must be
+  *  unique within each region. That is, you can have two tables with same name if you create the tables in different
+  *  regions.
+  * 
+  *  CreateTable is an asynchronous operation. Upon receiving a CreateTable request,
+  *  DynamoDB immediately returns a response with a TableStatus of CREATING. After the table
+  *  is created, DynamoDB sets the TableStatus to ACTIVE. You can perform read and write
+  *  operations only on an ACTIVE table.
+  * 
+  *  You can optionally define secondary indexes on the new table, as part of the CreateTable operation.
+  *  If you want to create multiple tables with secondary indexes on them, you must create the tables sequentially.
+  *  Only one table with secondary indexes can be in the CREATING state at any given time.
+  * 
+  *  You can use the DescribeTable action to check the table status.
+  */
+inline fun DynamoDbAsyncClient.createTableBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
+  this.createTable(buildCreateTableRequest(dslBlock))
+
+/**
+  * The CreateTable operation adds a new table to your account. In an AWS account, table names must be
+  *  unique within each region. That is, you can have two tables with same name if you create the tables in different
+  *  regions.
+  * 
+  *  CreateTable is an asynchronous operation. Upon receiving a CreateTable request,
+  *  DynamoDB immediately returns a response with a TableStatus of CREATING. After the table
+  *  is created, DynamoDB sets the TableStatus to ACTIVE. You can perform read and write
+  *  operations only on an ACTIVE table.
+  * 
+  *  You can optionally define secondary indexes on the new table, as part of the CreateTable operation.
+  *  If you want to create multiple tables with secondary indexes on them, you must create the tables sequentially.
+  *  Only one table with secondary indexes can be in the CREATING state at any given time.
+  * 
+  *  You can use the DescribeTable action to check the table status.
+  */
+inline fun DynamoDbClient.createTableBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
+  this.createTable(buildCreateTableRequest(dslBlock))

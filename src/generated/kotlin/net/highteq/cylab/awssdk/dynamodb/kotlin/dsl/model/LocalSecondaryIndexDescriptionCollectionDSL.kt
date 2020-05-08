@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexDescription
 
 /**
-  * Builds instances of type LocalSecondaryIndexDescription:
+  * Builds a collection of type LocalSecondaryIndexDescription:
   * Represents the properties of a local secondary index.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class LocalSecondaryIndexDescriptionCollectionDSL(
 }
 
 /**
-  * Builds instances of type LocalSecondaryIndexDescription:
+  * Builds a collection of type LocalSecondaryIndexDescription:
   * Represents the properties of a local secondary index.
   */
 inline fun buildLocalSecondaryIndexDescriptionCollection(dslBlock: LocalSecondaryIndexDescriptionCollectionDSL.() -> Unit) =

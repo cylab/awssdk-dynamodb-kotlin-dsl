@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.TransactWriteItem
 
 /**
-  * Builds instances of type TransactWriteItem:
+  * Builds a collection of type TransactWriteItem:
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
@@ -56,7 +56,7 @@ inline class TransactWriteItemCollectionDSL(
 }
 
 /**
-  * Builds instances of type TransactWriteItem:
+  * Builds a collection of type TransactWriteItem:
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */

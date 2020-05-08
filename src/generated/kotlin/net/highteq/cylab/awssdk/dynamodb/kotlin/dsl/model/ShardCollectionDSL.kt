@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Shard
 
 /**
-  * Builds instances of type Shard:
+  * Builds a collection of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class ShardCollectionDSL(
 }
 
 /**
-  * Builds instances of type Shard:
+  * Builds a collection of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
 inline fun buildShardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =

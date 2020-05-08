@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexUpdate
 
 /**
-  * Builds instances of type GlobalSecondaryIndexUpdate:
+  * Builds a collection of type GlobalSecondaryIndexUpdate:
   * Represents one of the following:
   * 
   *  A new global secondary index to be added to an existing table.
@@ -61,7 +61,7 @@ inline class GlobalSecondaryIndexUpdateCollectionDSL(
 }
 
 /**
-  * Builds instances of type GlobalSecondaryIndexUpdate:
+  * Builds a collection of type GlobalSecondaryIndexUpdate:
   * Represents one of the following:
   * 
   *  A new global secondary index to be added to an existing table.

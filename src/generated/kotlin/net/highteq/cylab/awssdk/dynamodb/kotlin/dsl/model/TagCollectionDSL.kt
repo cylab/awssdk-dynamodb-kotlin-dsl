@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Tag
 
 /**
-  * Builds instances of type Tag:
+  * Builds a collection of type Tag:
   * Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table.
   * 
   *  AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign.
@@ -62,7 +62,7 @@ inline class TagCollectionDSL(
 }
 
 /**
-  * Builds instances of type Tag:
+  * Builds a collection of type Tag:
   * Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table.
   * 
   *  AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign.

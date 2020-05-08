@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
 
 /**
-  * Builds instances of type AttributeValueUpdate:
+  * Builds a maps of type AttributeValueUpdate:
   * For the UpdateItem operation, represents the attributes to be modified, the action to perform on each,
   *  and the new value for each.
   * 
@@ -70,7 +70,7 @@ inline class AttributeValueUpdateMapDSL(
 }
 
 /**
-  * Builds instances of type AttributeValueUpdate:
+  * Builds a maps of type AttributeValueUpdate:
   * For the UpdateItem operation, represents the attributes to be modified, the action to perform on each,
   *  and the new value for each.
   * 

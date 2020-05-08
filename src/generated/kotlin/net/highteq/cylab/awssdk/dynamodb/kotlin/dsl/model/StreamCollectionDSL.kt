@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.Stream
 
 /**
-  * Builds instances of type Stream:
+  * Builds a collection of type Stream:
   * Represents all of the data describing a particular stream.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class StreamCollectionDSL(
 }
 
 /**
-  * Builds instances of type Stream:
+  * Builds a collection of type Stream:
   * Represents all of the data describing a particular stream.
   */
 inline fun buildStreamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =

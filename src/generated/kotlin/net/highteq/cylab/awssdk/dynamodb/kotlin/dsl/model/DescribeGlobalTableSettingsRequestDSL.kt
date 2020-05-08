@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSettingsRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeGlobalTableSettingsRequestMarshaller
 
 /**
   * Builds instances of type DescribeGlobalTableSettingsRequest:
@@ -53,3 +56,21 @@ inline class DescribeGlobalTableSettingsRequestDSL(
   */
 inline fun buildDescribeGlobalTableSettingsRequest(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
   DescribeGlobalTableSettingsRequestDSL(DescribeGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeGlobalTableSettingsRequestMarshaller.marshallBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeGlobalTableSettingsRequest(dslBlock))
+
+/**
+  * Describes region specific settings for a global table.
+  */
+inline fun DynamoDbAsyncClient.describeGlobalTableSettingsBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.describeGlobalTableSettings(buildDescribeGlobalTableSettingsRequest(dslBlock))
+
+/**
+  * Describes region specific settings for a global table.
+  */
+inline fun DynamoDbClient.describeGlobalTableSettingsBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
+  this.describeGlobalTableSettings(buildDescribeGlobalTableSettingsRequest(dslBlock))

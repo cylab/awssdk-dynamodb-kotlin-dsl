@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
 
 /**
-  * Builds instances of type ExpectedAttributeValue:
+  * Builds a maps of type ExpectedAttributeValue:
   * Represents a condition to be compared with an attribute value. This condition can be used with
   *  DeleteItem, PutItem or UpdateItem operations; if the comparison evaluates to
   *  true, the operation succeeds; if not, the operation fails. You can use ExpectedAttributeValue in one of
@@ -78,7 +78,7 @@ inline class ExpectedAttributeValueMapDSL(
 }
 
 /**
-  * Builds instances of type ExpectedAttributeValue:
+  * Builds a maps of type ExpectedAttributeValue:
   * Represents a condition to be compared with an attribute value. This condition can be used with
   *  DeleteItem, PutItem or UpdateItem operations; if the comparison evaluates to
   *  true, the operation succeeds; if not, the operation fails. You can use ExpectedAttributeValue in one of

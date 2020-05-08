@@ -11,7 +11,10 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.DescribeEndpointsRequest
+import software.amazon.awssdk.services.dynamodb.transform.DescribeEndpointsRequestMarshaller
 
 /**
   * Builds instances of type DescribeEndpointsRequest:
@@ -43,3 +46,21 @@ inline class DescribeEndpointsRequestDSL(
   */
 inline fun buildDescribeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
   DescribeEndpointsRequestDSL(DescribeEndpointsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * 
+  */
+inline fun DescribeEndpointsRequestMarshaller.marshallBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+  this.marshall(buildDescribeEndpointsRequest(dslBlock))
+
+/**
+  * Returns the regional endpoint information.
+  */
+inline fun DynamoDbAsyncClient.describeEndpointsBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+  this.describeEndpoints(buildDescribeEndpointsRequest(dslBlock))
+
+/**
+  * Returns the regional endpoint information.
+  */
+inline fun DynamoDbClient.describeEndpointsBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+  this.describeEndpoints(buildDescribeEndpointsRequest(dslBlock))

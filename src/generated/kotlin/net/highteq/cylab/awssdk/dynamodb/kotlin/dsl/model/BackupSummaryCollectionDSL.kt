@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.BackupSummary
 
 /**
-  * Builds instances of type BackupSummary:
+  * Builds a collection of type BackupSummary:
   * Contains details for the backup.
   */
 @DynamodbDSL
@@ -55,7 +55,7 @@ inline class BackupSummaryCollectionDSL(
 }
 
 /**
-  * Builds instances of type BackupSummary:
+  * Builds a collection of type BackupSummary:
   * Contains details for the backup.
   */
 inline fun buildBackupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =

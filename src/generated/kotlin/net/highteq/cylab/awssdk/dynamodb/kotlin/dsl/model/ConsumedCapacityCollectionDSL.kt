@@ -12,7 +12,7 @@ import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 
 /**
-  * Builds instances of type ConsumedCapacity:
+  * Builds a collection of type ConsumedCapacity:
   * The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed,
   *  along with statistics for the table and any indexes involved in the operation. ConsumedCapacity is only
   *  returned if the request asked for it. For more information, see Provisioned
@@ -58,7 +58,7 @@ inline class ConsumedCapacityCollectionDSL(
 }
 
 /**
-  * Builds instances of type ConsumedCapacity:
+  * Builds a collection of type ConsumedCapacity:
   * The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed,
   *  along with statistics for the table and any indexes involved in the operation. ConsumedCapacity is only
   *  returned if the request asked for it. For more information, see Provisioned

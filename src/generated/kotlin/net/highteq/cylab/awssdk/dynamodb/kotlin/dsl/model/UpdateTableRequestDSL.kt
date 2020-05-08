@@ -11,6 +11,8 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexUpdate
@@ -18,6 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 import software.amazon.awssdk.services.dynamodb.model.SSESpecification
 import software.amazon.awssdk.services.dynamodb.model.StreamSpecification
 import software.amazon.awssdk.services.dynamodb.model.UpdateTableRequest
+import software.amazon.awssdk.services.dynamodb.transform.UpdateTableRequestMarshaller
 
 /**
   * Builds instances of type UpdateTableRequest:
@@ -161,3 +164,55 @@ inline class UpdateTableRequestDSL(
   */
 inline fun buildUpdateTableRequest(dslBlock: UpdateTableRequestDSL.() -> Unit) =
   UpdateTableRequestDSL(UpdateTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given
+  *  table.
+  * 
+  *  You can only perform one of the following operations at once:
+  * 
+  *  Modify the provisioned throughput settings of the table.
+  * 
+  *  Enable or disable Streams on the table.
+  * 
+  *  Remove a global secondary index from the table.
+  * 
+  *  Create a new global secondary index on the table. Once the index begins backfilling, you can use
+  *  UpdateTable to perform other operations.
+  * 
+  *  UpdateTable is an asynchronous operation; while it is executing, the table status changes from
+  *  ACTIVE to UPDATING. While it is UPDATING, you cannot issue another
+  *  UpdateTable request. When the table returns to the ACTIVE state, the
+  *  UpdateTable operation is complete.
+  */
+inline fun DynamoDbAsyncClient.updateTableBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
+  this.updateTable(buildUpdateTableRequest(dslBlock))
+
+/**
+  * Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given
+  *  table.
+  * 
+  *  You can only perform one of the following operations at once:
+  * 
+  *  Modify the provisioned throughput settings of the table.
+  * 
+  *  Enable or disable Streams on the table.
+  * 
+  *  Remove a global secondary index from the table.
+  * 
+  *  Create a new global secondary index on the table. Once the index begins backfilling, you can use
+  *  UpdateTable to perform other operations.
+  * 
+  *  UpdateTable is an asynchronous operation; while it is executing, the table status changes from
+  *  ACTIVE to UPDATING. While it is UPDATING, you cannot issue another
+  *  UpdateTable request. When the table returns to the ACTIVE state, the
+  *  UpdateTable operation is complete.
+  */
+inline fun DynamoDbClient.updateTableBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
+  this.updateTable(buildUpdateTableRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun UpdateTableRequestMarshaller.marshallBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
+  this.marshall(buildUpdateTableRequest(dslBlock))

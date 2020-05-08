@@ -12,6 +12,9 @@ import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.GetRecordsRequest
+import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient
+import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClient
+import software.amazon.awssdk.services.dynamodb.streams.transform.GetRecordsRequestMarshaller
 
 /**
   * Builds instances of type GetRecordsRequest:
@@ -63,3 +66,35 @@ inline class GetRecordsRequestDSL(
   */
 inline fun buildGetRecordsRequest(dslBlock: GetRecordsRequestDSL.() -> Unit) =
   GetRecordsRequestDSL(GetRecordsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Retrieves the stream records from a given shard.
+  * 
+  *  Specify a shard iterator using the ShardIterator parameter. The shard iterator specifies the
+  *  position in the shard from which you want to start reading stream records sequentially. If there are no stream
+  *  records available in the portion of the shard that the iterator points to, GetRecords returns an
+  *  empty list. Note that it might take multiple calls to get to a portion of the shard that contains stream records.
+  * 
+  *  GetRecords can retrieve a maximum of 1 MB of data or 1000 stream records, whichever comes first.
+  */
+inline fun DynamoDbStreamsAsyncClient.getRecordsBy(dslBlock: GetRecordsRequestDSL.() -> Unit) =
+  this.getRecords(buildGetRecordsRequest(dslBlock))
+
+/**
+  * Retrieves the stream records from a given shard.
+  * 
+  *  Specify a shard iterator using the ShardIterator parameter. The shard iterator specifies the
+  *  position in the shard from which you want to start reading stream records sequentially. If there are no stream
+  *  records available in the portion of the shard that the iterator points to, GetRecords returns an
+  *  empty list. Note that it might take multiple calls to get to a portion of the shard that contains stream records.
+  * 
+  *  GetRecords can retrieve a maximum of 1 MB of data or 1000 stream records, whichever comes first.
+  */
+inline fun DynamoDbStreamsClient.getRecordsBy(dslBlock: GetRecordsRequestDSL.() -> Unit) =
+  this.getRecords(buildGetRecordsRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun GetRecordsRequestMarshaller.marshallBy(dslBlock: GetRecordsRequestDSL.() -> Unit) =
+  this.marshall(buildGetRecordsRequest(dslBlock))

@@ -11,9 +11,12 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.GetItemRequest
 import software.amazon.awssdk.services.dynamodb.model.ReturnConsumedCapacity
+import software.amazon.awssdk.services.dynamodb.transform.GetItemRequestMarshaller
 
 /**
   * Builds instances of type GetItemRequest:
@@ -129,3 +132,33 @@ inline class GetItemRequestDSL(
   */
 inline fun buildGetItemRequest(dslBlock: GetItemRequestDSL.() -> Unit) =
   GetItemRequestDSL(GetItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * The GetItem operation returns a set of attributes for the item with the given primary key. If there
+  *  is no matching item, GetItem does not return any data and there will be no Item element
+  *  in the response.
+  * 
+  *  GetItem provides an eventually consistent read by default. If your application requires a strongly
+  *  consistent read, set ConsistentRead to true. Although a strongly consistent read might
+  *  take more time than an eventually consistent read, it always returns the last updated value.
+  */
+inline fun DynamoDbAsyncClient.getItemBy(dslBlock: GetItemRequestDSL.() -> Unit) =
+  this.getItem(buildGetItemRequest(dslBlock))
+
+/**
+  * The GetItem operation returns a set of attributes for the item with the given primary key. If there
+  *  is no matching item, GetItem does not return any data and there will be no Item element
+  *  in the response.
+  * 
+  *  GetItem provides an eventually consistent read by default. If your application requires a strongly
+  *  consistent read, set ConsistentRead to true. Although a strongly consistent read might
+  *  take more time than an eventually consistent read, it always returns the last updated value.
+  */
+inline fun DynamoDbClient.getItemBy(dslBlock: GetItemRequestDSL.() -> Unit) =
+  this.getItem(buildGetItemRequest(dslBlock))
+
+/**
+  * 
+  */
+inline fun GetItemRequestMarshaller.marshallBy(dslBlock: GetItemRequestDSL.() -> Unit) =
+  this.marshall(buildGetItemRequest(dslBlock))
