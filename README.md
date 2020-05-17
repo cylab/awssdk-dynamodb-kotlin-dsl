@@ -157,9 +157,9 @@ you can prepend DynamodbDSL to the builder DSL type:
 
     val request = createTableRequest {
 
-      // provisionedThroughput is also available as sub DSL without a
-      // so if you want to call the builder DSL that returns an actual
-      // object, you need to call the equivalent DynamodbDSL extension function 
+      // provisionedThroughput is also available as sub DSL with Unit return type
+      // so if you want to call the builder DSL that returns an actual object,
+      // you need to call the equivalent DynamodbDSL extension function 
       val block = DynamodbDSL.provisionedThroughput {
         readCapacityUnits = 10
         writeCapacityUnits = 10
