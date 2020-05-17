@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyDescription
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingScalingPolicyConfigurationDescription
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
   * Builds instances of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingPolicyDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AutoScalingPolicyDescription.Builder
@@ -49,7 +50,7 @@ inline class AutoScalingPolicyDescriptionDSL(
     * 
     */
   inline fun targetTrackingScalingPolicyConfiguration(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationDescriptionDSL.() -> Unit) {
-    builder.targetTrackingScalingPolicyConfiguration(buildAutoScalingTargetTrackingScalingPolicyConfigurationDescription(dslBlock))
+    builder.targetTrackingScalingPolicyConfiguration(DynamodbDSL.Companion.autoScalingTargetTrackingScalingPolicyConfigurationDescription(dslBlock))
   }
 
 }
@@ -58,5 +59,12 @@ inline class AutoScalingPolicyDescriptionDSL(
   * Builds instances of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
-inline fun buildAutoScalingPolicyDescription(dslBlock: AutoScalingPolicyDescriptionDSL.() -> Unit) =
+inline fun autoScalingPolicyDescription(dslBlock: AutoScalingPolicyDescriptionDSL.() -> Unit) =
+  AutoScalingPolicyDescriptionDSL(AutoScalingPolicyDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AutoScalingPolicyDescription:
+  * Represents the properties of the scaling policy.
+  */
+inline fun DynamodbDSL.Companion.autoScalingPolicyDescription(dslBlock: AutoScalingPolicyDescriptionDSL.() -> Unit) =
   AutoScalingPolicyDescriptionDSL(AutoScalingPolicyDescription.builder()).apply(dslBlock).build()

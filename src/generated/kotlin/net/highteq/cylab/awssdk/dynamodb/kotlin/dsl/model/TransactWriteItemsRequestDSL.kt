@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -23,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.transform.TransactWriteItemsRequ
   * Builds instances of type TransactWriteItemsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactWriteItemsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactWriteItemsRequest.Builder
@@ -99,7 +100,7 @@ inline class TransactWriteItemsRequestDSL(
     * 
     */
   inline fun transactItems(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) {
-    builder.transactItems(buildTransactWriteItemCollection(dslBlock))
+    builder.transactItems(DynamodbDSL.Companion.transactWriteItemCollection(dslBlock))
   }
 
 }
@@ -108,7 +109,14 @@ inline class TransactWriteItemsRequestDSL(
   * Builds instances of type TransactWriteItemsRequest:
   * 
   */
-inline fun buildTransactWriteItemsRequest(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
+inline fun transactWriteItemsRequest(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
+  TransactWriteItemsRequestDSL(TransactWriteItemsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactWriteItemsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.transactWriteItemsRequest(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
   TransactWriteItemsRequestDSL(TransactWriteItemsRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -155,7 +163,7 @@ inline fun buildTransactWriteItemsRequest(dslBlock: TransactWriteItemsRequestDSL
   *  There is a user error, such as an invalid data format.
   */
 inline fun DynamoDbAsyncClient.transactWriteItemsBy(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
-  this.transactWriteItems(buildTransactWriteItemsRequest(dslBlock))
+  this.transactWriteItems(DynamodbDSL.Companion.transactWriteItemsRequest(dslBlock))
 
 /**
   * TransactWriteItems is a synchronous write operation that groups up to 10 action requests. These
@@ -201,10 +209,10 @@ inline fun DynamoDbAsyncClient.transactWriteItemsBy(dslBlock: TransactWriteItems
   *  There is a user error, such as an invalid data format.
   */
 inline fun DynamoDbClient.transactWriteItemsBy(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
-  this.transactWriteItems(buildTransactWriteItemsRequest(dslBlock))
+  this.transactWriteItems(DynamodbDSL.Companion.transactWriteItemsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun TransactWriteItemsRequestMarshaller.marshallBy(dslBlock: TransactWriteItemsRequestDSL.() -> Unit) =
-  this.marshall(buildTransactWriteItemsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.transactWriteItemsRequest(dslBlock))

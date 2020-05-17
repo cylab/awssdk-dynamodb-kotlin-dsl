@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.BackupDescription
 import software.amazon.awssdk.services.dynamodb.model.BackupDetails
 import software.amazon.awssdk.services.dynamodb.model.SourceTableDetails
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableFeatureDetails
   * Builds instances of type BackupDescription:
   * Contains the description of the backup created for the table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BackupDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BackupDescription.Builder
@@ -61,21 +62,21 @@ inline class BackupDescriptionDSL(
     * 
     */
   inline fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
-    builder.backupDetails(buildBackupDetails(dslBlock))
+    builder.backupDetails(DynamodbDSL.Companion.backupDetails(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) {
-    builder.sourceTableDetails(buildSourceTableDetails(dslBlock))
+    builder.sourceTableDetails(DynamodbDSL.Companion.sourceTableDetails(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) {
-    builder.sourceTableFeatureDetails(buildSourceTableFeatureDetails(dslBlock))
+    builder.sourceTableFeatureDetails(DynamodbDSL.Companion.sourceTableFeatureDetails(dslBlock))
   }
 
 }
@@ -84,5 +85,12 @@ inline class BackupDescriptionDSL(
   * Builds instances of type BackupDescription:
   * Contains the description of the backup created for the table.
   */
-inline fun buildBackupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) =
+inline fun backupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) =
+  BackupDescriptionDSL(BackupDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BackupDescription:
+  * Contains the description of the backup created for the table.
+  */
+inline fun DynamodbDSL.Companion.backupDescription(dslBlock: BackupDescriptionDSL.() -> Unit) =
   BackupDescriptionDSL(BackupDescription.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeLimitsResponse
   * Builds instances of type DescribeLimitsResponse:
   * Represents the output of a DescribeLimits operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeLimitsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeLimitsResponse.Builder
@@ -92,5 +93,12 @@ inline class DescribeLimitsResponseDSL(
   * Builds instances of type DescribeLimitsResponse:
   * Represents the output of a DescribeLimits operation.
   */
-inline fun buildDescribeLimitsResponse(dslBlock: DescribeLimitsResponseDSL.() -> Unit) =
+inline fun describeLimitsResponse(dslBlock: DescribeLimitsResponseDSL.() -> Unit) =
+  DescribeLimitsResponseDSL(DescribeLimitsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeLimitsResponse:
+  * Represents the output of a DescribeLimits operation.
+  */
+inline fun DynamodbDSL.Companion.describeLimitsResponse(dslBlock: DescribeLimitsResponseDSL.() -> Unit) =
   DescribeLimitsResponseDSL(DescribeLimitsResponse.builder()).apply(dslBlock).build()

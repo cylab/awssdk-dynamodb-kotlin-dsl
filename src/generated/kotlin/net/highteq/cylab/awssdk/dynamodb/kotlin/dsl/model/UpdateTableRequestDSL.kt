@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -26,7 +27,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateTableRequestMars
   * Builds instances of type UpdateTableRequest:
   * Represents the input of an UpdateTable operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateTableRequest.Builder
@@ -125,35 +126,35 @@ inline class UpdateTableRequestDSL(
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
-    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
+    builder.attributeDefinitions(DynamodbDSL.Companion.attributeDefinitionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun globalSecondaryIndexUpdates(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) {
-    builder.globalSecondaryIndexUpdates(buildGlobalSecondaryIndexUpdateCollection(dslBlock))
+    builder.globalSecondaryIndexUpdates(DynamodbDSL.Companion.globalSecondaryIndexUpdateCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughput(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
-    builder.sseSpecification(buildSSESpecification(dslBlock))
+    builder.sseSpecification(DynamodbDSL.Companion.sseSpecification(dslBlock))
   }
 
   /**
     * 
     */
   inline fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamSpecification(buildStreamSpecification(dslBlock))
+    builder.streamSpecification(DynamodbDSL.Companion.streamSpecification(dslBlock))
   }
 
 }
@@ -162,7 +163,14 @@ inline class UpdateTableRequestDSL(
   * Builds instances of type UpdateTableRequest:
   * Represents the input of an UpdateTable operation.
   */
-inline fun buildUpdateTableRequest(dslBlock: UpdateTableRequestDSL.() -> Unit) =
+inline fun updateTableRequest(dslBlock: UpdateTableRequestDSL.() -> Unit) =
+  UpdateTableRequestDSL(UpdateTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateTableRequest:
+  * Represents the input of an UpdateTable operation.
+  */
+inline fun DynamodbDSL.Companion.updateTableRequest(dslBlock: UpdateTableRequestDSL.() -> Unit) =
   UpdateTableRequestDSL(UpdateTableRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -186,7 +194,7 @@ inline fun buildUpdateTableRequest(dslBlock: UpdateTableRequestDSL.() -> Unit) =
   *  UpdateTable operation is complete.
   */
 inline fun DynamoDbAsyncClient.updateTableBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
-  this.updateTable(buildUpdateTableRequest(dslBlock))
+  this.updateTable(DynamodbDSL.Companion.updateTableRequest(dslBlock))
 
 /**
   * Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given
@@ -209,10 +217,10 @@ inline fun DynamoDbAsyncClient.updateTableBy(dslBlock: UpdateTableRequestDSL.() 
   *  UpdateTable operation is complete.
   */
 inline fun DynamoDbClient.updateTableBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
-  this.updateTable(buildUpdateTableRequest(dslBlock))
+  this.updateTable(DynamodbDSL.Companion.updateTableRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateTableRequestMarshaller.marshallBy(dslBlock: UpdateTableRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateTableRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateTableRequest(dslBlock))

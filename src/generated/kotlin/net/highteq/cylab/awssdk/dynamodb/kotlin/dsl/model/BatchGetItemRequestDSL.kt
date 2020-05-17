@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.transform.BatchGetItemRequestMar
   * Builds instances of type BatchGetItemRequest:
   * Represents the input of a BatchGetItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BatchGetItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BatchGetItemRequest.Builder
@@ -71,7 +72,7 @@ inline class BatchGetItemRequestDSL(
     * 
     */
   inline fun requestItems(dslBlock: KeysAndAttributesMapDSL.() -> Unit) {
-    builder.requestItems(buildKeysAndAttributesMap(dslBlock))
+    builder.requestItems(DynamodbDSL.Companion.keysAndAttributesMap(dslBlock))
   }
 
 }
@@ -80,14 +81,21 @@ inline class BatchGetItemRequestDSL(
   * Builds instances of type BatchGetItemRequest:
   * Represents the input of a BatchGetItem operation.
   */
-inline fun buildBatchGetItemRequest(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
+inline fun batchGetItemRequest(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
+  BatchGetItemRequestDSL(BatchGetItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BatchGetItemRequest:
+  * Represents the input of a BatchGetItem operation.
+  */
+inline fun DynamodbDSL.Companion.batchGetItemRequest(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
   BatchGetItemRequestDSL(BatchGetItemRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun BatchGetItemRequestMarshaller.marshallBy(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
-  this.marshall(buildBatchGetItemRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.batchGetItemRequest(dslBlock))
 
 /**
   * The BatchGetItem operation returns the attributes of one or more items from one or more tables. You
@@ -135,7 +143,7 @@ inline fun BatchGetItemRequestMarshaller.marshallBy(dslBlock: BatchGetItemReques
   *  minimum read capacity units according to the type of read. For more information, see Capacity Units Calculations in the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbAsyncClient.batchGetItemBy(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
-  this.batchGetItem(buildBatchGetItemRequest(dslBlock))
+  this.batchGetItem(DynamodbDSL.Companion.batchGetItemRequest(dslBlock))
 
 /**
   * The BatchGetItem operation returns the attributes of one or more items from one or more tables. You
@@ -221,7 +229,7 @@ inline fun DynamoDbAsyncClient.batchGetItemBy(dslBlock: BatchGetItemRequestDSL.(
   *  {@link #batchGetItem(software.amazon.awssdk.services.dynamodb.model.BatchGetItemRequest)} operation.
   */
 inline fun DynamoDbAsyncClient.batchGetItemPaginatorBy(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
-  this.batchGetItemPaginator(buildBatchGetItemRequest(dslBlock))
+  this.batchGetItemPaginator(DynamodbDSL.Companion.batchGetItemRequest(dslBlock))
 
 /**
   * The BatchGetItem operation returns the attributes of one or more items from one or more tables. You
@@ -269,7 +277,7 @@ inline fun DynamoDbAsyncClient.batchGetItemPaginatorBy(dslBlock: BatchGetItemReq
   *  minimum read capacity units according to the type of read. For more information, see Capacity Units Calculations in the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbClient.batchGetItemBy(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
-  this.batchGetItem(buildBatchGetItemRequest(dslBlock))
+  this.batchGetItem(DynamodbDSL.Companion.batchGetItemRequest(dslBlock))
 
 /**
   * The BatchGetItem operation returns the attributes of one or more items from one or more tables. You
@@ -355,4 +363,4 @@ inline fun DynamoDbClient.batchGetItemBy(dslBlock: BatchGetItemRequestDSL.() -> 
   *  {@link #batchGetItem(software.amazon.awssdk.services.dynamodb.model.BatchGetItemRequest)} operation.
   */
 inline fun DynamoDbClient.batchGetItemPaginatorBy(dslBlock: BatchGetItemRequestDSL.() -> Unit) =
-  this.batchGetItemPaginator(buildBatchGetItemRequest(dslBlock))
+  this.batchGetItemPaginator(DynamodbDSL.Companion.batchGetItemRequest(dslBlock))

@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Shard
 
 /**
   * Builds a collection of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ShardCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class ShardCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ShardDSL.() -> Unit) {
-    list.add(buildShard(dslBlock))
+    list.add(DynamodbDSL.shard(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class ShardCollectionDSL(
   * Builds a collection of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-inline fun buildShardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =
+inline fun shardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =
+  ShardCollectionDSL(mutableListOf<Shard>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type Shard:
+  * A uniquely identified group of stream records within a stream.
+  */
+inline fun DynamodbDSL.Companion.shardCollection(dslBlock: ShardCollectionDSL.() -> Unit) =
   ShardCollectionDSL(mutableListOf<Shard>()).apply(dslBlock).build()

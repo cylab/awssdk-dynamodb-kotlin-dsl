@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ItemResponse
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.ItemResponse
   * Builds instances of type ItemResponse:
   * Details for the requested item.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ItemResponse.Builder
@@ -39,7 +40,7 @@ inline class ItemResponseDSL(
     * 
     */
   inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.item(buildAttributeValueMap(dslBlock))
+    builder.item(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -48,5 +49,12 @@ inline class ItemResponseDSL(
   * Builds instances of type ItemResponse:
   * Details for the requested item.
   */
-inline fun buildItemResponse(dslBlock: ItemResponseDSL.() -> Unit) =
+inline fun itemResponse(dslBlock: ItemResponseDSL.() -> Unit) =
+  ItemResponseDSL(ItemResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ItemResponse:
+  * Details for the requested item.
+  */
+inline fun DynamodbDSL.Companion.itemResponse(dslBlock: ItemResponseDSL.() -> Unit) =
   ItemResponseDSL(ItemResponse.builder()).apply(dslBlock).build()

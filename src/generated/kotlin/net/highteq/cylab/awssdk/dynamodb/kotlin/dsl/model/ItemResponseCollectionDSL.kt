@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ItemResponse
 
 /**
   * Builds a collection of type ItemResponse:
   * Details for the requested item.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ItemResponseCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class ItemResponseCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ItemResponseDSL.() -> Unit) {
-    list.add(buildItemResponse(dslBlock))
+    list.add(DynamodbDSL.itemResponse(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class ItemResponseCollectionDSL(
   * Builds a collection of type ItemResponse:
   * Details for the requested item.
   */
-inline fun buildItemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =
+inline fun itemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =
+  ItemResponseCollectionDSL(mutableListOf<ItemResponse>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type ItemResponse:
+  * Details for the requested item.
+  */
+inline fun DynamodbDSL.Companion.itemResponseCollection(dslBlock: ItemResponseCollectionDSL.() -> Unit) =
   ItemResponseCollectionDSL(mutableListOf<ItemResponse>()).apply(dslBlock).build()

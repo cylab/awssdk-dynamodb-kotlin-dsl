@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.TableDescription
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTableResponse
   * Builds instances of type UpdateTableResponse:
   * Represents the output of an UpdateTable operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateTableResponse.Builder
@@ -61,7 +62,7 @@ inline class UpdateTableResponseDSL(
     * 
     */
   inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
-    builder.tableDescription(buildTableDescription(dslBlock))
+    builder.tableDescription(DynamodbDSL.Companion.tableDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class UpdateTableResponseDSL(
   * Builds instances of type UpdateTableResponse:
   * Represents the output of an UpdateTable operation.
   */
-inline fun buildUpdateTableResponse(dslBlock: UpdateTableResponseDSL.() -> Unit) =
+inline fun updateTableResponse(dslBlock: UpdateTableResponseDSL.() -> Unit) =
+  UpdateTableResponseDSL(UpdateTableResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateTableResponse:
+  * Represents the output of an UpdateTable operation.
+  */
+inline fun DynamodbDSL.Companion.updateTableResponse(dslBlock: UpdateTableResponseDSL.() -> Unit) =
   UpdateTableResponseDSL(UpdateTableResponse.builder()).apply(dslBlock).build()

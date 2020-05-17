@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.CreateReplicaAction
 
 /**
   * Builds instances of type CreateReplicaAction:
   * Represents a replica to be added.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CreateReplicaActionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: CreateReplicaAction.Builder
@@ -40,5 +41,12 @@ inline class CreateReplicaActionDSL(
   * Builds instances of type CreateReplicaAction:
   * Represents a replica to be added.
   */
-inline fun buildCreateReplicaAction(dslBlock: CreateReplicaActionDSL.() -> Unit) =
+inline fun createReplicaAction(dslBlock: CreateReplicaActionDSL.() -> Unit) =
+  CreateReplicaActionDSL(CreateReplicaAction.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type CreateReplicaAction:
+  * Represents a replica to be added.
+  */
+inline fun DynamodbDSL.Companion.createReplicaAction(dslBlock: CreateReplicaActionDSL.() -> Unit) =
   CreateReplicaActionDSL(CreateReplicaAction.builder()).apply(dslBlock).build()

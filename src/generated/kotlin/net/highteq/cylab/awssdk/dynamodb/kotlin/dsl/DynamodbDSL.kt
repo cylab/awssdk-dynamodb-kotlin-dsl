@@ -7,4 +7,8 @@
 package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl
 
 @DslMarker
-annotation class DynamodbDSL
+annotation class DynamodbDSLMarker
+
+class DynamodbDSL {
+  companion object
+}

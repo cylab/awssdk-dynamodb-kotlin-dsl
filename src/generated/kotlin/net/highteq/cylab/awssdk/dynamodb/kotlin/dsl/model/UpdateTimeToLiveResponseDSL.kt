@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveSpecification
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateTimeToLiveResponse
   * Builds instances of type UpdateTimeToLiveResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateTimeToLiveResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateTimeToLiveResponse.Builder
@@ -61,7 +62,7 @@ inline class UpdateTimeToLiveResponseDSL(
     * 
     */
   inline fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
-    builder.timeToLiveSpecification(buildTimeToLiveSpecification(dslBlock))
+    builder.timeToLiveSpecification(DynamodbDSL.Companion.timeToLiveSpecification(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class UpdateTimeToLiveResponseDSL(
   * Builds instances of type UpdateTimeToLiveResponse:
   * 
   */
-inline fun buildUpdateTimeToLiveResponse(dslBlock: UpdateTimeToLiveResponseDSL.() -> Unit) =
+inline fun updateTimeToLiveResponse(dslBlock: UpdateTimeToLiveResponseDSL.() -> Unit) =
+  UpdateTimeToLiveResponseDSL(UpdateTimeToLiveResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateTimeToLiveResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateTimeToLiveResponse(dslBlock: UpdateTimeToLiveResponseDSL.() -> Unit) =
   UpdateTimeToLiveResponseDSL(UpdateTimeToLiveResponse.builder()).apply(dslBlock).build()

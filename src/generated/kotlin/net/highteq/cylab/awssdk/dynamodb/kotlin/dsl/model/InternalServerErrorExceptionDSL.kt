@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.InternalServerErrorException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.InternalServerErrorExcepti
   * Builds instances of type InternalServerErrorException:
   * An error occurred on the server side.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class InternalServerErrorExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: InternalServerErrorException.Builder
@@ -92,5 +93,12 @@ inline class InternalServerErrorExceptionDSL(
   * Builds instances of type InternalServerErrorException:
   * An error occurred on the server side.
   */
-inline fun buildInternalServerErrorException(dslBlock: InternalServerErrorExceptionDSL.() -> Unit) =
+inline fun internalServerErrorException(dslBlock: InternalServerErrorExceptionDSL.() -> Unit) =
+  InternalServerErrorExceptionDSL(InternalServerErrorException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type InternalServerErrorException:
+  * An error occurred on the server side.
+  */
+inline fun DynamodbDSL.Companion.internalServerErrorException(dslBlock: InternalServerErrorExceptionDSL.() -> Unit) =
   InternalServerErrorExceptionDSL(InternalServerErrorException.builder()).apply(dslBlock).build()

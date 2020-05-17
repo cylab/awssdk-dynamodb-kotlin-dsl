@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexInfo
 
 /**
   * Builds a collection of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class LocalSecondaryIndexInfoCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class LocalSecondaryIndexInfoCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: LocalSecondaryIndexInfoDSL.() -> Unit) {
-    list.add(buildLocalSecondaryIndexInfo(dslBlock))
+    list.add(DynamodbDSL.localSecondaryIndexInfo(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class LocalSecondaryIndexInfoCollectionDSL(
   * Builds a collection of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
-inline fun buildLocalSecondaryIndexInfoCollection(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) =
+inline fun localSecondaryIndexInfoCollection(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) =
+  LocalSecondaryIndexInfoCollectionDSL(mutableListOf<LocalSecondaryIndexInfo>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type LocalSecondaryIndexInfo:
+  * Represents the properties of a local secondary index for the table when the backup was created.
+  */
+inline fun DynamodbDSL.Companion.localSecondaryIndexInfoCollection(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) =
   LocalSecondaryIndexInfoCollectionDSL(mutableListOf<LocalSecondaryIndexInfo>()).apply(dslBlock).build()

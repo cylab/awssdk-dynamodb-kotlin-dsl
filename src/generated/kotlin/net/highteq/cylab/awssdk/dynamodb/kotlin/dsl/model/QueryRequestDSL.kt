@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -25,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.transform.QueryRequestMarshaller
   * Builds instances of type QueryRequest:
   * Represents the input of a Query operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class QueryRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: QueryRequest.Builder
@@ -238,28 +239,28 @@ inline class QueryRequestDSL(
     * 
     */
   inline fun exclusiveStartKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.exclusiveStartKey(buildAttributeValueMap(dslBlock))
+    builder.exclusiveStartKey(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun keyConditions(dslBlock: ConditionMapDSL.() -> Unit) {
-    builder.keyConditions(buildConditionMap(dslBlock))
+    builder.keyConditions(DynamodbDSL.Companion.conditionMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun queryFilter(dslBlock: ConditionMapDSL.() -> Unit) {
-    builder.queryFilter(buildConditionMap(dslBlock))
+    builder.queryFilter(DynamodbDSL.Companion.conditionMap(dslBlock))
   }
 
 }
@@ -268,7 +269,14 @@ inline class QueryRequestDSL(
   * Builds instances of type QueryRequest:
   * Represents the input of a Query operation.
   */
-inline fun buildQueryRequest(dslBlock: QueryRequestDSL.() -> Unit) =
+inline fun queryRequest(dslBlock: QueryRequestDSL.() -> Unit) =
+  QueryRequestDSL(QueryRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type QueryRequest:
+  * Represents the input of a Query operation.
+  */
+inline fun DynamodbDSL.Companion.queryRequest(dslBlock: QueryRequestDSL.() -> Unit) =
   QueryRequestDSL(QueryRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -315,7 +323,7 @@ inline fun buildQueryRequest(dslBlock: QueryRequestDSL.() -> Unit) =
   *  ConsistentRead when querying a global secondary index.
   */
 inline fun DynamoDbAsyncClient.queryBy(dslBlock: QueryRequestDSL.() -> Unit) =
-  this.query(buildQueryRequest(dslBlock))
+  this.query(DynamodbDSL.Companion.queryRequest(dslBlock))
 
 /**
   * The Query operation finds items based on primary key values. You can query any table or secondary
@@ -399,7 +407,7 @@ inline fun DynamoDbAsyncClient.queryBy(dslBlock: QueryRequestDSL.() -> Unit) =
   *  {@link #query(software.amazon.awssdk.services.dynamodb.model.QueryRequest)} operation.
   */
 inline fun DynamoDbAsyncClient.queryPaginatorBy(dslBlock: QueryRequestDSL.() -> Unit) =
-  this.queryPaginator(buildQueryRequest(dslBlock))
+  this.queryPaginator(DynamodbDSL.Companion.queryRequest(dslBlock))
 
 /**
   * The Query operation finds items based on primary key values. You can query any table or secondary
@@ -445,7 +453,7 @@ inline fun DynamoDbAsyncClient.queryPaginatorBy(dslBlock: QueryRequestDSL.() -> 
   *  ConsistentRead when querying a global secondary index.
   */
 inline fun DynamoDbClient.queryBy(dslBlock: QueryRequestDSL.() -> Unit) =
-  this.query(buildQueryRequest(dslBlock))
+  this.query(DynamodbDSL.Companion.queryRequest(dslBlock))
 
 /**
   * The Query operation finds items based on primary key values. You can query any table or secondary
@@ -529,10 +537,10 @@ inline fun DynamoDbClient.queryBy(dslBlock: QueryRequestDSL.() -> Unit) =
   *  {@link #query(software.amazon.awssdk.services.dynamodb.model.QueryRequest)} operation.
   */
 inline fun DynamoDbClient.queryPaginatorBy(dslBlock: QueryRequestDSL.() -> Unit) =
-  this.queryPaginator(buildQueryRequest(dslBlock))
+  this.queryPaginator(DynamodbDSL.Companion.queryRequest(dslBlock))
 
 /**
   * 
   */
 inline fun QueryRequestMarshaller.marshallBy(dslBlock: QueryRequestDSL.() -> Unit) =
-  this.marshall(buildQueryRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.queryRequest(dslBlock))

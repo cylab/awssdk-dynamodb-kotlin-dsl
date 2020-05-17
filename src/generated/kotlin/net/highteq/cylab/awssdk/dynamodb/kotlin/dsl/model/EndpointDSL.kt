@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
 /**
   * Builds instances of type Endpoint:
   * An endpoint information details.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class EndpointDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Endpoint.Builder
@@ -50,5 +51,12 @@ inline class EndpointDSL(
   * Builds instances of type Endpoint:
   * An endpoint information details.
   */
-inline fun buildEndpoint(dslBlock: EndpointDSL.() -> Unit) =
+inline fun endpoint(dslBlock: EndpointDSL.() -> Unit) =
+  EndpointDSL(Endpoint.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Endpoint:
+  * An endpoint information details.
+  */
+inline fun DynamodbDSL.Companion.endpoint(dslBlock: EndpointDSL.() -> Unit) =
   EndpointDSL(Endpoint.builder()).apply(dslBlock).build()

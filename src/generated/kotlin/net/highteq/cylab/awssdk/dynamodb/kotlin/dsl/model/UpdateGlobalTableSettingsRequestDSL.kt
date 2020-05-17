@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -24,7 +25,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateGlobalTableSetti
   * Builds instances of type UpdateGlobalTableSettingsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateGlobalTableSettingsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateGlobalTableSettingsRequest.Builder
@@ -113,21 +114,21 @@ inline class UpdateGlobalTableSettingsRequestDSL(
     * 
     */
   inline fun globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
-    builder.globalTableGlobalSecondaryIndexSettingsUpdate(buildGlobalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
+    builder.globalTableGlobalSecondaryIndexSettingsUpdate(DynamodbDSL.Companion.globalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
-    builder.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
+    builder.globalTableProvisionedWriteCapacityAutoScalingSettingsUpdate(DynamodbDSL.Companion.autoScalingSettingsUpdate(dslBlock))
   }
 
   /**
     * 
     */
   inline fun replicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) {
-    builder.replicaSettingsUpdate(buildReplicaSettingsUpdateCollection(dslBlock))
+    builder.replicaSettingsUpdate(DynamodbDSL.Companion.replicaSettingsUpdateCollection(dslBlock))
   }
 
 }
@@ -136,23 +137,30 @@ inline class UpdateGlobalTableSettingsRequestDSL(
   * Builds instances of type UpdateGlobalTableSettingsRequest:
   * 
   */
-inline fun buildUpdateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+inline fun updateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
+  UpdateGlobalTableSettingsRequestDSL(UpdateGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateGlobalTableSettingsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateGlobalTableSettingsRequest(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
   UpdateGlobalTableSettingsRequestDSL(UpdateGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
 
 /**
   * Updates settings for a global table.
   */
 inline fun DynamoDbAsyncClient.updateGlobalTableSettingsBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.updateGlobalTableSettings(buildUpdateGlobalTableSettingsRequest(dslBlock))
+  this.updateGlobalTableSettings(DynamodbDSL.Companion.updateGlobalTableSettingsRequest(dslBlock))
 
 /**
   * Updates settings for a global table.
   */
 inline fun DynamoDbClient.updateGlobalTableSettingsBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.updateGlobalTableSettings(buildUpdateGlobalTableSettingsRequest(dslBlock))
+  this.updateGlobalTableSettings(DynamodbDSL.Companion.updateGlobalTableSettingsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateGlobalTableSettingsRequestMarshaller.marshallBy(dslBlock: UpdateGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateGlobalTableSettingsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateGlobalTableSettingsRequest(dslBlock))

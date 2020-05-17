@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondaryIndexSettingsUpdate
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondary
   * Builds instances of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalTableGlobalSecondaryIndexSettingsUpdate.Builder
@@ -59,7 +60,7 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
     * 
     */
   inline fun provisionedWriteCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
-    builder.provisionedWriteCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
+    builder.provisionedWriteCapacityAutoScalingSettingsUpdate(DynamodbDSL.Companion.autoScalingSettingsUpdate(dslBlock))
   }
 
 }
@@ -68,5 +69,12 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(
   * Builds instances of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-inline fun buildGlobalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
+inline fun globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
+  GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
+  * Represents the settings of a global secondary index for a global table that will be modified.
+  */
+inline fun DynamodbDSL.Companion.globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
   GlobalTableGlobalSecondaryIndexSettingsUpdateDSL(GlobalTableGlobalSecondaryIndexSettingsUpdate.builder()).apply(dslBlock).build()

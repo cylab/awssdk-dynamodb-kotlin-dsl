@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.BackupInUseException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupInUseException
   * There is another ongoing conflicting backup control plane operation on the table. The backup is either being created,
   *  deleted or restored to a table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BackupInUseExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BackupInUseException.Builder
@@ -94,5 +95,13 @@ inline class BackupInUseExceptionDSL(
   * There is another ongoing conflicting backup control plane operation on the table. The backup is either being created,
   *  deleted or restored to a table.
   */
-inline fun buildBackupInUseException(dslBlock: BackupInUseExceptionDSL.() -> Unit) =
+inline fun backupInUseException(dslBlock: BackupInUseExceptionDSL.() -> Unit) =
+  BackupInUseExceptionDSL(BackupInUseException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BackupInUseException:
+  * There is another ongoing conflicting backup control plane operation on the table. The backup is either being created,
+  *  deleted or restored to a table.
+  */
+inline fun DynamodbDSL.Companion.backupInUseException(dslBlock: BackupInUseExceptionDSL.() -> Unit) =
   BackupInUseExceptionDSL(BackupInUseException.builder()).apply(dslBlock).build()

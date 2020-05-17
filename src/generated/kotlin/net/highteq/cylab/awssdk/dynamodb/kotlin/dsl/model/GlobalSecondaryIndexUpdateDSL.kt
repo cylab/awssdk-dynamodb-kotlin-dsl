@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.CreateGlobalSecondaryIndexAction
 import software.amazon.awssdk.services.dynamodb.model.DeleteGlobalSecondaryIndexAction
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexUpdate
@@ -25,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
   * 
   *  An existing global secondary index to be removed from an existing table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalSecondaryIndexUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalSecondaryIndexUpdate.Builder
@@ -67,21 +68,21 @@ inline class GlobalSecondaryIndexUpdateDSL(
     * 
     */
   inline fun create(dslBlock: CreateGlobalSecondaryIndexActionDSL.() -> Unit) {
-    builder.create(buildCreateGlobalSecondaryIndexAction(dslBlock))
+    builder.create(DynamodbDSL.Companion.createGlobalSecondaryIndexAction(dslBlock))
   }
 
   /**
     * 
     */
   inline fun delete(dslBlock: DeleteGlobalSecondaryIndexActionDSL.() -> Unit) {
-    builder.delete(buildDeleteGlobalSecondaryIndexAction(dslBlock))
+    builder.delete(DynamodbDSL.Companion.deleteGlobalSecondaryIndexAction(dslBlock))
   }
 
   /**
     * 
     */
   inline fun update(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) {
-    builder.update(buildUpdateGlobalSecondaryIndexAction(dslBlock))
+    builder.update(DynamodbDSL.Companion.updateGlobalSecondaryIndexAction(dslBlock))
   }
 
 }
@@ -96,5 +97,18 @@ inline class GlobalSecondaryIndexUpdateDSL(
   * 
   *  An existing global secondary index to be removed from an existing table.
   */
-inline fun buildGlobalSecondaryIndexUpdate(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) =
+inline fun globalSecondaryIndexUpdate(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) =
+  GlobalSecondaryIndexUpdateDSL(GlobalSecondaryIndexUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalSecondaryIndexUpdate:
+  * Represents one of the following:
+  * 
+  *  A new global secondary index to be added to an existing table.
+  * 
+  *  New provisioned throughput parameters for an existing global secondary index.
+  * 
+  *  An existing global secondary index to be removed from an existing table.
+  */
+inline fun DynamodbDSL.Companion.globalSecondaryIndexUpdate(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) =
   GlobalSecondaryIndexUpdateDSL(GlobalSecondaryIndexUpdate.builder()).apply(dslBlock).build()

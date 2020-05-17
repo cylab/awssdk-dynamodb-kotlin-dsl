@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ResourceInUseException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ResourceInUseException
   * The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table,
   *  or tried to delete a table currently in the CREATING state.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ResourceInUseExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ResourceInUseException.Builder
@@ -94,5 +95,13 @@ inline class ResourceInUseExceptionDSL(
   * The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table,
   *  or tried to delete a table currently in the CREATING state.
   */
-inline fun buildResourceInUseException(dslBlock: ResourceInUseExceptionDSL.() -> Unit) =
+inline fun resourceInUseException(dslBlock: ResourceInUseExceptionDSL.() -> Unit) =
+  ResourceInUseExceptionDSL(ResourceInUseException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ResourceInUseException:
+  * The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table,
+  *  or tried to delete a table currently in the CREATING state.
+  */
+inline fun DynamodbDSL.Companion.resourceInUseException(dslBlock: ResourceInUseExceptionDSL.() -> Unit) =
   ResourceInUseExceptionDSL(ResourceInUseException.builder()).apply(dslBlock).build()

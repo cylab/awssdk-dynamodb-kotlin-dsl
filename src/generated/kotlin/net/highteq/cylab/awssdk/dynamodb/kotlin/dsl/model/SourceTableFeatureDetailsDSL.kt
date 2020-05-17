@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexInfo
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexInfo
 import software.amazon.awssdk.services.dynamodb.model.SSEDescription
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
   * Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs,
   *  streams, TTL.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class SourceTableFeatureDetailsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: SourceTableFeatureDetails.Builder
@@ -84,35 +85,35 @@ inline class SourceTableFeatureDetailsDSL(
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) {
-    builder.globalSecondaryIndexes(buildGlobalSecondaryIndexInfoCollection(dslBlock))
+    builder.globalSecondaryIndexes(DynamodbDSL.Companion.globalSecondaryIndexInfoCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexInfoCollectionDSL.() -> Unit) {
-    builder.localSecondaryIndexes(buildLocalSecondaryIndexInfoCollection(dslBlock))
+    builder.localSecondaryIndexes(DynamodbDSL.Companion.localSecondaryIndexInfoCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
-    builder.sseDescription(buildSSEDescription(dslBlock))
+    builder.sseDescription(DynamodbDSL.Companion.sseDescription(dslBlock))
   }
 
   /**
     * 
     */
   inline fun streamDescription(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamDescription(buildStreamSpecification(dslBlock))
+    builder.streamDescription(DynamodbDSL.Companion.streamSpecification(dslBlock))
   }
 
   /**
     * 
     */
   inline fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) {
-    builder.timeToLiveDescription(buildTimeToLiveDescription(dslBlock))
+    builder.timeToLiveDescription(DynamodbDSL.Companion.timeToLiveDescription(dslBlock))
   }
 
 }
@@ -122,5 +123,13 @@ inline class SourceTableFeatureDetailsDSL(
   * Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs,
   *  streams, TTL.
   */
-inline fun buildSourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) =
+inline fun sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) =
+  SourceTableFeatureDetailsDSL(SourceTableFeatureDetails.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type SourceTableFeatureDetails:
+  * Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs,
+  *  streams, TTL.
+  */
+inline fun DynamodbDSL.Companion.sourceTableFeatureDetails(dslBlock: SourceTableFeatureDetailsDSL.() -> Unit) =
   SourceTableFeatureDetailsDSL(SourceTableFeatureDetails.builder()).apply(dslBlock).build()

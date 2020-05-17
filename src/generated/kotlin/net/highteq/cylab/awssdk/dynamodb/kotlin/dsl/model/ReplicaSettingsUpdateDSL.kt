@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
   * Builds instances of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaSettingsUpdate.Builder
@@ -70,14 +71,14 @@ inline class ReplicaSettingsUpdateDSL(
     * 
     */
   inline fun replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) {
-    builder.replicaGlobalSecondaryIndexSettingsUpdate(buildReplicaGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
+    builder.replicaGlobalSecondaryIndexSettingsUpdate(DynamodbDSL.Companion.replicaGlobalSecondaryIndexSettingsUpdateCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun replicaProvisionedReadCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
-    builder.replicaProvisionedReadCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
+    builder.replicaProvisionedReadCapacityAutoScalingSettingsUpdate(DynamodbDSL.Companion.autoScalingSettingsUpdate(dslBlock))
   }
 
 }
@@ -86,5 +87,12 @@ inline class ReplicaSettingsUpdateDSL(
   * Builds instances of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
-inline fun buildReplicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) =
+inline fun replicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) =
+  ReplicaSettingsUpdateDSL(ReplicaSettingsUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaSettingsUpdate:
+  * Represents the settings for a global table in a region that will be modified.
+  */
+inline fun DynamodbDSL.Companion.replicaSettingsUpdate(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) =
   ReplicaSettingsUpdateDSL(ReplicaSettingsUpdate.builder()).apply(dslBlock).build()

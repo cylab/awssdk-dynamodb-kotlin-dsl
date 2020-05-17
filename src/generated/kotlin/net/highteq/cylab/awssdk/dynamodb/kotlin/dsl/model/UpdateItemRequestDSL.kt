@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -27,7 +28,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateItemRequestMarsh
   * Builds instances of type UpdateItemRequest:
   * Represents the input of an UpdateItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateItemRequest.Builder
@@ -197,28 +198,28 @@ inline class UpdateItemRequestDSL(
     * 
     */
   inline fun attributeUpdates(dslBlock: AttributeValueUpdateMapDSL.() -> Unit) {
-    builder.attributeUpdates(buildAttributeValueUpdateMap(dslBlock))
+    builder.attributeUpdates(DynamodbDSL.Companion.attributeValueUpdateMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expected(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) {
-    builder.expected(buildExpectedAttributeValueMap(dslBlock))
+    builder.expected(DynamodbDSL.Companion.expectedAttributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -227,7 +228,14 @@ inline class UpdateItemRequestDSL(
   * Builds instances of type UpdateItemRequest:
   * Represents the input of an UpdateItem operation.
   */
-inline fun buildUpdateItemRequest(dslBlock: UpdateItemRequestDSL.() -> Unit) =
+inline fun updateItemRequest(dslBlock: UpdateItemRequestDSL.() -> Unit) =
+  UpdateItemRequestDSL(UpdateItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateItemRequest:
+  * Represents the input of an UpdateItem operation.
+  */
+inline fun DynamodbDSL.Companion.updateItemRequest(dslBlock: UpdateItemRequestDSL.() -> Unit) =
   UpdateItemRequestDSL(UpdateItemRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -240,7 +248,7 @@ inline fun buildUpdateItemRequest(dslBlock: UpdateItemRequestDSL.() -> Unit) =
   *  ReturnValues parameter.
   */
 inline fun DynamoDbAsyncClient.updateItemBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
-  this.updateItem(buildUpdateItemRequest(dslBlock))
+  this.updateItem(DynamodbDSL.Companion.updateItemRequest(dslBlock))
 
 /**
   * Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put,
@@ -252,10 +260,10 @@ inline fun DynamoDbAsyncClient.updateItemBy(dslBlock: UpdateItemRequestDSL.() ->
   *  ReturnValues parameter.
   */
 inline fun DynamoDbClient.updateItemBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
-  this.updateItem(buildUpdateItemRequest(dslBlock))
+  this.updateItem(DynamodbDSL.Companion.updateItemRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateItemRequestMarshaller.marshallBy(dslBlock: UpdateItemRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateItemRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateItemRequest(dslBlock))

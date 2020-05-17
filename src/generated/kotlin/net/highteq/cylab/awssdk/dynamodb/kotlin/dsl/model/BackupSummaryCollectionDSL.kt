@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.BackupSummary
 
 /**
   * Builds a collection of type BackupSummary:
   * Contains details for the backup.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BackupSummaryCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class BackupSummaryCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: BackupSummaryDSL.() -> Unit) {
-    list.add(buildBackupSummary(dslBlock))
+    list.add(DynamodbDSL.backupSummary(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class BackupSummaryCollectionDSL(
   * Builds a collection of type BackupSummary:
   * Contains details for the backup.
   */
-inline fun buildBackupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =
+inline fun backupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =
+  BackupSummaryCollectionDSL(mutableListOf<BackupSummary>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type BackupSummary:
+  * Contains details for the backup.
+  */
+inline fun DynamodbDSL.Companion.backupSummaryCollection(dslBlock: BackupSummaryCollectionDSL.() -> Unit) =
   BackupSummaryCollectionDSL(mutableListOf<BackupSummary>()).apply(dslBlock).build()

@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsUnavailableException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsUnavailab
   * Builds instances of type ContinuousBackupsUnavailableException:
   * Backups have not yet been enabled for this table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ContinuousBackupsUnavailableExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ContinuousBackupsUnavailableException.Builder
@@ -92,5 +93,12 @@ inline class ContinuousBackupsUnavailableExceptionDSL(
   * Builds instances of type ContinuousBackupsUnavailableException:
   * Backups have not yet been enabled for this table.
   */
-inline fun buildContinuousBackupsUnavailableException(dslBlock: ContinuousBackupsUnavailableExceptionDSL.() -> Unit) =
+inline fun continuousBackupsUnavailableException(dslBlock: ContinuousBackupsUnavailableExceptionDSL.() -> Unit) =
+  ContinuousBackupsUnavailableExceptionDSL(ContinuousBackupsUnavailableException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ContinuousBackupsUnavailableException:
+  * Backups have not yet been enabled for this table.
+  */
+inline fun DynamodbDSL.Companion.continuousBackupsUnavailableException(dslBlock: ContinuousBackupsUnavailableExceptionDSL.() -> Unit) =
   ContinuousBackupsUnavailableExceptionDSL(ContinuousBackupsUnavailableException.builder()).apply(dslBlock).build()

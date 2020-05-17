@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.InvalidRestoreTimeException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.InvalidRestoreTimeExceptio
   * An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and
   *  LatestRestorableDateTime.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class InvalidRestoreTimeExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: InvalidRestoreTimeException.Builder
@@ -94,5 +95,13 @@ inline class InvalidRestoreTimeExceptionDSL(
   * An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and
   *  LatestRestorableDateTime.
   */
-inline fun buildInvalidRestoreTimeException(dslBlock: InvalidRestoreTimeExceptionDSL.() -> Unit) =
+inline fun invalidRestoreTimeException(dslBlock: InvalidRestoreTimeExceptionDSL.() -> Unit) =
+  InvalidRestoreTimeExceptionDSL(InvalidRestoreTimeException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type InvalidRestoreTimeException:
+  * An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and
+  *  LatestRestorableDateTime.
+  */
+inline fun DynamodbDSL.Companion.invalidRestoreTimeException(dslBlock: InvalidRestoreTimeExceptionDSL.() -> Unit) =
   InvalidRestoreTimeExceptionDSL(InvalidRestoreTimeException.builder()).apply(dslBlock).build()

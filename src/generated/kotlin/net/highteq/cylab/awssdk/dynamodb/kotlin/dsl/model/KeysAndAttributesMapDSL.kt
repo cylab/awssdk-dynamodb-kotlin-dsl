@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 
 /**
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class KeysAndAttributesMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -33,7 +34,7 @@ inline class KeysAndAttributesMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: KeysAndAttributesDSL.() -> Unit) {
-    map[key] = buildKeysAndAttributes(dslBlock)
+    map[key] = DynamodbDSL.keysAndAttributes(dslBlock)
   }
 
   /**
@@ -73,5 +74,16 @@ inline class KeysAndAttributesMapDSL(
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-inline fun buildKeysAndAttributesMap(dslBlock: KeysAndAttributesMapDSL.() -> Unit) =
+inline fun keysAndAttributesMap(dslBlock: KeysAndAttributesMapDSL.() -> Unit) =
+  KeysAndAttributesMapDSL(mutableMapOf<String, KeysAndAttributes>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type KeysAndAttributes:
+  * Represents a set of primary keys and, for each key, the attributes to retrieve from the table.
+  * 
+  *  For each primary key, you must provide all of the key attributes. For example, with a simple primary key, you
+  *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
+  *  and the sort key.
+  */
+inline fun DynamodbDSL.Companion.keysAndAttributesMap(dslBlock: KeysAndAttributesMapDSL.() -> Unit) =
   KeysAndAttributesMapDSL(mutableMapOf<String, KeysAndAttributes>()).apply(dslBlock).build()

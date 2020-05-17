@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.SourceTableDetails
   * Builds instances of type SourceTableDetails:
   * Contains the details of the table when the backup was created.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class SourceTableDetailsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: SourceTableDetails.Builder
@@ -129,14 +130,14 @@ inline class SourceTableDetailsDSL(
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughput(dslBlock))
   }
 
 }
@@ -145,5 +146,12 @@ inline class SourceTableDetailsDSL(
   * Builds instances of type SourceTableDetails:
   * Contains the details of the table when the backup was created.
   */
-inline fun buildSourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) =
+inline fun sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) =
+  SourceTableDetailsDSL(SourceTableDetails.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type SourceTableDetails:
+  * Contains the details of the table when the backup was created.
+  */
+inline fun DynamodbDSL.Companion.sourceTableDetails(dslBlock: SourceTableDetailsDSL.() -> Unit) =
   SourceTableDetailsDSL(SourceTableDetails.builder()).apply(dslBlock).build()

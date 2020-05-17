@@ -6,32 +6,31 @@ This DSL is generated from https://github.com/aws/aws-sdk-java-v2 by https://git
 
 Everything is inlined, so performance impact should be negligible. 
 
-**CAUTION:** This is very much work in progress and might not work as expected or at all.
 Feel free to try it out and give feedback at the generator project (see above)
 
 All Builders of the SDK are wrapped in Kotlin style DSLs.
-Use buildXXX { } everytime you would use XXX.builder() e.g.
+So instead of using e.g. DynamoDbClient.builder(), you can just use the lower case type name as function:
 
-    buildDynamoDbClient {
+    dynamoDbClient {
     }
 
 builder functions are exposed as properties inside the DSL block like:
 
-    val client = buildDynamoDbClient {
+    val client = dynamoDbClient {
       region = Region.EU_CENTRAL_1
     }
 
-if for some reason, a buildXXXX DSL function isn't (yet) available, you can
+if for some reason, a lower case builder DSL function isn't (yet) available, you can
 just use the plain old java style builder instead:
   
-    val client = buildDynamoDbClient {
+    val client = dynamoDbClient {
       region = Region.EU_CENTRAL_1
       credentialsProvider = DefaultCredentialsProvider.builder().build()
     }
 
 or if something is missing, access the internal builder instance as a workaround:
 
-    val client = buildDynamoDbClient {
+    val client = dynamoDbClient {
       region = Region.EU_CENTRAL_1
       @Suppress("DEPRECATION")
       builder.enableEndpointDiscovery()
@@ -45,15 +44,15 @@ https://github.com/cylab/aws-kotlin-dsl-builder
 
 ## More Examples
 
-For types that are used in collections, you can create a collection using `buildXXXCollection`:
+For types that are used in collections, you can create a collection using `someTypeCollection` - e.g.:
 
-    buildAttributeDefinitionCollection {
+    attributeDefinitionCollection {
     }
 
 The objects in this DSL can be added by the `o {}` sub DSL
 or by using the `+` operator on existing instances:
 
-    buildAttributeDefinitionCollection {
+    attributeDefinitionCollection {
       o {
         attributeName = Constants.ID
         attributeType = ScalarAttributeType.S
@@ -70,7 +69,7 @@ or by using the `+` operator on existing instances:
 
 The same mechanism works, if the collection is part of a sub DSL:
 
-    val createTableRequest = buildCreateTableRequest {
+    val createTable = createTableRequest {
       attributeDefinitions {
         o {
           attributeName = Constants.ID
@@ -87,10 +86,10 @@ The same mechanism works, if the collection is part of a sub DSL:
       }
     }
 
-Like normal collections, you can also build Maps using `buildXXXMap`.
+Like normal collections, you can also build Maps using `someTypeMap`.
 This time the object DSL takes the key as parameter:
 
-    val hotelItem = buildAttributeValueMap {
+    val hotelItem = attributeValueMap {
       o("ID") { s = hotel.id }
       o("NAME") { s = hotel.name }
       o("ADDRESS") { s = hotel.address }
@@ -98,7 +97,7 @@ This time the object DSL takes the key as parameter:
 
 The same mechanism is also available in sub DSLs:
 
-    val deleteRequest = buildDeleteItemRequest {
+    val deleteRequest = deleteItemRequest {
       tableName = "SomeTable"
       key {
         o("ID") { s = "someValue" }
@@ -107,7 +106,7 @@ The same mechanism is also available in sub DSLs:
 
 or in a nested AttributeValueMap
 
-    val putRequest = buildPutItemRequest {
+    val putRequest = putItemRequest {
       item {
         o("ID") { s = hotel.id }
         o("NAME") { s = hotel.name }
@@ -131,7 +130,7 @@ introduced with other overloads of the original method.
 
 So instead of
 
-    val putRequest = buildPutItemRequest {
+    val request = putItemRequest {
       tableName = "table"
       item {
         o("ID") { s = hotel.id }
@@ -139,7 +138,7 @@ So instead of
       }
     }
     
-    client.putItem(putRequest)
+    client.putItem(request)
 
 you can just write
 
@@ -151,3 +150,22 @@ you can just write
       }
     }
 
+## Avoiding ambiguity
+
+If for some reason, you have a name clash, because a builder DSL and a subDSL function are named the same,
+you can prepend DynamodbDSL to the builder DSL type:
+
+    val request = createTableRequest {
+
+      // provisionedThroughput is also available as sub DSL without a
+      // so if you want to call the builder DSL that returns an actual
+      // object, you need to call the equivalent DynamodbDSL extension function 
+      val block = DynamodbDSL.provisionedThroughput {
+        readCapacityUnits = 10
+        writeCapacityUnits = 10
+      }
+
+      // (...)
+      
+      provisionedThroughput = block
+    }

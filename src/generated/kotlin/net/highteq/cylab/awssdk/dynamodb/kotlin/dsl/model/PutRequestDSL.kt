@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.PutRequest
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.PutRequest
   * Builds instances of type PutRequest:
   * Represents a request to perform a PutItem operation on an item.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PutRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: PutRequest.Builder
@@ -39,7 +40,7 @@ inline class PutRequestDSL(
     * 
     */
   inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.item(buildAttributeValueMap(dslBlock))
+    builder.item(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -48,5 +49,12 @@ inline class PutRequestDSL(
   * Builds instances of type PutRequest:
   * Represents a request to perform a PutItem operation on an item.
   */
-inline fun buildPutRequest(dslBlock: PutRequestDSL.() -> Unit) =
+inline fun putRequest(dslBlock: PutRequestDSL.() -> Unit) =
+  PutRequestDSL(PutRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type PutRequest:
+  * Represents a request to perform a PutItem operation on an item.
+  */
+inline fun DynamodbDSL.Companion.putRequest(dslBlock: PutRequestDSL.() -> Unit) =
   PutRequestDSL(PutRequest.builder()).apply(dslBlock).build()

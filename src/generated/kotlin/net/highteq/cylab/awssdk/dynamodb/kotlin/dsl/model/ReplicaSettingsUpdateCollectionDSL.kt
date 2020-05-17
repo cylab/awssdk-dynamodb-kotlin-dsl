@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsUpdate
 
 /**
   * Builds a collection of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaSettingsUpdateCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class ReplicaSettingsUpdateCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ReplicaSettingsUpdateDSL.() -> Unit) {
-    list.add(buildReplicaSettingsUpdate(dslBlock))
+    list.add(DynamodbDSL.replicaSettingsUpdate(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class ReplicaSettingsUpdateCollectionDSL(
   * Builds a collection of type ReplicaSettingsUpdate:
   * Represents the settings for a global table in a region that will be modified.
   */
-inline fun buildReplicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =
+inline fun replicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =
+  ReplicaSettingsUpdateCollectionDSL(mutableListOf<ReplicaSettingsUpdate>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type ReplicaSettingsUpdate:
+  * Represents the settings for a global table in a region that will be modified.
+  */
+inline fun DynamodbDSL.Companion.replicaSettingsUpdateCollection(dslBlock: ReplicaSettingsUpdateCollectionDSL.() -> Unit) =
   ReplicaSettingsUpdateCollectionDSL(mutableListOf<ReplicaSettingsUpdate>()).apply(dslBlock).build()

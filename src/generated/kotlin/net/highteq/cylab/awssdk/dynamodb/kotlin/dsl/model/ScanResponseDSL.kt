@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ScanResponse
   * Builds instances of type ScanResponse:
   * Represents the output of a Scan operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ScanResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ScanResponse.Builder
@@ -102,14 +103,14 @@ inline class ScanResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacity(dslBlock))
   }
 
   /**
     * 
     */
   inline fun lastEvaluatedKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.lastEvaluatedKey(buildAttributeValueMap(dslBlock))
+    builder.lastEvaluatedKey(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -118,5 +119,12 @@ inline class ScanResponseDSL(
   * Builds instances of type ScanResponse:
   * Represents the output of a Scan operation.
   */
-inline fun buildScanResponse(dslBlock: ScanResponseDSL.() -> Unit) =
+inline fun scanResponse(dslBlock: ScanResponseDSL.() -> Unit) =
+  ScanResponseDSL(ScanResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ScanResponse:
+  * Represents the output of a Scan operation.
+  */
+inline fun DynamodbDSL.Companion.scanResponse(dslBlock: ScanResponseDSL.() -> Unit) =
   ScanResponseDSL(ScanResponse.builder()).apply(dslBlock).build()

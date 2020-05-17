@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.TableAlreadyExistsException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableAlreadyExistsExceptio
   * Builds instances of type TableAlreadyExistsException:
   * A target table with the specified name already exists.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TableAlreadyExistsExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TableAlreadyExistsException.Builder
@@ -92,5 +93,12 @@ inline class TableAlreadyExistsExceptionDSL(
   * Builds instances of type TableAlreadyExistsException:
   * A target table with the specified name already exists.
   */
-inline fun buildTableAlreadyExistsException(dslBlock: TableAlreadyExistsExceptionDSL.() -> Unit) =
+inline fun tableAlreadyExistsException(dslBlock: TableAlreadyExistsExceptionDSL.() -> Unit) =
+  TableAlreadyExistsExceptionDSL(TableAlreadyExistsException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TableAlreadyExistsException:
+  * A target table with the specified name already exists.
+  */
+inline fun DynamodbDSL.Companion.tableAlreadyExistsException(dslBlock: TableAlreadyExistsExceptionDSL.() -> Unit) =
   TableAlreadyExistsExceptionDSL(TableAlreadyExistsException.builder()).apply(dslBlock).build()

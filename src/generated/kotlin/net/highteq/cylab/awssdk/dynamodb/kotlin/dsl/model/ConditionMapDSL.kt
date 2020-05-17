@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Condition
 
 /**
@@ -27,7 +28,7 @@ import software.amazon.awssdk.services.dynamodb.model.Condition
   *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
   *  scan results and returns only the desired values.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConditionMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -41,7 +42,7 @@ inline class ConditionMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: ConditionDSL.() -> Unit) {
-    map[key] = buildCondition(dslBlock)
+    map[key] = DynamodbDSL.condition(dslBlock)
   }
 
   /**
@@ -89,5 +90,24 @@ inline class ConditionMapDSL(
   *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
   *  scan results and returns only the desired values.
   */
-inline fun buildConditionMap(dslBlock: ConditionMapDSL.() -> Unit) =
+inline fun conditionMap(dslBlock: ConditionMapDSL.() -> Unit) =
+  ConditionMapDSL(mutableMapOf<String, Condition>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type Condition:
+  * Represents the selection criteria for a Query or Scan operation:
+  * 
+  *  For a Query operation, Condition is used for specifying the KeyConditions to
+  *  use when querying a table or an index. For KeyConditions, only the following comparison operators are
+  *  supported:
+  * 
+  *  EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN
+  * 
+  *  Condition is also used in a QueryFilter, which evaluates the query results and returns only
+  *  the desired values.
+  * 
+  *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
+  *  scan results and returns only the desired values.
+  */
+inline fun DynamodbDSL.Companion.conditionMap(dslBlock: ConditionMapDSL.() -> Unit) =
   ConditionMapDSL(mutableMapOf<String, Condition>()).apply(dslBlock).build()

@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoverySpecification
 
 /**
   * Builds instances of type PointInTimeRecoverySpecification:
   * Represents the settings used to enable point in time recovery.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PointInTimeRecoverySpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: PointInTimeRecoverySpecification.Builder
@@ -40,5 +41,12 @@ inline class PointInTimeRecoverySpecificationDSL(
   * Builds instances of type PointInTimeRecoverySpecification:
   * Represents the settings used to enable point in time recovery.
   */
-inline fun buildPointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) =
+inline fun pointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) =
+  PointInTimeRecoverySpecificationDSL(PointInTimeRecoverySpecification.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type PointInTimeRecoverySpecification:
+  * Represents the settings used to enable point in time recovery.
+  */
+inline fun DynamodbDSL.Companion.pointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) =
   PointInTimeRecoverySpecificationDSL(PointInTimeRecoverySpecification.builder()).apply(dslBlock).build()

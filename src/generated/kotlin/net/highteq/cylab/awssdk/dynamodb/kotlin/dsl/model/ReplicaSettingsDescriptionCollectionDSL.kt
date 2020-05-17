@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
 
 /**
   * Builds a collection of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaSettingsDescriptionCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class ReplicaSettingsDescriptionCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) {
-    list.add(buildReplicaSettingsDescription(dslBlock))
+    list.add(DynamodbDSL.replicaSettingsDescription(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class ReplicaSettingsDescriptionCollectionDSL(
   * Builds a collection of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-inline fun buildReplicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =
+inline fun replicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =
+  ReplicaSettingsDescriptionCollectionDSL(mutableListOf<ReplicaSettingsDescription>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type ReplicaSettingsDescription:
+  * Represents the properties of a replica.
+  */
+inline fun DynamodbDSL.Companion.replicaSettingsDescriptionCollection(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) =
   ReplicaSettingsDescriptionCollectionDSL(mutableListOf<ReplicaSettingsDescription>()).apply(dslBlock).build()

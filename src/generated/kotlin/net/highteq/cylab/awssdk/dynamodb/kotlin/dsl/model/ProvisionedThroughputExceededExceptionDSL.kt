@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputExceededException
 
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputExcee
   *  Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of
   *  requests and use exponential backoff. For more information, go to Error Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ProvisionedThroughputExceededExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ProvisionedThroughputExceededException.Builder
@@ -96,5 +97,14 @@ inline class ProvisionedThroughputExceededExceptionDSL(
   *  Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of
   *  requests and use exponential backoff. For more information, go to Error Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildProvisionedThroughputExceededException(dslBlock: ProvisionedThroughputExceededExceptionDSL.() -> Unit) =
+inline fun provisionedThroughputExceededException(dslBlock: ProvisionedThroughputExceededExceptionDSL.() -> Unit) =
+  ProvisionedThroughputExceededExceptionDSL(ProvisionedThroughputExceededException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ProvisionedThroughputExceededException:
+  * Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception.
+  *  Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of
+  *  requests and use exponential backoff. For more information, go to Error Retries and Exponential Backoff in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.provisionedThroughputExceededException(dslBlock: ProvisionedThroughputExceededExceptionDSL.() -> Unit) =
   ProvisionedThroughputExceededExceptionDSL(ProvisionedThroughputExceededException.builder()).apply(dslBlock).build()

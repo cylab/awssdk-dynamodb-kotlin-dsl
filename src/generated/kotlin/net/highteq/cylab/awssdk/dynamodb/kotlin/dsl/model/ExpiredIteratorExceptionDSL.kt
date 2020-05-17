@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ExpiredIteratorException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ExpiredIteratorException
   * The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15
   *  minutes after it is retrieved using the GetShardIterator action.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ExpiredIteratorExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ExpiredIteratorException.Builder
@@ -94,5 +95,13 @@ inline class ExpiredIteratorExceptionDSL(
   * The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15
   *  minutes after it is retrieved using the GetShardIterator action.
   */
-inline fun buildExpiredIteratorException(dslBlock: ExpiredIteratorExceptionDSL.() -> Unit) =
+inline fun expiredIteratorException(dslBlock: ExpiredIteratorExceptionDSL.() -> Unit) =
+  ExpiredIteratorExceptionDSL(ExpiredIteratorException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ExpiredIteratorException:
+  * The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15
+  *  minutes after it is retrieved using the GetShardIterator action.
+  */
+inline fun DynamodbDSL.Companion.expiredIteratorException(dslBlock: ExpiredIteratorExceptionDSL.() -> Unit) =
   ExpiredIteratorExceptionDSL(ExpiredIteratorException.builder()).apply(dslBlock).build()

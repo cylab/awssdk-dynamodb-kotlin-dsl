@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.UntagResourceResponse
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.UntagResourceResponse
   * Builds instances of type UntagResourceResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UntagResourceResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UntagResourceResponse.Builder
@@ -52,5 +53,12 @@ inline class UntagResourceResponseDSL(
   * Builds instances of type UntagResourceResponse:
   * 
   */
-inline fun buildUntagResourceResponse(dslBlock: UntagResourceResponseDSL.() -> Unit) =
+inline fun untagResourceResponse(dslBlock: UntagResourceResponseDSL.() -> Unit) =
+  UntagResourceResponseDSL(UntagResourceResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UntagResourceResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.untagResourceResponse(dslBlock: UntagResourceResponseDSL.() -> Unit) =
   UntagResourceResponseDSL(UntagResourceResponse.builder()).apply(dslBlock).build()

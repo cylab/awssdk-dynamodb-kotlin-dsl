@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
 import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsDescription
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaStatus
   * Builds instances of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaSettingsDescription.Builder
@@ -119,28 +120,28 @@ inline class ReplicaSettingsDescriptionDSL(
     * 
     */
   inline fun replicaBillingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) {
-    builder.replicaBillingModeSummary(buildBillingModeSummary(dslBlock))
+    builder.replicaBillingModeSummary(DynamodbDSL.Companion.billingModeSummary(dslBlock))
   }
 
   /**
     * 
     */
   inline fun replicaGlobalSecondaryIndexSettings(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionCollectionDSL.() -> Unit) {
-    builder.replicaGlobalSecondaryIndexSettings(buildReplicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock))
+    builder.replicaGlobalSecondaryIndexSettings(DynamodbDSL.Companion.replicaGlobalSecondaryIndexSettingsDescriptionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun replicaProvisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
-    builder.replicaProvisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
+    builder.replicaProvisionedReadCapacityAutoScalingSettings(DynamodbDSL.Companion.autoScalingSettingsDescription(dslBlock))
   }
 
   /**
     * 
     */
   inline fun replicaProvisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
-    builder.replicaProvisionedWriteCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
+    builder.replicaProvisionedWriteCapacityAutoScalingSettings(DynamodbDSL.Companion.autoScalingSettingsDescription(dslBlock))
   }
 
 }
@@ -149,5 +150,12 @@ inline class ReplicaSettingsDescriptionDSL(
   * Builds instances of type ReplicaSettingsDescription:
   * Represents the properties of a replica.
   */
-inline fun buildReplicaSettingsDescription(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) =
+inline fun replicaSettingsDescription(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) =
+  ReplicaSettingsDescriptionDSL(ReplicaSettingsDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaSettingsDescription:
+  * Represents the properties of a replica.
+  */
+inline fun DynamodbDSL.Companion.replicaSettingsDescription(dslBlock: ReplicaSettingsDescriptionDSL.() -> Unit) =
   ReplicaSettingsDescriptionDSL(ReplicaSettingsDescription.builder()).apply(dslBlock).build()

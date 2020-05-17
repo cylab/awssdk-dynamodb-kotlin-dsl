@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.TransactionConflictException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactionConflictExcepti
   * Builds instances of type TransactionConflictException:
   * Operation was rejected because there is an ongoing transaction for the item.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactionConflictExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactionConflictException.Builder
@@ -92,5 +93,12 @@ inline class TransactionConflictExceptionDSL(
   * Builds instances of type TransactionConflictException:
   * Operation was rejected because there is an ongoing transaction for the item.
   */
-inline fun buildTransactionConflictException(dslBlock: TransactionConflictExceptionDSL.() -> Unit) =
+inline fun transactionConflictException(dslBlock: TransactionConflictExceptionDSL.() -> Unit) =
+  TransactionConflictExceptionDSL(TransactionConflictException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactionConflictException:
+  * Operation was rejected because there is an ongoing transaction for the item.
+  */
+inline fun DynamodbDSL.Companion.transactionConflictException(dslBlock: TransactionConflictExceptionDSL.() -> Unit) =
   TransactionConflictExceptionDSL(TransactionConflictException.builder()).apply(dslBlock).build()

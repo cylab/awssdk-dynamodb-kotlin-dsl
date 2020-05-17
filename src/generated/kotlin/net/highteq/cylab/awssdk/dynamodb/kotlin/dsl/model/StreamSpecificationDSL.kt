@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.StreamSpecification
 import software.amazon.awssdk.services.dynamodb.model.StreamViewType
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
   * Builds instances of type StreamSpecification:
   * Represents the DynamoDB Streams configuration for a table in DynamoDB.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class StreamSpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: StreamSpecification.Builder
@@ -58,5 +59,12 @@ inline class StreamSpecificationDSL(
   * Builds instances of type StreamSpecification:
   * Represents the DynamoDB Streams configuration for a table in DynamoDB.
   */
-inline fun buildStreamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) =
+inline fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) =
+  StreamSpecificationDSL(StreamSpecification.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type StreamSpecification:
+  * Represents the DynamoDB Streams configuration for a table in DynamoDB.
+  */
+inline fun DynamodbDSL.Companion.streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) =
   StreamSpecificationDSL(StreamSpecification.builder()).apply(dslBlock).build()

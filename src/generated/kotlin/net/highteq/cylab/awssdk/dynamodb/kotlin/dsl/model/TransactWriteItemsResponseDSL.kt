@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItemsResponse
   * Builds instances of type TransactWriteItemsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactWriteItemsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactWriteItemsResponse.Builder
@@ -72,7 +73,7 @@ inline class TransactWriteItemsResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacityCollection(dslBlock))
   }
 
 }
@@ -81,5 +82,12 @@ inline class TransactWriteItemsResponseDSL(
   * Builds instances of type TransactWriteItemsResponse:
   * 
   */
-inline fun buildTransactWriteItemsResponse(dslBlock: TransactWriteItemsResponseDSL.() -> Unit) =
+inline fun transactWriteItemsResponse(dslBlock: TransactWriteItemsResponseDSL.() -> Unit) =
+  TransactWriteItemsResponseDSL(TransactWriteItemsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactWriteItemsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.transactWriteItemsResponse(dslBlock: TransactWriteItemsResponseDSL.() -> Unit) =
   TransactWriteItemsResponseDSL(TransactWriteItemsResponse.builder()).apply(dslBlock).build()

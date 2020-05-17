@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
 
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class KeysAndAttributesDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: KeysAndAttributes.Builder
@@ -89,5 +90,16 @@ inline class KeysAndAttributesDSL(
   *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
   *  and the sort key.
   */
-inline fun buildKeysAndAttributes(dslBlock: KeysAndAttributesDSL.() -> Unit) =
+inline fun keysAndAttributes(dslBlock: KeysAndAttributesDSL.() -> Unit) =
+  KeysAndAttributesDSL(KeysAndAttributes.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type KeysAndAttributes:
+  * Represents a set of primary keys and, for each key, the attributes to retrieve from the table.
+  * 
+  *  For each primary key, you must provide all of the key attributes. For example, with a simple primary key, you
+  *  only need to provide the partition key. For a composite primary key, you must provide both the partition key
+  *  and the sort key.
+  */
+inline fun DynamodbDSL.Companion.keysAndAttributes(dslBlock: KeysAndAttributesDSL.() -> Unit) =
   KeysAndAttributesDSL(KeysAndAttributes.builder()).apply(dslBlock).build()

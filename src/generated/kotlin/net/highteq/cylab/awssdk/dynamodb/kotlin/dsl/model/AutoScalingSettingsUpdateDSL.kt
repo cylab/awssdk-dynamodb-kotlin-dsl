@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyUpdate
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
   * Builds instances of type AutoScalingSettingsUpdate:
   * Represents the autoscaling settings to be modified for a global table or global secondary index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AutoScalingSettingsUpdate.Builder
@@ -79,7 +80,7 @@ inline class AutoScalingSettingsUpdateDSL(
     * 
     */
   inline fun scalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) {
-    builder.scalingPolicyUpdate(buildAutoScalingPolicyUpdate(dslBlock))
+    builder.scalingPolicyUpdate(DynamodbDSL.Companion.autoScalingPolicyUpdate(dslBlock))
   }
 
 }
@@ -88,5 +89,12 @@ inline class AutoScalingSettingsUpdateDSL(
   * Builds instances of type AutoScalingSettingsUpdate:
   * Represents the autoscaling settings to be modified for a global table or global secondary index.
   */
-inline fun buildAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) =
+inline fun autoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) =
+  AutoScalingSettingsUpdateDSL(AutoScalingSettingsUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AutoScalingSettingsUpdate:
+  * Represents the autoscaling settings to be modified for a global table or global secondary index.
+  */
+inline fun DynamodbDSL.Companion.autoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) =
   AutoScalingSettingsUpdateDSL(AutoScalingSettingsUpdate.builder()).apply(dslBlock).build()

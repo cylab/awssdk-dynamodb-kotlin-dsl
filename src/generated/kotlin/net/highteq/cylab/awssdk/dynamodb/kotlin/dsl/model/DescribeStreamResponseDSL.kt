@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeStreamResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamDescription
   * Builds instances of type DescribeStreamResponse:
   * Represents the output of a DescribeStream operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeStreamResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeStreamResponse.Builder
@@ -61,7 +62,7 @@ inline class DescribeStreamResponseDSL(
     * 
     */
   inline fun streamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) {
-    builder.streamDescription(buildStreamDescription(dslBlock))
+    builder.streamDescription(DynamodbDSL.Companion.streamDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class DescribeStreamResponseDSL(
   * Builds instances of type DescribeStreamResponse:
   * Represents the output of a DescribeStream operation.
   */
-inline fun buildDescribeStreamResponse(dslBlock: DescribeStreamResponseDSL.() -> Unit) =
+inline fun describeStreamResponse(dslBlock: DescribeStreamResponseDSL.() -> Unit) =
+  DescribeStreamResponseDSL(DescribeStreamResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeStreamResponse:
+  * Represents the output of a DescribeStream operation.
+  */
+inline fun DynamodbDSL.Companion.describeStreamResponse(dslBlock: DescribeStreamResponseDSL.() -> Unit) =
   DescribeStreamResponseDSL(DescribeStreamResponse.builder()).apply(dslBlock).build()

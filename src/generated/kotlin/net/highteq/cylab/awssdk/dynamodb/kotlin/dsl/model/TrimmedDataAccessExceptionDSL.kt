@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.TrimmedDataAccessException
 
@@ -27,7 +28,7 @@ import software.amazon.awssdk.services.dynamodb.model.TrimmedDataAccessException
   *  the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer
   *  exists.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TrimmedDataAccessExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TrimmedDataAccessException.Builder
@@ -110,5 +111,21 @@ inline class TrimmedDataAccessExceptionDSL(
   *  the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer
   *  exists.
   */
-inline fun buildTrimmedDataAccessException(dslBlock: TrimmedDataAccessExceptionDSL.() -> Unit) =
+inline fun trimmedDataAccessException(dslBlock: TrimmedDataAccessExceptionDSL.() -> Unit) =
+  TrimmedDataAccessExceptionDSL(TrimmedDataAccessException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TrimmedDataAccessException:
+  * The operation attempted to read past the oldest stream record in a shard.
+  * 
+  *  In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are
+  *  subject to removal (trimming) from the stream. You might receive a TrimmedDataAccessException if:
+  * 
+  *  You request a shard iterator with a sequence number older than the trim point (24 hours).
+  * 
+  *  You obtain a shard iterator, but before you use the iterator in a GetRecords request, a stream record in
+  *  the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer
+  *  exists.
+  */
+inline fun DynamodbDSL.Companion.trimmedDataAccessException(dslBlock: TrimmedDataAccessExceptionDSL.() -> Unit) =
   TrimmedDataAccessExceptionDSL(TrimmedDataAccessException.builder()).apply(dslBlock).build()

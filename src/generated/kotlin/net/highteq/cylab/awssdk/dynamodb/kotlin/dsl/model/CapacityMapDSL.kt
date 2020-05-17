@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Capacity
 
 /**
   * Builds a maps of type Capacity:
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CapacityMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class CapacityMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: CapacityDSL.() -> Unit) {
-    map[key] = buildCapacity(dslBlock)
+    map[key] = DynamodbDSL.capacity(dslBlock)
   }
 
   /**
@@ -65,5 +66,12 @@ inline class CapacityMapDSL(
   * Builds a maps of type Capacity:
   * Represents the amount of provisioned throughput capacity consumed on a table or an index.
   */
-inline fun buildCapacityMap(dslBlock: CapacityMapDSL.() -> Unit) =
+inline fun capacityMap(dslBlock: CapacityMapDSL.() -> Unit) =
+  CapacityMapDSL(mutableMapOf<String, Capacity>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type Capacity:
+  * Represents the amount of provisioned throughput capacity consumed on a table or an index.
+  */
+inline fun DynamodbDSL.Companion.capacityMap(dslBlock: CapacityMapDSL.() -> Unit) =
   CapacityMapDSL(mutableMapOf<String, Capacity>()).apply(dslBlock).build()

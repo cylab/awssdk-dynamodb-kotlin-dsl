@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -26,7 +27,7 @@ import software.amazon.awssdk.services.dynamodb.transform.PutItemRequestMarshall
   * Builds instances of type PutItemRequest:
   * Represents the input of a PutItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PutItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: PutItemRequest.Builder
@@ -176,21 +177,21 @@ inline class PutItemRequestDSL(
     * 
     */
   inline fun expected(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) {
-    builder.expected(buildExpectedAttributeValueMap(dslBlock))
+    builder.expected(DynamodbDSL.Companion.expectedAttributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.item(buildAttributeValueMap(dslBlock))
+    builder.item(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -199,7 +200,14 @@ inline class PutItemRequestDSL(
   * Builds instances of type PutItemRequest:
   * Represents the input of a PutItem operation.
   */
-inline fun buildPutItemRequest(dslBlock: PutItemRequestDSL.() -> Unit) =
+inline fun putItemRequest(dslBlock: PutItemRequestDSL.() -> Unit) =
+  PutItemRequestDSL(PutItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type PutItemRequest:
+  * Represents the input of a PutItem operation.
+  */
+inline fun DynamodbDSL.Companion.putItemRequest(dslBlock: PutItemRequestDSL.() -> Unit) =
   PutItemRequestDSL(PutItemRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -250,7 +258,7 @@ inline fun buildPutItemRequest(dslBlock: PutItemRequestDSL.() -> Unit) =
   *  Items in the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbAsyncClient.putItemBy(dslBlock: PutItemRequestDSL.() -> Unit) =
-  this.putItem(buildPutItemRequest(dslBlock))
+  this.putItem(DynamodbDSL.Companion.putItemRequest(dslBlock))
 
 /**
   * Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new
@@ -300,10 +308,10 @@ inline fun DynamoDbAsyncClient.putItemBy(dslBlock: PutItemRequestDSL.() -> Unit)
   *  Items in the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbClient.putItemBy(dslBlock: PutItemRequestDSL.() -> Unit) =
-  this.putItem(buildPutItemRequest(dslBlock))
+  this.putItem(DynamodbDSL.Companion.putItemRequest(dslBlock))
 
 /**
   * 
   */
 inline fun PutItemRequestMarshaller.marshallBy(dslBlock: PutItemRequestDSL.() -> Unit) =
-  this.marshall(buildPutItemRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.putItemRequest(dslBlock))

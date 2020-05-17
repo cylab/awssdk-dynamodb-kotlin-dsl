@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeEndpointsResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Endpoint
   * Builds instances of type DescribeEndpointsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeEndpointsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeEndpointsResponse.Builder
@@ -61,7 +62,7 @@ inline class DescribeEndpointsResponseDSL(
     * 
     */
   inline fun endpoints(dslBlock: EndpointCollectionDSL.() -> Unit) {
-    builder.endpoints(buildEndpointCollection(dslBlock))
+    builder.endpoints(DynamodbDSL.Companion.endpointCollection(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class DescribeEndpointsResponseDSL(
   * Builds instances of type DescribeEndpointsResponse:
   * 
   */
-inline fun buildDescribeEndpointsResponse(dslBlock: DescribeEndpointsResponseDSL.() -> Unit) =
+inline fun describeEndpointsResponse(dslBlock: DescribeEndpointsResponseDSL.() -> Unit) =
+  DescribeEndpointsResponseDSL(DescribeEndpointsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeEndpointsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeEndpointsResponse(dslBlock: DescribeEndpointsResponseDSL.() -> Unit) =
   DescribeEndpointsResponseDSL(DescribeEndpointsResponse.builder()).apply(dslBlock).build()

@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Stream
 
 /**
   * Builds a collection of type Stream:
   * Represents all of the data describing a particular stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class StreamCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class StreamCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: StreamDSL.() -> Unit) {
-    list.add(buildStream(dslBlock))
+    list.add(DynamodbDSL.stream(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class StreamCollectionDSL(
   * Builds a collection of type Stream:
   * Represents all of the data describing a particular stream.
   */
-inline fun buildStreamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =
+inline fun streamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =
+  StreamCollectionDSL(mutableListOf<Stream>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type Stream:
+  * Represents all of the data describing a particular stream.
+  */
+inline fun DynamodbDSL.Companion.streamCollection(dslBlock: StreamCollectionDSL.() -> Unit) =
   StreamCollectionDSL(mutableListOf<Stream>()).apply(dslBlock).build()

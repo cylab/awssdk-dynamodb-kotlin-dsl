@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DescribeTableRequestMa
   * Builds instances of type DescribeTableRequest:
   * Represents the input of a DescribeTable operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeTableRequest.Builder
@@ -54,14 +55,21 @@ inline class DescribeTableRequestDSL(
   * Builds instances of type DescribeTableRequest:
   * Represents the input of a DescribeTable operation.
   */
-inline fun buildDescribeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+inline fun describeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
+  DescribeTableRequestDSL(DescribeTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeTableRequest:
+  * Represents the input of a DescribeTable operation.
+  */
+inline fun DynamodbDSL.Companion.describeTableRequest(dslBlock: DescribeTableRequestDSL.() -> Unit) =
   DescribeTableRequestDSL(DescribeTableRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeTableRequestMarshaller.marshallBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeTableRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeTableRequest(dslBlock))
 
 /**
   * Returns information about the table, including the current status of the table, when it was created, the primary
@@ -73,7 +81,7 @@ inline fun DescribeTableRequestMarshaller.marshallBy(dslBlock: DescribeTableRequ
   *  few seconds, and then try the DescribeTable request again.
   */
 inline fun DynamoDbAsyncClient.describeTableBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
-  this.describeTable(buildDescribeTableRequest(dslBlock))
+  this.describeTable(DynamodbDSL.Companion.describeTableRequest(dslBlock))
 
 /**
   * Returns information about the table, including the current status of the table, when it was created, the primary
@@ -85,4 +93,4 @@ inline fun DynamoDbAsyncClient.describeTableBy(dslBlock: DescribeTableRequestDSL
   *  few seconds, and then try the DescribeTable request again.
   */
 inline fun DynamoDbClient.describeTableBy(dslBlock: DescribeTableRequestDSL.() -> Unit) =
-  this.describeTable(buildDescribeTableRequest(dslBlock))
+  this.describeTable(DynamodbDSL.Companion.describeTableRequest(dslBlock))

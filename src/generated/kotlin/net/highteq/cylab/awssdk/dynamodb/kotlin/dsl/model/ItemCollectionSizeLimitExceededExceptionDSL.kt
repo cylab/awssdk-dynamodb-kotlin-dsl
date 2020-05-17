@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ItemCollectionSizeLimitExceededException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionSizeLimitExc
   * An item collection is too large. This exception is only returned for tables that have one or more local secondary
   *  indexes.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ItemCollectionSizeLimitExceededExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ItemCollectionSizeLimitExceededException.Builder
@@ -94,5 +95,13 @@ inline class ItemCollectionSizeLimitExceededExceptionDSL(
   * An item collection is too large. This exception is only returned for tables that have one or more local secondary
   *  indexes.
   */
-inline fun buildItemCollectionSizeLimitExceededException(dslBlock: ItemCollectionSizeLimitExceededExceptionDSL.() -> Unit) =
+inline fun itemCollectionSizeLimitExceededException(dslBlock: ItemCollectionSizeLimitExceededExceptionDSL.() -> Unit) =
+  ItemCollectionSizeLimitExceededExceptionDSL(ItemCollectionSizeLimitExceededException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ItemCollectionSizeLimitExceededException:
+  * An item collection is too large. This exception is only returned for tables that have one or more local secondary
+  *  indexes.
+  */
+inline fun DynamodbDSL.Companion.itemCollectionSizeLimitExceededException(dslBlock: ItemCollectionSizeLimitExceededExceptionDSL.() -> Unit) =
   ItemCollectionSizeLimitExceededExceptionDSL(ItemCollectionSizeLimitExceededException.builder()).apply(dslBlock).build()

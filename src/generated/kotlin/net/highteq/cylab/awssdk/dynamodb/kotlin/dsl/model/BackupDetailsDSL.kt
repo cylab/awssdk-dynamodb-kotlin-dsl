@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.BackupDetails
 import software.amazon.awssdk.services.dynamodb.model.BackupStatus
 import software.amazon.awssdk.services.dynamodb.model.BackupType
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupType
   * Builds instances of type BackupDetails:
   * Contains the details of the backup created for the table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BackupDetailsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BackupDetails.Builder
@@ -117,5 +118,12 @@ inline class BackupDetailsDSL(
   * Builds instances of type BackupDetails:
   * Contains the details of the backup created for the table.
   */
-inline fun buildBackupDetails(dslBlock: BackupDetailsDSL.() -> Unit) =
+inline fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) =
+  BackupDetailsDSL(BackupDetails.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BackupDetails:
+  * Contains the details of the backup created for the table.
+  */
+inline fun DynamodbDSL.Companion.backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) =
   BackupDetailsDSL(BackupDetails.builder()).apply(dslBlock).build()

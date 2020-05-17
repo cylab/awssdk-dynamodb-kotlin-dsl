@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -26,7 +27,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DeleteItemRequestMarsh
   * Builds instances of type DeleteItemRequest:
   * Represents the input of a DeleteItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DeleteItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DeleteItemRequest.Builder
@@ -176,21 +177,21 @@ inline class DeleteItemRequestDSL(
     * 
     */
   inline fun expected(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) {
-    builder.expected(buildExpectedAttributeValueMap(dslBlock))
+    builder.expected(DynamodbDSL.Companion.expectedAttributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -199,14 +200,21 @@ inline class DeleteItemRequestDSL(
   * Builds instances of type DeleteItemRequest:
   * Represents the input of a DeleteItem operation.
   */
-inline fun buildDeleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+inline fun deleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
+  DeleteItemRequestDSL(DeleteItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DeleteItemRequest:
+  * Represents the input of a DeleteItem operation.
+  */
+inline fun DynamodbDSL.Companion.deleteItemRequest(dslBlock: DeleteItemRequestDSL.() -> Unit) =
   DeleteItemRequestDSL(DeleteItemRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DeleteItemRequestMarshaller.marshallBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
-  this.marshall(buildDeleteItemRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.deleteItemRequest(dslBlock))
 
 /**
   * Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the
@@ -222,7 +230,7 @@ inline fun DeleteItemRequestMarshaller.marshallBy(dslBlock: DeleteItemRequestDSL
   *  met, DynamoDB performs the delete. Otherwise, the item is not deleted.
   */
 inline fun DynamoDbAsyncClient.deleteItemBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
-  this.deleteItem(buildDeleteItemRequest(dslBlock))
+  this.deleteItem(DynamodbDSL.Companion.deleteItemRequest(dslBlock))
 
 /**
   * Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the
@@ -238,4 +246,4 @@ inline fun DynamoDbAsyncClient.deleteItemBy(dslBlock: DeleteItemRequestDSL.() ->
   *  met, DynamoDB performs the delete. Otherwise, the item is not deleted.
   */
 inline fun DynamoDbClient.deleteItemBy(dslBlock: DeleteItemRequestDSL.() -> Unit) =
-  this.deleteItem(buildDeleteItemRequest(dslBlock))
+  this.deleteItem(DynamodbDSL.Companion.deleteItemRequest(dslBlock))

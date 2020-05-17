@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexInfo
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.Projection
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   * Builds instances of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalSecondaryIndexInfoDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalSecondaryIndexInfo.Builder
@@ -71,21 +72,21 @@ inline class GlobalSecondaryIndexInfoDSL(
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
-    builder.projection(buildProjection(dslBlock))
+    builder.projection(DynamodbDSL.Companion.projection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughput(dslBlock))
   }
 
 }
@@ -94,5 +95,12 @@ inline class GlobalSecondaryIndexInfoDSL(
   * Builds instances of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-inline fun buildGlobalSecondaryIndexInfo(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) =
+inline fun globalSecondaryIndexInfo(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) =
+  GlobalSecondaryIndexInfoDSL(GlobalSecondaryIndexInfo.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalSecondaryIndexInfo:
+  * Represents the properties of a global secondary index for the table when the backup was created.
+  */
+inline fun DynamodbDSL.Companion.globalSecondaryIndexInfo(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) =
   GlobalSecondaryIndexInfoDSL(GlobalSecondaryIndexInfo.builder()).apply(dslBlock).build()

@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.BackupNotFoundException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.BackupNotFoundException
   * Builds instances of type BackupNotFoundException:
   * Backup not found for the given BackupARN.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BackupNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BackupNotFoundException.Builder
@@ -92,5 +93,12 @@ inline class BackupNotFoundExceptionDSL(
   * Builds instances of type BackupNotFoundException:
   * Backup not found for the given BackupARN.
   */
-inline fun buildBackupNotFoundException(dslBlock: BackupNotFoundExceptionDSL.() -> Unit) =
+inline fun backupNotFoundException(dslBlock: BackupNotFoundExceptionDSL.() -> Unit) =
+  BackupNotFoundExceptionDSL(BackupNotFoundException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BackupNotFoundException:
+  * Backup not found for the given BackupARN.
+  */
+inline fun DynamodbDSL.Companion.backupNotFoundException(dslBlock: BackupNotFoundExceptionDSL.() -> Unit) =
   BackupNotFoundExceptionDSL(BackupNotFoundException.builder()).apply(dslBlock).build()

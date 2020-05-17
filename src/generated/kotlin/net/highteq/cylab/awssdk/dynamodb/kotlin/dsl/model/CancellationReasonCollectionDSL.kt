@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
 
 /**
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.CancellationReason
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CancellationReasonCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -31,7 +32,7 @@ inline class CancellationReasonCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: CancellationReasonDSL.() -> Unit) {
-    list.add(buildCancellationReason(dslBlock))
+    list.add(DynamodbDSL.cancellationReason(dslBlock))
   }
 
   /**
@@ -62,5 +63,14 @@ inline class CancellationReasonCollectionDSL(
   *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
   *  occurred for the associated item an error with a Null code and Null message will be present.
   */
-inline fun buildCancellationReasonCollection(dslBlock: CancellationReasonCollectionDSL.() -> Unit) =
+inline fun cancellationReasonCollection(dslBlock: CancellationReasonCollectionDSL.() -> Unit) =
+  CancellationReasonCollectionDSL(mutableListOf<CancellationReason>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type CancellationReason:
+  * An ordered list of errors for each item in the request which caused the transaction to get cancelled. The values of
+  *  the list are ordered according to the ordering of the TransactWriteItems request parameter. If no error
+  *  occurred for the associated item an error with a Null code and Null message will be present.
+  */
+inline fun DynamodbDSL.Companion.cancellationReasonCollection(dslBlock: CancellationReasonCollectionDSL.() -> Unit) =
   CancellationReasonCollectionDSL(mutableListOf<CancellationReason>()).apply(dslBlock).build()

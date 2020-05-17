@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Record
 
 /**
   * Builds a collection of type Record:
   * A description of a unique event within a stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RecordCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class RecordCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: RecordDSL.() -> Unit) {
-    list.add(buildRecord(dslBlock))
+    list.add(DynamodbDSL.record(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class RecordCollectionDSL(
   * Builds a collection of type Record:
   * A description of a unique event within a stream.
   */
-inline fun buildRecordCollection(dslBlock: RecordCollectionDSL.() -> Unit) =
+inline fun recordCollection(dslBlock: RecordCollectionDSL.() -> Unit) =
+  RecordCollectionDSL(mutableListOf<Record>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type Record:
+  * A description of a unique event within a stream.
+  */
+inline fun DynamodbDSL.Companion.recordCollection(dslBlock: RecordCollectionDSL.() -> Unit) =
   RecordCollectionDSL(mutableListOf<Record>()).apply(dslBlock).build()

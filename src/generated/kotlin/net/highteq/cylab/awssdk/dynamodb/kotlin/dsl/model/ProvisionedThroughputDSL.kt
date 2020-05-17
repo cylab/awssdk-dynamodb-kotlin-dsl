@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 
 /**
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
   *  For current minimum and maximum provisioned throughput values, see Limits in the Amazon
   *  DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ProvisionedThroughputDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ProvisionedThroughput.Builder
@@ -58,5 +59,16 @@ inline class ProvisionedThroughputDSL(
   *  For current minimum and maximum provisioned throughput values, see Limits in the Amazon
   *  DynamoDB Developer Guide.
   */
-inline fun buildProvisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) =
+inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) =
+  ProvisionedThroughputDSL(ProvisionedThroughput.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ProvisionedThroughput:
+  * Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the
+  *  UpdateTable operation.
+  * 
+  *  For current minimum and maximum provisioned throughput values, see Limits in the Amazon
+  *  DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) =
   ProvisionedThroughputDSL(ProvisionedThroughput.builder()).apply(dslBlock).build()

@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
 
 /**
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
   * 
   *  An existing replica to be removed from an existing global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaUpdateCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -35,7 +36,7 @@ inline class ReplicaUpdateCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ReplicaUpdateDSL.() -> Unit) {
-    list.add(buildReplicaUpdate(dslBlock))
+    list.add(DynamodbDSL.replicaUpdate(dslBlock))
   }
 
   /**
@@ -70,5 +71,18 @@ inline class ReplicaUpdateCollectionDSL(
   * 
   *  An existing replica to be removed from an existing global table.
   */
-inline fun buildReplicaUpdateCollection(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) =
+inline fun replicaUpdateCollection(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) =
+  ReplicaUpdateCollectionDSL(mutableListOf<ReplicaUpdate>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type ReplicaUpdate:
+  * Represents one of the following:
+  * 
+  *  A new replica to be added to an existing global table.
+  * 
+  *  New parameters for an existing replica.
+  * 
+  *  An existing replica to be removed from an existing global table.
+  */
+inline fun DynamodbDSL.Companion.replicaUpdateCollection(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) =
   ReplicaUpdateCollectionDSL(mutableListOf<ReplicaUpdate>()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.DeleteRequest
 import software.amazon.awssdk.services.dynamodb.model.PutRequest
 import software.amazon.awssdk.services.dynamodb.model.WriteRequest
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   *  of these operations, not both, in a single WriteRequest. If you do need to perform both of these
   *  operations, you will need to provide two separate WriteRequest objects.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class WriteRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: WriteRequest.Builder
@@ -52,14 +53,14 @@ inline class WriteRequestDSL(
     * 
     */
   inline fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) {
-    builder.deleteRequest(buildDeleteRequest(dslBlock))
+    builder.deleteRequest(DynamodbDSL.Companion.deleteRequest(dslBlock))
   }
 
   /**
     * 
     */
   inline fun putRequest(dslBlock: PutRequestDSL.() -> Unit) {
-    builder.putRequest(buildPutRequest(dslBlock))
+    builder.putRequest(DynamodbDSL.Companion.putRequest(dslBlock))
   }
 
 }
@@ -70,5 +71,14 @@ inline class WriteRequestDSL(
   *  of these operations, not both, in a single WriteRequest. If you do need to perform both of these
   *  operations, you will need to provide two separate WriteRequest objects.
   */
-inline fun buildWriteRequest(dslBlock: WriteRequestDSL.() -> Unit) =
+inline fun writeRequest(dslBlock: WriteRequestDSL.() -> Unit) =
+  WriteRequestDSL(WriteRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type WriteRequest:
+  * Represents an operation to perform - either DeleteItem or PutItem. You can only request one
+  *  of these operations, not both, in a single WriteRequest. If you do need to perform both of these
+  *  operations, you will need to provide two separate WriteRequest objects.
+  */
+inline fun DynamodbDSL.Companion.writeRequest(dslBlock: WriteRequestDSL.() -> Unit) =
   WriteRequestDSL(WriteRequest.builder()).apply(dslBlock).build()

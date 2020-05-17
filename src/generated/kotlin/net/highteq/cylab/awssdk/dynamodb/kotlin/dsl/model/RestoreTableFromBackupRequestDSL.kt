@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.RestoreTableFromBackup
   * Builds instances of type RestoreTableFromBackupRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RestoreTableFromBackupRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: RestoreTableFromBackupRequest.Builder
@@ -64,7 +65,14 @@ inline class RestoreTableFromBackupRequestDSL(
   * Builds instances of type RestoreTableFromBackupRequest:
   * 
   */
-inline fun buildRestoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
+inline fun restoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
+  RestoreTableFromBackupRequestDSL(RestoreTableFromBackupRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type RestoreTableFromBackupRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.restoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
   RestoreTableFromBackupRequestDSL(RestoreTableFromBackupRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -88,7 +96,7 @@ inline fun buildRestoreTableFromBackupRequest(dslBlock: RestoreTableFromBackupRe
   *  Time to Live (TTL) settings
   */
 inline fun DynamoDbAsyncClient.restoreTableFromBackupBy(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
-  this.restoreTableFromBackup(buildRestoreTableFromBackupRequest(dslBlock))
+  this.restoreTableFromBackup(DynamodbDSL.Companion.restoreTableFromBackupRequest(dslBlock))
 
 /**
   * Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any
@@ -111,10 +119,10 @@ inline fun DynamoDbAsyncClient.restoreTableFromBackupBy(dslBlock: RestoreTableFr
   *  Time to Live (TTL) settings
   */
 inline fun DynamoDbClient.restoreTableFromBackupBy(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
-  this.restoreTableFromBackup(buildRestoreTableFromBackupRequest(dslBlock))
+  this.restoreTableFromBackup(DynamodbDSL.Companion.restoreTableFromBackupRequest(dslBlock))
 
 /**
   * 
   */
 inline fun RestoreTableFromBackupRequestMarshaller.marshallBy(dslBlock: RestoreTableFromBackupRequestDSL.() -> Unit) =
-  this.marshall(buildRestoreTableFromBackupRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.restoreTableFromBackupRequest(dslBlock))

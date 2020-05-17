@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ConditionCheck
 import software.amazon.awssdk.services.dynamodb.model.Delete
 import software.amazon.awssdk.services.dynamodb.model.Put
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.Update
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactWriteItemDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactWriteItem.Builder
@@ -73,28 +74,28 @@ inline class TransactWriteItemDSL(
     * 
     */
   inline fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) {
-    builder.conditionCheck(buildConditionCheck(dslBlock))
+    builder.conditionCheck(DynamodbDSL.Companion.conditionCheck(dslBlock))
   }
 
   /**
     * 
     */
   inline fun delete(dslBlock: DeleteDSL.() -> Unit) {
-    builder.delete(buildDelete(dslBlock))
+    builder.delete(DynamodbDSL.Companion.delete(dslBlock))
   }
 
   /**
     * 
     */
   inline fun put(dslBlock: PutDSL.() -> Unit) {
-    builder.put(buildPut(dslBlock))
+    builder.put(DynamodbDSL.Companion.put(dslBlock))
   }
 
   /**
     * 
     */
   inline fun update(dslBlock: UpdateDSL.() -> Unit) {
-    builder.update(buildUpdate(dslBlock))
+    builder.update(DynamodbDSL.Companion.update(dslBlock))
   }
 
 }
@@ -104,5 +105,13 @@ inline class TransactWriteItemDSL(
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-inline fun buildTransactWriteItem(dslBlock: TransactWriteItemDSL.() -> Unit) =
+inline fun transactWriteItem(dslBlock: TransactWriteItemDSL.() -> Unit) =
+  TransactWriteItemDSL(TransactWriteItem.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactWriteItem:
+  * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
+  *  atomically.
+  */
+inline fun DynamodbDSL.Companion.transactWriteItem(dslBlock: TransactWriteItemDSL.() -> Unit) =
   TransactWriteItemDSL(TransactWriteItem.builder()).apply(dslBlock).build()

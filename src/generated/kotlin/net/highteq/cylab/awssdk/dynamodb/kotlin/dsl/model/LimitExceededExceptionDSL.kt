@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.LimitExceededException
 
@@ -28,7 +29,7 @@ import software.amazon.awssdk.services.dynamodb.model.LimitExceededException
   * 
   *  There is a soft account limit of 256 tables.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class LimitExceededExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: LimitExceededException.Builder
@@ -112,5 +113,22 @@ inline class LimitExceededExceptionDSL(
   * 
   *  There is a soft account limit of 256 tables.
   */
-inline fun buildLimitExceededException(dslBlock: LimitExceededExceptionDSL.() -> Unit) =
+inline fun limitExceededException(dslBlock: LimitExceededExceptionDSL.() -> Unit) =
+  LimitExceededExceptionDSL(LimitExceededException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type LimitExceededException:
+  * There is no limit to the number of daily on-demand backups that can be taken.
+  * 
+  *  Up to 50 simultaneous table operations are allowed per account. These operations include CreateTable,
+  *  UpdateTable, DeleteTable,UpdateTimeToLive, RestoreTableFromBackup
+  *  , and RestoreTableToPointInTime.
+  * 
+  *  The only exception is when you are creating a table with one or more secondary indexes. You can have up to 25 such
+  *  requests running at a time; however, if the table or index specifications are complex, DynamoDB might temporarily
+  *  reduce the number of concurrent operations.
+  * 
+  *  There is a soft account limit of 256 tables.
+  */
+inline fun DynamodbDSL.Companion.limitExceededException(dslBlock: LimitExceededExceptionDSL.() -> Unit) =
   LimitExceededExceptionDSL(LimitExceededException.builder()).apply(dslBlock).build()

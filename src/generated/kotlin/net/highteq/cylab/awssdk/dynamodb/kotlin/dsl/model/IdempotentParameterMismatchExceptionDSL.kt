@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.IdempotentParameterMismatchException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.IdempotentParameterMismatc
   * DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token
   *  that was already used.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class IdempotentParameterMismatchExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: IdempotentParameterMismatchException.Builder
@@ -94,5 +95,13 @@ inline class IdempotentParameterMismatchExceptionDSL(
   * DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token
   *  that was already used.
   */
-inline fun buildIdempotentParameterMismatchException(dslBlock: IdempotentParameterMismatchExceptionDSL.() -> Unit) =
+inline fun idempotentParameterMismatchException(dslBlock: IdempotentParameterMismatchExceptionDSL.() -> Unit) =
+  IdempotentParameterMismatchExceptionDSL(IdempotentParameterMismatchException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type IdempotentParameterMismatchException:
+  * DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token
+  *  that was already used.
+  */
+inline fun DynamodbDSL.Companion.idempotentParameterMismatchException(dslBlock: IdempotentParameterMismatchExceptionDSL.() -> Unit) =
   IdempotentParameterMismatchExceptionDSL(IdempotentParameterMismatchException.builder()).apply(dslBlock).build()

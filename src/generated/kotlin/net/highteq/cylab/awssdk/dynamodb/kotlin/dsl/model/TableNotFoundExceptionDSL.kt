@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.TableNotFoundException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableNotFoundException
   * Builds instances of type TableNotFoundException:
   * A source table with the name TableName does not currently exist within the subscriber's account.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TableNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TableNotFoundException.Builder
@@ -92,5 +93,12 @@ inline class TableNotFoundExceptionDSL(
   * Builds instances of type TableNotFoundException:
   * A source table with the name TableName does not currently exist within the subscriber's account.
   */
-inline fun buildTableNotFoundException(dslBlock: TableNotFoundExceptionDSL.() -> Unit) =
+inline fun tableNotFoundException(dslBlock: TableNotFoundExceptionDSL.() -> Unit) =
+  TableNotFoundExceptionDSL(TableNotFoundException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TableNotFoundException:
+  * A source table with the name TableName does not currently exist within the subscriber's account.
+  */
+inline fun DynamodbDSL.Companion.tableNotFoundException(dslBlock: TableNotFoundExceptionDSL.() -> Unit) =
   TableNotFoundExceptionDSL(TableNotFoundException.builder()).apply(dslBlock).build()

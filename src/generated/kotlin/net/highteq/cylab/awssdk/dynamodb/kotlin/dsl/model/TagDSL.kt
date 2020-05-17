@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Tag
 
 /**
@@ -23,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
   *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
   *  Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TagDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Tag.Builder
@@ -64,5 +65,19 @@ inline class TagDSL(
   *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
   *  Amazon DynamoDB Developer Guide.
   */
-inline fun buildTag(dslBlock: TagDSL.() -> Unit) =
+inline fun tag(dslBlock: TagDSL.() -> Unit) =
+  TagDSL(Tag.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Tag:
+  * Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table.
+  * 
+  *  AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign.
+  *  AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix user: in the
+  *  Cost Allocation Report. You cannot backdate the application of a tag.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
+  *  Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.tag(dslBlock: TagDSL.() -> Unit) =
   TagDSL(Tag.builder()).apply(dslBlock).build()

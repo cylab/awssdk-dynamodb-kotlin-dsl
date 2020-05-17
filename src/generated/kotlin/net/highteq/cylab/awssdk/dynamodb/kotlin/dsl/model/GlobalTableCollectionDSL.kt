@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalTable
 
 /**
   * Builds a collection of type GlobalTable:
   * Represents the properties of a global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class GlobalTableCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: GlobalTableDSL.() -> Unit) {
-    list.add(buildGlobalTable(dslBlock))
+    list.add(DynamodbDSL.globalTable(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class GlobalTableCollectionDSL(
   * Builds a collection of type GlobalTable:
   * Represents the properties of a global table.
   */
-inline fun buildGlobalTableCollection(dslBlock: GlobalTableCollectionDSL.() -> Unit) =
+inline fun globalTableCollection(dslBlock: GlobalTableCollectionDSL.() -> Unit) =
+  GlobalTableCollectionDSL(mutableListOf<GlobalTable>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type GlobalTable:
+  * Represents the properties of a global table.
+  */
+inline fun DynamodbDSL.Companion.globalTableCollection(dslBlock: GlobalTableCollectionDSL.() -> Unit) =
   GlobalTableCollectionDSL(mutableListOf<GlobalTable>()).apply(dslBlock).build()

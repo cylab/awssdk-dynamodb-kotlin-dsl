@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeAction
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
@@ -26,7 +27,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
   *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
   *  exception.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeValueUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AttributeValueUpdate.Builder
@@ -65,7 +66,7 @@ inline class AttributeValueUpdateDSL(
     * 
     */
   inline fun value(dslBlock: AttributeValueDSL.() -> Unit) {
-    builder.value(buildAttributeValue(dslBlock))
+    builder.value(DynamodbDSL.Companion.attributeValue(dslBlock))
   }
 
 }
@@ -82,5 +83,20 @@ inline class AttributeValueUpdateDSL(
   *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
   *  exception.
   */
-inline fun buildAttributeValueUpdate(dslBlock: AttributeValueUpdateDSL.() -> Unit) =
+inline fun attributeValueUpdate(dslBlock: AttributeValueUpdateDSL.() -> Unit) =
+  AttributeValueUpdateDSL(AttributeValueUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AttributeValueUpdate:
+  * For the UpdateItem operation, represents the attributes to be modified, the action to perform on each,
+  *  and the new value for each.
+  * 
+  *  You cannot use UpdateItem to update any primary key attributes. Instead, you will need to delete the
+  *  item, and then use PutItem to create a new item with new attributes.
+  * 
+  *  Attribute values cannot be null; string and binary type attributes must have lengths greater than zero; and set type
+  *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
+  *  exception.
+  */
+inline fun DynamodbDSL.Companion.attributeValueUpdate(dslBlock: AttributeValueUpdateDSL.() -> Unit) =
   AttributeValueUpdateDSL(AttributeValueUpdate.builder()).apply(dslBlock).build()

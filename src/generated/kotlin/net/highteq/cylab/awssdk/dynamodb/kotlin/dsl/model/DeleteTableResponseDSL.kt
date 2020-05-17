@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DeleteTableResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   * Builds instances of type DeleteTableResponse:
   * Represents the output of a DeleteTable operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DeleteTableResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DeleteTableResponse.Builder
@@ -61,7 +62,7 @@ inline class DeleteTableResponseDSL(
     * 
     */
   inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
-    builder.tableDescription(buildTableDescription(dslBlock))
+    builder.tableDescription(DynamodbDSL.Companion.tableDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class DeleteTableResponseDSL(
   * Builds instances of type DeleteTableResponse:
   * Represents the output of a DeleteTable operation.
   */
-inline fun buildDeleteTableResponse(dslBlock: DeleteTableResponseDSL.() -> Unit) =
+inline fun deleteTableResponse(dslBlock: DeleteTableResponseDSL.() -> Unit) =
+  DeleteTableResponseDSL(DeleteTableResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DeleteTableResponse:
+  * Represents the output of a DeleteTable operation.
+  */
+inline fun DynamodbDSL.Companion.deleteTableResponse(dslBlock: DeleteTableResponseDSL.() -> Unit) =
   DeleteTableResponseDSL(DeleteTableResponse.builder()).apply(dslBlock).build()

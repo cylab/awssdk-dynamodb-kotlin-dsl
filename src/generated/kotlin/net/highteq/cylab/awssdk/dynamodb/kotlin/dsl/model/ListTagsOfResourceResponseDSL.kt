@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ListTagsOfResourceResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
   * Builds instances of type ListTagsOfResourceResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListTagsOfResourceResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListTagsOfResourceResponse.Builder
@@ -71,7 +72,7 @@ inline class ListTagsOfResourceResponseDSL(
     * 
     */
   inline fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
-    builder.tags(buildTagCollection(dslBlock))
+    builder.tags(DynamodbDSL.Companion.tagCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class ListTagsOfResourceResponseDSL(
   * Builds instances of type ListTagsOfResourceResponse:
   * 
   */
-inline fun buildListTagsOfResourceResponse(dslBlock: ListTagsOfResourceResponseDSL.() -> Unit) =
+inline fun listTagsOfResourceResponse(dslBlock: ListTagsOfResourceResponseDSL.() -> Unit) =
+  ListTagsOfResourceResponseDSL(ListTagsOfResourceResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListTagsOfResourceResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.listTagsOfResourceResponse(dslBlock: ListTagsOfResourceResponseDSL.() -> Unit) =
   ListTagsOfResourceResponseDSL(ListTagsOfResourceResponse.builder()).apply(dslBlock).build()

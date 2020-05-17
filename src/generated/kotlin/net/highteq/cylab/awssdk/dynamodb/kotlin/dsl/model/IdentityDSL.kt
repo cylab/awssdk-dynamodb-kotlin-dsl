@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Identity
 
 /**
   * Builds instances of type Identity:
   * Contains details about the type of identity that made the request.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class IdentityDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Identity.Builder
@@ -50,5 +51,12 @@ inline class IdentityDSL(
   * Builds instances of type Identity:
   * Contains details about the type of identity that made the request.
   */
-inline fun buildIdentity(dslBlock: IdentityDSL.() -> Unit) =
+inline fun identity(dslBlock: IdentityDSL.() -> Unit) =
+  IdentityDSL(Identity.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Identity:
+  * Contains details about the type of identity that made the request.
+  */
+inline fun DynamodbDSL.Companion.identity(dslBlock: IdentityDSL.() -> Unit) =
   IdentityDSL(Identity.builder()).apply(dslBlock).build()

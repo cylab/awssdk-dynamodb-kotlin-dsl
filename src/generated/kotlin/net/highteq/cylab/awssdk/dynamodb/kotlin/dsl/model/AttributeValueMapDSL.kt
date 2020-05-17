@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 
 /**
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeValueMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -33,7 +34,7 @@ inline class AttributeValueMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: AttributeValueDSL.() -> Unit) {
-    map[key] = buildAttributeValue(dslBlock)
+    map[key] = DynamodbDSL.attributeValue(dslBlock)
   }
 
   /**
@@ -73,5 +74,16 @@ inline class AttributeValueMapDSL(
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildAttributeValueMap(dslBlock: AttributeValueMapDSL.() -> Unit) =
+inline fun attributeValueMap(dslBlock: AttributeValueMapDSL.() -> Unit) =
+  AttributeValueMapDSL(mutableMapOf<String, AttributeValue>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type AttributeValue:
+  * Represents the data for an attribute.
+  * 
+  *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.
+  * 
+  *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.attributeValueMap(dslBlock: AttributeValueMapDSL.() -> Unit) =
   AttributeValueMapDSL(mutableMapOf<String, AttributeValue>()).apply(dslBlock).build()

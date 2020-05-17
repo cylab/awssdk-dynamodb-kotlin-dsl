@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.CancellationReason
 import software.amazon.awssdk.services.dynamodb.model.TransactionCanceledException
@@ -46,7 +47,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactionCanceledExcepti
   * 
   *  There is a user error, such as an invalid data format.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactionCanceledExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactionCanceledException.Builder
@@ -128,7 +129,7 @@ inline class TransactionCanceledExceptionDSL(
     * 
     */
   inline fun cancellationReasons(dslBlock: CancellationReasonCollectionDSL.() -> Unit) {
-    builder.cancellationReasons(buildCancellationReasonCollection(dslBlock))
+    builder.cancellationReasons(DynamodbDSL.Companion.cancellationReasonCollection(dslBlock))
   }
 
 }
@@ -164,5 +165,39 @@ inline class TransactionCanceledExceptionDSL(
   * 
   *  There is a user error, such as an invalid data format.
   */
-inline fun buildTransactionCanceledException(dslBlock: TransactionCanceledExceptionDSL.() -> Unit) =
+inline fun transactionCanceledException(dslBlock: TransactionCanceledExceptionDSL.() -> Unit) =
+  TransactionCanceledExceptionDSL(TransactionCanceledException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactionCanceledException:
+  * The entire transaction request was rejected.
+  * 
+  *  DynamoDB rejects a TransactWriteItems request under the following circumstances:
+  * 
+  *  A condition in one of the condition expressions is not met.
+  * 
+  *  A table in the TransactWriteItems request is in a different account or region.
+  * 
+  *  More than one action in the TransactWriteItems operation targets the same item.
+  * 
+  *  There is insufficient provisioned capacity for the transaction to be completed.
+  * 
+  *  An item size becomes too large (larger than 400 KB), or a local secondary index (LSI) becomes too large, or a similar
+  *  validation error occurs because of changes made by the transaction.
+  * 
+  *  There is a user error, such as an invalid data format.
+  * 
+  *  DynamoDB rejects a TransactGetItems request under the following circumstances:
+  * 
+  *  There is an ongoing TransactGetItems operation that conflicts with a concurrent PutItem,
+  *  UpdateItem, DeleteItem or TransactWriteItems request. In this case the
+  *  TransactGetItems operation fails with a TransactionCanceledException.
+  * 
+  *  A table in the TransactGetItems request is in a different account or region.
+  * 
+  *  There is insufficient provisioned capacity for the transaction to be completed.
+  * 
+  *  There is a user error, such as an invalid data format.
+  */
+inline fun DynamodbDSL.Companion.transactionCanceledException(dslBlock: TransactionCanceledExceptionDSL.() -> Unit) =
   TransactionCanceledExceptionDSL(TransactionCanceledException.builder()).apply(dslBlock).build()

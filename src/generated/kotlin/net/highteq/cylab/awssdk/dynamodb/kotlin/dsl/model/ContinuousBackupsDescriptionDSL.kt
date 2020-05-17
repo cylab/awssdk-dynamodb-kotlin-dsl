@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsDescription
 import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsStatus
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescription
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescrip
   * Builds instances of type ContinuousBackupsDescription:
   * Represents the continuous backups and point in time recovery settings on the table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ContinuousBackupsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ContinuousBackupsDescription.Builder
@@ -57,7 +58,7 @@ inline class ContinuousBackupsDescriptionDSL(
     * 
     */
   inline fun pointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) {
-    builder.pointInTimeRecoveryDescription(buildPointInTimeRecoveryDescription(dslBlock))
+    builder.pointInTimeRecoveryDescription(DynamodbDSL.Companion.pointInTimeRecoveryDescription(dslBlock))
   }
 
 }
@@ -66,5 +67,12 @@ inline class ContinuousBackupsDescriptionDSL(
   * Builds instances of type ContinuousBackupsDescription:
   * Represents the continuous backups and point in time recovery settings on the table.
   */
-inline fun buildContinuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) =
+inline fun continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) =
+  ContinuousBackupsDescriptionDSL(ContinuousBackupsDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ContinuousBackupsDescription:
+  * Represents the continuous backups and point in time recovery settings on the table.
+  */
+inline fun DynamodbDSL.Companion.continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) =
   ContinuousBackupsDescriptionDSL(ContinuousBackupsDescription.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.SSESpecification
 import software.amazon.awssdk.services.dynamodb.model.SSEType
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
   * Builds instances of type SSESpecification:
   * Represents the settings used to enable server-side encryption.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class SSESpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: SSESpecification.Builder
@@ -68,5 +69,12 @@ inline class SSESpecificationDSL(
   * Builds instances of type SSESpecification:
   * Represents the settings used to enable server-side encryption.
   */
-inline fun buildSSESpecification(dslBlock: SSESpecificationDSL.() -> Unit) =
+inline fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) =
+  SSESpecificationDSL(SSESpecification.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type SSESpecification:
+  * Represents the settings used to enable server-side encryption.
+  */
+inline fun DynamodbDSL.Companion.sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) =
   SSESpecificationDSL(SSESpecification.builder()).apply(dslBlock).build()

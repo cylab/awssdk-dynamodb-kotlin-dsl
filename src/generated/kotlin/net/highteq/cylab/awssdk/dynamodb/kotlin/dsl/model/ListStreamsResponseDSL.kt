@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ListStreamsResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Stream
   * Builds instances of type ListStreamsResponse:
   * Represents the output of a ListStreams operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListStreamsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListStreamsResponse.Builder
@@ -71,7 +72,7 @@ inline class ListStreamsResponseDSL(
     * 
     */
   inline fun streams(dslBlock: StreamCollectionDSL.() -> Unit) {
-    builder.streams(buildStreamCollection(dslBlock))
+    builder.streams(DynamodbDSL.Companion.streamCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class ListStreamsResponseDSL(
   * Builds instances of type ListStreamsResponse:
   * Represents the output of a ListStreams operation.
   */
-inline fun buildListStreamsResponse(dslBlock: ListStreamsResponseDSL.() -> Unit) =
+inline fun listStreamsResponse(dslBlock: ListStreamsResponseDSL.() -> Unit) =
+  ListStreamsResponseDSL(ListStreamsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListStreamsResponse:
+  * Represents the output of a ListStreams operation.
+  */
+inline fun DynamodbDSL.Companion.listStreamsResponse(dslBlock: ListStreamsResponseDSL.() -> Unit) =
   ListStreamsResponseDSL(ListStreamsResponse.builder()).apply(dslBlock).build()

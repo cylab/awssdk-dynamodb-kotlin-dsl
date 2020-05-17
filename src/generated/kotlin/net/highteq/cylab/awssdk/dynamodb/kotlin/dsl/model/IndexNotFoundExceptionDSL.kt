@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.IndexNotFoundException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.IndexNotFoundException
   * Builds instances of type IndexNotFoundException:
   * The operation tried to access a nonexistent index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class IndexNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: IndexNotFoundException.Builder
@@ -92,5 +93,12 @@ inline class IndexNotFoundExceptionDSL(
   * Builds instances of type IndexNotFoundException:
   * The operation tried to access a nonexistent index.
   */
-inline fun buildIndexNotFoundException(dslBlock: IndexNotFoundExceptionDSL.() -> Unit) =
+inline fun indexNotFoundException(dslBlock: IndexNotFoundExceptionDSL.() -> Unit) =
+  IndexNotFoundExceptionDSL(IndexNotFoundException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type IndexNotFoundException:
+  * The operation tried to access a nonexistent index.
+  */
+inline fun DynamodbDSL.Companion.indexNotFoundException(dslBlock: IndexNotFoundExceptionDSL.() -> Unit) =
   IndexNotFoundExceptionDSL(IndexNotFoundException.builder()).apply(dslBlock).build()

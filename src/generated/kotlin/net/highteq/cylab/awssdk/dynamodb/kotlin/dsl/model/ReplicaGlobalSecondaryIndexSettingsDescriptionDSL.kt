@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
 import software.amazon.awssdk.services.dynamodb.model.IndexStatus
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsDescription
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsDescription:
   * Represents the properties of a global secondary index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaGlobalSecondaryIndexSettingsDescription.Builder
@@ -97,14 +98,14 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
     * 
     */
   inline fun provisionedReadCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
-    builder.provisionedReadCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
+    builder.provisionedReadCapacityAutoScalingSettings(DynamodbDSL.Companion.autoScalingSettingsDescription(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedWriteCapacityAutoScalingSettings(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) {
-    builder.provisionedWriteCapacityAutoScalingSettings(buildAutoScalingSettingsDescription(dslBlock))
+    builder.provisionedWriteCapacityAutoScalingSettings(DynamodbDSL.Companion.autoScalingSettingsDescription(dslBlock))
   }
 
 }
@@ -113,5 +114,12 @@ inline class ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsDescription:
   * Represents the properties of a global secondary index.
   */
-inline fun buildReplicaGlobalSecondaryIndexSettingsDescription(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) =
+inline fun replicaGlobalSecondaryIndexSettingsDescription(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) =
+  ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(ReplicaGlobalSecondaryIndexSettingsDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaGlobalSecondaryIndexSettingsDescription:
+  * Represents the properties of a global secondary index.
+  */
+inline fun DynamodbDSL.Companion.replicaGlobalSecondaryIndexSettingsDescription(dslBlock: ReplicaGlobalSecondaryIndexSettingsDescriptionDSL.() -> Unit) =
   ReplicaGlobalSecondaryIndexSettingsDescriptionDSL(ReplicaGlobalSecondaryIndexSettingsDescription.builder()).apply(dslBlock).build()

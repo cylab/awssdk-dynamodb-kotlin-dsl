@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughput
 import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndexAction
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalSecondaryIndex
   * Builds instances of type UpdateGlobalSecondaryIndexAction:
   * Represents the new provisioned throughput settings to be applied to a global secondary index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateGlobalSecondaryIndexActionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateGlobalSecondaryIndexAction.Builder
@@ -49,7 +50,7 @@ inline class UpdateGlobalSecondaryIndexActionDSL(
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughput(dslBlock))
   }
 
 }
@@ -58,5 +59,12 @@ inline class UpdateGlobalSecondaryIndexActionDSL(
   * Builds instances of type UpdateGlobalSecondaryIndexAction:
   * Represents the new provisioned throughput settings to be applied to a global secondary index.
   */
-inline fun buildUpdateGlobalSecondaryIndexAction(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) =
+inline fun updateGlobalSecondaryIndexAction(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) =
+  UpdateGlobalSecondaryIndexActionDSL(UpdateGlobalSecondaryIndexAction.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateGlobalSecondaryIndexAction:
+  * Represents the new provisioned throughput settings to be applied to a global secondary index.
+  */
+inline fun DynamodbDSL.Companion.updateGlobalSecondaryIndexAction(dslBlock: UpdateGlobalSecondaryIndexActionDSL.() -> Unit) =
   UpdateGlobalSecondaryIndexActionDSL(UpdateGlobalSecondaryIndexAction.builder()).apply(dslBlock).build()

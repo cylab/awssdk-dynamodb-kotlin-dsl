@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateTimeToLiveReques
   * Builds instances of type UpdateTimeToLiveRequest:
   * Represents the input of an UpdateTimeToLive operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateTimeToLiveRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateTimeToLiveRequest.Builder
@@ -63,7 +64,7 @@ inline class UpdateTimeToLiveRequestDSL(
     * 
     */
   inline fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) {
-    builder.timeToLiveSpecification(buildTimeToLiveSpecification(dslBlock))
+    builder.timeToLiveSpecification(DynamodbDSL.Companion.timeToLiveSpecification(dslBlock))
   }
 
 }
@@ -72,7 +73,14 @@ inline class UpdateTimeToLiveRequestDSL(
   * Builds instances of type UpdateTimeToLiveRequest:
   * Represents the input of an UpdateTimeToLive operation.
   */
-inline fun buildUpdateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
+inline fun updateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
+  UpdateTimeToLiveRequestDSL(UpdateTimeToLiveRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateTimeToLiveRequest:
+  * Represents the input of an UpdateTimeToLive operation.
+  */
+inline fun DynamodbDSL.Companion.updateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
   UpdateTimeToLiveRequestDSL(UpdateTimeToLiveRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -101,7 +109,7 @@ inline fun buildUpdateTimeToLiveRequest(dslBlock: UpdateTimeToLiveRequestDSL.() 
   *  DynamoDB Developer Guide.
   */
 inline fun DynamoDbAsyncClient.updateTimeToLiveBy(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
-  this.updateTimeToLive(buildUpdateTimeToLiveRequest(dslBlock))
+  this.updateTimeToLive(DynamodbDSL.Companion.updateTimeToLiveRequest(dslBlock))
 
 /**
   * The UpdateTimeToLive method will enable or disable TTL for the specified table. A successful
@@ -129,10 +137,10 @@ inline fun DynamoDbAsyncClient.updateTimeToLiveBy(dslBlock: UpdateTimeToLiveRequ
   *  DynamoDB Developer Guide.
   */
 inline fun DynamoDbClient.updateTimeToLiveBy(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
-  this.updateTimeToLive(buildUpdateTimeToLiveRequest(dslBlock))
+  this.updateTimeToLive(DynamodbDSL.Companion.updateTimeToLiveRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateTimeToLiveRequestMarshaller.marshallBy(dslBlock: UpdateTimeToLiveRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateTimeToLiveRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateTimeToLiveRequest(dslBlock))

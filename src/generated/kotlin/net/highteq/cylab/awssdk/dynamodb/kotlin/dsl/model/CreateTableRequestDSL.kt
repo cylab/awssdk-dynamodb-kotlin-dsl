@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -25,11 +26,13 @@ import software.amazon.awssdk.services.dynamodb.model.StreamSpecification
 import software.amazon.awssdk.services.dynamodb.model.Tag
 import software.amazon.awssdk.services.dynamodb.transform.CreateTableRequestMarshaller
 
+private object DSLPrivate
+
 /**
   * Builds instances of type CreateTableRequest:
   * Represents the input of a CreateTable operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CreateTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: CreateTableRequest.Builder
@@ -158,56 +161,56 @@ inline class CreateTableRequestDSL(
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
-    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
+    builder.attributeDefinitions(DynamodbDSL.Companion.attributeDefinitionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexCollectionDSL.() -> Unit) {
-    builder.globalSecondaryIndexes(buildGlobalSecondaryIndexCollection(dslBlock))
+    builder.globalSecondaryIndexes(DynamodbDSL.Companion.globalSecondaryIndexCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexCollectionDSL.() -> Unit) {
-    builder.localSecondaryIndexes(buildLocalSecondaryIndexCollection(dslBlock))
+    builder.localSecondaryIndexes(DynamodbDSL.Companion.localSecondaryIndexCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughput(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughput(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sseSpecification(dslBlock: SSESpecificationDSL.() -> Unit) {
-    builder.sseSpecification(buildSSESpecification(dslBlock))
+    builder.sseSpecification(DynamodbDSL.Companion.sseSpecification(dslBlock))
   }
 
   /**
     * 
     */
   inline fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamSpecification(buildStreamSpecification(dslBlock))
+    builder.streamSpecification(DynamodbDSL.Companion.streamSpecification(dslBlock))
   }
 
   /**
     * 
     */
   inline fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
-    builder.tags(buildTagCollection(dslBlock))
+    builder.tags(DynamodbDSL.Companion.tagCollection(dslBlock))
   }
 
 }
@@ -216,14 +219,21 @@ inline class CreateTableRequestDSL(
   * Builds instances of type CreateTableRequest:
   * Represents the input of a CreateTable operation.
   */
-inline fun buildCreateTableRequest(dslBlock: CreateTableRequestDSL.() -> Unit) =
+inline fun createTableRequest(dslBlock: CreateTableRequestDSL.() -> Unit) =
+  CreateTableRequestDSL(CreateTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type CreateTableRequest:
+  * Represents the input of a CreateTable operation.
+  */
+inline fun DynamodbDSL.Companion.createTableRequest(dslBlock: CreateTableRequestDSL.() -> Unit) =
   CreateTableRequestDSL(CreateTableRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun CreateTableRequestMarshaller.marshallBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
-  this.marshall(buildCreateTableRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.createTableRequest(dslBlock))
 
 /**
   * The CreateTable operation adds a new table to your account. In an AWS account, table names must be
@@ -242,7 +252,7 @@ inline fun CreateTableRequestMarshaller.marshallBy(dslBlock: CreateTableRequestD
   *  You can use the DescribeTable action to check the table status.
   */
 inline fun DynamoDbAsyncClient.createTableBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
-  this.createTable(buildCreateTableRequest(dslBlock))
+  this.createTable(DynamodbDSL.Companion.createTableRequest(dslBlock))
 
 /**
   * The CreateTable operation adds a new table to your account. In an AWS account, table names must be
@@ -261,4 +271,4 @@ inline fun DynamoDbAsyncClient.createTableBy(dslBlock: CreateTableRequestDSL.() 
   *  You can use the DescribeTable action to check the table status.
   */
 inline fun DynamoDbClient.createTableBy(dslBlock: CreateTableRequestDSL.() -> Unit) =
-  this.createTable(buildCreateTableRequest(dslBlock))
+  this.createTable(DynamodbDSL.Companion.createTableRequest(dslBlock))

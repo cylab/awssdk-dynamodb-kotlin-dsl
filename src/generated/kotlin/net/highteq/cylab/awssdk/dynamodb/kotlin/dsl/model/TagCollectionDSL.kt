@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Tag
 
 /**
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.model.Tag
   *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
   *  Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TagCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -36,7 +37,7 @@ inline class TagCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: TagDSL.() -> Unit) {
-    list.add(buildTag(dslBlock))
+    list.add(DynamodbDSL.tag(dslBlock))
   }
 
   /**
@@ -72,5 +73,19 @@ inline class TagCollectionDSL(
   *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
   *  Amazon DynamoDB Developer Guide.
   */
-inline fun buildTagCollection(dslBlock: TagCollectionDSL.() -> Unit) =
+inline fun tagCollection(dslBlock: TagCollectionDSL.() -> Unit) =
+  TagCollectionDSL(mutableListOf<Tag>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type Tag:
+  * Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB table.
+  * 
+  *  AWS-assigned tag names and values are automatically assigned the aws: prefix, which the user cannot assign.
+  *  AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix user: in the
+  *  Cost Allocation Report. You cannot backdate the application of a tag.
+  * 
+  *  For an overview on tagging DynamoDB resources, see Tagging for DynamoDB in the
+  *  Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.tagCollection(dslBlock: TagCollectionDSL.() -> Unit) =
   TagCollectionDSL(mutableListOf<Tag>()).apply(dslBlock).build()

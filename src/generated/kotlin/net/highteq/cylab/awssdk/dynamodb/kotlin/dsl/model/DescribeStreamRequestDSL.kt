@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.streams.transform.DescribeStream
   * Builds instances of type DescribeStreamRequest:
   * Represents the input of a DescribeStream operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeStreamRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeStreamRequest.Builder
@@ -74,14 +75,21 @@ inline class DescribeStreamRequestDSL(
   * Builds instances of type DescribeStreamRequest:
   * Represents the input of a DescribeStream operation.
   */
-inline fun buildDescribeStreamRequest(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
+inline fun describeStreamRequest(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
+  DescribeStreamRequestDSL(DescribeStreamRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeStreamRequest:
+  * Represents the input of a DescribeStream operation.
+  */
+inline fun DynamodbDSL.Companion.describeStreamRequest(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
   DescribeStreamRequestDSL(DescribeStreamRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeStreamRequestMarshaller.marshallBy(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeStreamRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeStreamRequest(dslBlock))
 
 /**
   * Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN),
@@ -96,7 +104,7 @@ inline fun DescribeStreamRequestMarshaller.marshallBy(dslBlock: DescribeStreamRe
   *  and can no longer receive more data.
   */
 inline fun DynamoDbStreamsAsyncClient.describeStreamBy(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  this.describeStream(buildDescribeStreamRequest(dslBlock))
+  this.describeStream(DynamodbDSL.Companion.describeStreamRequest(dslBlock))
 
 /**
   * Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN),
@@ -150,7 +158,7 @@ inline fun DynamoDbStreamsAsyncClient.describeStreamBy(dslBlock: DescribeStreamR
   *  {@link #describeStream(software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest)} operation.
   */
 inline fun DynamoDbStreamsAsyncClient.describeStreamPaginatorBy(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  this.describeStreamPaginator(buildDescribeStreamRequest(dslBlock))
+  this.describeStreamPaginator(DynamodbDSL.Companion.describeStreamRequest(dslBlock))
 
 /**
   * Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN),
@@ -165,7 +173,7 @@ inline fun DynamoDbStreamsAsyncClient.describeStreamPaginatorBy(dslBlock: Descri
   *  and can no longer receive more data.
   */
 inline fun DynamoDbStreamsClient.describeStreamBy(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  this.describeStream(buildDescribeStreamRequest(dslBlock))
+  this.describeStream(DynamodbDSL.Companion.describeStreamRequest(dslBlock))
 
 /**
   * Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN),
@@ -220,4 +228,4 @@ inline fun DynamoDbStreamsClient.describeStreamBy(dslBlock: DescribeStreamReques
   *  {@link #describeStream(software.amazon.awssdk.services.dynamodb.model.DescribeStreamRequest)} operation.
   */
 inline fun DynamoDbStreamsClient.describeStreamPaginatorBy(dslBlock: DescribeStreamRequestDSL.() -> Unit) =
-  this.describeStreamPaginator(buildDescribeStreamRequest(dslBlock))
+  this.describeStreamPaginator(DynamodbDSL.Companion.describeStreamRequest(dslBlock))

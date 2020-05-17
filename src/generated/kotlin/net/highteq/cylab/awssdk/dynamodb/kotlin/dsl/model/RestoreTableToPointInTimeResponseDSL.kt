@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.RestoreTableToPointInTimeResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableDescription
   * Builds instances of type RestoreTableToPointInTimeResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RestoreTableToPointInTimeResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: RestoreTableToPointInTimeResponse.Builder
@@ -61,7 +62,7 @@ inline class RestoreTableToPointInTimeResponseDSL(
     * 
     */
   inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) {
-    builder.tableDescription(buildTableDescription(dslBlock))
+    builder.tableDescription(DynamodbDSL.Companion.tableDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class RestoreTableToPointInTimeResponseDSL(
   * Builds instances of type RestoreTableToPointInTimeResponse:
   * 
   */
-inline fun buildRestoreTableToPointInTimeResponse(dslBlock: RestoreTableToPointInTimeResponseDSL.() -> Unit) =
+inline fun restoreTableToPointInTimeResponse(dslBlock: RestoreTableToPointInTimeResponseDSL.() -> Unit) =
+  RestoreTableToPointInTimeResponseDSL(RestoreTableToPointInTimeResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type RestoreTableToPointInTimeResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.restoreTableToPointInTimeResponse(dslBlock: RestoreTableToPointInTimeResponseDSL.() -> Unit) =
   RestoreTableToPointInTimeResponseDSL(RestoreTableToPointInTimeResponse.builder()).apply(dslBlock).build()

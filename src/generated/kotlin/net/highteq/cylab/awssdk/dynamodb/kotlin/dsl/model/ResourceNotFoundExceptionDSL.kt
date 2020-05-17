@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException
   * The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its
   *  status might not be ACTIVE.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ResourceNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ResourceNotFoundException.Builder
@@ -94,5 +95,13 @@ inline class ResourceNotFoundExceptionDSL(
   * The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its
   *  status might not be ACTIVE.
   */
-inline fun buildResourceNotFoundException(dslBlock: ResourceNotFoundExceptionDSL.() -> Unit) =
+inline fun resourceNotFoundException(dslBlock: ResourceNotFoundExceptionDSL.() -> Unit) =
+  ResourceNotFoundExceptionDSL(ResourceNotFoundException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ResourceNotFoundException:
+  * The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its
+  *  status might not be ACTIVE.
+  */
+inline fun DynamodbDSL.Companion.resourceNotFoundException(dslBlock: ResourceNotFoundExceptionDSL.() -> Unit) =
   ResourceNotFoundExceptionDSL(ResourceNotFoundException.builder()).apply(dslBlock).build()

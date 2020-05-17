@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DescribeLimitsRequestM
   * Builds instances of type DescribeLimitsRequest:
   * Represents the input of a DescribeLimits operation. Has no content.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeLimitsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeLimitsRequest.Builder
@@ -44,14 +45,21 @@ inline class DescribeLimitsRequestDSL(
   * Builds instances of type DescribeLimitsRequest:
   * Represents the input of a DescribeLimits operation. Has no content.
   */
-inline fun buildDescribeLimitsRequest(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
+inline fun describeLimitsRequest(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
+  DescribeLimitsRequestDSL(DescribeLimitsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeLimitsRequest:
+  * Represents the input of a DescribeLimits operation. Has no content.
+  */
+inline fun DynamodbDSL.Companion.describeLimitsRequest(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
   DescribeLimitsRequestDSL(DescribeLimitsRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeLimitsRequestMarshaller.marshallBy(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeLimitsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeLimitsRequest(dslBlock))
 
 /**
   * Returns the current provisioned-capacity limits for your AWS account in a region, both for the region as a whole
@@ -105,7 +113,7 @@ inline fun DescribeLimitsRequestMarshaller.marshallBy(dslBlock: DescribeLimitsRe
   *  The DescribeLimits Request element has no content.
   */
 inline fun DynamoDbAsyncClient.describeLimitsBy(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
-  this.describeLimits(buildDescribeLimitsRequest(dslBlock))
+  this.describeLimits(DynamodbDSL.Companion.describeLimitsRequest(dslBlock))
 
 /**
   * Returns the current provisioned-capacity limits for your AWS account in a region, both for the region as a whole
@@ -159,4 +167,4 @@ inline fun DynamoDbAsyncClient.describeLimitsBy(dslBlock: DescribeLimitsRequestD
   *  The DescribeLimits Request element has no content.
   */
 inline fun DynamoDbClient.describeLimitsBy(dslBlock: DescribeLimitsRequestDSL.() -> Unit) =
-  this.describeLimits(buildDescribeLimitsRequest(dslBlock))
+  this.describeLimits(DynamodbDSL.Companion.describeLimitsRequest(dslBlock))

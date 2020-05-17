@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.BillingMode
 import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
   * Builds instances of type BillingModeSummary:
   * Contains the details for the read/write capacity mode.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BillingModeSummaryDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BillingModeSummary.Builder
@@ -59,5 +60,12 @@ inline class BillingModeSummaryDSL(
   * Builds instances of type BillingModeSummary:
   * Contains the details for the read/write capacity mode.
   */
-inline fun buildBillingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) =
+inline fun billingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) =
+  BillingModeSummaryDSL(BillingModeSummary.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BillingModeSummary:
+  * Contains the details for the read/write capacity mode.
+  */
+inline fun DynamodbDSL.Companion.billingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) =
   BillingModeSummaryDSL(BillingModeSummary.builder()).apply(dslBlock).build()

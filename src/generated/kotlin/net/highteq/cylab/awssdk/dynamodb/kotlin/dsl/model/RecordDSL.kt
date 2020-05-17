@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Identity
 import software.amazon.awssdk.services.dynamodb.model.OperationType
 import software.amazon.awssdk.services.dynamodb.model.Record
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamRecord
   * Builds instances of type Record:
   * A description of a unique event within a stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RecordDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Record.Builder
@@ -108,14 +109,14 @@ inline class RecordDSL(
     * 
     */
   inline fun dynamodb(dslBlock: StreamRecordDSL.() -> Unit) {
-    builder.dynamodb(buildStreamRecord(dslBlock))
+    builder.dynamodb(DynamodbDSL.Companion.streamRecord(dslBlock))
   }
 
   /**
     * 
     */
   inline fun userIdentity(dslBlock: IdentityDSL.() -> Unit) {
-    builder.userIdentity(buildIdentity(dslBlock))
+    builder.userIdentity(DynamodbDSL.Companion.identity(dslBlock))
   }
 
 }
@@ -124,5 +125,12 @@ inline class RecordDSL(
   * Builds instances of type Record:
   * A description of a unique event within a stream.
   */
-inline fun buildRecord(dslBlock: RecordDSL.() -> Unit) =
+inline fun record(dslBlock: RecordDSL.() -> Unit) =
+  RecordDSL(Record.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Record:
+  * A description of a unique event within a stream.
+  */
+inline fun DynamodbDSL.Companion.record(dslBlock: RecordDSL.() -> Unit) =
   RecordDSL(Record.builder()).apply(dslBlock).build()

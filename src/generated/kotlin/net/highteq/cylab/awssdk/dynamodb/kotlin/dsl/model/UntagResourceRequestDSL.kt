@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UntagResourceRequestMa
   * Builds instances of type UntagResourceRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UntagResourceRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UntagResourceRequest.Builder
@@ -64,7 +65,14 @@ inline class UntagResourceRequestDSL(
   * Builds instances of type UntagResourceRequest:
   * 
   */
-inline fun buildUntagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+inline fun untagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
+  UntagResourceRequestDSL(UntagResourceRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UntagResourceRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.untagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Unit) =
   UntagResourceRequestDSL(UntagResourceRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -75,7 +83,7 @@ inline fun buildUntagResourceRequest(dslBlock: UntagResourceRequestDSL.() -> Uni
   *  the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbAsyncClient.untagResourceBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
-  this.untagResource(buildUntagResourceRequest(dslBlock))
+  this.untagResource(DynamodbDSL.Companion.untagResourceRequest(dslBlock))
 
 /**
   * Removes the association of tags from an Amazon DynamoDB resource. You can call UntagResource up to 5 times per
@@ -85,10 +93,10 @@ inline fun DynamoDbAsyncClient.untagResourceBy(dslBlock: UntagResourceRequestDSL
   *  the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbClient.untagResourceBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
-  this.untagResource(buildUntagResourceRequest(dslBlock))
+  this.untagResource(DynamodbDSL.Companion.untagResourceRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UntagResourceRequestMarshaller.marshallBy(dslBlock: UntagResourceRequestDSL.() -> Unit) =
-  this.marshall(buildUntagResourceRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.untagResourceRequest(dslBlock))

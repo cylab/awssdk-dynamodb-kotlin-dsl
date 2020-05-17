@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyDescription
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescription
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsDescrip
   * Builds instances of type AutoScalingSettingsDescription:
   * Represents the autoscaling settings for a global table or global secondary index.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingSettingsDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AutoScalingSettingsDescription.Builder
@@ -79,7 +80,7 @@ inline class AutoScalingSettingsDescriptionDSL(
     * 
     */
   inline fun scalingPolicies(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) {
-    builder.scalingPolicies(buildAutoScalingPolicyDescriptionCollection(dslBlock))
+    builder.scalingPolicies(DynamodbDSL.Companion.autoScalingPolicyDescriptionCollection(dslBlock))
   }
 
 }
@@ -88,5 +89,12 @@ inline class AutoScalingSettingsDescriptionDSL(
   * Builds instances of type AutoScalingSettingsDescription:
   * Represents the autoscaling settings for a global table or global secondary index.
   */
-inline fun buildAutoScalingSettingsDescription(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) =
+inline fun autoScalingSettingsDescription(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) =
+  AutoScalingSettingsDescriptionDSL(AutoScalingSettingsDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AutoScalingSettingsDescription:
+  * Represents the autoscaling settings for a global table or global secondary index.
+  */
+inline fun DynamodbDSL.Companion.autoScalingSettingsDescription(dslBlock: AutoScalingSettingsDescriptionDSL.() -> Unit) =
   AutoScalingSettingsDescriptionDSL(AutoScalingSettingsDescription.builder()).apply(dslBlock).build()

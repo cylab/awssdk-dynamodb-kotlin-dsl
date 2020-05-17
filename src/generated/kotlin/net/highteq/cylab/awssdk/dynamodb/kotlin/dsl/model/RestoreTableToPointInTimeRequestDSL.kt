@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.RestoreTableToPointInT
   * Builds instances of type RestoreTableToPointInTimeRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RestoreTableToPointInTimeRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: RestoreTableToPointInTimeRequest.Builder
@@ -85,7 +86,14 @@ inline class RestoreTableToPointInTimeRequestDSL(
   * Builds instances of type RestoreTableToPointInTimeRequest:
   * 
   */
-inline fun buildRestoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
+inline fun restoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
+  RestoreTableToPointInTimeRequestDSL(RestoreTableToPointInTimeRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type RestoreTableToPointInTimeRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.restoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
   RestoreTableToPointInTimeRequestDSL(RestoreTableToPointInTimeRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -125,7 +133,7 @@ inline fun buildRestoreTableToPointInTimeRequest(dslBlock: RestoreTableToPointIn
   *  Point in time recovery settings
   */
 inline fun DynamoDbAsyncClient.restoreTableToPointInTimeBy(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
-  this.restoreTableToPointInTime(buildRestoreTableToPointInTimeRequest(dslBlock))
+  this.restoreTableToPointInTime(DynamodbDSL.Companion.restoreTableToPointInTimeRequest(dslBlock))
 
 /**
   * Restores the specified table to the specified point in time within EarliestRestorableDateTime and
@@ -164,10 +172,10 @@ inline fun DynamoDbAsyncClient.restoreTableToPointInTimeBy(dslBlock: RestoreTabl
   *  Point in time recovery settings
   */
 inline fun DynamoDbClient.restoreTableToPointInTimeBy(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
-  this.restoreTableToPointInTime(buildRestoreTableToPointInTimeRequest(dslBlock))
+  this.restoreTableToPointInTime(DynamodbDSL.Companion.restoreTableToPointInTimeRequest(dslBlock))
 
 /**
   * 
   */
 inline fun RestoreTableToPointInTimeRequestMarshaller.marshallBy(dslBlock: RestoreTableToPointInTimeRequestDSL.() -> Unit) =
-  this.marshall(buildRestoreTableToPointInTimeRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.restoreTableToPointInTimeRequest(dslBlock))

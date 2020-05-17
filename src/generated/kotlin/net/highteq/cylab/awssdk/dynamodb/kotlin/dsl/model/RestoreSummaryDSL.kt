@@ -11,13 +11,14 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.RestoreSummary
 
 /**
   * Builds instances of type RestoreSummary:
   * Contains details for the restore.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RestoreSummaryDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: RestoreSummary.Builder
@@ -71,5 +72,12 @@ inline class RestoreSummaryDSL(
   * Builds instances of type RestoreSummary:
   * Contains details for the restore.
   */
-inline fun buildRestoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) =
+inline fun restoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) =
+  RestoreSummaryDSL(RestoreSummary.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type RestoreSummary:
+  * Contains details for the restore.
+  */
+inline fun DynamodbDSL.Companion.restoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) =
   RestoreSummaryDSL(RestoreSummary.builder()).apply(dslBlock).build()

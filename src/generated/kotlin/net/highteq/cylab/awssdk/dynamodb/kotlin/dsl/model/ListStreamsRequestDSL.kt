@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest
 import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsAsyncClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.streams.transform.ListStreamsReq
   * Builds instances of type ListStreamsRequest:
   * Represents the input of a ListStreams operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListStreamsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListStreamsRequest.Builder
@@ -74,7 +75,14 @@ inline class ListStreamsRequestDSL(
   * Builds instances of type ListStreamsRequest:
   * Represents the input of a ListStreams operation.
   */
-inline fun buildListStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
+inline fun listStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
+  ListStreamsRequestDSL(ListStreamsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListStreamsRequest:
+  * Represents the input of a ListStreams operation.
+  */
+inline fun DynamodbDSL.Companion.listStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
   ListStreamsRequestDSL(ListStreamsRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -84,7 +92,7 @@ inline fun buildListStreamsRequest(dslBlock: ListStreamsRequestDSL.() -> Unit) =
   *  You can call ListStreams at a maximum rate of 5 times per second.
   */
 inline fun DynamoDbStreamsAsyncClient.listStreamsBy(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  this.listStreams(buildListStreamsRequest(dslBlock))
+  this.listStreams(DynamodbDSL.Companion.listStreamsRequest(dslBlock))
 
 /**
   * Returns an array of stream ARNs associated with the current account and endpoint. If the TableName
@@ -131,7 +139,7 @@ inline fun DynamoDbStreamsAsyncClient.listStreamsBy(dslBlock: ListStreamsRequest
   *  {@link #listStreams(software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest)} operation.
   */
 inline fun DynamoDbStreamsAsyncClient.listStreamsPaginatorBy(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  this.listStreamsPaginator(buildListStreamsRequest(dslBlock))
+  this.listStreamsPaginator(DynamodbDSL.Companion.listStreamsRequest(dslBlock))
 
 /**
   * Returns an array of stream ARNs associated with the current account and endpoint. If the TableName
@@ -140,7 +148,7 @@ inline fun DynamoDbStreamsAsyncClient.listStreamsPaginatorBy(dslBlock: ListStrea
   *  You can call ListStreams at a maximum rate of 5 times per second.
   */
 inline fun DynamoDbStreamsClient.listStreamsBy(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  this.listStreams(buildListStreamsRequest(dslBlock))
+  this.listStreams(DynamodbDSL.Companion.listStreamsRequest(dslBlock))
 
 /**
   * Returns an array of stream ARNs associated with the current account and endpoint. If the TableName
@@ -188,10 +196,10 @@ inline fun DynamoDbStreamsClient.listStreamsBy(dslBlock: ListStreamsRequestDSL.(
   *  {@link #listStreams(software.amazon.awssdk.services.dynamodb.model.ListStreamsRequest)} operation.
   */
 inline fun DynamoDbStreamsClient.listStreamsPaginatorBy(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  this.listStreamsPaginator(buildListStreamsRequest(dslBlock))
+  this.listStreamsPaginator(DynamodbDSL.Companion.listStreamsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun ListStreamsRequestMarshaller.marshallBy(dslBlock: ListStreamsRequestDSL.() -> Unit) =
-  this.marshall(buildListStreamsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.listStreamsRequest(dslBlock))

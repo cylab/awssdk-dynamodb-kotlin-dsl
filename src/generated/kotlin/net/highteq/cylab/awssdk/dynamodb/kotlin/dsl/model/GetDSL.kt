@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Get
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.Get
   * Builds instances of type Get:
   * Specifies an item and related attribute values to retrieve in a TransactGetItem object.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GetDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Get.Builder
@@ -69,7 +70,7 @@ inline class GetDSL(
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -78,5 +79,12 @@ inline class GetDSL(
   * Builds instances of type Get:
   * Specifies an item and related attribute values to retrieve in a TransactGetItem object.
   */
-inline fun buildGet(dslBlock: GetDSL.() -> Unit) =
+inline fun get(dslBlock: GetDSL.() -> Unit) =
+  GetDSL(Get.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Get:
+  * Specifies an item and related attribute values to retrieve in a TransactGetItem object.
+  */
+inline fun DynamodbDSL.Companion.get(dslBlock: GetDSL.() -> Unit) =
   GetDSL(Get.builder()).apply(dslBlock).build()

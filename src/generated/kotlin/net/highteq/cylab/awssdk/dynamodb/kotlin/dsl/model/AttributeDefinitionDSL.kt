@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType
   * Builds instances of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeDefinitionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AttributeDefinition.Builder
@@ -58,5 +59,12 @@ inline class AttributeDefinitionDSL(
   * Builds instances of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
-inline fun buildAttributeDefinition(dslBlock: AttributeDefinitionDSL.() -> Unit) =
+inline fun attributeDefinition(dslBlock: AttributeDefinitionDSL.() -> Unit) =
+  AttributeDefinitionDSL(AttributeDefinition.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AttributeDefinition:
+  * Represents an attribute for describing the key schema for the table and indexes.
+  */
+inline fun DynamodbDSL.Companion.attributeDefinition(dslBlock: AttributeDefinitionDSL.() -> Unit) =
   AttributeDefinitionDSL(AttributeDefinition.builder()).apply(dslBlock).build()

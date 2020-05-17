@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableGlobalSecondaryIndexSettingsUpdate
 
 /**
   * Builds a collection of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) {
-    list.add(buildGlobalTableGlobalSecondaryIndexSettingsUpdate(dslBlock))
+    list.add(DynamodbDSL.globalTableGlobalSecondaryIndexSettingsUpdate(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL(
   * Builds a collection of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-inline fun buildGlobalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) =
+inline fun globalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) =
+  GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL(mutableListOf<GlobalTableGlobalSecondaryIndexSettingsUpdate>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type GlobalTableGlobalSecondaryIndexSettingsUpdate:
+  * Represents the settings of a global secondary index for a global table that will be modified.
+  */
+inline fun DynamodbDSL.Companion.globalTableGlobalSecondaryIndexSettingsUpdateCollection(dslBlock: GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL.() -> Unit) =
   GlobalTableGlobalSecondaryIndexSettingsUpdateCollectionDSL(mutableListOf<GlobalTableGlobalSecondaryIndexSettingsUpdate>()).apply(dslBlock).build()

@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveSpecification
 
 /**
   * Builds instances of type TimeToLiveSpecification:
   * Represents the settings used to enable or disable Time to Live for the specified table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TimeToLiveSpecificationDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TimeToLiveSpecification.Builder
@@ -50,5 +51,12 @@ inline class TimeToLiveSpecificationDSL(
   * Builds instances of type TimeToLiveSpecification:
   * Represents the settings used to enable or disable Time to Live for the specified table.
   */
-inline fun buildTimeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) =
+inline fun timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) =
+  TimeToLiveSpecificationDSL(TimeToLiveSpecification.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TimeToLiveSpecification:
+  * Represents the settings used to enable or disable Time to Live for the specified table.
+  */
+inline fun DynamodbDSL.Companion.timeToLiveSpecification(dslBlock: TimeToLiveSpecificationDSL.() -> Unit) =
   TimeToLiveSpecificationDSL(TimeToLiveSpecification.builder()).apply(dslBlock).build()

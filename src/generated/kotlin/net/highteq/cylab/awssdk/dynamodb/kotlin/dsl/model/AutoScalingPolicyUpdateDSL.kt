@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyUpdate
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingS
   * Builds instances of type AutoScalingPolicyUpdate:
   * Represents the autoscaling policy to be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingPolicyUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AutoScalingPolicyUpdate.Builder
@@ -49,7 +50,7 @@ inline class AutoScalingPolicyUpdateDSL(
     * 
     */
   inline fun targetTrackingScalingPolicyConfiguration(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) {
-    builder.targetTrackingScalingPolicyConfiguration(buildAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock))
+    builder.targetTrackingScalingPolicyConfiguration(DynamodbDSL.Companion.autoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock))
   }
 
 }
@@ -58,5 +59,12 @@ inline class AutoScalingPolicyUpdateDSL(
   * Builds instances of type AutoScalingPolicyUpdate:
   * Represents the autoscaling policy to be modified.
   */
-inline fun buildAutoScalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) =
+inline fun autoScalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) =
+  AutoScalingPolicyUpdateDSL(AutoScalingPolicyUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AutoScalingPolicyUpdate:
+  * Represents the autoscaling policy to be modified.
+  */
+inline fun DynamodbDSL.Companion.autoScalingPolicyUpdate(dslBlock: AutoScalingPolicyUpdateDSL.() -> Unit) =
   AutoScalingPolicyUpdateDSL(AutoScalingPolicyUpdate.builder()).apply(dslBlock).build()

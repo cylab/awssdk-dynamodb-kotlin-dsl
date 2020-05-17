@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ComparisonOperator
 import software.amazon.awssdk.services.dynamodb.model.Condition
@@ -30,7 +31,7 @@ import software.amazon.awssdk.services.dynamodb.model.Condition
   *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
   *  scan results and returns only the desired values.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConditionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Condition.Builder
@@ -69,7 +70,7 @@ inline class ConditionDSL(
     * 
     */
   inline fun attributeValueList(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
-    builder.attributeValueList(buildAttributeValueCollection(dslBlock))
+    builder.attributeValueList(DynamodbDSL.Companion.attributeValueCollection(dslBlock))
   }
 
 }
@@ -90,5 +91,24 @@ inline class ConditionDSL(
   *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
   *  scan results and returns only the desired values.
   */
-inline fun buildCondition(dslBlock: ConditionDSL.() -> Unit) =
+inline fun condition(dslBlock: ConditionDSL.() -> Unit) =
+  ConditionDSL(Condition.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Condition:
+  * Represents the selection criteria for a Query or Scan operation:
+  * 
+  *  For a Query operation, Condition is used for specifying the KeyConditions to
+  *  use when querying a table or an index. For KeyConditions, only the following comparison operators are
+  *  supported:
+  * 
+  *  EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN
+  * 
+  *  Condition is also used in a QueryFilter, which evaluates the query results and returns only
+  *  the desired values.
+  * 
+  *  For a Scan operation, Condition is used in a ScanFilter, which evaluates the
+  *  scan results and returns only the desired values.
+  */
+inline fun DynamodbDSL.Companion.condition(dslBlock: ConditionDSL.() -> Unit) =
   ConditionDSL(Condition.builder()).apply(dslBlock).build()

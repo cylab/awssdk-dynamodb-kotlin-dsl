@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.transform.TransactGetItemsReques
   * Builds instances of type TransactGetItemsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactGetItemsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactGetItemsRequest.Builder
@@ -71,7 +72,7 @@ inline class TransactGetItemsRequestDSL(
     * 
     */
   inline fun transactItems(dslBlock: TransactGetItemCollectionDSL.() -> Unit) {
-    builder.transactItems(buildTransactGetItemCollection(dslBlock))
+    builder.transactItems(DynamodbDSL.Companion.transactGetItemCollection(dslBlock))
   }
 
 }
@@ -80,7 +81,14 @@ inline class TransactGetItemsRequestDSL(
   * Builds instances of type TransactGetItemsRequest:
   * 
   */
-inline fun buildTransactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
+inline fun transactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
+  TransactGetItemsRequestDSL(TransactGetItemsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactGetItemsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.transactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
   TransactGetItemsRequestDSL(TransactGetItemsRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -99,7 +107,7 @@ inline fun buildTransactGetItemsRequest(dslBlock: TransactGetItemsRequestDSL.() 
   *  There is a user error, such as an invalid data format.
   */
 inline fun DynamoDbAsyncClient.transactGetItemsBy(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
-  this.transactGetItems(buildTransactGetItemsRequest(dslBlock))
+  this.transactGetItems(DynamodbDSL.Companion.transactGetItemsRequest(dslBlock))
 
 /**
   * TransactGetItems is a synchronous operation that atomically retrieves multiple items from one or
@@ -117,10 +125,10 @@ inline fun DynamoDbAsyncClient.transactGetItemsBy(dslBlock: TransactGetItemsRequ
   *  There is a user error, such as an invalid data format.
   */
 inline fun DynamoDbClient.transactGetItemsBy(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
-  this.transactGetItems(buildTransactGetItemsRequest(dslBlock))
+  this.transactGetItems(DynamodbDSL.Companion.transactGetItemsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun TransactGetItemsRequestMarshaller.marshallBy(dslBlock: TransactGetItemsRequestDSL.() -> Unit) =
-  this.marshall(buildTransactGetItemsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.transactGetItemsRequest(dslBlock))

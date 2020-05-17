@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingPolicyDescription
 
 /**
   * Builds a collection of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingPolicyDescriptionCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class AutoScalingPolicyDescriptionCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: AutoScalingPolicyDescriptionDSL.() -> Unit) {
-    list.add(buildAutoScalingPolicyDescription(dslBlock))
+    list.add(DynamodbDSL.autoScalingPolicyDescription(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class AutoScalingPolicyDescriptionCollectionDSL(
   * Builds a collection of type AutoScalingPolicyDescription:
   * Represents the properties of the scaling policy.
   */
-inline fun buildAutoScalingPolicyDescriptionCollection(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) =
+inline fun autoScalingPolicyDescriptionCollection(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) =
+  AutoScalingPolicyDescriptionCollectionDSL(mutableListOf<AutoScalingPolicyDescription>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type AutoScalingPolicyDescription:
+  * Represents the properties of the scaling policy.
+  */
+inline fun DynamodbDSL.Companion.autoScalingPolicyDescriptionCollection(dslBlock: AutoScalingPolicyDescriptionCollectionDSL.() -> Unit) =
   AutoScalingPolicyDescriptionCollectionDSL(mutableListOf<AutoScalingPolicyDescription>()).apply(dslBlock).build()

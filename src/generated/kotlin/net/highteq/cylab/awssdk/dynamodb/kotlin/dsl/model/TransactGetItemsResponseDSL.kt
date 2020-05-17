@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItemsResponse
   * Builds instances of type TransactGetItemsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactGetItemsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactGetItemsResponse.Builder
@@ -72,14 +73,14 @@ inline class TransactGetItemsResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacityCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun responses(dslBlock: ItemResponseCollectionDSL.() -> Unit) {
-    builder.responses(buildItemResponseCollection(dslBlock))
+    builder.responses(DynamodbDSL.Companion.itemResponseCollection(dslBlock))
   }
 
 }
@@ -88,5 +89,12 @@ inline class TransactGetItemsResponseDSL(
   * Builds instances of type TransactGetItemsResponse:
   * 
   */
-inline fun buildTransactGetItemsResponse(dslBlock: TransactGetItemsResponseDSL.() -> Unit) =
+inline fun transactGetItemsResponse(dslBlock: TransactGetItemsResponseDSL.() -> Unit) =
+  TransactGetItemsResponseDSL(TransactGetItemsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactGetItemsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.transactGetItemsResponse(dslBlock: TransactGetItemsResponseDSL.() -> Unit) =
   TransactGetItemsResponseDSL(TransactGetItemsResponse.builder()).apply(dslBlock).build()

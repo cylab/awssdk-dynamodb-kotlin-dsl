@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.CreateReplicaAction
 import software.amazon.awssdk.services.dynamodb.model.DeleteReplicaAction
 import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
@@ -24,7 +25,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaUpdate
   * 
   *  An existing replica to be removed from an existing global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaUpdate.Builder
@@ -56,14 +57,14 @@ inline class ReplicaUpdateDSL(
     * 
     */
   inline fun create(dslBlock: CreateReplicaActionDSL.() -> Unit) {
-    builder.create(buildCreateReplicaAction(dslBlock))
+    builder.create(DynamodbDSL.Companion.createReplicaAction(dslBlock))
   }
 
   /**
     * 
     */
   inline fun delete(dslBlock: DeleteReplicaActionDSL.() -> Unit) {
-    builder.delete(buildDeleteReplicaAction(dslBlock))
+    builder.delete(DynamodbDSL.Companion.deleteReplicaAction(dslBlock))
   }
 
 }
@@ -78,5 +79,18 @@ inline class ReplicaUpdateDSL(
   * 
   *  An existing replica to be removed from an existing global table.
   */
-inline fun buildReplicaUpdate(dslBlock: ReplicaUpdateDSL.() -> Unit) =
+inline fun replicaUpdate(dslBlock: ReplicaUpdateDSL.() -> Unit) =
+  ReplicaUpdateDSL(ReplicaUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaUpdate:
+  * Represents one of the following:
+  * 
+  *  A new replica to be added to an existing global table.
+  * 
+  *  New parameters for an existing replica.
+  * 
+  *  An existing replica to be removed from an existing global table.
+  */
+inline fun DynamodbDSL.Companion.replicaUpdate(dslBlock: ReplicaUpdateDSL.() -> Unit) =
   ReplicaUpdateDSL(ReplicaUpdate.builder()).apply(dslBlock).build()

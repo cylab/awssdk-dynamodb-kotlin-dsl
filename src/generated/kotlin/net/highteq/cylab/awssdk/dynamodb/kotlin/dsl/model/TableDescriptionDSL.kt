@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 import software.amazon.awssdk.services.dynamodb.model.BillingModeSummary
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexDescription
@@ -27,7 +28,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableStatus
   * Builds instances of type TableDescription:
   * Represents the properties of a table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TableDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TableDescription.Builder
@@ -226,63 +227,63 @@ inline class TableDescriptionDSL(
     * 
     */
   inline fun attributeDefinitions(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) {
-    builder.attributeDefinitions(buildAttributeDefinitionCollection(dslBlock))
+    builder.attributeDefinitions(DynamodbDSL.Companion.attributeDefinitionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun billingModeSummary(dslBlock: BillingModeSummaryDSL.() -> Unit) {
-    builder.billingModeSummary(buildBillingModeSummary(dslBlock))
+    builder.billingModeSummary(DynamodbDSL.Companion.billingModeSummary(dslBlock))
   }
 
   /**
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: GlobalSecondaryIndexDescriptionCollectionDSL.() -> Unit) {
-    builder.globalSecondaryIndexes(buildGlobalSecondaryIndexDescriptionCollection(dslBlock))
+    builder.globalSecondaryIndexes(DynamodbDSL.Companion.globalSecondaryIndexDescriptionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: LocalSecondaryIndexDescriptionCollectionDSL.() -> Unit) {
-    builder.localSecondaryIndexes(buildLocalSecondaryIndexDescriptionCollection(dslBlock))
+    builder.localSecondaryIndexes(DynamodbDSL.Companion.localSecondaryIndexDescriptionCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun provisionedThroughput(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) {
-    builder.provisionedThroughput(buildProvisionedThroughputDescription(dslBlock))
+    builder.provisionedThroughput(DynamodbDSL.Companion.provisionedThroughputDescription(dslBlock))
   }
 
   /**
     * 
     */
   inline fun restoreSummary(dslBlock: RestoreSummaryDSL.() -> Unit) {
-    builder.restoreSummary(buildRestoreSummary(dslBlock))
+    builder.restoreSummary(DynamodbDSL.Companion.restoreSummary(dslBlock))
   }
 
   /**
     * 
     */
   inline fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) {
-    builder.sseDescription(buildSSEDescription(dslBlock))
+    builder.sseDescription(DynamodbDSL.Companion.sseDescription(dslBlock))
   }
 
   /**
     * 
     */
   inline fun streamSpecification(dslBlock: StreamSpecificationDSL.() -> Unit) {
-    builder.streamSpecification(buildStreamSpecification(dslBlock))
+    builder.streamSpecification(DynamodbDSL.Companion.streamSpecification(dslBlock))
   }
 
 }
@@ -291,5 +292,12 @@ inline class TableDescriptionDSL(
   * Builds instances of type TableDescription:
   * Represents the properties of a table.
   */
-inline fun buildTableDescription(dslBlock: TableDescriptionDSL.() -> Unit) =
+inline fun tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) =
+  TableDescriptionDSL(TableDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TableDescription:
+  * Represents the properties of a table.
+  */
+inline fun DynamodbDSL.Companion.tableDescription(dslBlock: TableDescriptionDSL.() -> Unit) =
   TableDescriptionDSL(TableDescription.builder()).apply(dslBlock).build()

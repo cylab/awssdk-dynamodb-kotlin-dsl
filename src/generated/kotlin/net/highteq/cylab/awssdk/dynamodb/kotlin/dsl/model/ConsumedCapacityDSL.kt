@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Capacity
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConsumedCapacityDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ConsumedCapacity.Builder
@@ -102,21 +103,21 @@ inline class ConsumedCapacityDSL(
     * 
     */
   inline fun globalSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
-    builder.globalSecondaryIndexes(buildCapacityMap(dslBlock))
+    builder.globalSecondaryIndexes(DynamodbDSL.Companion.capacityMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun localSecondaryIndexes(dslBlock: CapacityMapDSL.() -> Unit) {
-    builder.localSecondaryIndexes(buildCapacityMap(dslBlock))
+    builder.localSecondaryIndexes(DynamodbDSL.Companion.capacityMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun table(dslBlock: CapacityDSL.() -> Unit) {
-    builder.table(buildCapacity(dslBlock))
+    builder.table(DynamodbDSL.Companion.capacity(dslBlock))
   }
 
 }
@@ -128,5 +129,15 @@ inline class ConsumedCapacityDSL(
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildConsumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) =
+inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) =
+  ConsumedCapacityDSL(ConsumedCapacity.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ConsumedCapacity:
+  * The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed,
+  *  along with statistics for the table and any indexes involved in the operation. ConsumedCapacity is only
+  *  returned if the request asked for it. For more information, see Provisioned
+  *  Throughput in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) =
   ConsumedCapacityDSL(ConsumedCapacity.builder()).apply(dslBlock).build()

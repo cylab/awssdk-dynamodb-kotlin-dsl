@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionCheckFailure
 import software.amazon.awssdk.services.dynamodb.model.Update
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.Update
   * Builds instances of type Update:
   * Represents a request to perform an UpdateItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Update.Builder
@@ -107,14 +108,14 @@ inline class UpdateDSL(
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -123,5 +124,12 @@ inline class UpdateDSL(
   * Builds instances of type Update:
   * Represents a request to perform an UpdateItem operation.
   */
-inline fun buildUpdate(dslBlock: UpdateDSL.() -> Unit) =
+inline fun update(dslBlock: UpdateDSL.() -> Unit) =
+  UpdateDSL(Update.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Update:
+  * Represents a request to perform an UpdateItem operation.
+  */
+inline fun DynamodbDSL.Companion.update(dslBlock: UpdateDSL.() -> Unit) =
   UpdateDSL(Update.builder()).apply(dslBlock).build()

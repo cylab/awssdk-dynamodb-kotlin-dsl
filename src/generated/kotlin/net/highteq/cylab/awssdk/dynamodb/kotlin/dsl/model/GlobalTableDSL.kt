@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalTable
 import software.amazon.awssdk.services.dynamodb.model.Replica
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.Replica
   * Builds instances of type GlobalTable:
   * Represents the properties of a global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalTable.Builder
@@ -49,7 +50,7 @@ inline class GlobalTableDSL(
     * 
     */
   inline fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
-    builder.replicationGroup(buildReplicaCollection(dslBlock))
+    builder.replicationGroup(DynamodbDSL.Companion.replicaCollection(dslBlock))
   }
 
 }
@@ -58,5 +59,12 @@ inline class GlobalTableDSL(
   * Builds instances of type GlobalTable:
   * Represents the properties of a global table.
   */
-inline fun buildGlobalTable(dslBlock: GlobalTableDSL.() -> Unit) =
+inline fun globalTable(dslBlock: GlobalTableDSL.() -> Unit) =
+  GlobalTableDSL(GlobalTable.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalTable:
+  * Represents the properties of a global table.
+  */
+inline fun DynamodbDSL.Companion.globalTable(dslBlock: GlobalTableDSL.() -> Unit) =
   GlobalTableDSL(GlobalTable.builder()).apply(dslBlock).build()

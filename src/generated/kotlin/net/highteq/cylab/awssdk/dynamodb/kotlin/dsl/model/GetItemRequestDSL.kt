@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.transform.GetItemRequestMarshall
   * Builds instances of type GetItemRequest:
   * Represents the input of a GetItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GetItemRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GetItemRequest.Builder
@@ -121,7 +122,7 @@ inline class GetItemRequestDSL(
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -130,7 +131,14 @@ inline class GetItemRequestDSL(
   * Builds instances of type GetItemRequest:
   * Represents the input of a GetItem operation.
   */
-inline fun buildGetItemRequest(dslBlock: GetItemRequestDSL.() -> Unit) =
+inline fun getItemRequest(dslBlock: GetItemRequestDSL.() -> Unit) =
+  GetItemRequestDSL(GetItemRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GetItemRequest:
+  * Represents the input of a GetItem operation.
+  */
+inline fun DynamodbDSL.Companion.getItemRequest(dslBlock: GetItemRequestDSL.() -> Unit) =
   GetItemRequestDSL(GetItemRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -143,7 +151,7 @@ inline fun buildGetItemRequest(dslBlock: GetItemRequestDSL.() -> Unit) =
   *  take more time than an eventually consistent read, it always returns the last updated value.
   */
 inline fun DynamoDbAsyncClient.getItemBy(dslBlock: GetItemRequestDSL.() -> Unit) =
-  this.getItem(buildGetItemRequest(dslBlock))
+  this.getItem(DynamodbDSL.Companion.getItemRequest(dslBlock))
 
 /**
   * The GetItem operation returns a set of attributes for the item with the given primary key. If there
@@ -155,10 +163,10 @@ inline fun DynamoDbAsyncClient.getItemBy(dslBlock: GetItemRequestDSL.() -> Unit)
   *  take more time than an eventually consistent read, it always returns the last updated value.
   */
 inline fun DynamoDbClient.getItemBy(dslBlock: GetItemRequestDSL.() -> Unit) =
-  this.getItem(buildGetItemRequest(dslBlock))
+  this.getItem(DynamodbDSL.Companion.getItemRequest(dslBlock))
 
 /**
   * 
   */
 inline fun GetItemRequestMarshaller.marshallBy(dslBlock: GetItemRequestDSL.() -> Unit) =
-  this.marshall(buildGetItemRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.getItemRequest(dslBlock))

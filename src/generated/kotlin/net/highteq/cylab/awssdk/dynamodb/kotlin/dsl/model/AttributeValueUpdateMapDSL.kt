@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
 
 /**
@@ -23,7 +24,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValueUpdate
   *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
   *  exception.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeValueUpdateMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -37,7 +38,7 @@ inline class AttributeValueUpdateMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: AttributeValueUpdateDSL.() -> Unit) {
-    map[key] = buildAttributeValueUpdate(dslBlock)
+    map[key] = DynamodbDSL.attributeValueUpdate(dslBlock)
   }
 
   /**
@@ -81,5 +82,20 @@ inline class AttributeValueUpdateMapDSL(
   *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
   *  exception.
   */
-inline fun buildAttributeValueUpdateMap(dslBlock: AttributeValueUpdateMapDSL.() -> Unit) =
+inline fun attributeValueUpdateMap(dslBlock: AttributeValueUpdateMapDSL.() -> Unit) =
+  AttributeValueUpdateMapDSL(mutableMapOf<String, AttributeValueUpdate>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type AttributeValueUpdate:
+  * For the UpdateItem operation, represents the attributes to be modified, the action to perform on each,
+  *  and the new value for each.
+  * 
+  *  You cannot use UpdateItem to update any primary key attributes. Instead, you will need to delete the
+  *  item, and then use PutItem to create a new item with new attributes.
+  * 
+  *  Attribute values cannot be null; string and binary type attributes must have lengths greater than zero; and set type
+  *  attributes must not be empty. Requests with empty values will be rejected with a ValidationException
+  *  exception.
+  */
+inline fun DynamodbDSL.Companion.attributeValueUpdateMap(dslBlock: AttributeValueUpdateMapDSL.() -> Unit) =
   AttributeValueUpdateMapDSL(mutableMapOf<String, AttributeValueUpdate>()).apply(dslBlock).build()

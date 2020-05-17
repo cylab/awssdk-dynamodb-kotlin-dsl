@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.KeysAndAttributes
   * Builds instances of type BatchGetItemResponse:
   * Represents the output of a BatchGetItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BatchGetItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BatchGetItemResponse.Builder
@@ -83,14 +84,14 @@ inline class BatchGetItemResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacityCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun unprocessedKeys(dslBlock: KeysAndAttributesMapDSL.() -> Unit) {
-    builder.unprocessedKeys(buildKeysAndAttributesMap(dslBlock))
+    builder.unprocessedKeys(DynamodbDSL.Companion.keysAndAttributesMap(dslBlock))
   }
 
 }
@@ -99,5 +100,12 @@ inline class BatchGetItemResponseDSL(
   * Builds instances of type BatchGetItemResponse:
   * Represents the output of a BatchGetItem operation.
   */
-inline fun buildBatchGetItemResponse(dslBlock: BatchGetItemResponseDSL.() -> Unit) =
+inline fun batchGetItemResponse(dslBlock: BatchGetItemResponseDSL.() -> Unit) =
+  BatchGetItemResponseDSL(BatchGetItemResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BatchGetItemResponse:
+  * Represents the output of a BatchGetItem operation.
+  */
+inline fun DynamodbDSL.Companion.batchGetItemResponse(dslBlock: BatchGetItemResponseDSL.() -> Unit) =
   BatchGetItemResponseDSL(BatchGetItemResponse.builder()).apply(dslBlock).build()

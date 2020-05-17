@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DescribeGlobalTableSet
   * Builds instances of type DescribeGlobalTableSettingsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeGlobalTableSettingsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeGlobalTableSettingsRequest.Builder
@@ -54,23 +55,30 @@ inline class DescribeGlobalTableSettingsRequestDSL(
   * Builds instances of type DescribeGlobalTableSettingsRequest:
   * 
   */
-inline fun buildDescribeGlobalTableSettingsRequest(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
+inline fun describeGlobalTableSettingsRequest(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
+  DescribeGlobalTableSettingsRequestDSL(DescribeGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeGlobalTableSettingsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeGlobalTableSettingsRequest(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
   DescribeGlobalTableSettingsRequestDSL(DescribeGlobalTableSettingsRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeGlobalTableSettingsRequestMarshaller.marshallBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeGlobalTableSettingsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeGlobalTableSettingsRequest(dslBlock))
 
 /**
   * Describes region specific settings for a global table.
   */
 inline fun DynamoDbAsyncClient.describeGlobalTableSettingsBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.describeGlobalTableSettings(buildDescribeGlobalTableSettingsRequest(dslBlock))
+  this.describeGlobalTableSettings(DynamodbDSL.Companion.describeGlobalTableSettingsRequest(dslBlock))
 
 /**
   * Describes region specific settings for a global table.
   */
 inline fun DynamoDbClient.describeGlobalTableSettingsBy(dslBlock: DescribeGlobalTableSettingsRequestDSL.() -> Unit) =
-  this.describeGlobalTableSettings(buildDescribeGlobalTableSettingsRequest(dslBlock))
+  this.describeGlobalTableSettings(DynamodbDSL.Companion.describeGlobalTableSettingsRequest(dslBlock))

@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.Shard
 import software.amazon.awssdk.services.dynamodb.model.StreamDescription
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
   * Builds instances of type StreamDescription:
   * Represents all of the data describing a particular stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class StreamDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: StreamDescription.Builder
@@ -137,14 +138,14 @@ inline class StreamDescriptionDSL(
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun shards(dslBlock: ShardCollectionDSL.() -> Unit) {
-    builder.shards(buildShardCollection(dslBlock))
+    builder.shards(DynamodbDSL.Companion.shardCollection(dslBlock))
   }
 
 }
@@ -153,5 +154,12 @@ inline class StreamDescriptionDSL(
   * Builds instances of type StreamDescription:
   * Represents all of the data describing a particular stream.
   */
-inline fun buildStreamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) =
+inline fun streamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) =
+  StreamDescriptionDSL(StreamDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type StreamDescription:
+  * Represents all of the data describing a particular stream.
+  */
+inline fun DynamodbDSL.Companion.streamDescription(dslBlock: StreamDescriptionDSL.() -> Unit) =
   StreamDescriptionDSL(StreamDescription.builder()).apply(dslBlock).build()

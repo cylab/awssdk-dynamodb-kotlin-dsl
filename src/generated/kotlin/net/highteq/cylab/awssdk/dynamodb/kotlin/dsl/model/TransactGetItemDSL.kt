@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Get
 import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
   * Builds instances of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactGetItemDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TransactGetItem.Builder
@@ -39,7 +40,7 @@ inline class TransactGetItemDSL(
     * 
     */
   inline fun get(dslBlock: GetDSL.() -> Unit) {
-    builder.get(buildGet(dslBlock))
+    builder.get(DynamodbDSL.Companion.get(dslBlock))
   }
 
 }
@@ -48,5 +49,12 @@ inline class TransactGetItemDSL(
   * Builds instances of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
-inline fun buildTransactGetItem(dslBlock: TransactGetItemDSL.() -> Unit) =
+inline fun transactGetItem(dslBlock: TransactGetItemDSL.() -> Unit) =
+  TransactGetItemDSL(TransactGetItem.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TransactGetItem:
+  * Specifies an item to be retrieved as part of the transaction.
+  */
+inline fun DynamodbDSL.Companion.transactGetItem(dslBlock: TransactGetItemDSL.() -> Unit) =
   TransactGetItemDSL(TransactGetItem.builder()).apply(dslBlock).build()

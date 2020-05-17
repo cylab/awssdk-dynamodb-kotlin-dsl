@@ -1,14 +1,18 @@
-package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl
+package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.playground
 
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.dynamoDbClient
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model.*
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.regions.Region
-import software.amazon.awssdk.services.dynamodb.model.KeyType
-import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType.S
-import software.amazon.awssdk.services.dynamodb.model.Select
+import software.amazon.awssdk.services.dynamodb.model.*
+import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType.*
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
 
+@ExperimentalContracts
 private class _Playground {
-  val client = buildDynamoDbClient {
+  val client = dynamoDbClient {
     region = Region.EU_CENTRAL_1
     credentialsProvider = DefaultCredentialsProvider.builder().build()
     @Suppress("DEPRECATION")
@@ -16,24 +20,24 @@ private class _Playground {
   }
 
   val elements = arrayOf(
-    buildKeySchemaElement {
+    keySchemaElement {
       attributeName = "SomeID"
       keyType = KeyType.HASH
     }
   )
 
   val element =
-    buildKeySchemaElement {
+    keySchemaElement {
       attributeName = "SomeID"
       keyType = KeyType.HASH
     }
 
-  val attrDef = buildAttributeDefinition {
+  val attrDef = attributeDefinition {
     attributeName = "ID"
     attributeType("S")
   }
 
-  val attributes = buildAttributeDefinitionCollection {
+  val attributes = attributeDefinitionCollection {
     o {
       attributeName = "ID"
       attributeType("S")
@@ -49,12 +53,12 @@ private class _Playground {
     +attrDef
   }
 
-  val request = buildPutItemRequest {
+  val request = putItemRequest {
     tableName = "some table"
-    item = mapOf("foo" to buildAttributeValue { s = "bar" })
+    item = mapOf("foo" to attributeValue { s = "bar" })
   }
 
-  val createTableRequest = buildCreateTableRequest {
+  val createTableRequest = createTableRequest {
     attributeDefinitions = attributes
 
     keySchema {
@@ -70,7 +74,7 @@ private class _Playground {
       +element
     }
 
-    val block = buildProvisionedThroughput {
+    val block = DynamodbDSL.provisionedThroughput {
       readCapacityUnits = 10
       writeCapacityUnits = 10
     }
@@ -112,36 +116,68 @@ private class _Playground {
   //  }
   //}
 
-  val foo2 = buildAttributeValueMap {
+  // TODO: implement a automatic map to attributeValueMap converter
+  fun attributeValueMapOf(vararg entries: Pair<String, Any>) : Map<String, AttributeValue> {
+    return emptyMap()
+  }
+
+  fun Map<String, Any>.toAttributes() : Map<String, AttributeValue> {
+    return emptyMap()
+  }
+
+  val fooMap = attributeValueMapOf(
+    "ID" to "hotel.id",
+    "NAME" to "hotel.name",
+    "ZIP" to "hotel.zip",
+    "STATE" to "hotel.state",
+    "ADDRESS" to "hotel.address",
+    "foo" to mapOf(
+      "ID" to "hotel.id",
+      "NAME" to "hotel.name",
+      "ZIP" to "hotel.zip",
+      "STATE" to 17,
+      "valid" to attributeValue { n = "17" }
+    ).toAttributes()
+  )
+
+  val foo2 = attributeValueMap {
     o("ID") { s = "hotel.id" }
     o("NAME") { s = "hotel.name" }
     o("ZIP") { s = "hotel.zip" }
     o("STATE") { s = "hotel.state" }
     o("ADDRESS") { s = "hotel.address" }
     o("foo") {
-      m = buildAttributeValueMap {
+      m = attributeValueMap {
         o("ID") { s = "hotel.id" }
         o("NAME") { s = "hotel.name" }
         o("ZIP") { s = "hotel.zip" }
-        o("STATE") { s = "hotel.state" }
+        o("STATE") { n = "17" }
         o("valid") { bool = true }
       }
     }
   }
 
 
-  val query = buildQueryRequest {
+  val query = queryRequest {
     select = Select.COUNT
   }
 
 
-  val pir = buildPutItemRequest {
+  val pir = putItemRequest {
     item {
       o("ID") { s = "hotel.id" }
       o("NAME") { s = "hotel.name" }
       o("ZIP") { s = "hotel.zip" }
       o("STATE") { s = "hotel.state" }
       o("ADDRESS") { s = "hotel.address" }
+    }
+  }
+
+
+  init {
+
+    client.describeBackupBy {
+      backupArn = "asdd"
     }
   }
 }

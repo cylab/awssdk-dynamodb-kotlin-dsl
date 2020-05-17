@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexInfo
 
 /**
   * Builds a collection of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalSecondaryIndexInfoCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class GlobalSecondaryIndexInfoCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: GlobalSecondaryIndexInfoDSL.() -> Unit) {
-    list.add(buildGlobalSecondaryIndexInfo(dslBlock))
+    list.add(DynamodbDSL.globalSecondaryIndexInfo(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class GlobalSecondaryIndexInfoCollectionDSL(
   * Builds a collection of type GlobalSecondaryIndexInfo:
   * Represents the properties of a global secondary index for the table when the backup was created.
   */
-inline fun buildGlobalSecondaryIndexInfoCollection(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) =
+inline fun globalSecondaryIndexInfoCollection(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) =
+  GlobalSecondaryIndexInfoCollectionDSL(mutableListOf<GlobalSecondaryIndexInfo>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type GlobalSecondaryIndexInfo:
+  * Represents the properties of a global secondary index for the table when the backup was created.
+  */
+inline fun DynamodbDSL.Companion.globalSecondaryIndexInfoCollection(dslBlock: GlobalSecondaryIndexInfoCollectionDSL.() -> Unit) =
   GlobalSecondaryIndexInfoCollectionDSL(mutableListOf<GlobalSecondaryIndexInfo>()).apply(dslBlock).build()

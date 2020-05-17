@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.TransactGetItem
 
 /**
   * Builds a collection of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactGetItemCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class TransactGetItemCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: TransactGetItemDSL.() -> Unit) {
-    list.add(buildTransactGetItem(dslBlock))
+    list.add(DynamodbDSL.transactGetItem(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class TransactGetItemCollectionDSL(
   * Builds a collection of type TransactGetItem:
   * Specifies an item to be retrieved as part of the transaction.
   */
-inline fun buildTransactGetItemCollection(dslBlock: TransactGetItemCollectionDSL.() -> Unit) =
+inline fun transactGetItemCollection(dslBlock: TransactGetItemCollectionDSL.() -> Unit) =
+  TransactGetItemCollectionDSL(mutableListOf<TransactGetItem>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type TransactGetItem:
+  * Specifies an item to be retrieved as part of the transaction.
+  */
+inline fun DynamodbDSL.Companion.transactGetItemCollection(dslBlock: TransactGetItemCollectionDSL.() -> Unit) =
   TransactGetItemCollectionDSL(mutableListOf<TransactGetItem>()).apply(dslBlock).build()

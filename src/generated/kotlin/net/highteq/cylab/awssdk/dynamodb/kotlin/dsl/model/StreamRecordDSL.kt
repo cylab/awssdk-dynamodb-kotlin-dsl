@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.StreamRecord
 import software.amazon.awssdk.services.dynamodb.model.StreamViewType
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.StreamViewType
   * Builds instances of type StreamRecord:
   * A description of a single data modification that was performed on an item in a DynamoDB table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class StreamRecordDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: StreamRecord.Builder
@@ -108,21 +109,21 @@ inline class StreamRecordDSL(
     * 
     */
   inline fun keys(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.keys(buildAttributeValueMap(dslBlock))
+    builder.keys(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun newImage(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.newImage(buildAttributeValueMap(dslBlock))
+    builder.newImage(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun oldImage(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.oldImage(buildAttributeValueMap(dslBlock))
+    builder.oldImage(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -131,5 +132,12 @@ inline class StreamRecordDSL(
   * Builds instances of type StreamRecord:
   * A description of a single data modification that was performed on an item in a DynamoDB table.
   */
-inline fun buildStreamRecord(dslBlock: StreamRecordDSL.() -> Unit) =
+inline fun streamRecord(dslBlock: StreamRecordDSL.() -> Unit) =
+  StreamRecordDSL(StreamRecord.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type StreamRecord:
+  * A description of a single data modification that was performed on an item in a DynamoDB table.
+  */
+inline fun DynamodbDSL.Companion.streamRecord(dslBlock: StreamRecordDSL.() -> Unit) =
   StreamRecordDSL(StreamRecord.builder()).apply(dslBlock).build()

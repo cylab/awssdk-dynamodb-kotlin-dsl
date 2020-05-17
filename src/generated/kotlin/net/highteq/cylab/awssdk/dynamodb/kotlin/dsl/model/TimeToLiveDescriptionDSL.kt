@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveDescription
 import software.amazon.awssdk.services.dynamodb.model.TimeToLiveStatus
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.TimeToLiveStatus
   * Builds instances of type TimeToLiveDescription:
   * The description of the Time to Live (TTL) status on the specified table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TimeToLiveDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TimeToLiveDescription.Builder
@@ -58,5 +59,12 @@ inline class TimeToLiveDescriptionDSL(
   * Builds instances of type TimeToLiveDescription:
   * The description of the Time to Live (TTL) status on the specified table.
   */
-inline fun buildTimeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) =
+inline fun timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) =
+  TimeToLiveDescriptionDSL(TimeToLiveDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TimeToLiveDescription:
+  * The description of the Time to Live (TTL) status on the specified table.
+  */
+inline fun DynamodbDSL.Companion.timeToLiveDescription(dslBlock: TimeToLiveDescriptionDSL.() -> Unit) =
   TimeToLiveDescriptionDSL(TimeToLiveDescription.builder()).apply(dslBlock).build()

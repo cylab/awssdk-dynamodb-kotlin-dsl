@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.TransactWriteItem
 
 /**
@@ -16,7 +17,7 @@ import software.amazon.awssdk.services.dynamodb.model.TransactWriteItem
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TransactWriteItemCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -30,7 +31,7 @@ inline class TransactWriteItemCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: TransactWriteItemDSL.() -> Unit) {
-    list.add(buildTransactWriteItem(dslBlock))
+    list.add(DynamodbDSL.transactWriteItem(dslBlock))
   }
 
   /**
@@ -60,5 +61,13 @@ inline class TransactWriteItemCollectionDSL(
   * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
   *  atomically.
   */
-inline fun buildTransactWriteItemCollection(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) =
+inline fun transactWriteItemCollection(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) =
+  TransactWriteItemCollectionDSL(mutableListOf<TransactWriteItem>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type TransactWriteItem:
+  * A list of requests that can perform update, put, delete, or check operations on multiple items in one or more tables
+  *  atomically.
+  */
+inline fun DynamodbDSL.Companion.transactWriteItemCollection(dslBlock: TransactWriteItemCollectionDSL.() -> Unit) =
   TransactWriteItemCollectionDSL(mutableListOf<TransactWriteItem>()).apply(dslBlock).build()

@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
 
 /**
@@ -31,7 +32,7 @@ import software.amazon.awssdk.services.dynamodb.model.ExpectedAttributeValue
   *  ComparisonOperator. Note that if you use both sets of parameters at once, DynamoDB will return a
   *  ValidationException exception.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ExpectedAttributeValueMapDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -45,7 +46,7 @@ inline class ExpectedAttributeValueMapDSL(
     * the given DSL in 'dslBlock' and adds it to the map at ['key']
     */
   inline fun o(key: String, dslBlock: ExpectedAttributeValueDSL.() -> Unit) {
-    map[key] = buildExpectedAttributeValue(dslBlock)
+    map[key] = DynamodbDSL.expectedAttributeValue(dslBlock)
   }
 
   /**
@@ -97,5 +98,28 @@ inline class ExpectedAttributeValueMapDSL(
   *  ComparisonOperator. Note that if you use both sets of parameters at once, DynamoDB will return a
   *  ValidationException exception.
   */
-inline fun buildExpectedAttributeValueMap(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) =
+inline fun expectedAttributeValueMap(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) =
+  ExpectedAttributeValueMapDSL(mutableMapOf<String, ExpectedAttributeValue>()).apply(dslBlock).build()
+
+/**
+  * Builds a maps of type ExpectedAttributeValue:
+  * Represents a condition to be compared with an attribute value. This condition can be used with
+  *  DeleteItem, PutItem or UpdateItem operations; if the comparison evaluates to
+  *  true, the operation succeeds; if not, the operation fails. You can use ExpectedAttributeValue in one of
+  *  two different ways:
+  * 
+  *  Use AttributeValueList to specify one or more values to compare against an attribute. Use
+  *  ComparisonOperator to specify how you want to perform the comparison. If the comparison evaluates to
+  *  true, then the conditional operation succeeds.
+  * 
+  *  Use Value to specify a value that DynamoDB will compare against an attribute. If the values match, then
+  *  ExpectedAttributeValue evaluates to true and the conditional operation succeeds. Optionally, you can
+  *  also set Exists to false, indicating that you do not expect to find the attribute value in the
+  *  table. In this case, the conditional operation succeeds only if the comparison evaluates to false.
+  * 
+  *  Value and Exists are incompatible with AttributeValueList and
+  *  ComparisonOperator. Note that if you use both sets of parameters at once, DynamoDB will return a
+  *  ValidationException exception.
+  */
+inline fun DynamodbDSL.Companion.expectedAttributeValueMap(dslBlock: ExpectedAttributeValueMapDSL.() -> Unit) =
   ExpectedAttributeValueMapDSL(mutableMapOf<String, ExpectedAttributeValue>()).apply(dslBlock).build()

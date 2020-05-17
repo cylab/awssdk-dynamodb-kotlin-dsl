@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsDescription
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateContinuousBackupsRes
   * Builds instances of type UpdateContinuousBackupsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateContinuousBackupsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateContinuousBackupsResponse.Builder
@@ -61,7 +62,7 @@ inline class UpdateContinuousBackupsResponseDSL(
     * 
     */
   inline fun continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) {
-    builder.continuousBackupsDescription(buildContinuousBackupsDescription(dslBlock))
+    builder.continuousBackupsDescription(DynamodbDSL.Companion.continuousBackupsDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class UpdateContinuousBackupsResponseDSL(
   * Builds instances of type UpdateContinuousBackupsResponse:
   * 
   */
-inline fun buildUpdateContinuousBackupsResponse(dslBlock: UpdateContinuousBackupsResponseDSL.() -> Unit) =
+inline fun updateContinuousBackupsResponse(dslBlock: UpdateContinuousBackupsResponseDSL.() -> Unit) =
+  UpdateContinuousBackupsResponseDSL(UpdateContinuousBackupsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateContinuousBackupsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateContinuousBackupsResponse(dslBlock: UpdateContinuousBackupsResponseDSL.() -> Unit) =
   UpdateContinuousBackupsResponseDSL(UpdateContinuousBackupsResponse.builder()).apply(dslBlock).build()

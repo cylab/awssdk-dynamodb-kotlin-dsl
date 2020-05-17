@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Delete
 import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionCheckFailure
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   * Builds instances of type Delete:
   * Represents a request to perform a DeleteItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DeleteDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Delete.Builder
@@ -97,14 +98,14 @@ inline class DeleteDSL(
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -113,5 +114,12 @@ inline class DeleteDSL(
   * Builds instances of type Delete:
   * Represents a request to perform a DeleteItem operation.
   */
-inline fun buildDelete(dslBlock: DeleteDSL.() -> Unit) =
+inline fun delete(dslBlock: DeleteDSL.() -> Unit) =
+  DeleteDSL(Delete.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Delete:
+  * Represents a request to perform a DeleteItem operation.
+  */
+inline fun DynamodbDSL.Companion.delete(dslBlock: DeleteDSL.() -> Unit) =
   DeleteDSL(Delete.builder()).apply(dslBlock).build()

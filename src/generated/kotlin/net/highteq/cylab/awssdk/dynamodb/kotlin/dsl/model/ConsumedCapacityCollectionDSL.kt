@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
 
 /**
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ConsumedCapacity
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConsumedCapacityCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -32,7 +33,7 @@ inline class ConsumedCapacityCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    list.add(buildConsumedCapacity(dslBlock))
+    list.add(DynamodbDSL.consumedCapacity(dslBlock))
   }
 
   /**
@@ -64,5 +65,15 @@ inline class ConsumedCapacityCollectionDSL(
   *  returned if the request asked for it. For more information, see Provisioned
   *  Throughput in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildConsumedCapacityCollection(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) =
+inline fun consumedCapacityCollection(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) =
+  ConsumedCapacityCollectionDSL(mutableListOf<ConsumedCapacity>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type ConsumedCapacity:
+  * The capacity units consumed by an operation. The data returned includes the total provisioned throughput consumed,
+  *  along with statistics for the table and any indexes involved in the operation. ConsumedCapacity is only
+  *  returned if the request asked for it. For more information, see Provisioned
+  *  Throughput in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.consumedCapacityCollection(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) =
   ConsumedCapacityCollectionDSL(mutableListOf<ConsumedCapacity>()).apply(dslBlock).build()

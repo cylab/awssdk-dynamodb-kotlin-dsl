@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
 
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ItemCollectionMetrics
   *  is only returned if the request asked for it. If the table does not have any local secondary indexes, this
   *  information is not returned in the response.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ItemCollectionMetricsDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ItemCollectionMetrics.Builder
@@ -51,7 +52,7 @@ inline class ItemCollectionMetricsDSL(
     * 
     */
   inline fun itemCollectionKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.itemCollectionKey(buildAttributeValueMap(dslBlock))
+    builder.itemCollectionKey(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -62,5 +63,14 @@ inline class ItemCollectionMetricsDSL(
   *  is only returned if the request asked for it. If the table does not have any local secondary indexes, this
   *  information is not returned in the response.
   */
-inline fun buildItemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) =
+inline fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) =
+  ItemCollectionMetricsDSL(ItemCollectionMetrics.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ItemCollectionMetrics:
+  * Information about item collections, if any, that were affected by the operation. ItemCollectionMetrics
+  *  is only returned if the request asked for it. If the table does not have any local secondary indexes, this
+  *  information is not returned in the response.
+  */
+inline fun DynamodbDSL.Companion.itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) =
   ItemCollectionMetricsDSL(ItemCollectionMetrics.builder()).apply(dslBlock).build()

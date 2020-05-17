@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
 
 /**
   * Builds instances of type ReplicaDescription:
   * Contains the details of the replica.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaDescription.Builder
@@ -40,5 +41,12 @@ inline class ReplicaDescriptionDSL(
   * Builds instances of type ReplicaDescription:
   * Contains the details of the replica.
   */
-inline fun buildReplicaDescription(dslBlock: ReplicaDescriptionDSL.() -> Unit) =
+inline fun replicaDescription(dslBlock: ReplicaDescriptionDSL.() -> Unit) =
+  ReplicaDescriptionDSL(ReplicaDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaDescription:
+  * Contains the details of the replica.
+  */
+inline fun DynamodbDSL.Companion.replicaDescription(dslBlock: ReplicaDescriptionDSL.() -> Unit) =
   ReplicaDescriptionDSL(ReplicaDescription.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse
   * Builds instances of type ListTablesResponse:
   * Represents the output of a ListTables operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListTablesResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListTablesResponse.Builder
@@ -72,5 +73,12 @@ inline class ListTablesResponseDSL(
   * Builds instances of type ListTablesResponse:
   * Represents the output of a ListTables operation.
   */
-inline fun buildListTablesResponse(dslBlock: ListTablesResponseDSL.() -> Unit) =
+inline fun listTablesResponse(dslBlock: ListTablesResponseDSL.() -> Unit) =
+  ListTablesResponseDSL(ListTablesResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListTablesResponse:
+  * Represents the output of a ListTables operation.
+  */
+inline fun DynamodbDSL.Companion.listTablesResponse(dslBlock: ListTablesResponseDSL.() -> Unit) =
   ListTablesResponseDSL(ListTablesResponse.builder()).apply(dslBlock).build()

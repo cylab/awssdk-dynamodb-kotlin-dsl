@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -22,7 +23,7 @@ import software.amazon.awssdk.services.dynamodb.transform.ListBackupsRequestMars
   * Builds instances of type ListBackupsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListBackupsRequest.Builder
@@ -113,7 +114,14 @@ inline class ListBackupsRequestDSL(
   * Builds instances of type ListBackupsRequest:
   * 
   */
-inline fun buildListBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
+inline fun listBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
+  ListBackupsRequestDSL(ListBackupsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListBackupsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.listBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
   ListBackupsRequestDSL(ListBackupsRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -127,7 +135,7 @@ inline fun buildListBackupsRequest(dslBlock: ListBackupsRequestDSL.() -> Unit) =
   *  You can call ListBackups a maximum of 5 times per second.
   */
 inline fun DynamoDbAsyncClient.listBackupsBy(dslBlock: ListBackupsRequestDSL.() -> Unit) =
-  this.listBackups(buildListBackupsRequest(dslBlock))
+  this.listBackups(DynamodbDSL.Companion.listBackupsRequest(dslBlock))
 
 /**
   * List backups associated with an AWS account. To list backups for a given table, specify TableName.
@@ -140,10 +148,10 @@ inline fun DynamoDbAsyncClient.listBackupsBy(dslBlock: ListBackupsRequestDSL.() 
   *  You can call ListBackups a maximum of 5 times per second.
   */
 inline fun DynamoDbClient.listBackupsBy(dslBlock: ListBackupsRequestDSL.() -> Unit) =
-  this.listBackups(buildListBackupsRequest(dslBlock))
+  this.listBackups(DynamodbDSL.Companion.listBackupsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun ListBackupsRequestMarshaller.marshallBy(dslBlock: ListBackupsRequestDSL.() -> Unit) =
-  this.marshall(buildListBackupsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.listBackupsRequest(dslBlock))

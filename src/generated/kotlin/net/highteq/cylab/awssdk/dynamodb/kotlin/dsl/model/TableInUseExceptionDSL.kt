@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.TableInUseException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.TableInUseException
   * Builds instances of type TableInUseException:
   * A target table with the specified name is either being created or deleted.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TableInUseExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TableInUseException.Builder
@@ -92,5 +93,12 @@ inline class TableInUseExceptionDSL(
   * Builds instances of type TableInUseException:
   * A target table with the specified name is either being created or deleted.
   */
-inline fun buildTableInUseException(dslBlock: TableInUseExceptionDSL.() -> Unit) =
+inline fun tableInUseException(dslBlock: TableInUseExceptionDSL.() -> Unit) =
+  TableInUseExceptionDSL(TableInUseException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TableInUseException:
+  * A target table with the specified name is either being created or deleted.
+  */
+inline fun DynamodbDSL.Companion.tableInUseException(dslBlock: TableInUseExceptionDSL.() -> Unit) =
   TableInUseExceptionDSL(TableInUseException.builder()).apply(dslBlock).build()

@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.net.URI
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration
 import software.amazon.awssdk.http.SdkHttpClient
@@ -28,7 +29,7 @@ import software.amazon.awssdk.services.dynamodb.streams.DynamoDbStreamsClientBui
   *  application development with Streams, see Capturing Table Activity with
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DynamoDbStreamsClientDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DynamoDbStreamsClientBuilder
@@ -108,5 +109,18 @@ inline class DynamoDbStreamsClientDSL(
   *  application development with Streams, see Capturing Table Activity with
   *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildDynamoDbStreamsClient(dslBlock: DynamoDbStreamsClientDSL.() -> Unit) =
+inline fun dynamoDbStreamsClient(dslBlock: DynamoDbStreamsClientDSL.() -> Unit) =
+  DynamoDbStreamsClientDSL(DynamoDbStreamsClient.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DynamoDbStreamsClient:
+  * Service client for accessing Amazon DynamoDB Streams. This can be created using the static {@link #builder()} method.
+  * 
+  *  Amazon DynamoDB
+  * 
+  *  Amazon DynamoDB Streams provides API actions for accessing streams and processing stream records. To learn more about
+  *  application development with Streams, see Capturing Table Activity with
+  *  DynamoDB Streams in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.dynamoDbStreamsClient(dslBlock: DynamoDbStreamsClientDSL.() -> Unit) =
   DynamoDbStreamsClientDSL(DynamoDbStreamsClient.builder()).apply(dslBlock).build()

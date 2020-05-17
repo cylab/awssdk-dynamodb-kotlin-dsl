@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DescribeEndpointsReque
   * Builds instances of type DescribeEndpointsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeEndpointsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeEndpointsRequest.Builder
@@ -44,23 +45,30 @@ inline class DescribeEndpointsRequestDSL(
   * Builds instances of type DescribeEndpointsRequest:
   * 
   */
-inline fun buildDescribeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+inline fun describeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
+  DescribeEndpointsRequestDSL(DescribeEndpointsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeEndpointsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeEndpointsRequest(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
   DescribeEndpointsRequestDSL(DescribeEndpointsRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeEndpointsRequestMarshaller.marshallBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeEndpointsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeEndpointsRequest(dslBlock))
 
 /**
   * Returns the regional endpoint information.
   */
 inline fun DynamoDbAsyncClient.describeEndpointsBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
-  this.describeEndpoints(buildDescribeEndpointsRequest(dslBlock))
+  this.describeEndpoints(DynamodbDSL.Companion.describeEndpointsRequest(dslBlock))
 
 /**
   * Returns the regional endpoint information.
   */
 inline fun DynamoDbClient.describeEndpointsBy(dslBlock: DescribeEndpointsRequestDSL.() -> Unit) =
-  this.describeEndpoints(buildDescribeEndpointsRequest(dslBlock))
+  this.describeEndpoints(DynamodbDSL.Companion.describeEndpointsRequest(dslBlock))

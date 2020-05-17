@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.GetItemResponse
   * Builds instances of type GetItemResponse:
   * Represents the output of a GetItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GetItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GetItemResponse.Builder
@@ -72,14 +73,14 @@ inline class GetItemResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacity(dslBlock))
   }
 
   /**
     * 
     */
   inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.item(buildAttributeValueMap(dslBlock))
+    builder.item(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -88,5 +89,12 @@ inline class GetItemResponseDSL(
   * Builds instances of type GetItemResponse:
   * Represents the output of a GetItem operation.
   */
-inline fun buildGetItemResponse(dslBlock: GetItemResponseDSL.() -> Unit) =
+inline fun getItemResponse(dslBlock: GetItemResponseDSL.() -> Unit) =
+  GetItemResponseDSL(GetItemResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GetItemResponse:
+  * Represents the output of a GetItem operation.
+  */
+inline fun DynamodbDSL.Companion.getItemResponse(dslBlock: GetItemResponseDSL.() -> Unit) =
   GetItemResponseDSL(GetItemResponse.builder()).apply(dslBlock).build()

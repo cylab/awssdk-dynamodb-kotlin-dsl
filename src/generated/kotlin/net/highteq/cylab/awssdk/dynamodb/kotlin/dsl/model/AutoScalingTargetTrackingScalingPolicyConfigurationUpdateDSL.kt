@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
 
 /**
   * Builds instances of type AutoScalingTargetTrackingScalingPolicyConfigurationUpdate:
   * Represents the settings of a target tracking scaling policy that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate.Builder
@@ -70,5 +71,12 @@ inline class AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL(
   * Builds instances of type AutoScalingTargetTrackingScalingPolicyConfigurationUpdate:
   * Represents the settings of a target tracking scaling policy that will be modified.
   */
-inline fun buildAutoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) =
+inline fun autoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) =
+  AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL(AutoScalingTargetTrackingScalingPolicyConfigurationUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AutoScalingTargetTrackingScalingPolicyConfigurationUpdate:
+  * Represents the settings of a target tracking scaling policy that will be modified.
+  */
+inline fun DynamodbDSL.Companion.autoScalingTargetTrackingScalingPolicyConfigurationUpdate(dslBlock: AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL.() -> Unit) =
   AutoScalingTargetTrackingScalingPolicyConfigurationUpdateDSL(AutoScalingTargetTrackingScalingPolicyConfigurationUpdate.builder()).apply(dslBlock).build()

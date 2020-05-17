@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableNotFoundException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalTableNotFoundExcepti
   * Builds instances of type GlobalTableNotFoundException:
   * The specified global table does not exist.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableNotFoundExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalTableNotFoundException.Builder
@@ -92,5 +93,12 @@ inline class GlobalTableNotFoundExceptionDSL(
   * Builds instances of type GlobalTableNotFoundException:
   * The specified global table does not exist.
   */
-inline fun buildGlobalTableNotFoundException(dslBlock: GlobalTableNotFoundExceptionDSL.() -> Unit) =
+inline fun globalTableNotFoundException(dslBlock: GlobalTableNotFoundExceptionDSL.() -> Unit) =
+  GlobalTableNotFoundExceptionDSL(GlobalTableNotFoundException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalTableNotFoundException:
+  * The specified global table does not exist.
+  */
+inline fun DynamodbDSL.Companion.globalTableNotFoundException(dslBlock: GlobalTableNotFoundExceptionDSL.() -> Unit) =
   GlobalTableNotFoundExceptionDSL(GlobalTableNotFoundException.builder()).apply(dslBlock).build()

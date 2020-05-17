@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.DescribeContinuousBack
   * Builds instances of type DescribeContinuousBackupsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeContinuousBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeContinuousBackupsRequest.Builder
@@ -54,14 +55,21 @@ inline class DescribeContinuousBackupsRequestDSL(
   * Builds instances of type DescribeContinuousBackupsRequest:
   * 
   */
-inline fun buildDescribeContinuousBackupsRequest(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
+inline fun describeContinuousBackupsRequest(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
+  DescribeContinuousBackupsRequestDSL(DescribeContinuousBackupsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeContinuousBackupsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeContinuousBackupsRequest(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
   DescribeContinuousBackupsRequestDSL(DescribeContinuousBackupsRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun DescribeContinuousBackupsRequestMarshaller.marshallBy(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
-  this.marshall(buildDescribeContinuousBackupsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.describeContinuousBackupsRequest(dslBlock))
 
 /**
   * Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are
@@ -77,7 +85,7 @@ inline fun DescribeContinuousBackupsRequestMarshaller.marshallBy(dslBlock: Descr
   *  You can call DescribeContinuousBackups at a maximum rate of 10 times per second.
   */
 inline fun DynamoDbAsyncClient.describeContinuousBackupsBy(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
-  this.describeContinuousBackups(buildDescribeContinuousBackupsRequest(dslBlock))
+  this.describeContinuousBackups(DynamodbDSL.Companion.describeContinuousBackupsRequest(dslBlock))
 
 /**
   * Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are
@@ -93,4 +101,4 @@ inline fun DynamoDbAsyncClient.describeContinuousBackupsBy(dslBlock: DescribeCon
   *  You can call DescribeContinuousBackups at a maximum rate of 10 times per second.
   */
 inline fun DynamoDbClient.describeContinuousBackupsBy(dslBlock: DescribeContinuousBackupsRequestDSL.() -> Unit) =
-  this.describeContinuousBackups(buildDescribeContinuousBackupsRequest(dslBlock))
+  this.describeContinuousBackups(DynamodbDSL.Companion.describeContinuousBackupsRequest(dslBlock))

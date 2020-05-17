@@ -9,6 +9,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexUpdate
 
 /**
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.GlobalSecondaryIndexUpdate
   * 
   *  An existing global secondary index to be removed from an existing table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalSecondaryIndexUpdateCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -35,7 +36,7 @@ inline class GlobalSecondaryIndexUpdateCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: GlobalSecondaryIndexUpdateDSL.() -> Unit) {
-    list.add(buildGlobalSecondaryIndexUpdate(dslBlock))
+    list.add(DynamodbDSL.globalSecondaryIndexUpdate(dslBlock))
   }
 
   /**
@@ -70,5 +71,18 @@ inline class GlobalSecondaryIndexUpdateCollectionDSL(
   * 
   *  An existing global secondary index to be removed from an existing table.
   */
-inline fun buildGlobalSecondaryIndexUpdateCollection(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) =
+inline fun globalSecondaryIndexUpdateCollection(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) =
+  GlobalSecondaryIndexUpdateCollectionDSL(mutableListOf<GlobalSecondaryIndexUpdate>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type GlobalSecondaryIndexUpdate:
+  * Represents one of the following:
+  * 
+  *  A new global secondary index to be added to an existing table.
+  * 
+  *  New provisioned throughput parameters for an existing global secondary index.
+  * 
+  *  An existing global secondary index to be removed from an existing table.
+  */
+inline fun DynamodbDSL.Companion.globalSecondaryIndexUpdateCollection(dslBlock: GlobalSecondaryIndexUpdateCollectionDSL.() -> Unit) =
   GlobalSecondaryIndexUpdateCollectionDSL(mutableListOf<GlobalSecondaryIndexUpdate>()).apply(dslBlock).build()

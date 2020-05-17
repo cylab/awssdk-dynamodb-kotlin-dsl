@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.DescribeGlobalTableSettingsResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
   * Builds instances of type DescribeGlobalTableSettingsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeGlobalTableSettingsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeGlobalTableSettingsResponse.Builder
@@ -71,7 +72,7 @@ inline class DescribeGlobalTableSettingsResponseDSL(
     * 
     */
   inline fun replicaSettings(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) {
-    builder.replicaSettings(buildReplicaSettingsDescriptionCollection(dslBlock))
+    builder.replicaSettings(DynamodbDSL.Companion.replicaSettingsDescriptionCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class DescribeGlobalTableSettingsResponseDSL(
   * Builds instances of type DescribeGlobalTableSettingsResponse:
   * 
   */
-inline fun buildDescribeGlobalTableSettingsResponse(dslBlock: DescribeGlobalTableSettingsResponseDSL.() -> Unit) =
+inline fun describeGlobalTableSettingsResponse(dslBlock: DescribeGlobalTableSettingsResponseDSL.() -> Unit) =
+  DescribeGlobalTableSettingsResponseDSL(DescribeGlobalTableSettingsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeGlobalTableSettingsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeGlobalTableSettingsResponse(dslBlock: DescribeGlobalTableSettingsResponseDSL.() -> Unit) =
   DescribeGlobalTableSettingsResponseDSL(DescribeGlobalTableSettingsResponse.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.BatchWriteItemResponse
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.WriteRequest
   * Builds instances of type BatchWriteItemResponse:
   * Represents the output of a BatchWriteItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class BatchWriteItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: BatchWriteItemResponse.Builder
@@ -83,7 +84,7 @@ inline class BatchWriteItemResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityCollectionDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacityCollection(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacityCollection(dslBlock))
   }
 
 }
@@ -92,5 +93,12 @@ inline class BatchWriteItemResponseDSL(
   * Builds instances of type BatchWriteItemResponse:
   * Represents the output of a BatchWriteItem operation.
   */
-inline fun buildBatchWriteItemResponse(dslBlock: BatchWriteItemResponseDSL.() -> Unit) =
+inline fun batchWriteItemResponse(dslBlock: BatchWriteItemResponseDSL.() -> Unit) =
+  BatchWriteItemResponseDSL(BatchWriteItemResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type BatchWriteItemResponse:
+  * Represents the output of a BatchWriteItem operation.
+  */
+inline fun DynamodbDSL.Companion.batchWriteItemResponse(dslBlock: BatchWriteItemResponseDSL.() -> Unit) =
   BatchWriteItemResponseDSL(BatchWriteItemResponse.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.GetShardIteratorResponse
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.GetShardIteratorResponse
   * Builds instances of type GetShardIteratorResponse:
   * Represents the output of a GetShardIterator operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GetShardIteratorResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GetShardIteratorResponse.Builder
@@ -62,5 +63,12 @@ inline class GetShardIteratorResponseDSL(
   * Builds instances of type GetShardIteratorResponse:
   * Represents the output of a GetShardIterator operation.
   */
-inline fun buildGetShardIteratorResponse(dslBlock: GetShardIteratorResponseDSL.() -> Unit) =
+inline fun getShardIteratorResponse(dslBlock: GetShardIteratorResponseDSL.() -> Unit) =
+  GetShardIteratorResponseDSL(GetShardIteratorResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GetShardIteratorResponse:
+  * Represents the output of a GetShardIterator operation.
+  */
+inline fun DynamodbDSL.Companion.getShardIteratorResponse(dslBlock: GetShardIteratorResponseDSL.() -> Unit) =
   GetShardIteratorResponseDSL(GetShardIteratorResponse.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.TagResourceRequestMars
   * Builds instances of type TagResourceRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class TagResourceRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: TagResourceRequest.Builder
@@ -63,7 +64,7 @@ inline class TagResourceRequestDSL(
     * 
     */
   inline fun tags(dslBlock: TagCollectionDSL.() -> Unit) {
-    builder.tags(buildTagCollection(dslBlock))
+    builder.tags(DynamodbDSL.Companion.tagCollection(dslBlock))
   }
 
 }
@@ -72,7 +73,14 @@ inline class TagResourceRequestDSL(
   * Builds instances of type TagResourceRequest:
   * 
   */
-inline fun buildTagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
+inline fun tagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
+  TagResourceRequestDSL(TagResourceRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type TagResourceRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.tagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
   TagResourceRequestDSL(TagResourceRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -84,7 +92,7 @@ inline fun buildTagResourceRequest(dslBlock: TagResourceRequestDSL.() -> Unit) =
   *  the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbAsyncClient.tagResourceBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
-  this.tagResource(buildTagResourceRequest(dslBlock))
+  this.tagResource(DynamodbDSL.Companion.tagResourceRequest(dslBlock))
 
 /**
   * Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined tags so that
@@ -95,10 +103,10 @@ inline fun DynamoDbAsyncClient.tagResourceBy(dslBlock: TagResourceRequestDSL.() 
   *  the Amazon DynamoDB Developer Guide.
   */
 inline fun DynamoDbClient.tagResourceBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
-  this.tagResource(buildTagResourceRequest(dslBlock))
+  this.tagResource(DynamodbDSL.Companion.tagResourceRequest(dslBlock))
 
 /**
   * 
   */
 inline fun TagResourceRequestMarshaller.marshallBy(dslBlock: TagResourceRequestDSL.() -> Unit) =
-  this.marshall(buildTagResourceRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.tagResourceRequest(dslBlock))

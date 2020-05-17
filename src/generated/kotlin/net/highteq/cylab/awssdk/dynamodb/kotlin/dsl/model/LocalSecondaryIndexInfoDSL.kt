@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.KeySchemaElement
 import software.amazon.awssdk.services.dynamodb.model.LocalSecondaryIndexInfo
 import software.amazon.awssdk.services.dynamodb.model.Projection
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.Projection
   * Builds instances of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class LocalSecondaryIndexInfoDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: LocalSecondaryIndexInfo.Builder
@@ -60,14 +61,14 @@ inline class LocalSecondaryIndexInfoDSL(
     * 
     */
   inline fun keySchema(dslBlock: KeySchemaElementCollectionDSL.() -> Unit) {
-    builder.keySchema(buildKeySchemaElementCollection(dslBlock))
+    builder.keySchema(DynamodbDSL.Companion.keySchemaElementCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun projection(dslBlock: ProjectionDSL.() -> Unit) {
-    builder.projection(buildProjection(dslBlock))
+    builder.projection(DynamodbDSL.Companion.projection(dslBlock))
   }
 
 }
@@ -76,5 +77,12 @@ inline class LocalSecondaryIndexInfoDSL(
   * Builds instances of type LocalSecondaryIndexInfo:
   * Represents the properties of a local secondary index for the table when the backup was created.
   */
-inline fun buildLocalSecondaryIndexInfo(dslBlock: LocalSecondaryIndexInfoDSL.() -> Unit) =
+inline fun localSecondaryIndexInfo(dslBlock: LocalSecondaryIndexInfoDSL.() -> Unit) =
+  LocalSecondaryIndexInfoDSL(LocalSecondaryIndexInfo.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type LocalSecondaryIndexInfo:
+  * Represents the properties of a local secondary index for the table when the backup was created.
+  */
+inline fun DynamodbDSL.Companion.localSecondaryIndexInfo(dslBlock: LocalSecondaryIndexInfoDSL.() -> Unit) =
   LocalSecondaryIndexInfoDSL(LocalSecondaryIndexInfo.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
 import software.amazon.awssdk.services.dynamodb.model.Shard
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.Shard
   * Builds instances of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ShardDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Shard.Builder
@@ -59,7 +60,7 @@ inline class ShardDSL(
     * 
     */
   inline fun sequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) {
-    builder.sequenceNumberRange(buildSequenceNumberRange(dslBlock))
+    builder.sequenceNumberRange(DynamodbDSL.Companion.sequenceNumberRange(dslBlock))
   }
 
 }
@@ -68,5 +69,12 @@ inline class ShardDSL(
   * Builds instances of type Shard:
   * A uniquely identified group of stream records within a stream.
   */
-inline fun buildShard(dslBlock: ShardDSL.() -> Unit) =
+inline fun shard(dslBlock: ShardDSL.() -> Unit) =
+  ShardDSL(Shard.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Shard:
+  * A uniquely identified group of stream records within a stream.
+  */
+inline fun DynamodbDSL.Companion.shard(dslBlock: ShardDSL.() -> Unit) =
   ShardDSL(Shard.builder()).apply(dslBlock).build()

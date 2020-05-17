@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ContinuousBackupsDescription
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.DescribeContinuousBackupsR
   * Builds instances of type DescribeContinuousBackupsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DescribeContinuousBackupsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DescribeContinuousBackupsResponse.Builder
@@ -61,7 +62,7 @@ inline class DescribeContinuousBackupsResponseDSL(
     * 
     */
   inline fun continuousBackupsDescription(dslBlock: ContinuousBackupsDescriptionDSL.() -> Unit) {
-    builder.continuousBackupsDescription(buildContinuousBackupsDescription(dslBlock))
+    builder.continuousBackupsDescription(DynamodbDSL.Companion.continuousBackupsDescription(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class DescribeContinuousBackupsResponseDSL(
   * Builds instances of type DescribeContinuousBackupsResponse:
   * 
   */
-inline fun buildDescribeContinuousBackupsResponse(dslBlock: DescribeContinuousBackupsResponseDSL.() -> Unit) =
+inline fun describeContinuousBackupsResponse(dslBlock: DescribeContinuousBackupsResponseDSL.() -> Unit) =
+  DescribeContinuousBackupsResponseDSL(DescribeContinuousBackupsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DescribeContinuousBackupsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.describeContinuousBackupsResponse(dslBlock: DescribeContinuousBackupsResponseDSL.() -> Unit) =
   DescribeContinuousBackupsResponseDSL(DescribeContinuousBackupsResponse.builder()).apply(dslBlock).build()

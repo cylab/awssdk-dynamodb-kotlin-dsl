@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.BackupSummary
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ListBackupsResponse
   * Builds instances of type ListBackupsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListBackupsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListBackupsResponse.Builder
@@ -71,7 +72,7 @@ inline class ListBackupsResponseDSL(
     * 
     */
   inline fun backupSummaries(dslBlock: BackupSummaryCollectionDSL.() -> Unit) {
-    builder.backupSummaries(buildBackupSummaryCollection(dslBlock))
+    builder.backupSummaries(DynamodbDSL.Companion.backupSummaryCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class ListBackupsResponseDSL(
   * Builds instances of type ListBackupsResponse:
   * 
   */
-inline fun buildListBackupsResponse(dslBlock: ListBackupsResponseDSL.() -> Unit) =
+inline fun listBackupsResponse(dslBlock: ListBackupsResponseDSL.() -> Unit) =
+  ListBackupsResponseDSL(ListBackupsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListBackupsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.listBackupsResponse(dslBlock: ListBackupsResponseDSL.() -> Unit) =
   ListBackupsResponseDSL(ListBackupsResponse.builder()).apply(dslBlock).build()

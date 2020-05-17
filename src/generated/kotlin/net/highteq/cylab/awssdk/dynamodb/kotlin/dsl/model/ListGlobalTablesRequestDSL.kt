@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.ListGlobalTablesReques
   * Builds instances of type ListGlobalTablesRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListGlobalTablesRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListGlobalTablesRequest.Builder
@@ -74,23 +75,30 @@ inline class ListGlobalTablesRequestDSL(
   * Builds instances of type ListGlobalTablesRequest:
   * 
   */
-inline fun buildListGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+inline fun listGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
+  ListGlobalTablesRequestDSL(ListGlobalTablesRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListGlobalTablesRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.listGlobalTablesRequest(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
   ListGlobalTablesRequestDSL(ListGlobalTablesRequest.builder()).apply(dslBlock).build()
 
 /**
   * Lists all global tables that have a replica in the specified region.
   */
 inline fun DynamoDbAsyncClient.listGlobalTablesBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
-  this.listGlobalTables(buildListGlobalTablesRequest(dslBlock))
+  this.listGlobalTables(DynamodbDSL.Companion.listGlobalTablesRequest(dslBlock))
 
 /**
   * Lists all global tables that have a replica in the specified region.
   */
 inline fun DynamoDbClient.listGlobalTablesBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
-  this.listGlobalTables(buildListGlobalTablesRequest(dslBlock))
+  this.listGlobalTables(DynamodbDSL.Companion.listGlobalTablesRequest(dslBlock))
 
 /**
   * 
   */
 inline fun ListGlobalTablesRequestMarshaller.marshallBy(dslBlock: ListGlobalTablesRequestDSL.() -> Unit) =
-  this.marshall(buildListGlobalTablesRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.listGlobalTablesRequest(dslBlock))

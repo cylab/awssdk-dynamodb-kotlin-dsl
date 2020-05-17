@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryUnavailableException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryUnavail
   * Builds instances of type PointInTimeRecoveryUnavailableException:
   * Point in time recovery has not yet been enabled for this source table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PointInTimeRecoveryUnavailableExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: PointInTimeRecoveryUnavailableException.Builder
@@ -92,5 +93,12 @@ inline class PointInTimeRecoveryUnavailableExceptionDSL(
   * Builds instances of type PointInTimeRecoveryUnavailableException:
   * Point in time recovery has not yet been enabled for this source table.
   */
-inline fun buildPointInTimeRecoveryUnavailableException(dslBlock: PointInTimeRecoveryUnavailableExceptionDSL.() -> Unit) =
+inline fun pointInTimeRecoveryUnavailableException(dslBlock: PointInTimeRecoveryUnavailableExceptionDSL.() -> Unit) =
+  PointInTimeRecoveryUnavailableExceptionDSL(PointInTimeRecoveryUnavailableException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type PointInTimeRecoveryUnavailableException:
+  * Point in time recovery has not yet been enabled for this source table.
+  */
+inline fun DynamodbDSL.Companion.pointInTimeRecoveryUnavailableException(dslBlock: PointInTimeRecoveryUnavailableExceptionDSL.() -> Unit) =
   PointInTimeRecoveryUnavailableExceptionDSL(PointInTimeRecoveryUnavailableException.builder()).apply(dslBlock).build()

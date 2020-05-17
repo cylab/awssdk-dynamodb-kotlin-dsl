@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.model.QueryResponse
   * Builds instances of type QueryResponse:
   * Represents the output of a Query operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class QueryResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: QueryResponse.Builder
@@ -102,14 +103,14 @@ inline class QueryResponseDSL(
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacity(dslBlock))
   }
 
   /**
     * 
     */
   inline fun lastEvaluatedKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.lastEvaluatedKey(buildAttributeValueMap(dslBlock))
+    builder.lastEvaluatedKey(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -118,5 +119,12 @@ inline class QueryResponseDSL(
   * Builds instances of type QueryResponse:
   * Represents the output of a Query operation.
   */
-inline fun buildQueryResponse(dslBlock: QueryResponseDSL.() -> Unit) =
+inline fun queryResponse(dslBlock: QueryResponseDSL.() -> Unit) =
+  QueryResponseDSL(QueryResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type QueryResponse:
+  * Represents the output of a Query operation.
+  */
+inline fun DynamodbDSL.Companion.queryResponse(dslBlock: QueryResponseDSL.() -> Unit) =
   QueryResponseDSL(QueryResponse.builder()).apply(dslBlock).build()

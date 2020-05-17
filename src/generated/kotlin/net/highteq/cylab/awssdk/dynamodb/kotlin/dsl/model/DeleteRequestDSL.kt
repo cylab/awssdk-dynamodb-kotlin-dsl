@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.DeleteRequest
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.DeleteRequest
   * Builds instances of type DeleteRequest:
   * Represents a request to perform a DeleteItem operation on an item.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DeleteRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DeleteRequest.Builder
@@ -39,7 +40,7 @@ inline class DeleteRequestDSL(
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -48,5 +49,12 @@ inline class DeleteRequestDSL(
   * Builds instances of type DeleteRequest:
   * Represents a request to perform a DeleteItem operation on an item.
   */
-inline fun buildDeleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) =
+inline fun deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) =
+  DeleteRequestDSL(DeleteRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DeleteRequest:
+  * Represents a request to perform a DeleteItem operation on an item.
+  */
+inline fun DynamodbDSL.Companion.deleteRequest(dslBlock: DeleteRequestDSL.() -> Unit) =
   DeleteRequestDSL(DeleteRequest.builder()).apply(dslBlock).build()

@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Endpoint
 
 /**
   * Builds a collection of type Endpoint:
   * An endpoint information details.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class EndpointCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class EndpointCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: EndpointDSL.() -> Unit) {
-    list.add(buildEndpoint(dslBlock))
+    list.add(DynamodbDSL.endpoint(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class EndpointCollectionDSL(
   * Builds a collection of type Endpoint:
   * An endpoint information details.
   */
-inline fun buildEndpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =
+inline fun endpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =
+  EndpointCollectionDSL(mutableListOf<Endpoint>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type Endpoint:
+  * An endpoint information details.
+  */
+inline fun DynamodbDSL.Companion.endpointCollection(dslBlock: EndpointCollectionDSL.() -> Unit) =
   EndpointCollectionDSL(mutableListOf<Endpoint>()).apply(dslBlock).build()

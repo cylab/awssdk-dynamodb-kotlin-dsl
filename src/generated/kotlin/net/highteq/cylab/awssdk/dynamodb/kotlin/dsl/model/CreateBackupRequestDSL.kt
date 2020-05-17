@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.CreateBackupRequestMar
   * Builds instances of type CreateBackupRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CreateBackupRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: CreateBackupRequest.Builder
@@ -64,14 +65,21 @@ inline class CreateBackupRequestDSL(
   * Builds instances of type CreateBackupRequest:
   * 
   */
-inline fun buildCreateBackupRequest(dslBlock: CreateBackupRequestDSL.() -> Unit) =
+inline fun createBackupRequest(dslBlock: CreateBackupRequestDSL.() -> Unit) =
+  CreateBackupRequestDSL(CreateBackupRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type CreateBackupRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.createBackupRequest(dslBlock: CreateBackupRequestDSL.() -> Unit) =
   CreateBackupRequestDSL(CreateBackupRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun CreateBackupRequestMarshaller.marshallBy(dslBlock: CreateBackupRequestDSL.() -> Unit) =
-  this.marshall(buildCreateBackupRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.createBackupRequest(dslBlock))
 
 /**
   * Creates a backup for an existing table.
@@ -102,7 +110,7 @@ inline fun CreateBackupRequestMarshaller.marshallBy(dslBlock: CreateBackupReques
   *  Provisioned read and write capacity
   */
 inline fun DynamoDbAsyncClient.createBackupBy(dslBlock: CreateBackupRequestDSL.() -> Unit) =
-  this.createBackup(buildCreateBackupRequest(dslBlock))
+  this.createBackup(DynamodbDSL.Companion.createBackupRequest(dslBlock))
 
 /**
   * Creates a backup for an existing table.
@@ -133,4 +141,4 @@ inline fun DynamoDbAsyncClient.createBackupBy(dslBlock: CreateBackupRequestDSL.(
   *  Provisioned read and write capacity
   */
 inline fun DynamoDbClient.createBackupBy(dslBlock: CreateBackupRequestDSL.() -> Unit) =
-  this.createBackup(buildCreateBackupRequest(dslBlock))
+  this.createBackup(DynamodbDSL.Companion.createBackupRequest(dslBlock))

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.BackupDetails
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.CreateBackupResponse
   * Builds instances of type CreateBackupResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CreateBackupResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: CreateBackupResponse.Builder
@@ -61,7 +62,7 @@ inline class CreateBackupResponseDSL(
     * 
     */
   inline fun backupDetails(dslBlock: BackupDetailsDSL.() -> Unit) {
-    builder.backupDetails(buildBackupDetails(dslBlock))
+    builder.backupDetails(DynamodbDSL.Companion.backupDetails(dslBlock))
   }
 
 }
@@ -70,5 +71,12 @@ inline class CreateBackupResponseDSL(
   * Builds instances of type CreateBackupResponse:
   * 
   */
-inline fun buildCreateBackupResponse(dslBlock: CreateBackupResponseDSL.() -> Unit) =
+inline fun createBackupResponse(dslBlock: CreateBackupResponseDSL.() -> Unit) =
+  CreateBackupResponseDSL(CreateBackupResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type CreateBackupResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.createBackupResponse(dslBlock: CreateBackupResponseDSL.() -> Unit) =
   CreateBackupResponseDSL(CreateBackupResponse.builder()).apply(dslBlock).build()

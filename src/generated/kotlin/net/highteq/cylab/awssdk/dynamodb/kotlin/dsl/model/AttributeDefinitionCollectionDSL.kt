@@ -9,13 +9,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition
 
 /**
   * Builds a collection of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeDefinitionCollectionDSL(
   @PublishedApi
   @Deprecated("Don't use internal fields!", level = WARNING)
@@ -29,7 +30,7 @@ inline class AttributeDefinitionCollectionDSL(
     * the given DSL in 'dslBlock' and adds it to the collection
     */
   inline fun o(dslBlock: AttributeDefinitionDSL.() -> Unit) {
-    list.add(buildAttributeDefinition(dslBlock))
+    list.add(DynamodbDSL.attributeDefinition(dslBlock))
   }
 
   /**
@@ -58,5 +59,12 @@ inline class AttributeDefinitionCollectionDSL(
   * Builds a collection of type AttributeDefinition:
   * Represents an attribute for describing the key schema for the table and indexes.
   */
-inline fun buildAttributeDefinitionCollection(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) =
+inline fun attributeDefinitionCollection(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) =
+  AttributeDefinitionCollectionDSL(mutableListOf<AttributeDefinition>()).apply(dslBlock).build()
+
+/**
+  * Builds a collection of type AttributeDefinition:
+  * Represents an attribute for describing the key schema for the table and indexes.
+  */
+inline fun DynamodbDSL.Companion.attributeDefinitionCollection(dslBlock: AttributeDefinitionCollectionDSL.() -> Unit) =
   AttributeDefinitionCollectionDSL(mutableListOf<AttributeDefinition>()).apply(dslBlock).build()

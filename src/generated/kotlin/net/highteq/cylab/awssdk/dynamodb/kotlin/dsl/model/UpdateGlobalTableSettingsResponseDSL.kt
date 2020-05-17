@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.ReplicaSettingsDescription
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateGlobalTableSettingsR
   * Builds instances of type UpdateGlobalTableSettingsResponse:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateGlobalTableSettingsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateGlobalTableSettingsResponse.Builder
@@ -71,7 +72,7 @@ inline class UpdateGlobalTableSettingsResponseDSL(
     * 
     */
   inline fun replicaSettings(dslBlock: ReplicaSettingsDescriptionCollectionDSL.() -> Unit) {
-    builder.replicaSettings(buildReplicaSettingsDescriptionCollection(dslBlock))
+    builder.replicaSettings(DynamodbDSL.Companion.replicaSettingsDescriptionCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class UpdateGlobalTableSettingsResponseDSL(
   * Builds instances of type UpdateGlobalTableSettingsResponse:
   * 
   */
-inline fun buildUpdateGlobalTableSettingsResponse(dslBlock: UpdateGlobalTableSettingsResponseDSL.() -> Unit) =
+inline fun updateGlobalTableSettingsResponse(dslBlock: UpdateGlobalTableSettingsResponseDSL.() -> Unit) =
+  UpdateGlobalTableSettingsResponseDSL(UpdateGlobalTableSettingsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateGlobalTableSettingsResponse:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateGlobalTableSettingsResponse(dslBlock: UpdateGlobalTableSettingsResponseDSL.() -> Unit) =
   UpdateGlobalTableSettingsResponseDSL(UpdateGlobalTableSettingsResponse.builder()).apply(dslBlock).build()

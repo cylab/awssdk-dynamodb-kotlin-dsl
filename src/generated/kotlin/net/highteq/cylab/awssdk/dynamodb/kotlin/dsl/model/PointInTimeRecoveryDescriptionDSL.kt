@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryDescription
 import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryStatus
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.PointInTimeRecoveryStatus
   * Builds instances of type PointInTimeRecoveryDescription:
   * The description of the point in time settings applied to the table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PointInTimeRecoveryDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: PointInTimeRecoveryDescription.Builder
@@ -69,5 +70,12 @@ inline class PointInTimeRecoveryDescriptionDSL(
   * Builds instances of type PointInTimeRecoveryDescription:
   * The description of the point in time settings applied to the table.
   */
-inline fun buildPointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) =
+inline fun pointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) =
+  PointInTimeRecoveryDescriptionDSL(PointInTimeRecoveryDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type PointInTimeRecoveryDescription:
+  * The description of the point in time settings applied to the table.
+  */
+inline fun DynamodbDSL.Companion.pointInTimeRecoveryDescription(dslBlock: PointInTimeRecoveryDescriptionDSL.() -> Unit) =
   PointInTimeRecoveryDescriptionDSL(PointInTimeRecoveryDescription.builder()).apply(dslBlock).build()

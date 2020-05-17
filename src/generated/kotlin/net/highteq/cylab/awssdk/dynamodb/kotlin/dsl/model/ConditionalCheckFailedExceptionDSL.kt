@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ConditionalCheckFailedException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ConditionalCheckFailedExce
   * Builds instances of type ConditionalCheckFailedException:
   * A condition specified in the operation could not be evaluated.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConditionalCheckFailedExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ConditionalCheckFailedException.Builder
@@ -92,5 +93,12 @@ inline class ConditionalCheckFailedExceptionDSL(
   * Builds instances of type ConditionalCheckFailedException:
   * A condition specified in the operation could not be evaluated.
   */
-inline fun buildConditionalCheckFailedException(dslBlock: ConditionalCheckFailedExceptionDSL.() -> Unit) =
+inline fun conditionalCheckFailedException(dslBlock: ConditionalCheckFailedExceptionDSL.() -> Unit) =
+  ConditionalCheckFailedExceptionDSL(ConditionalCheckFailedException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ConditionalCheckFailedException:
+  * A condition specified in the operation could not be evaluated.
+  */
+inline fun DynamodbDSL.Companion.conditionalCheckFailedException(dslBlock: ConditionalCheckFailedExceptionDSL.() -> Unit) =
   ConditionalCheckFailedExceptionDSL(ConditionalCheckFailedException.builder()).apply(dslBlock).build()

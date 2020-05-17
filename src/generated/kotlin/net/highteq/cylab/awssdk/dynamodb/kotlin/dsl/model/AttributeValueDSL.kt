@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.core.SdkBytes
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class AttributeValueDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: AttributeValue.Builder
@@ -133,14 +134,14 @@ inline class AttributeValueDSL(
     * 
     */
   inline fun l(dslBlock: AttributeValueCollectionDSL.() -> Unit) {
-    builder.l(buildAttributeValueCollection(dslBlock))
+    builder.l(DynamodbDSL.Companion.attributeValueCollection(dslBlock))
   }
 
   /**
     * 
     */
   inline fun m(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.m(buildAttributeValueMap(dslBlock))
+    builder.m(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -153,5 +154,16 @@ inline class AttributeValueDSL(
   * 
   *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
   */
-inline fun buildAttributeValue(dslBlock: AttributeValueDSL.() -> Unit) =
+inline fun attributeValue(dslBlock: AttributeValueDSL.() -> Unit) =
+  AttributeValueDSL(AttributeValue.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type AttributeValue:
+  * Represents the data for an attribute.
+  * 
+  *  Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.
+  * 
+  *  For more information, see Data Types in the Amazon DynamoDB Developer Guide.
+  */
+inline fun DynamodbDSL.Companion.attributeValue(dslBlock: AttributeValueDSL.() -> Unit) =
   AttributeValueDSL(AttributeValue.builder()).apply(dslBlock).build()

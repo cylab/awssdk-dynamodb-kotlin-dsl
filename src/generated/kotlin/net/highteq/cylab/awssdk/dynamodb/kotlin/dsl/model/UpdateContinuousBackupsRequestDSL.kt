@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateContinuousBackup
   * Builds instances of type UpdateContinuousBackupsRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateContinuousBackupsRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateContinuousBackupsRequest.Builder
@@ -63,7 +64,7 @@ inline class UpdateContinuousBackupsRequestDSL(
     * 
     */
   inline fun pointInTimeRecoverySpecification(dslBlock: PointInTimeRecoverySpecificationDSL.() -> Unit) {
-    builder.pointInTimeRecoverySpecification(buildPointInTimeRecoverySpecification(dslBlock))
+    builder.pointInTimeRecoverySpecification(DynamodbDSL.Companion.pointInTimeRecoverySpecification(dslBlock))
   }
 
 }
@@ -72,7 +73,14 @@ inline class UpdateContinuousBackupsRequestDSL(
   * Builds instances of type UpdateContinuousBackupsRequest:
   * 
   */
-inline fun buildUpdateContinuousBackupsRequest(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
+inline fun updateContinuousBackupsRequest(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
+  UpdateContinuousBackupsRequestDSL(UpdateContinuousBackupsRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateContinuousBackupsRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateContinuousBackupsRequest(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
   UpdateContinuousBackupsRequestDSL(UpdateContinuousBackupsRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -88,7 +96,7 @@ inline fun buildUpdateContinuousBackupsRequest(dslBlock: UpdateContinuousBackups
   *  to any point in time during the last 35 days..
   */
 inline fun DynamoDbAsyncClient.updateContinuousBackupsBy(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
-  this.updateContinuousBackups(buildUpdateContinuousBackupsRequest(dslBlock))
+  this.updateContinuousBackups(DynamodbDSL.Companion.updateContinuousBackupsRequest(dslBlock))
 
 /**
   * UpdateContinuousBackups enables or disables point in time recovery for the specified table. A
@@ -103,10 +111,10 @@ inline fun DynamoDbAsyncClient.updateContinuousBackupsBy(dslBlock: UpdateContinu
   *  to any point in time during the last 35 days..
   */
 inline fun DynamoDbClient.updateContinuousBackupsBy(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
-  this.updateContinuousBackups(buildUpdateContinuousBackupsRequest(dslBlock))
+  this.updateContinuousBackups(DynamodbDSL.Companion.updateContinuousBackupsRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateContinuousBackupsRequestMarshaller.marshallBy(dslBlock: UpdateContinuousBackupsRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateContinuousBackupsRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateContinuousBackupsRequest(dslBlock))

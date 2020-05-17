@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.RequestLimitExceededException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.RequestLimitExceededExcept
   * Builds instances of type RequestLimitExceededException:
   * Throughput exceeds the current throughput limit for your account. Please contact AWS Support at AWS Support to request a limit increase.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class RequestLimitExceededExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: RequestLimitExceededException.Builder
@@ -92,5 +93,12 @@ inline class RequestLimitExceededExceptionDSL(
   * Builds instances of type RequestLimitExceededException:
   * Throughput exceeds the current throughput limit for your account. Please contact AWS Support at AWS Support to request a limit increase.
   */
-inline fun buildRequestLimitExceededException(dslBlock: RequestLimitExceededExceptionDSL.() -> Unit) =
+inline fun requestLimitExceededException(dslBlock: RequestLimitExceededExceptionDSL.() -> Unit) =
+  RequestLimitExceededExceptionDSL(RequestLimitExceededException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type RequestLimitExceededException:
+  * Throughput exceeds the current throughput limit for your account. Please contact AWS Support at AWS Support to request a limit increase.
+  */
+inline fun DynamodbDSL.Companion.requestLimitExceededException(dslBlock: RequestLimitExceededExceptionDSL.() -> Unit) =
   RequestLimitExceededExceptionDSL(RequestLimitExceededException.builder()).apply(dslBlock).build()

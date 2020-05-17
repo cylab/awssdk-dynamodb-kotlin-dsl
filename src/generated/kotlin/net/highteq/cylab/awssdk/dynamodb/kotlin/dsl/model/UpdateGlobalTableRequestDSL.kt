@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.UpdateGlobalTableReque
   * Builds instances of type UpdateGlobalTableRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateGlobalTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateGlobalTableRequest.Builder
@@ -63,7 +64,7 @@ inline class UpdateGlobalTableRequestDSL(
     * 
     */
   inline fun replicaUpdates(dslBlock: ReplicaUpdateCollectionDSL.() -> Unit) {
-    builder.replicaUpdates(buildReplicaUpdateCollection(dslBlock))
+    builder.replicaUpdates(DynamodbDSL.Companion.replicaUpdateCollection(dslBlock))
   }
 
 }
@@ -72,7 +73,14 @@ inline class UpdateGlobalTableRequestDSL(
   * Builds instances of type UpdateGlobalTableRequest:
   * 
   */
-inline fun buildUpdateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+inline fun updateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
+  UpdateGlobalTableRequestDSL(UpdateGlobalTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateGlobalTableRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.updateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
   UpdateGlobalTableRequestDSL(UpdateGlobalTableRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -93,7 +101,7 @@ inline fun buildUpdateGlobalTableRequest(dslBlock: UpdateGlobalTableRequestDSL.(
   *  The global secondary indexes must have the same provisioned and maximum write capacity units.
   */
 inline fun DynamoDbAsyncClient.updateGlobalTableBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
-  this.updateGlobalTable(buildUpdateGlobalTableRequest(dslBlock))
+  this.updateGlobalTable(DynamodbDSL.Companion.updateGlobalTableRequest(dslBlock))
 
 /**
   * Adds or removes replicas in the specified global table. The global table must already exist to be able to use
@@ -113,10 +121,10 @@ inline fun DynamoDbAsyncClient.updateGlobalTableBy(dslBlock: UpdateGlobalTableRe
   *  The global secondary indexes must have the same provisioned and maximum write capacity units.
   */
 inline fun DynamoDbClient.updateGlobalTableBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
-  this.updateGlobalTable(buildUpdateGlobalTableRequest(dslBlock))
+  this.updateGlobalTable(DynamodbDSL.Companion.updateGlobalTableRequest(dslBlock))
 
 /**
   * 
   */
 inline fun UpdateGlobalTableRequestMarshaller.marshallBy(dslBlock: UpdateGlobalTableRequestDSL.() -> Unit) =
-  this.marshall(buildUpdateGlobalTableRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.updateGlobalTableRequest(dslBlock))

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.Put
 import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionCheckFailure
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   * Builds instances of type Put:
   * Represents a request to perform a PutItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class PutDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Put.Builder
@@ -97,14 +98,14 @@ inline class PutDSL(
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun item(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.item(buildAttributeValueMap(dslBlock))
+    builder.item(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -113,5 +114,12 @@ inline class PutDSL(
   * Builds instances of type Put:
   * Represents a request to perform a PutItem operation.
   */
-inline fun buildPut(dslBlock: PutDSL.() -> Unit) =
+inline fun put(dslBlock: PutDSL.() -> Unit) =
+  PutDSL(Put.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Put:
+  * Represents a request to perform a PutItem operation.
+  */
+inline fun DynamodbDSL.Companion.put(dslBlock: PutDSL.() -> Unit) =
   PutDSL(Put.builder()).apply(dslBlock).build()

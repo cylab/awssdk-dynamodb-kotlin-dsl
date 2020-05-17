@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Duration
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.exception.AwsErrorDetails
 import software.amazon.awssdk.services.dynamodb.model.ReplicaAlreadyExistsException
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaAlreadyExistsExcept
   * Builds instances of type ReplicaAlreadyExistsException:
   * The specified replica is already part of the global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaAlreadyExistsExceptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaAlreadyExistsException.Builder
@@ -92,5 +93,12 @@ inline class ReplicaAlreadyExistsExceptionDSL(
   * Builds instances of type ReplicaAlreadyExistsException:
   * The specified replica is already part of the global table.
   */
-inline fun buildReplicaAlreadyExistsException(dslBlock: ReplicaAlreadyExistsExceptionDSL.() -> Unit) =
+inline fun replicaAlreadyExistsException(dslBlock: ReplicaAlreadyExistsExceptionDSL.() -> Unit) =
+  ReplicaAlreadyExistsExceptionDSL(ReplicaAlreadyExistsException.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaAlreadyExistsException:
+  * The specified replica is already part of the global table.
+  */
+inline fun DynamodbDSL.Companion.replicaAlreadyExistsException(dslBlock: ReplicaAlreadyExistsExceptionDSL.() -> Unit) =
   ReplicaAlreadyExistsExceptionDSL(ReplicaAlreadyExistsException.builder()).apply(dslBlock).build()

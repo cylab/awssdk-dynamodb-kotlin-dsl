@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -20,7 +21,7 @@ import software.amazon.awssdk.services.dynamodb.transform.ListTablesRequestMarsh
   * Builds instances of type ListTablesRequest:
   * Represents the input of a ListTables operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ListTablesRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ListTablesRequest.Builder
@@ -64,7 +65,14 @@ inline class ListTablesRequestDSL(
   * Builds instances of type ListTablesRequest:
   * Represents the input of a ListTables operation.
   */
-inline fun buildListTablesRequest(dslBlock: ListTablesRequestDSL.() -> Unit) =
+inline fun listTablesRequest(dslBlock: ListTablesRequestDSL.() -> Unit) =
+  ListTablesRequestDSL(ListTablesRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ListTablesRequest:
+  * Represents the input of a ListTables operation.
+  */
+inline fun DynamodbDSL.Companion.listTablesRequest(dslBlock: ListTablesRequestDSL.() -> Unit) =
   ListTablesRequestDSL(ListTablesRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -72,7 +80,7 @@ inline fun buildListTablesRequest(dslBlock: ListTablesRequestDSL.() -> Unit) =
   *  ListTables is paginated, with each page returning a maximum of 100 table names.
   */
 inline fun DynamoDbAsyncClient.listTablesBy(dslBlock: ListTablesRequestDSL.() -> Unit) =
-  this.listTables(buildListTablesRequest(dslBlock))
+  this.listTables(DynamodbDSL.Companion.listTablesRequest(dslBlock))
 
 /**
   * Returns an array of table names associated with the current account and endpoint. The output from
@@ -117,14 +125,14 @@ inline fun DynamoDbAsyncClient.listTablesBy(dslBlock: ListTablesRequestDSL.() ->
   *  {@link #listTables(software.amazon.awssdk.services.dynamodb.model.ListTablesRequest)} operation.
   */
 inline fun DynamoDbAsyncClient.listTablesPaginatorBy(dslBlock: ListTablesRequestDSL.() -> Unit) =
-  this.listTablesPaginator(buildListTablesRequest(dslBlock))
+  this.listTablesPaginator(DynamodbDSL.Companion.listTablesRequest(dslBlock))
 
 /**
   * Returns an array of table names associated with the current account and endpoint. The output from
   *  ListTables is paginated, with each page returning a maximum of 100 table names.
   */
 inline fun DynamoDbClient.listTablesBy(dslBlock: ListTablesRequestDSL.() -> Unit) =
-  this.listTables(buildListTablesRequest(dslBlock))
+  this.listTables(DynamodbDSL.Companion.listTablesRequest(dslBlock))
 
 /**
   * Returns an array of table names associated with the current account and endpoint. The output from
@@ -169,10 +177,10 @@ inline fun DynamoDbClient.listTablesBy(dslBlock: ListTablesRequestDSL.() -> Unit
   *  {@link #listTables(software.amazon.awssdk.services.dynamodb.model.ListTablesRequest)} operation.
   */
 inline fun DynamoDbClient.listTablesPaginatorBy(dslBlock: ListTablesRequestDSL.() -> Unit) =
-  this.listTablesPaginator(buildListTablesRequest(dslBlock))
+  this.listTablesPaginator(DynamodbDSL.Companion.listTablesRequest(dslBlock))
 
 /**
   * 
   */
 inline fun ListTablesRequestMarshaller.marshallBy(dslBlock: ListTablesRequestDSL.() -> Unit) =
-  this.marshall(buildListTablesRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.listTablesRequest(dslBlock))

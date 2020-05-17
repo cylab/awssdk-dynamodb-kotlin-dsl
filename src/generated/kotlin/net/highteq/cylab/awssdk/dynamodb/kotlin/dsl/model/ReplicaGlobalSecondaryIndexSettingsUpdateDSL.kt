@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AutoScalingSettingsUpdate
 import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryIndexSettingsUpdate
 
@@ -17,7 +18,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaGlobalSecondaryInde
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ReplicaGlobalSecondaryIndexSettingsUpdate.Builder
@@ -59,7 +60,7 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
     * 
     */
   inline fun provisionedReadCapacityAutoScalingSettingsUpdate(dslBlock: AutoScalingSettingsUpdateDSL.() -> Unit) {
-    builder.provisionedReadCapacityAutoScalingSettingsUpdate(buildAutoScalingSettingsUpdate(dslBlock))
+    builder.provisionedReadCapacityAutoScalingSettingsUpdate(DynamodbDSL.Companion.autoScalingSettingsUpdate(dslBlock))
   }
 
 }
@@ -68,5 +69,12 @@ inline class ReplicaGlobalSecondaryIndexSettingsUpdateDSL(
   * Builds instances of type ReplicaGlobalSecondaryIndexSettingsUpdate:
   * Represents the settings of a global secondary index for a global table that will be modified.
   */
-inline fun buildReplicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
+inline fun replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
+  ReplicaGlobalSecondaryIndexSettingsUpdateDSL(ReplicaGlobalSecondaryIndexSettingsUpdate.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ReplicaGlobalSecondaryIndexSettingsUpdate:
+  * Represents the settings of a global secondary index for a global table that will be modified.
+  */
+inline fun DynamodbDSL.Companion.replicaGlobalSecondaryIndexSettingsUpdate(dslBlock: ReplicaGlobalSecondaryIndexSettingsUpdateDSL.() -> Unit) =
   ReplicaGlobalSecondaryIndexSettingsUpdateDSL(ReplicaGlobalSecondaryIndexSettingsUpdate.builder()).apply(dslBlock).build()

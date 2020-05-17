@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.DeleteReplicaAction
 
 /**
   * Builds instances of type DeleteReplicaAction:
   * Represents a replica to be removed.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class DeleteReplicaActionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: DeleteReplicaAction.Builder
@@ -40,5 +41,12 @@ inline class DeleteReplicaActionDSL(
   * Builds instances of type DeleteReplicaAction:
   * Represents a replica to be removed.
   */
-inline fun buildDeleteReplicaAction(dslBlock: DeleteReplicaActionDSL.() -> Unit) =
+inline fun deleteReplicaAction(dslBlock: DeleteReplicaActionDSL.() -> Unit) =
+  DeleteReplicaActionDSL(DeleteReplicaAction.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type DeleteReplicaAction:
+  * Represents a replica to be removed.
+  */
+inline fun DynamodbDSL.Companion.deleteReplicaAction(dslBlock: DeleteReplicaActionDSL.() -> Unit) =
   DeleteReplicaActionDSL(DeleteReplicaAction.builder()).apply(dslBlock).build()

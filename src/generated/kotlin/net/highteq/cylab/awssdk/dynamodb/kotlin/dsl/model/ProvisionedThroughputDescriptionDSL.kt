@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescription
 
 /**
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProvisionedThroughputDescr
   * Represents the provisioned throughput settings for the table, consisting of read and write capacity units, along with
   *  data about increases and decreases.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ProvisionedThroughputDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ProvisionedThroughputDescription.Builder
@@ -83,5 +84,13 @@ inline class ProvisionedThroughputDescriptionDSL(
   * Represents the provisioned throughput settings for the table, consisting of read and write capacity units, along with
   *  data about increases and decreases.
   */
-inline fun buildProvisionedThroughputDescription(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) =
+inline fun provisionedThroughputDescription(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) =
+  ProvisionedThroughputDescriptionDSL(ProvisionedThroughputDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ProvisionedThroughputDescription:
+  * Represents the provisioned throughput settings for the table, consisting of read and write capacity units, along with
+  *  data about increases and decreases.
+  */
+inline fun DynamodbDSL.Companion.provisionedThroughputDescription(dslBlock: ProvisionedThroughputDescriptionDSL.() -> Unit) =
   ProvisionedThroughputDescriptionDSL(ProvisionedThroughputDescription.builder()).apply(dslBlock).build()

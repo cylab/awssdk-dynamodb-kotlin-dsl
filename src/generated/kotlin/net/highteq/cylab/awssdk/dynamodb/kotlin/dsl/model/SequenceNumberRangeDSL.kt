@@ -10,13 +10,14 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.SequenceNumberRange
 
 /**
   * Builds instances of type SequenceNumberRange:
   * The beginning and ending sequence numbers for the stream records contained within a shard.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class SequenceNumberRangeDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: SequenceNumberRange.Builder
@@ -50,5 +51,12 @@ inline class SequenceNumberRangeDSL(
   * Builds instances of type SequenceNumberRange:
   * The beginning and ending sequence numbers for the stream records contained within a shard.
   */
-inline fun buildSequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) =
+inline fun sequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) =
+  SequenceNumberRangeDSL(SequenceNumberRange.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type SequenceNumberRange:
+  * The beginning and ending sequence numbers for the stream records contained within a shard.
+  */
+inline fun DynamodbDSL.Companion.sequenceNumberRange(dslBlock: SequenceNumberRangeDSL.() -> Unit) =
   SequenceNumberRangeDSL(SequenceNumberRange.builder()).apply(dslBlock).build()

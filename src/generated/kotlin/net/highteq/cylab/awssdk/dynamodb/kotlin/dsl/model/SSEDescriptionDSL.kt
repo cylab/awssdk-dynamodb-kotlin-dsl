@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.SSEDescription
 import software.amazon.awssdk.services.dynamodb.model.SSEStatus
 import software.amazon.awssdk.services.dynamodb.model.SSEType
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.SSEType
   * Builds instances of type SSEDescription:
   * The description of the server-side encryption status on the specified table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class SSEDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: SSEDescription.Builder
@@ -76,5 +77,12 @@ inline class SSEDescriptionDSL(
   * Builds instances of type SSEDescription:
   * The description of the server-side encryption status on the specified table.
   */
-inline fun buildSSEDescription(dslBlock: SSEDescriptionDSL.() -> Unit) =
+inline fun sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) =
+  SSEDescriptionDSL(SSEDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type SSEDescription:
+  * The description of the server-side encryption status on the specified table.
+  */
+inline fun DynamodbDSL.Companion.sseDescription(dslBlock: SSEDescriptionDSL.() -> Unit) =
   SSEDescriptionDSL(SSEDescription.builder()).apply(dslBlock).build()

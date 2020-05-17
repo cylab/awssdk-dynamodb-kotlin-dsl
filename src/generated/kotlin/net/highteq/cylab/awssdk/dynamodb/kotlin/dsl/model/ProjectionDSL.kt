@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.Projection
 import software.amazon.awssdk.services.dynamodb.model.ProjectionType
 
@@ -18,7 +19,7 @@ import software.amazon.awssdk.services.dynamodb.model.ProjectionType
   * Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary
   *  key attributes and index key attributes, which are automatically projected.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ProjectionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: Projection.Builder
@@ -60,5 +61,13 @@ inline class ProjectionDSL(
   * Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary
   *  key attributes and index key attributes, which are automatically projected.
   */
-inline fun buildProjection(dslBlock: ProjectionDSL.() -> Unit) =
+inline fun projection(dslBlock: ProjectionDSL.() -> Unit) =
+  ProjectionDSL(Projection.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type Projection:
+  * Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary
+  *  key attributes and index key attributes, which are automatically projected.
+  */
+inline fun DynamodbDSL.Companion.projection(dslBlock: ProjectionDSL.() -> Unit) =
   ProjectionDSL(Projection.builder()).apply(dslBlock).build()

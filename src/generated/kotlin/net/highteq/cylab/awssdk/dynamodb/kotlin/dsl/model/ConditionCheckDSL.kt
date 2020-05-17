@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import software.amazon.awssdk.services.dynamodb.model.ConditionCheck
 import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionCheckFailure
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReturnValuesOnConditionChe
   * Represents a request to perform a check that an item exists or to check the condition of specific attributes of the
   *  item..
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ConditionCheckDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ConditionCheck.Builder
@@ -98,14 +99,14 @@ inline class ConditionCheckDSL(
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun key(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.key(buildAttributeValueMap(dslBlock))
+    builder.key(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
 }
@@ -115,5 +116,13 @@ inline class ConditionCheckDSL(
   * Represents a request to perform a check that an item exists or to check the condition of specific attributes of the
   *  item..
   */
-inline fun buildConditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) =
+inline fun conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) =
+  ConditionCheckDSL(ConditionCheck.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ConditionCheck:
+  * Represents a request to perform a check that an item exists or to check the condition of specific attributes of the
+  *  item..
+  */
+inline fun DynamodbDSL.Companion.conditionCheck(dslBlock: ConditionCheckDSL.() -> Unit) =
   ConditionCheckDSL(ConditionCheck.builder()).apply(dslBlock).build()

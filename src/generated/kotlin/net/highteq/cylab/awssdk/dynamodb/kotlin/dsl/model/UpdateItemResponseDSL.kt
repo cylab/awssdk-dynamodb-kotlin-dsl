@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.model.UpdateItemResponse
   * Builds instances of type UpdateItemResponse:
   * Represents the output of an UpdateItem operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class UpdateItemResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: UpdateItemResponse.Builder
@@ -83,21 +84,21 @@ inline class UpdateItemResponseDSL(
     * 
     */
   inline fun attributes(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.attributes(buildAttributeValueMap(dslBlock))
+    builder.attributes(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun consumedCapacity(dslBlock: ConsumedCapacityDSL.() -> Unit) {
-    builder.consumedCapacity(buildConsumedCapacity(dslBlock))
+    builder.consumedCapacity(DynamodbDSL.Companion.consumedCapacity(dslBlock))
   }
 
   /**
     * 
     */
   inline fun itemCollectionMetrics(dslBlock: ItemCollectionMetricsDSL.() -> Unit) {
-    builder.itemCollectionMetrics(buildItemCollectionMetrics(dslBlock))
+    builder.itemCollectionMetrics(DynamodbDSL.Companion.itemCollectionMetrics(dslBlock))
   }
 
 }
@@ -106,5 +107,12 @@ inline class UpdateItemResponseDSL(
   * Builds instances of type UpdateItemResponse:
   * Represents the output of an UpdateItem operation.
   */
-inline fun buildUpdateItemResponse(dslBlock: UpdateItemResponseDSL.() -> Unit) =
+inline fun updateItemResponse(dslBlock: UpdateItemResponseDSL.() -> Unit) =
+  UpdateItemResponseDSL(UpdateItemResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type UpdateItemResponse:
+  * Represents the output of an UpdateItem operation.
+  */
+inline fun DynamodbDSL.Companion.updateItemResponse(dslBlock: UpdateItemResponseDSL.() -> Unit) =
   UpdateItemResponseDSL(UpdateItemResponse.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -25,7 +26,7 @@ import software.amazon.awssdk.services.dynamodb.transform.ScanRequestMarshaller
   * Builds instances of type ScanRequest:
   * Represents the input of a Scan operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class ScanRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: ScanRequest.Builder
@@ -228,21 +229,21 @@ inline class ScanRequestDSL(
     * 
     */
   inline fun exclusiveStartKey(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.exclusiveStartKey(buildAttributeValueMap(dslBlock))
+    builder.exclusiveStartKey(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun expressionAttributeValues(dslBlock: AttributeValueMapDSL.() -> Unit) {
-    builder.expressionAttributeValues(buildAttributeValueMap(dslBlock))
+    builder.expressionAttributeValues(DynamodbDSL.Companion.attributeValueMap(dslBlock))
   }
 
   /**
     * 
     */
   inline fun scanFilter(dslBlock: ConditionMapDSL.() -> Unit) {
-    builder.scanFilter(buildConditionMap(dslBlock))
+    builder.scanFilter(DynamodbDSL.Companion.conditionMap(dslBlock))
   }
 
 }
@@ -251,7 +252,14 @@ inline class ScanRequestDSL(
   * Builds instances of type ScanRequest:
   * Represents the input of a Scan operation.
   */
-inline fun buildScanRequest(dslBlock: ScanRequestDSL.() -> Unit) =
+inline fun scanRequest(dslBlock: ScanRequestDSL.() -> Unit) =
+  ScanRequestDSL(ScanRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type ScanRequest:
+  * Represents the input of a Scan operation.
+  */
+inline fun DynamodbDSL.Companion.scanRequest(dslBlock: ScanRequestDSL.() -> Unit) =
   ScanRequestDSL(ScanRequest.builder()).apply(dslBlock).build()
 
 /**
@@ -281,7 +289,7 @@ inline fun buildScanRequest(dslBlock: ScanRequestDSL.() -> Unit) =
   *  ConsistentRead parameter to true.
   */
 inline fun DynamoDbAsyncClient.scanBy(dslBlock: ScanRequestDSL.() -> Unit) =
-  this.scan(buildScanRequest(dslBlock))
+  this.scan(DynamodbDSL.Companion.scanRequest(dslBlock))
 
 /**
   * The Scan operation returns one or more items and item attributes by accessing every item in a table
@@ -348,7 +356,7 @@ inline fun DynamoDbAsyncClient.scanBy(dslBlock: ScanRequestDSL.() -> Unit) =
   *  {@link #scan(software.amazon.awssdk.services.dynamodb.model.ScanRequest)} operation.
   */
 inline fun DynamoDbAsyncClient.scanPaginatorBy(dslBlock: ScanRequestDSL.() -> Unit) =
-  this.scanPaginator(buildScanRequest(dslBlock))
+  this.scanPaginator(DynamodbDSL.Companion.scanRequest(dslBlock))
 
 /**
   * The Scan operation returns one or more items and item attributes by accessing every item in a table
@@ -377,7 +385,7 @@ inline fun DynamoDbAsyncClient.scanPaginatorBy(dslBlock: ScanRequestDSL.() -> Un
   *  ConsistentRead parameter to true.
   */
 inline fun DynamoDbClient.scanBy(dslBlock: ScanRequestDSL.() -> Unit) =
-  this.scan(buildScanRequest(dslBlock))
+  this.scan(DynamodbDSL.Companion.scanRequest(dslBlock))
 
 /**
   * The Scan operation returns one or more items and item attributes by accessing every item in a table
@@ -444,10 +452,10 @@ inline fun DynamoDbClient.scanBy(dslBlock: ScanRequestDSL.() -> Unit) =
   *  {@link #scan(software.amazon.awssdk.services.dynamodb.model.ScanRequest)} operation.
   */
 inline fun DynamoDbClient.scanPaginatorBy(dslBlock: ScanRequestDSL.() -> Unit) =
-  this.scanPaginator(buildScanRequest(dslBlock))
+  this.scanPaginator(DynamodbDSL.Companion.scanRequest(dslBlock))
 
 /**
   * 
   */
 inline fun ScanRequestMarshaller.marshallBy(dslBlock: ScanRequestDSL.() -> Unit) =
-  this.marshall(buildScanRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.scanRequest(dslBlock))

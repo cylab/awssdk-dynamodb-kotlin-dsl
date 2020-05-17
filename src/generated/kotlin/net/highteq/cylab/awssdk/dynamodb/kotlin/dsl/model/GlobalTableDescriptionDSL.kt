@@ -11,6 +11,7 @@ import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import java.time.Instant
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableDescription
 import software.amazon.awssdk.services.dynamodb.model.GlobalTableStatus
 import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.ReplicaDescription
   * Builds instances of type GlobalTableDescription:
   * Contains details about the global table.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GlobalTableDescriptionDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GlobalTableDescription.Builder
@@ -88,7 +89,7 @@ inline class GlobalTableDescriptionDSL(
     * 
     */
   inline fun replicationGroup(dslBlock: ReplicaDescriptionCollectionDSL.() -> Unit) {
-    builder.replicationGroup(buildReplicaDescriptionCollection(dslBlock))
+    builder.replicationGroup(DynamodbDSL.Companion.replicaDescriptionCollection(dslBlock))
   }
 
 }
@@ -97,5 +98,12 @@ inline class GlobalTableDescriptionDSL(
   * Builds instances of type GlobalTableDescription:
   * Contains details about the global table.
   */
-inline fun buildGlobalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) =
+inline fun globalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) =
+  GlobalTableDescriptionDSL(GlobalTableDescription.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GlobalTableDescription:
+  * Contains details about the global table.
+  */
+inline fun DynamodbDSL.Companion.globalTableDescription(dslBlock: GlobalTableDescriptionDSL.() -> Unit) =
   GlobalTableDescriptionDSL(GlobalTableDescription.builder()).apply(dslBlock).build()

@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsResponseMetadata
 import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.dynamodb.model.GetRecordsResponse
@@ -19,7 +20,7 @@ import software.amazon.awssdk.services.dynamodb.model.Record
   * Builds instances of type GetRecordsResponse:
   * Represents the output of a GetRecords operation.
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class GetRecordsResponseDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: GetRecordsResponse.Builder
@@ -71,7 +72,7 @@ inline class GetRecordsResponseDSL(
     * 
     */
   inline fun records(dslBlock: RecordCollectionDSL.() -> Unit) {
-    builder.records(buildRecordCollection(dslBlock))
+    builder.records(DynamodbDSL.Companion.recordCollection(dslBlock))
   }
 
 }
@@ -80,5 +81,12 @@ inline class GetRecordsResponseDSL(
   * Builds instances of type GetRecordsResponse:
   * Represents the output of a GetRecords operation.
   */
-inline fun buildGetRecordsResponse(dslBlock: GetRecordsResponseDSL.() -> Unit) =
+inline fun getRecordsResponse(dslBlock: GetRecordsResponseDSL.() -> Unit) =
+  GetRecordsResponseDSL(GetRecordsResponse.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type GetRecordsResponse:
+  * Represents the output of a GetRecords operation.
+  */
+inline fun DynamodbDSL.Companion.getRecordsResponse(dslBlock: GetRecordsResponseDSL.() -> Unit) =
   GetRecordsResponseDSL(GetRecordsResponse.builder()).apply(dslBlock).build()

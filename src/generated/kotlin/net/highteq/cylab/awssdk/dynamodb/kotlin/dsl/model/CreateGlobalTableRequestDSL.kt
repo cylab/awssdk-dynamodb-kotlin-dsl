@@ -10,6 +10,7 @@ package net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.model
 import kotlin.DeprecationLevel.HIDDEN
 import kotlin.DeprecationLevel.WARNING
 import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSL
+import net.highteq.cylab.awssdk.dynamodb.kotlin.dsl.DynamodbDSLMarker
 import software.amazon.awssdk.awscore.AwsRequestOverrideConfiguration
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
@@ -21,7 +22,7 @@ import software.amazon.awssdk.services.dynamodb.transform.CreateGlobalTableReque
   * Builds instances of type CreateGlobalTableRequest:
   * 
   */
-@DynamodbDSL
+@DynamodbDSLMarker
 inline class CreateGlobalTableRequestDSL(
   @Deprecated("Usage of the builder field is not recommended. It might vanish in any new release!", level = WARNING)
   val builder: CreateGlobalTableRequest.Builder
@@ -63,7 +64,7 @@ inline class CreateGlobalTableRequestDSL(
     * 
     */
   inline fun replicationGroup(dslBlock: ReplicaCollectionDSL.() -> Unit) {
-    builder.replicationGroup(buildReplicaCollection(dslBlock))
+    builder.replicationGroup(DynamodbDSL.Companion.replicaCollection(dslBlock))
   }
 
 }
@@ -72,14 +73,21 @@ inline class CreateGlobalTableRequestDSL(
   * Builds instances of type CreateGlobalTableRequest:
   * 
   */
-inline fun buildCreateGlobalTableRequest(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
+inline fun createGlobalTableRequest(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
+  CreateGlobalTableRequestDSL(CreateGlobalTableRequest.builder()).apply(dslBlock).build()
+
+/**
+  * Builds instances of type CreateGlobalTableRequest:
+  * 
+  */
+inline fun DynamodbDSL.Companion.createGlobalTableRequest(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
   CreateGlobalTableRequestDSL(CreateGlobalTableRequest.builder()).apply(dslBlock).build()
 
 /**
   * 
   */
 inline fun CreateGlobalTableRequestMarshaller.marshallBy(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
-  this.marshall(buildCreateGlobalTableRequest(dslBlock))
+  this.marshall(DynamodbDSL.Companion.createGlobalTableRequest(dslBlock))
 
 /**
   * Creates a global table from an existing table. A global table creates a replication relationship between two or
@@ -111,7 +119,7 @@ inline fun CreateGlobalTableRequestMarshaller.marshallBy(dslBlock: CreateGlobalT
   *  secondary indexes across your global table.
   */
 inline fun DynamoDbAsyncClient.createGlobalTableBy(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
-  this.createGlobalTable(buildCreateGlobalTableRequest(dslBlock))
+  this.createGlobalTable(DynamodbDSL.Companion.createGlobalTableRequest(dslBlock))
 
 /**
   * Creates a global table from an existing table. A global table creates a replication relationship between two or
@@ -143,4 +151,4 @@ inline fun DynamoDbAsyncClient.createGlobalTableBy(dslBlock: CreateGlobalTableRe
   *  secondary indexes across your global table.
   */
 inline fun DynamoDbClient.createGlobalTableBy(dslBlock: CreateGlobalTableRequestDSL.() -> Unit) =
-  this.createGlobalTable(buildCreateGlobalTableRequest(dslBlock))
+  this.createGlobalTable(DynamodbDSL.Companion.createGlobalTableRequest(dslBlock))
